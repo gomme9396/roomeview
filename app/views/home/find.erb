@@ -1,19 +1,19 @@
-    
+
     <%= render :partial => "/home/navbar" %>
-    
+
     <div class="container" style="margin-top: 80px">
         <% @view_address each do |a| %>
             <a href="/home/review/<%= a.id %>"><%= a.id%></a><br>
-               
-                    
+
+
                      <%= a.month %><br>
                      <%= a.address %><br>
-            
-                    
+
+                    <h1>호현수정했다요</h1>
                  
                 <a href="/update_view_a/<%= a.id %>">[수정]</a>
                 <a href="/destroy/<%= a.id %>">[삭제]</a><br><hr>
         <% end %>
-        
-  
+
+
     </div>
