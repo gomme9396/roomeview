@@ -1,0 +1,7 @@
+<p>안녕하세요 루미뷰입니다. <%= @resource.email %>!</p>
+
+<p>현재 귀하의 계정이 활성회 되지 않은 상태입니다. </p>
+
+<p>아래를 클릭해서 계정을 활성화 해주시기 바랍니다.</p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>

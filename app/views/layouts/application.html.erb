@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roomeview</title>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+  <script src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>
+
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+  <!-- 마테리얼 디자인 아이콘 사용 링크 -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <!--다음 지도 API key-->
+  <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services"></script>
+
+</head>
+<body>
+
+  <%= yield %>
+
+</body>
+</html>

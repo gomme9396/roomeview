@@ -1,0 +1,116 @@
+
+<%= render :partial => "/home/navbar" %>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text text-lighten-2">Roomeview</h1>
+        <div class="row center">
+          <h5 class="header col s12 light ">당신방의 어제를 공유하세요</h5>
+        </div>
+        <div class="row center">
+          <% if user_signed_in? %>
+            <% if Address.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
+            <a href="/home/list_find" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+            <% else %>
+            <a href="/home/create_a" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+            <% end %>
+          <% else %>
+            <a href="/users/sign_in" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+          <% end %>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax">
+        <img src ="<%= image_path "intro-bg.jpg" %>">
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">streetview</i></h2>
+            <h5 class="center">경험을</h5>
+
+            <p class="light">앞으로 함께할 방과의 경험을 미리 알 수 있으면 어떨까요?</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">insert_comment</i></h2>
+            <h5 class="center">기록하고</h5>
+
+            <p class="light">지금 함께하고 있는 혹은 과거에 함께한 방과의 경험을 기록해주세요!</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">share</i></h2>
+            <h5 class="center">공유하세요</h5>
+
+            <p class="light">방과의 경험을 다른 사람들과 공유하세요! </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+
+
+
+  <!--<div class="parallax-container valign-wrapper">-->
+  <!--  <div class="section no-pad-bot">-->
+  <!--    <div class="container">-->
+  <!--      <div class="row center">-->
+  <!--        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="parallax">-->
+  <!--      <video class="responsive-video" height="400px" autoplay muted loop>-->
+  <!--          <source src="https://pixabay.com/ko/videos/download/video-3145_source.mp4" type="video/mp4">-->
+  <!--      </video>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <!--<div class="container">-->
+  <!--  <div class="section">-->
+
+  <!--    <div class="row">-->
+  <!--      <div class="col s12 center">-->
+  <!--        <h3><i class="mdi-content-send brown-text"></i></h3>-->
+  <!--        <h4>Contact Us</h4>-->
+  <!--        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+  <!--</div>-->
+
+
+  <!--<div class="parallax-container valign-wrapper">-->
+  <!--  <div class="section no-pad-bot">-->
+  <!--    <div class="container">-->
+  <!--      <div class="row center">-->
+  <!--        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="parallax">-->
+  <!--      <video class="responsive-video" autoplay muted loop>-->
+  <!--          <source src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/2761/5/138808018/413470645.mp4?token=57533c00_0x21b20f02875a18d5d11a1e9f084ce5daa755f9ed" type="video/mp4">-->
+  <!--      </video>-->
+  <!--  </div>-->
+  <!--</div>-->
+<%= render :partial => "/home/footer" %>

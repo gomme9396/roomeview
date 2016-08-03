@@ -1,0 +1,47 @@
+<%= render :partial => "/home/navbar" %>
+
+ <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row">
+        <div class="grid-example col s12 m4 offset-m4">
+          <div class="card white z-depth-5 ">
+            <div class="card-content black-text">
+              <span class="card-title">가입하기</span>
+
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <%= f.label :email, class: "teal-text" %><br />
+                <%= f.email_field :email, placeholder: "이메일을 입력해주세요", autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password, class: "teal-text" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %>자 이상 입력해주세요)</em>
+                <% end %><br />
+                <%= f.password_field :password, placeholder: "비밀번호를 입력해주세요", autocomplete: "off" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password_confirmation, class: "teal-text" %><br />
+                <%= f.password_field :password_confirmation, placeholder: "비밀번호를 확인해주세요", autocomplete: "off" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up",class: "btn" %>
+              </div>
+            <% end %>
+            <br>
+            <hr>
+            <%- if controller_name != 'sessions' %>
+              <p>이미 가입하셨나요? &nbsp;<%= link_to "로그인", new_session_path(resource_name) %></p><br />
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

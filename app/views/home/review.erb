@@ -1,0 +1,523 @@
+<%= render :partial => "/home/navbar" %>
+
+<div class="container" style="margin-top: 40px">
+    <% @address.addressreviews.each do |r| %>
+
+    <div class = "card z-depth-2">
+      <div class = "container">
+        <div class = "section">
+      	  <div class = "row">
+		  	    <div class = "col s8 m8 l8">
+        	    		<span class = "card-title"><h2 class = "teal-text text-accent-4" style = "font-weight: bold"><%= @address.detail_address %></h2></span>
+                  <span class = "card-title"><h5 class = "black-text" ><%= r.comment1 %></h5></span>
+        	    		<span class = "card-title"><h6 class = "black-text" ><%= @address.current_user %></h6></span>
+
+  	    		</div>
+	  	    </div>
+	  	  </div>
+
+	  	  <div class = "divider"></div>
+
+	  	  <div class = "section">
+	  	    <div class = "row">
+            <div class = "col s6 m3 l3 " style ="padding : 5px">
+              <% unless r.image_url1.nil? %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= r.image_url1 %>" >
+              <% else %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= image_path "intro-bg.jpg" %>" >
+              <% end %>
+            </div>
+            <div class = "col s6 m3 l3" style ="padding : 5px">
+              <% unless r.image_url2.nil? %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= r.image_url2 %>">
+              <% end %>
+            </div>
+            <div class = "col s6 m3 l3" style ="padding : 5px">
+              <% unless r.image_url3.nil? %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= r.image_url3 %>">
+              <% end %>
+            </div>
+            <div class = "col s6 m3 l3" style ="padding : 5px">
+              <% unless r.image_url4.nil? %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= r.image_url4 %>">
+              <% end %>
+            </div>
+            <div class = "col s6 m3 l3" style ="padding : 5px">
+              <% unless r.image_url4.nil? %>
+                <img class="responsive-img materialboxed z-depth-2" src="<%= r.image_url4 %>">
+              <% end %>
+            </div>
+          </div>
+	  	  </div>
+
+	  	  <div class = "divider"></div>
+
+  	    <div class = "section">
+  	      <div class = "row">
+  	        <div class = "col s12 m12 l12">
+  	          <h5 style = "font-weight: bold">기본/계약정보</h5>
+  	        </div>
+            <div class = "col s12 m12 l12 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="address" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">주소</label>
+              <h6 id = "address" > <%=@address.address %></h6>
+            </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="price" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">보증금</label>
+  	          <h6 id = "price" ><%= r.price %>만원</h6>
+  	        </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="month" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">월세</label>
+  	          <h6 id = "month" ><%= r.month %>만원</h6>
+  	        </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="start_date" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">입주일</label>
+  	          <h6 id = "start_date" ><%= r.start_date %></h6>
+  	        </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="end_date" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">퇴거(예정)일</label>
+  	          <h6 id = "end_date" ><%= r.end_date %></h6>
+  	        </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="fee" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">관리비에 세금포함</label>
+  	          <h6 id = "fee"><% if r.fee == 1 %>포함<%else%>미포함<%end%></h6>
+  	        </div>
+  	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+              <label for ="comment1" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">추가코멘트</label>
+  	          <h6 id = "comment1"><a class="modal-trigger" href="#modal1">확인하기</a></h6>
+  	        </div>
+  	      </div>
+  	    </div>
+
+	  	  <div class = "divider"></div>
+
+  	    <div class = "section">
+  	      <div class = "row">
+  	        <div class = "col s12 m12 l12">
+  	          <h5 style = "font-weight: bold">시설정보</h5>
+  	        </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.cool == 5 %>
+                <img class="responsive-img" src="<%= image_path "cool5.png" %>">
+              <%end%>
+              <% if r.cool == 4 %>
+                <img class="responsive-img" src="<%= image_path "cool4.png" %>">
+              <%end%>
+              <% if r.cool == 3 %>
+                <img class="responsive-img" src="<%= image_path "cool3.png" %>">
+              <%end%>
+              <% if r.cool == 2 %>
+                <img class="responsive-img" src="<%= image_path "cool2.png" %>">
+              <%end%>
+              <% if r.cool == 1 %>
+                <img class="responsive-img" src="<%= image_path "cool1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.warm == 5 %>
+                <img class="responsive-img" src="<%= image_path "warm5.png" %>">
+              <%end%>
+              <% if r.warm == 4 %>
+                <img class="responsive-img" src="<%= image_path "warm4.png" %>">
+              <%end%>
+              <% if r.warm == 3 %>
+                <img class="responsive-img" src="<%= image_path "warm3.png" %>">
+              <%end%>
+              <% if r.warm == 2 %>
+                <img class="responsive-img" src="<%= image_path "warm2.png" %>">
+              <%end%>
+              <% if r.warm == 1 %>
+                <img class="responsive-img" src="<%= image_path "warm1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.sun == 5 %>
+                <img class="responsive-img" src="<%= image_path "sun5.png" %>">
+              <%end%>
+              <% if r.sun == 4 %>
+                <img class="responsive-img" src="<%= image_path "sun4.png" %>">
+              <%end%>
+              <% if r.sun == 3 %>
+                <img class="responsive-img" src="<%= image_path "sun3.png" %>">
+              <%end%>
+              <% if r.sun == 2 %>
+                <img class="responsive-img" src="<%= image_path "sun2.png" %>">
+              <%end%>
+              <% if r.sun == 1 %>
+                <img class="responsive-img" src="<%= image_path "sun1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.wind == 5 %>
+                <img class="responsive-img" src="<%= image_path "wind5.png" %>">
+              <%end%>
+              <% if r.wind == 4 %>
+                <img class="responsive-img" src="<%= image_path "wind4.png" %>">
+              <%end%>
+              <% if r.wind == 3 %>
+                <img class="responsive-img" src="<%= image_path "wind3.png" %>">
+              <%end%>
+              <% if r.wind == 2 %>
+                <img class="responsive-img" src="<%= image_path "wind2.png" %>">
+              <%end%>
+              <% if r.wind == 1 %>
+                <img class="responsive-img" src="<%= image_path "wind1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.blocking == 5 %>
+                <img class="responsive-img" src="<%= image_path "blocking5.png" %>">
+              <%end%>
+              <% if r.blocking == 4 %>
+                <img class="responsive-img" src="<%= image_path "blocking4.png" %>">
+              <%end%>
+              <% if r.blocking == 3 %>
+                <img class="responsive-img" src="<%= image_path "blocking3.png" %>">
+              <%end%>
+              <% if r.blocking == 2 %>
+                <img class="responsive-img" src="<%= image_path "blocking2.png" %>">
+              <%end%>
+              <% if r.blocking == 1 %>
+                <img class="responsive-img" src="<%= image_path "blocking1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.bug == 5 %>
+                <img class="responsive-img" src="<%= image_path "bug5.png" %>">
+              <%end%>
+              <% if r.bug == 4 %>
+                <img class="responsive-img" src="<%= image_path "bug4.png" %>">
+              <%end%>
+              <% if r.bug == 3 %>
+                <img class="responsive-img" src="<%= image_path "bug3.png" %>">
+              <%end%>
+              <% if r.bug == 2 %>
+                <img class="responsive-img" src="<%= image_path "bug2.png" %>">
+              <%end%>
+              <% if r.bug == 1 %>
+                <img class="responsive-img" src="<%= image_path "bug1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.iron == 1 %>
+                <img class="responsive-img" src="<%= image_path "iron1.png" %>">
+              <%end%>
+              <% if r.iron == 0 %>
+                <img class="responsive-img" src="<%= image_path "iron0.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.smell == 1 %>
+                <img class="responsive-img" src="<%= image_path "smell1.png" %>">
+              <%end%>
+              <% if r.smell == 0 %>
+                <img class="responsive-img" src="<%= image_path "smell0.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m4 l4" style = "padding:1px;height:100px;">
+              <% if r.pet == 1 %>
+                <img class="responsive-img" src="<%= image_path "pet1.png" %>">
+              <%end%>
+              <% if r.pet == 0 %>
+                <img class="responsive-img" src="<%= image_path "pet0.png" %>">
+              <%end%>
+            </div>
+  	      </div>
+  	    </div>
+
+        <div class = "divider"></div>
+
+        <div class = "section">
+  	      <div class = "row">
+
+            <div class = "col s12 m12 l12">
+              <h5 style = "font-weight: bold">구비시설</h5>
+            </div>
+
+
+              <% if r.gas == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "gas1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.micro == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "micro1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.bed == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "bed1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.desk == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "desk1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.laundry == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "laundry1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.internet == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "internet1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.fire == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "fire1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.cctv == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "cctv1.png" %>">
+                </div>
+              <% end  %>
+
+              <% if r.parking == 1 %>
+                <div class = "col s6 m4 l4" style = "padding:1px;height:75px">
+                  <img class="responsive-img" src="<%= image_path "parking1.png" %>">
+                </div>
+              <% end  %>
+          </div>
+        </div>
+
+
+	  	  <div class = "divider"></div>
+
+  	    <div class = "section">
+  	      <div class = "row">
+  	        <div class = "col s12 m12 l12">
+  	          <h5 style = "font-weight: bold">환경정보</h5>
+  	        </div>
+
+            <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
+              <% if r.night == 5 %>
+                <img class="responsive-img" src="<%= image_path "night5.png" %>">
+              <%end%>
+              <% if r.night == 4 %>
+                <img class="responsive-img" src="<%= image_path "night4.png" %>">
+              <%end%>
+              <% if r.night == 3 %>
+                <img class="responsive-img" src="<%= image_path "night3.png" %>">
+              <%end%>
+              <% if r.night == 2 %>
+                <img class="responsive-img" src="<%= image_path "night2.png" %>">
+              <%end%>
+              <% if r.night == 1 %>
+                <img class="responsive-img" src="<%= image_path "night1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
+              <% if r.light == 5 %>
+                <img class="responsive-img" src="<%= image_path "light5.png" %>">
+              <%end%>
+              <% if r.light == 4 %>
+                <img class="responsive-img" src="<%= image_path "light4.png" %>">
+              <%end%>
+              <% if r.light == 3 %>
+                <img class="responsive-img" src="<%= image_path "light3.png" %>">
+              <%end%>
+              <% if r.light == 2 %>
+                <img class="responsive-img" src="<%= image_path "light2.png" %>">
+              <%end%>
+              <% if r.light == 1 %>
+                <img class="responsive-img" src="<%= image_path "light1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
+              <% if r.noise == 5 %>
+                <img class="responsive-img" src="<%= image_path "noise5.png" %>">
+              <%end%>
+              <% if r.noise == 4 %>
+                <img class="responsive-img" src="<%= image_path "noise4.png" %>">
+              <%end%>
+              <% if r.noise == 3 %>
+                <img class="responsive-img" src="<%= image_path "noise3.png" %>">
+              <%end%>
+              <% if r.noise == 2 %>
+                <img class="responsive-img" src="<%= image_path "noise2.png" %>">
+              <%end%>
+              <% if r.noise == 1 %>
+                <img class="responsive-img" src="<%= image_path "noise1.png" %>">
+              <%end%>
+            </div>
+
+            <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
+              <% if r.sani == 5 %>
+                <img class="responsive-img" src="<%= image_path "sani5.png" %>">
+              <%end%>
+              <% if r.sani == 4 %>
+                <img class="responsive-img" src="<%= image_path "sani4.png" %>">
+              <%end%>
+              <% if r.sani == 3 %>
+                <img class="responsive-img" src="<%= image_path "sani3.png" %>">
+              <%end%>
+              <% if r.sani == 2 %>
+                <img class="responsive-img" src="<%= image_path "sani2.png" %>">
+              <%end%>
+              <% if r.sani == 1 %>
+                <img class="responsive-img" src="<%= image_path "sani1.png" %>">
+              <%end%>
+            </div>
+
+	        </div>
+	          <div class = "divider"></div>
+            <div class = "section">
+              <div class = "row">
+                <div class = "col s12 m12 l12">
+                  <h5 style = "font-weight: bold">댓글목록</h5>
+                </div>
+              </div>
+
+              <div class = "row">
+                <div class="reply_comment_<%= @address.id %>">
+                  <% @address.comments.each do |c| %>
+                  <div class = "container">
+                    <div class = "card-panel" style = "padding:10px">
+                      <h6><%= c.comment %></h6>
+                      <h6 class = "yellow"><%= current_user.email %></h6>
+                    </div>
+                  </div>
+                  <br>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+	          <div class = "divider"></div>
+	          <div class = "row">
+	            <div class = "col s12 m12 l12">
+      	          <h5>댓글쓰기</h5>
+    	        </div>
+	            <div class="form-group container">
+                <label for="address">댓글</label>
+                  <div class="row">
+                    <div class="col s12 m9">
+                    <!--이거 넣어주세요~ -->
+                    <input type="hidden" name="address_id" value="<%= @address.id %>"></input>
+                    <input type="hidden" name="author" id="author_<%= @address.id %>" value="<%= current_user.email %>">
+                    <!--끝-->
+                    <input type="text" name="comment" id="comment_<%= @address.id %>" class="form-control" placeholder="댓글을 달아주세요." style="resize: none;"  rows="1" >
+                    </div>
+                    <div class="col s12 m3 center">
+                    <button type="submit" id="click_func" class="btn btn-default" value ="<%= @address.id %>">댓글달기</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class = "divider"></div>
+            <div class = "row">
+              <div class = "col s12 m12 l12">
+      	          <h5>위치</h5>
+    	        </div>
+              <div class = "col s12 m12 l12">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+              </div>
+            </div>
+        </div>
+
+
+
+  	  </div>
+	  </div>
+
+
+
+    <br>
+    <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h5>추가 코멘트</h5>
+          <div class = "divider"></div>
+          <p class = "flow-text">
+          <% if r.comment2.size <= 1 %>
+            코멘트가 없습니다.
+          <% else %>
+            <%= r.comment2 %></p>
+          <% end %>
+
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close btn-flat ">닫기</a>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+   <script>
+    $( document ).ready(function(){
+      $("#click_func").click(function(){
+
+          address_id = this.value;
+          comment = $("#comment_"+ address_id).val();
+          author = $("#author_" + address_id).val();
+
+          $.ajax({
+            method: "POST",
+            url: "/home/review_path",
+            data: {
+              address_id: address_id,
+              comment: comment,
+              author: author},
+              success: function(){
+                $(".reply_comment_"+ address_id).append("<p>"+comment+"</p>");
+                $("#comment_"+ address_id).val('');
+              },
+              error: function(){
+                alert("리플이 작성되지 않았습니다.");
+              }
+            })
+
+          });
+    });
+
+    </script>
+    <script>
+        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+        var options = { //지도를 생성할 때 필요한 기본 옵션
+        	center: new daum.maps.LatLng(<%= @address.marker1 %>, <%= @address.marker2 %>), //지도의 중심좌표.
+        	level: 3 //지도의 레벨(확대, 축소 정도)
+        };
+
+        var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+        // 마커가 표시될 위치입니다
+        var markerPosition  = new daum.maps.LatLng(<%= @address.marker1 %>, <%= @address.marker2 %>);
+
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new daum.maps.ZoomControl();
+        map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+        function setDraggable(draggable) {
+            // 마우스 드래그로 지도 이동 가능여부를 설정합니다
+            map.setDraggable(draggable);
+        }
+        map.setDraggable(true);
+      </script>

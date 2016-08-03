@@ -1,0 +1,423 @@
+<%= render :partial => "/home/navbar" %>
+
+<div class="content-section-a">
+    <div class="container" style="margin-top: 40px">
+        <form action="/home/list_path_b" method="POST">
+          <!--이거 넣어주세요~ -->
+          <% @create_a.each do |p| %>
+          <input type="hidden" name="address_id" value="<%= p.id %>">
+          <% end %>
+          <!--끝-->
+            <div class="row">
+                <div class="col s12 m12 l12 ">
+                    <div class="card">
+                        <div class="card-image">
+                
+                <nav>
+                    <div class="nav-wrapper cyan darken-4">
+                        <div class="col s12">
+                            <a class="breadcrumb" onclick="go_to_home()">위치/장소</a>
+                            <a href="#!" class="breadcrumb">내부환경</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="card-content">
+                
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>시설</h4></span>
+                      <blockquote>
+                        원룸 거주 기초 시설 정보에 대해서 체크 해주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test1" />
+                            <label for="test1">냉장고</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test2" />
+                            <label for="test2">가스레인지</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test3" />
+                            <label for="test3">전자레인지</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test4" />
+                            <label for="test4">세탁기</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test5" />
+                            <label for="test5">침대</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test6" />
+                            <label for="test6">책상</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test7" />
+                            <label for="test7">수납공간</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" class="filled-in" id="test8" />
+                            <label for="test8">무선인터넷</label>
+                          </p>
+                          
+                        <!--</form>-->
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_warm" class="materialize-textarea"></textarea>
+                          <label for="text_warm">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>난방지수</h4></span>
+                      <blockquote>
+                        난방에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <!--<p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="warm5" >아주 좋아요</label>
+                          <!--</p>-->
+                          <!--<p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="warm4" >좋아요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="warm3" >쓸만해요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="warm2" >안좋아요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="warm1" >아주 안좋아요</label>
+                          <!--</p>-->
+                        <!--</form>-->
+
+                    </div>
+                    
+                    <div class="card-action">
+                      
+                      <span class="card-title"><h4>난방지수</h4></span>
+                      <blockquote>
+                        난방에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <!--<p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="warm5" >아주 좋아요</label>
+                          <!--</p>-->
+                          <!--<p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="warm4" >좋아요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="warm3" >쓸만해요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="warm2" >안좋아요</label>
+                          <!--</p><p>-->
+                            <input class ="with-gap" name="warm" type="radio" id="warm1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="warm1" >아주 안좋아요</label>
+                          <!--</p>-->
+                        <!--</form>-->
+                      
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_warm" class="materialize-textarea"></textarea>
+                          <label for="text_warm">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>냉방지수</h4></span>
+                      <blockquote>
+                        냉방에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <p>
+                            <input class ="with-gap" name="cool" type="radio" id="cool5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="cool5" >아주 좋아요</label>
+                          </p>
+                          <p>
+                            <input class ="with-gap" name="cool" type="radio" id="cool4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="cool4" >좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="cool" type="radio" id="cool3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="cool3" >쓸만해요</label>
+                          </p><p>
+                            <input class ="with-gap" name="cool" type="radio" id="cool2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="cool2" >안좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="cool" type="radio" id="cool1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="cool1" >아주 안좋아요</label>
+                          </p>
+                        <!--</form>-->
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_cool" class="materialize-textarea"></textarea>
+                          <label for="text_cool">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>방음지수</h4></span>
+                      <blockquote>
+                        방음에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <p>
+                            <input class ="with-gap" name="noise" type="radio" id="noise5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="noise5" >아주 좋아요</label>
+                          </p>
+                          <p>
+                            <input class ="with-gap" name="noise" type="radio" id="noise4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="noise4" >좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="noise" type="radio" id="noise3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="noise3" >쓸만해요</label>
+                          </p><p>
+                            <input class ="with-gap" name="noise" type="radio" id="noise2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="noise2" >안좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="noise" type="radio" id="noise1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="noise1" >아주 안좋아요</label>
+                          </p>
+                        <!--</form>-->
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_noise" class="materialize-textarea"></textarea>
+                          <label for="text_noise">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>방충지수</h4></span>
+                      <blockquote>
+                        방충에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                          <p>
+                            <input class ="with-gap" name="bug" type="radio" id="bug5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="bug5" >아주 좋아요</label>
+                          </p>
+                          <p>
+                            <input class ="with-gap" name="bug" type="radio" id="bug4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="bug4" >좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="bug" type="radio" id="bug3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="bug3" >쓸만해요</label>
+                          </p><p>
+                            <input class ="with-gap" name="bug" type="radio" id="bug2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="bug2" >안좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="bug" type="radio" id="bug1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="bug1" >아주 안좋아요</label>
+                          </p>
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_bug" class="materialize-textarea"></textarea>
+                          <label for="text_bug">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>수도/화장실 지수</h4></span>
+                      <blockquote>
+                        수도/화장실에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <p>
+                            <input class ="with-gap" name="water" type="radio" id="water5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="water5" >아주 좋아요</label>
+                          </p>
+                          <p>
+                            <input class ="with-gap" name="water" type="radio" id="water4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="water4" >좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="water" type="radio" id="water3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="water3" >쓸만해요</label>
+                          </p><p>
+                            <input class ="with-gap" name="water" type="radio" id="water2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="water2" >안좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="water" type="radio" id="water1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="water1" >아주 안좋아요</label>
+                          </p>
+                        <!--</form>-->
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_water" class="materialize-textarea"></textarea>
+                          <label for="text_water">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>인터넷 지수</h4></span>
+                      <blockquote>
+                        인터넷에 대한 점수와 코멘트를 남겨주세요.
+                      </blockquote>
+                        <!--<form action="#">-->
+                          <p>
+                            <input class ="with-gap" name="net" type="radio" id="net5" value ="5"/>
+                            <label class ="teal-text text-darken-3" for="net5" >아주 좋아요</label>
+                          </p>
+                          <p>
+                            <input class ="with-gap" name="net" type="radio" id="net4" value ="4"/>
+                            <label class ="teal-text text-darken-3" for="net4" >좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="net" type="radio" id="net3" value ="3"/>
+                            <label class ="teal-text text-darken-3" for="net3" >쓸만해요</label>
+                          </p><p>
+                            <input class ="with-gap" name="net" type="radio" id="net2" value ="2"/>
+                            <label class ="teal-text text-darken-3" for="net2" >안좋아요</label>
+                          </p><p>
+                            <input class ="with-gap" name="net" type="radio" id="net1" value ="1"/>
+                            <label class ="teal-text text-darken-3" for="net1" >아주 안좋아요</label>
+                          </p>
+                        <!--</form>-->
+
+                    </div>
+                    <div class="card-action">
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_net" class="materialize-textarea"></textarea>
+                          <label for="text_net">추가내용</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card blue-grey lighten-5">
+                    <div class="card-content black-text text-lighten-4">
+                      
+                      <span class="card-title"><h4>기타</h4></span>
+                      <blockquote>
+                        자유롭게 내부환경에 대한 내용을 남겨주세요.
+                      </blockquote>
+                      
+                      <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                          <textarea id="text_etc" class="materialize-textarea"></textarea>
+                          <label for="text_etc">기타내용</label>
+                        </div>
+                      </div>
+                       
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+                  
+            </div>
+            
+            <div class="card-action">
+                <div class="center-align">
+                   
+                   <a href="/home/create_a" class="btn btn-default">취소하기</a>
+                   <input class="btn btn-default" type="submit" value="다음단계">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+         
+        </form>
+    </div>
+</div>
+
+<%= render :partial => "/home/footer" %>
+
+   
