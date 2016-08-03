@@ -1,0 +1,5 @@
+<p>루미뷰에 오신 것을 환영합니다.<%= @email %>!</p>
+
+<p>계정을 아래의 링크를 통하여 활성화 시키시기 바랍니다:</p>
+
+<p><%= link_to '계정 활성화 하기', confirmation_url(@resource, confirmation_token: @token) %></p>

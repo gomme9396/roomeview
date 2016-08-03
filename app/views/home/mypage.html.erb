@@ -1,0 +1,57 @@
+<%= render :partial => "/home/navbar" %>
+    <div class="container" style="margin-top: 40px">
+        <div class="row">
+            <div class="col s12 m12 l12 ">
+                <div class="card ">
+                    <div class = "card-content">
+                        <div class = "container">
+                            <div class = "row">
+                                <div class = "col s12 m6 l6">
+                                   <span class = "card-title"><h3>내정보</h3></span>
+                                   <span><h5>이메일 : <%= current_user.email %></h5></span>
+                                </div>
+                            </div>
+
+                            <a class="waves-effect waves-light white teal-text btn" href="/users/edit">비밀번호 바꾸기</a>
+                        </div>
+                    </div>
+                    <div class = "card-action">
+                        <div class = "container">
+                        <span class = "card-title"><h5>내가 작성한 리뷰</h5></span>
+                        <div class = "row">
+                            <% @address.each do |a| %>
+                            <% if a.current_user == current_user.email%>
+                            <div class = "col s12 m6 l6">
+                                <div class="card small">
+                                    <div class = "card-image">
+                                        <img src="<%= image_path "intro-bg.jpg" %>">
+                                        <span class="card-title"><%= a.detail_address %></span>
+                                    </div>
+                            <div class="card-action " style = "height:70px">
+                                <div class="row left" style = "margin:0px">
+                                    <div class = "col" style = "padding:0px">
+                                        <span><a href="/home/review/<%= a.id %>" style = "margin:0px; "><h6>자세한 내용</h6></a></span><br>
+                                    </div>
+                                    <div class = "col" style = "padding:0px">
+                                        <% if a.current_user == current_user.email%>
+                                            <a href="/update_view_a/<%= a.id %>" style = "margin:0px; "><i class="material-icons">mode_edit</i></a>
+                                            <a href="/destroy/<%= a.id %>" style = "margin:0px"><i class="material-icons">delete</i></a>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <% end %>
+                    <% end %>
+
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <%= render :partial => "/home/footer" %>
