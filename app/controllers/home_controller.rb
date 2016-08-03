@@ -34,8 +34,12 @@ class HomeController < ApplicationController
     end
     
     def list_path_b
+      
+      @address = Address.find(params[:address_id])
+      
       review = Addressreview.new
       review.address_id = params[:address_id]
+      review.address_name = @address.address
       
       review.price = params[:price]
       review.month = params[:month]
@@ -232,7 +236,9 @@ class HomeController < ApplicationController
       redirect_to "/home/review/#{params[:address_id]}"
     end
 
-
+    def data_view
+      @review = Addressreview.all
+    end
 end
   
 
