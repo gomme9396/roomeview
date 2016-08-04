@@ -1,36 +1,37 @@
 
 <%= render :partial => "/home/navbar" %>
 
-
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large teal" href = "/home/create_a">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+  </div>
     <!--<div class="container" style="margin-top: 40px">-->
         <div class = "container">
-        <ul class="collapsible" data-collapsible="expandable">
-
-
-
+        <ul class="collapsible popout" data-collapsible="expandable">
             <li>
 
             <div class="collapsible-header"><i class="material-icons">search</i>검색하기</div>
 
             <div class="collapsible-body">
 
+              <div class = "container">
                 <form action="/home/find" method="POST">
 
-                  <div class="form-group">
-                    <div class = "container">
+                    <div class="form-group">
                       <div class = "row" style ="margin:10px">
                         <div class = "col s8 m8 l8">
                           <input type="text" name="find_detail_address" class="form-control" placeholder="키워드를 입력해주세요." style="resize: none; margin:0px" required rows="1" >
                         </div>
-                        <div class = "col s4 m4 l4 center">
-                          <button class="btn waves-effect waves-light center" type="submit" name="action">검색하기</button>
+                        <div class = "col s4 m3 l3 center">
+                          <button class="btn center" type="submit" name="action" style ="margin-top:10px; padding-right:14px; padding-left:14px">검색</button>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </form>
             </div>
             </li>
+
             <li>
             <div class="collapsible-header"><i class="material-icons">place</i>지도에서 찾기</div>
             <div class="collapsible-body">
@@ -39,18 +40,18 @@
                 <!--지도에서 찍은 값을 데이터베이스에서 검색하는것 구현하기-->
                 <form action="/home/find" method="POST">
                     <div class="row">
-
+                      <div class = "container">
                         <div class="form-group">
-                            <label for="address">주소</label>
-                            <div class="col m10">
+                          <div class="col s10 m10 l10">
                             <input type="text" name="find_address" class="form-control" id="findaddress" placeholder="지도에서 클릭해주세요." style="resize: none;" required readonly rows="1" >
-                            </div>
-                            <div claass="col m2">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                    <i class="material-icons right">send</i>
+                          </div>
+                          <div claass="col s2 m2 l2">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">
+                              검색
                             </button>
-                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
                 </form>
             </div>
