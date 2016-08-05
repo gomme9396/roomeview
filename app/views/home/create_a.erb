@@ -43,11 +43,11 @@
                           <label for="address">
                             <h6>주소</h6>
                           </label>
-                          <textarea type="text" name="address" class="form-control" id="address" placeholder="지도에서 클릭해주세요." style="resize: none;" required readonly rows="1"></textarea>
+                          <input type="text" name="address" class="form-control" id="address" placeholder="지도에서 클릭해주세요." required readonly>
                           <label for="detail_address">
                             <h6>건물 이름</h6>
                           </label>
-                          <textarea type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." style="resize: none; overflow: hidden;" required rows="1" autocomplete="off"></textarea>
+                          <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off">
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
                           <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
                           <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
@@ -113,7 +113,8 @@
                 else
                     var address_of_building = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
 
-                document.getElementById('address').innerHTML = address_of_building;
+                var enc = address_of_building
+                $('input[name=address]').attr('value', enc);
 
                 var content = '<div class="bAddr">' + detailAddr + '</div>';
 
