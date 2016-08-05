@@ -1,5 +1,9 @@
-User.create(email: 'test1@email.com', password: '12341234', password_confirmation: '12341234')
-User.create(email: 'test2@email.com', password: '12341234', password_confirmation: '12341234')
-User.create(email: 'test3@email.com', password: '12341234', password_confirmation: '12341234')
-User.create(email: 'test4@email.com', password: '12341234', password_confirmation: '12341234')
-User.create(email: 'test5@email.com', password: '12341234', password_confirmation: '12341234')
+require "roo"
+
+xlsx = Roo::Excelx.new("xlsx/user.xlsx")
+input = xlsx.parse(email: 'email', password:'password', password_confirmation:'password_confirmation')
+
+input.each_with_index do |item, index|
+  next if index ==0
+  User.create(item)
+end

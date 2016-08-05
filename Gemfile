@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'hirb'
+gem 'roo', '~> 2.4.0'
 gem 'mini_magick'
 
 gem 'figaro'
@@ -58,4 +59,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
