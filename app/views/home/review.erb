@@ -411,6 +411,7 @@
                   <div class = "container">
                     <div class = "card-panel" style = "padding:10px">
                       <h6><%= c.comment %></h6>
+                      <h6><%= c.author %></h6>
                     </div>
                   </div>
                   <% end %>
@@ -493,7 +494,7 @@
               comment: comment,
               author: author},
               success: function(){
-                $(".reply_comment_"+ address_id).append(" <div class = \"container\"><div class = \"card-panel\" style = \"padding:10px\"><h6> "+ comment + author+"</h6></div></div>");
+                $(".reply_comment_"+ address_id).append(" <div class = \"container\"><div class = \"card-panel\" style = \"padding:10px\"><h6> "+ "<h6>"+ comment+ "</h6>" + author+"</h6></div></div>");
                 $("#comment_"+ address_id).val('');
               },
               error: function(){
