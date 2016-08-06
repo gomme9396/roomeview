@@ -4202,3 +4202,488 @@ Processing by HomeController#review as */*
   [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."address_id" = ?  [["address_id", 2]]
   Rendered home/review.erb within layouts/application (46.6ms)
 Completed 200 OK in 116ms (Views: 114.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home/review/2" for ::1 at 2016-08-06 14:23:44 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#review as HTML
+  Parameters: {"address_id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mAddress Load (0.1ms)[0m  [1mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered home/_navbar.erb (0.5ms)
+  [1m[35mAddressreview Load (0.2ms)[0m  SELECT "addressreviews".* FROM "addressreviews" WHERE "addressreviews"."address_id" = ?  [["address_id", 2]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."address_id" = ?[0m  [["address_id", 2]]
+  Rendered home/review.erb within layouts/application (307.0ms)
+Completed 200 OK in 486ms (Views: 441.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/home.self-4d2eb48c635bc961f94c1e06f2b8ad4c895498cd9006cb86b5b52dcb61a6adf0.css?body=1" for ::1 at 2016-08-06 14:23:44 +0900
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/rateit.self-d35550488387421fc64b29b1e34dd70f5a5baf01b37e9b09c0b0ad77d50c02f6.css?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize.self-39ed9bd1ea3922e7788be9b641c8d7a50339e11b822d955fdbd387caa166bb34.css?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/application.self-7b6651657789afd36170680c7bc026f7789b4f15ebdb33674bb1086ac0698d95.css?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/initial.self-79f269ead2aeaa809299033919f9128fa0d9700d0248cad0dcd6442ce43dc389.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/style.self-2a69d3a3c2e44b088a59279cd84d27fbfb485221ebcf84d7f1c36873d9d5178c.css?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/velocity.min.self-5adbb81af5c205a959e06198156b4b31fcd57f02c592e3fb096d7b74e8f401a6.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/jquery.hammer.self-73fd69102f356b9abfc9ee242b19895f62454f42cfcfa1f066be71d2c8f41c7a.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/dropdown.self-c2cf7382bd66de611df06802ad576ea342826806e0e59b5bfc9c2a02ec700325.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/materialbox.self-8572736f9d17261189da8a9fc91555d63b29498f4f8665328e28261c7c4cdb68.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/waves.self-26e9b9cfaa9ccbc292ed510f654bd279d69695f5337a14c9800b36e92f96735b.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/hammer.min.self-bf8bdb0953b1a135f96716e362e1f7a8e64168c914fa77ca31973bb70e57a731.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/jquery.easing.1.3.self-0170bc905fbddc075a56bdccce1be6a58f3713a14137b607ba9bd9f96fd7835f.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/global.self-90649deff3358499c5859330da1363eea3e2bef75c80df5940f3894778f95027.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/leanModal.self-075befa387f6509a7504fc07beafcc796c44969652edcb2d71eedffd8e2ace01.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/parallax.self-7ac34f0f3dcef83deee116ea473a2770cec13e07c8e0dcce08cc2372bbe295d3.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/toasts.self-1eaa9f33c4c3b83f381997876ba6ac53899a5ca72a6b401708c32625fc553adc.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/sideNav.self-de5e615b7a32eb9e55ffc9573e4186ef01339badef5ecb1f3f6d591686f49ac8.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/animation.self-a1028b0bcf2e26331bedf7b90e81103f0707e69fdec488aa951de94b51987767.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/cards.self-896c5463a922395c54787a06d69191fbbbbb8bff604b577f505b2da80d9e5e1a.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/forms.self-d9743bd4515fb298375d55740daf85a261d1aa2e15a741cd1f609a38d833fc71.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/pushpin.self-b6217071e4b33cf2ce5742d81537d6f36b046c5f8fd115a01e4239cff1acd598.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/transitions.self-fd67a28daa2e92c441a55cdda3d20b34a7e5c5fbb9c6d62ca2aeba52b3ed93a3.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/scrollspy.self-5da2f9f196dc8f650ace037d487312180c62dc268dd19f45728c116284134207.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/tabs.self-7f70bb766a49a1ad704b8f5988610277c8ec224c4d122cbea69e9309e6796d48.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/chips.self-f132c07f55be9466a02329f8686ccaa06c011000aa9c975279debc158feed7a8.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/slider.self-b650f99d1b28549db2e7d5b078540fa65aabbb2548e0a378a85cc6b4285fe438.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/buttons.self-fc0951c300b1984a00694eabc8c451531be448d646ac073b05e4d2fbf7209302.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/scrollFire.self-51d8aca762cd14871dbf39aad2bc0213e799f1aa314e75c267fdfd92cfd87e0e.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/date_picker/picker.self-7a9d1216fe1172f8e8fd78fb86cfd4da25c909ebd6983cba5da20817d437d92b.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/tooltip.self-fc5ffda1caae8e55aaa426204abc5c5e6ee7d4b99e3697d058c16664dab98c79.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/jquery.rateit.self-67fe938a39e2d8448ab17beafadfd772c416e0daa0af64170e9444df06c20f0e.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize.self-ab264fdf3e715637afb9760ef782a8dc1bdbe56e331c02ecc7f2247378951e38.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/init.self-06e3234cd3843f204297e5be64272a21dc69724bebf8a7d81593ace34dcf2d80.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/date_picker/picker.date.self-48285ac57bd85ef919dc9530aae5d5e83c8a96da3ff5d2ac549d545330bf5edd.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/character_counter.self-8bb854e15067a96db5bff6896d1d9435e4df83cf5bf6877a1d606940661d2588.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize-sprockets.self-b9b07dd4e7718454476f04edeb935022ae4f4d90934ab7ce913ff20c8baeb399.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/init.self-13192c9d13ecca35bd2c0b77d1b392be29a7ff05e660fc46d1499159f3a80d11.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/extras/nouislider.self-18d2d5ad521555c564cc69b1c153247aedf8c99609e154dc0bf963a5b3d7ede1.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/extras/nouislider.min.self-b8b54005a7dd6bb28c83f139f0f9949a77b5f89ed8eb962c8244f3228b612bd8.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/jquery.timeago.min.self-3876c189711430f25b0eea6d2190a0c841f190d911204ff1107f9dfd88d1ef30.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/carousel.self-f2667eee922af136ac411dd193134dbd4a10e7eb9903c758ce830f6800f45921.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/materialize/prism.self-d8454eff0fc044d7cdface0b9f830e265856e64f5c5eabaa5acf2358ee504eb1.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/application.self-9974cd2e97f926b7a726d8470a80de0d9ffb0d8026d2602a51e43cd6a0563e33.js?body=1" for ::1 at 2016-08-06 14:23:45 +0900
+
+
+Started GET "/assets/intro-bg-ec4ec5ac74e3bfa4a626a3ba9d0c642ef809a67003cc3edcdf2bc252545dad26.jpg" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/sun3-3b289547c0e181e05b39c368cdf6e4e3d4eb1103d844fa20fba9fa6db2aec32b.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/blocking3-31e1180d989315193b90d740f1fc5c7fe1f25ce85f34eb76b5d7655ba57422e6.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/warm3-e877fd3e21c23d5ed38c1960446ad68f98d6f9fc7a205ef757e856c4307553e7.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/cool3-5c4476db1aeaef5baa0b5eb0b920b32e6f9961b2b0194d09685b17d94dd7bad3.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/wind3-e7f6d0e45b25cebfac5df5d18e6018192546d937c1d419801d32b7168b2325cf.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/bug3-990f531d69148a458135255e0677d51113b11df84d090d5b67efaefea463fa9a.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/smell0-330fbd1f7b3f9d195b29b8ce3a64cd6cffcf1b49e377a98d0583804b694d88b8.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/gas1-67bb4bd4d63de14ffaa076845eb46b1bb9c17024f9da719c55b911b8eb53f52e.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/bed1-097d32c34f7bd91ae469aa31e01ced979af73cb66775162414043f5a2736ec49.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/laundry1-56a6a8a3712ab1a42089181aa31ad2a308a885ae937510e8476a4c44f5188fab.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/fire1-1013873a20791a99975c4982ef59b8d43be7f0264517471c9b8e8cdcfa02b621.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/iron0-c5dbf785934ee5bacd3a345a1c48bac5afc5c86bcc80d75ab27a590c62e63265.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/pet0-a1d297767cc6751de7094cf210cbd0b22567ea7905ec540994464e1e2819495a.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/micro1-78c81e5418b557ef8aa21407f5a9caf2ed6de79ca1c7314034f9d3a1c2a0e1b1.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/desk1-4273ea1a3dc479ea2d667b9e3be7b9d781d95a6c76b54e1c30844f8e5f70620c.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/internet1-399c5b6b15e5ff4d137e9f96e7828654086d8aef747158e002707427e4360c94.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/cctv1-892db374358525eaf8c978fba2b784c8ef96e9f7756d50b3134d9e510a7bc1fd.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/parking1-8e17306892189bc652e2489a54a1f2cffaaa50ecdbf7df32f312ccd1dfccd35f.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/light3-dd078d3137e5bb07f8c6d72cc3b973fee88eb539f51e2f6d134874fe25bba0eb.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/sani3-7cbc04c8e283728821c8b0f80e1e212da8169134dee985b82d20563bb99d9221.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/night3-16619a06f2ec2c58f30e83cb4118b45c58627d9c9d8b313d2a45529c77082fb0.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/assets/noise3-2f332b6669f0402643b4d0b5d89ddf4fdb027bfa6f306a9198f27a528c980584.png" for ::1 at 2016-08-06 14:23:46 +0900
+
+
+Started GET "/home/list_find" for ::1 at 2016-08-06 14:23:47 +0900
+Processing by HomeController#list_find as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT "addresses".* FROM "addresses"[0m
+  Rendered home/_navbar.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "addresses".* FROM "addresses"
+  [1m[36mAddressreview Load (0.2ms)[0m  [1mSELECT "addressreviews".* FROM "addressreviews" WHERE "addressreviews"."address_id" IN (1, 2)[0m
+  Rendered home/_footer.erb (0.2ms)
+  Rendered home/list_find.erb within layouts/application (8.6ms)
+Completed 200 OK in 71ms (Views: 68.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/home/images/donate.png" for ::1 at 2016-08-06 14:23:48 +0900
+
+ActionController::RoutingError (No route matches [GET] "/home/images/donate.png"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (75.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (63.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (129.5ms)
+
+
+Started GET "/home/create_a" for ::1 at 2016-08-06 14:23:51 +0900
+Processing by HomeController#create_a as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  Rendered home/_navbar.erb (0.0ms)
+  Rendered home/_footer.erb (0.0ms)
+  Rendered home/create_a.erb within layouts/application (2.3ms)
+Completed 200 OK in 58ms (Views: 56.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/home/images/donate.png" for ::1 at 2016-08-06 14:23:53 +0900
+
+ActionController::RoutingError (No route matches [GET] "/home/images/donate.png"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (79.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (48.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (115.5ms)
+
+
+Started POST "/home/list_path_a" for ::1 at 2016-08-06 14:24:00 +0900
+Processing by HomeController#list_path_a as HTML
+  Parameters: {"address"=>"대전 유성구 궁동 220 (대전광역시 유성구 대학로 99)", "detail_address"=>"정심화 국제문화회관", "current_user"=>"test5@email.com", "marker1"=>"36.36294566269616", "marker2"=>"127.34618849981143"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "addresses" ("marker1", "marker2", "address", "detail_address", "current_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["marker1", 36.36294566269616], ["marker2", 127.34618849981143], ["address", "대전 유성구 궁동 220 (대전광역시 유성구 대학로 99)"], ["detail_address", "정심화 국제문화회관"], ["current_user", "test5@email.com"], ["created_at", "2016-08-06 05:24:00.416097"], ["updated_at", "2016-08-06 05:24:00.416097"]]
+  [1m[35m (2.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/home/create_b
+Completed 302 Found in 7ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/home/create_b" for ::1 at 2016-08-06 14:24:00 +0900
+Processing by HomeController#create_b as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered home/_navbar.erb (0.0ms)
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses"
+  Rendered home/_footer.erb (0.0ms)
+  Rendered home/create_b.erb within layouts/application (3.2ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/home/images/donate.png" for ::1 at 2016-08-06 14:24:02 +0900
+
+ActionController::RoutingError (No route matches [GET] "/home/images/donate.png"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (67.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (58.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (123.2ms)
+
+
+Started POST "/home/list_path_b" for ::1 at 2016-08-06 14:24:16 +0900
+Processing by HomeController#list_path_b as HTML
+  Parameters: {"address_id"=>"3", "comment1"=>"우어", "price"=>"200", "month"=>"20", "start_date"=>"2016-08-16", "start_date_submit"=>"20160816", "end_date"=>"2016-08-27", "end_date_submit"=>"20160827", "fee"=>"0", "cool"=>"3", "warm"=>"3", "sun"=>"3", "blocking"=>"3", "wind"=>"3", "bug"=>"3", "iron"=>"0", "smell"=>"0", "pet"=>"0", "gas"=>"1", "micro"=>"1", "bed"=>"1", "desk"=>"1", "laundry"=>"1", "internet"=>"1", "fire"=>"1", "cctv"=>"1", "parking"=>"1", "night"=>"3", "light"=>"3", "noise"=>"3", "sani"=>"3", "comment2"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mAddress Load (0.1ms)[0m  SELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "addressreviews" ("address_id", "address_name", "price", "month", "start_date", "end_date", "fee", "comment1", "cool", "warm", "sun", "blocking", "wind", "bug", "iron", "smell", "pet", "gas", "micro", "bed", "desk", "laundry", "internet", "fire", "cctv", "parking", "comment2", "night", "light", "noise", "sani", "image_url1", "image_url2", "image_url3", "image_url4", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["address_id", 3], ["address_name", "대전 유성구 궁동 220 (대전광역시 유성구 대학로 99)"], ["price", "200"], ["month", "20"], ["start_date", "2016-08-16"], ["end_date", "2016-08-27"], ["fee", 0], ["comment1", "우어"], ["cool", 3], ["warm", 3], ["sun", 3], ["blocking", 3], ["wind", 3], ["bug", 3], ["iron", 0], ["smell", 0], ["pet", 0], ["gas", 1], ["micro", 1], ["bed", 1], ["desk", 1], ["laundry", 1], ["internet", 1], ["fire", 1], ["cctv", 1], ["parking", 1], ["comment2", ""], ["night", 3], ["light", 3], ["noise", 3], ["sani", 3], ["image_url1", nil], ["image_url2", nil], ["image_url3", nil], ["image_url4", nil], ["created_at", "2016-08-06 05:24:16.357931"], ["updated_at", "2016-08-06 05:24:16.357931"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/home/list_find
+Completed 302 Found in 16ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/home/list_find" for ::1 at 2016-08-06 14:24:16 +0900
+Processing by HomeController#list_find as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mAddress Load (0.1ms)[0m  [1mSELECT "addresses".* FROM "addresses"[0m
+  Rendered home/_navbar.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "addresses".* FROM "addresses"
+  [1m[36mAddressreview Load (0.4ms)[0m  [1mSELECT "addressreviews".* FROM "addressreviews" WHERE "addressreviews"."address_id" IN (1, 2, 3)[0m
+  Rendered home/_footer.erb (0.0ms)
+  Rendered home/list_find.erb within layouts/application (7.7ms)
+Completed 200 OK in 71ms (Views: 69.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home/review/3" for ::1 at 2016-08-06 14:24:17 +0900
+Processing by HomeController#review as HTML
+  Parameters: {"address_id"=>"3"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered home/_navbar.erb (0.0ms)
+  [1m[35mAddressreview Load (0.1ms)[0m  SELECT "addressreviews".* FROM "addressreviews" WHERE "addressreviews"."address_id" = ?  [["address_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."address_id" = ?[0m  [["address_id", 3]]
+  Rendered home/review.erb within layouts/application (28.3ms)
+Completed 200 OK in 100ms (Views: 97.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/home/review/images/donate.png" for ::1 at 2016-08-06 14:24:19 +0900
+
+ActionController::RoutingError (No route matches [GET] "/home/review/images/donate.png"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/var/rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (46.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (104.4ms)
