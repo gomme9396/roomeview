@@ -2,4 +2,4 @@ tmp/
 .DS_Store*
 log/
 *.log
-*.sqlite3
+db/*.sqlite3
