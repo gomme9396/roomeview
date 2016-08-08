@@ -205,21 +205,33 @@ function sample5_execDaumPostcode() {
 
                // 주소 정보를 해당 필드에 넣는다.
                document.getElementById("address").value = fullAddr;
+               $('input[name=address]').attr('value', fullAddr);
                // 주소로 좌표를 검색
                geocoder.addr2coord(data.address, function(status, result) {
                    // 정상적으로 검색이 완료됐으면
                    if (status === daum.maps.services.Status.OK) {
                        // 해당 주소에 대한 좌표를 받아서
                        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
                        // 지도를 보여준다.
                        map.relayout();
                        // 지도 중심을 변경한다.
                        map.setCenter(coords);
                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                       marker.setPosition(coords)
+                       marker.setPosition(coords);
                        marker.setMap(map);
+
+                       var marker1 = result.addr[0].lat;
+                       var marker2 = result.addr[0].lng;
+
+                       document.getElementById('marker1').innerHTML = marker1;
+                       document.getElementById('marker2').innerHTML = marker2;
+
+
+
                    }
                });
+
            }
        }).open();
    }
