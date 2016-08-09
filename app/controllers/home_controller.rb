@@ -109,20 +109,24 @@ class HomeController < ApplicationController
     end
     
     def find
-      #@address = Address.all.reverse
-      @address_test = Addressreview.all.reverse
-      
-      
-      find_address = params[:find_address]
-      @find_address = find_address.strip
-      #@view_address = Address.where("address LIKE ? OR detail_address LIKE ?", "%#{@find_address}%","%#{@find_address}%" )
-      @view_address = Addressreview.where(month:find_address)
-  
-      @update_review = Address.all
-      #@one_review = Address.find(params[:])
+        @address = Address.all.reverse
      
       
-      #@one_review = Address.find()
+        search_value = params[:search_type]
+        
+        #건물명 검색
+        if search_value == "1"
+          find_address = params[:find_detail_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("detail_address LIKE ?", "%#{@find_address}%" )
+        end
+        #주소 검색
+        if search_value == "2"
+          find_address = params[:find_detail_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+        end
+       
      
     end
     
