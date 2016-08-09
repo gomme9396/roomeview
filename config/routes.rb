@@ -1,45 +1,45 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
   root  'home#index'
-  
+
   # get   ':controller(/:action(/:id))'
   # post  ':controller(/:action(/:id))'
-
+  get   '/home/export'
   get   'home/index'
-  
+
   get   'home/create_a'
   get   'home/create_b'
   get   'home/create_c'
-  
+
   post  'home/list_path_a'
   post  'home/list_path_b'
-  
+
   get   'home/list_find'
   post  'home/list_find'
-  
+
   get   'home/mypage'
-  
+
   get   'home/review/:address_id' => "home#review"
-  
+
   get   '/destroy/:address_id' => "home#destroy"
   get   '/destroy_image/:address_id/:image_id' => "home#destroy_image"
-  
+
   get   '/update_view_a/:address_id' => "home#update_view_a"
   get   '/update_view_b/:address_id' => "home#update_view_b"
-  
+
   post  '/update_a/:address_id' => "home#update_a"
   post  '/update_b/:address_id' => "home#update_b"
-  
+
   post  'home/find'
   post  'home/review_path'
-  
+
   # get   'home/list/:address_id' => "home#list"
-  
+
   get   'home/review'
-  
+
   get   'home/data_view'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
