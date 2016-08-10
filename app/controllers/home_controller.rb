@@ -1,7 +1,17 @@
 class HomeController < ApplicationController
 
   before_action :require_login, except: [:index]
-
+  require 'csv'
+    def export
+      @address = Address.all
+      student_csv = CSV.generate do |csv|
+      csv << ["Marker1", "Marker2", "Current_user","Address", "Detail_address"]
+          @address.each do |a|
+            csv << [a.marker1, a.marker2,a.current_user, a.address, a.detail_address]
+          end
+      end
+      send_data(student_csv, :type => 'text/csv', :filename => 'all_students.csv')
+    end
 
     def index
 
@@ -109,21 +119,25 @@ class HomeController < ApplicationController
     end
 
     def find
-      #@address = Address.all.reverse
-      @address_test = Addressreview.all.reverse
+        @address = Address.all.reverse
 
+        search_value = params[:search_type]
 
-      find_address = params[:find_address]
-      @find_address = find_address.strip
-      #@view_address = Address.where("address LIKE ? OR detail_address LIKE ?", "%#{@find_address}%","%#{@find_address}%" )
-      @view_address = Addressreview.where(month:find_address)
-
-      @update_review = Address.all
-      #@one_review = Address.find(params[:])
+        #건물명 검색
+        if search_value == "1"
+          find_address = params[:find_detail_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("detail_address LIKE ?", "%#{@find_address}%" )
+        end
+        #주소 검색
+        if search_value == "2"
+          find_address = params[:find_detail_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+        end
 
 
       #@one_review = Address.find()
-
     end
 
     def review

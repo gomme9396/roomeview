@@ -23,11 +23,10 @@
                         <div class = "col s12 m12 l12" style ="margin-botton:10px">
                           <form action="#">
                             <input name="search_type" type="radio" id="search1" value = "1"/>
-                            <label for="search1">지역</label>
+                            <label for="search1">건물명</label>
                             <input name="search_type" type="radio" id="search2" value = "2"/>
-                            <label for="search2">건물명</label>
-                            <input name="search_type" type="radio" id="search3" value = "3" />
-                            <label for="search3">주소</label>
+                            <label for="search2">주소</label>
+                    
                           </form>
                         </div>
                       </div>
@@ -75,35 +74,66 @@
             <div class="collapsible-header active"><i class="material-icons">list</i>목록</div>
             <div class="collapsible-body" style = "padding : 20px; overflow:auto;">
                 <div class = "row">
+                  <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
-                    <div class = "col s12 m6 l4">
-                        <div class="card small hoverable">
-                            <div class = "card-image">
-                                <img src="<%= image_path "intro-bg.jpg" %>">
-                                <div class = "row">
-                                  <span class="card-title"><%= a.detail_address %></span>
-                                </div>
-                            </div>
-
-                            <div class="card-action" style = "height:60px">
-                                <div class="row" style = "margin:0px">
-                                    <div class = "col s12 m12 l12" style = "padding:0px">
-                                        <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
-                                            <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
-                                        <% end %></span><br>
+                      <% unless a.addressreviews.take != nil %>
+                        <div class = "col s12 m6 l4">
+                            <div class="card small hoverable">
+                                <div class = "card-image">
+                                    <img src="<%= image_path "intro-bg.jpg" %>">
+                                    <div class = "row">
+                                      <span class="card-title"><%= a.detail_address %></span>
                                     </div>
                                 </div>
+
+                                <div class="card-action" style = "height:60px">
+                                    <div class="row" style = "margin:0px">
+                                        <div class = "col s12 m12 l12" style = "padding:0px">
+                                            <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
+                                                <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                            <% end %></span><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--<div class="card-reveal">-->
+                                <!--  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>-->
+                                <!--  <p>Here is some more information about this product that is only revealed once clicked on.</p>-->
+                                <!--</div>-->
                             </div>
-
-
+                        </div>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <% @address.each do |a| %>
+                    <% if a.addressreviews.take != nil %>
+                      <div class = "col s12 m6 l4">
+                        <div class="card small hoverable">
+                          <div class = "card-image">
+                            <img src="<%= image_path "intro-bg.jpg" %>">
+                              <div class = "row">
+                                <span class="card-title"><%= a.detail_address %></span>
+                              </div>
+                            </div>
+                            <div class="card-action" style = "height:60px">
+                              <div class="row" style = "margin:0px">
+                                <div class = "col s12 m12 l12" style = "padding:0px">
+                                  <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
+                                    <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                  <% end %></span><br>
+                                </div>
+                              </div>
+                            </div>
                             <!--<div class="card-reveal">-->
                             <!--  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>-->
                             <!--  <p>Here is some more information about this product that is only revealed once clicked on.</p>-->
                             <!--</div>-->
+                          </div>
                         </div>
-                    </div>
                     <% end %>
-
+                  <% end %>
+                <% end %>
                 </div>
             </div>
             </li>
