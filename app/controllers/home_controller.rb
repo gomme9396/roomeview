@@ -147,7 +147,7 @@ class HomeController < ApplicationController
 
     def destroy
       @address = Address.find(params[:address_id])
-      @address_review = Addressreview.find(params[:address_id])
+      @address_review = @address.addressreviews
       @address.destroy
       @address_review.destroy
       redirect_to "/home/mypage"
