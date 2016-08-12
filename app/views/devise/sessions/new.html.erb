@@ -5,15 +5,15 @@
       <div class="row">
         <div class="grid-example col s10 m6 offset-m3 offset-s1">
           <div class="card white z-depth-4 ">
-            <div class="card-content black-text"> 
+            <div class="card-content black-text">
               <span class="card-title">로그인하기</span>
                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-               
+
               <div class="field">
                 <%= f.label :email, class: "black-text" %><br />
                 <%= f.email_field :email, placeholder: "이메일을 입력해주세요", autofocus: true %>
               </div>
-            
+
               <div class="field">
                 <%= f.label :password, class: "black-text"  %><br />
                 <%= f.password_field :password, placeholder: "비밀번호를 입력해주세요", autocomplete: "off" %>
@@ -34,7 +34,7 @@
                   </div>
               </div>
               <br>
-              
+
               <div class="actions">
                 <%= f.submit "로그인",class: "btn" %>
               </div>
@@ -45,13 +45,13 @@
             <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
               <p>계정이 아직 없으세요? <span style="float:right;"><%= link_to "가입하기", new_registration_path(resource_name) %></span></p><br />
             <% end -%>
-           
-              
+
+
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
   </div>
-        
+
 <%= render :partial => "/home/footer" %>

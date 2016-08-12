@@ -26,7 +26,7 @@
                             <label for="search1">건물명</label>
                             <input name="search_type" type="radio" id="search2" value = "2"/>
                             <label for="search2">주소</label>
-                    
+
                           </form>
                         </div>
                       </div>
@@ -76,7 +76,7 @@
                 <div class = "row">
                   <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
-                      <% unless a.addressreviews.take != nil %>
+
                         <div class = "col s12 m6 l4">
                             <div class="card small hoverable">
                                 <div class = "card-image">
@@ -104,10 +104,10 @@
                             </div>
                         </div>
                     <% end %>
-                  <% end %>
+
                 <% else %>
                   <% @address.each do |a| %>
-                    <% if a.addressreviews.take != nil %>
+
                       <div class = "col s12 m6 l4">
                         <div class="card small hoverable">
                           <div class = "card-image">
@@ -132,7 +132,7 @@
                           </div>
                         </div>
                     <% end %>
-                  <% end %>
+                
                 <% end %>
                 </div>
             </div>
@@ -151,55 +151,47 @@
             center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
             level: 2 // 지도의 확대 레벨
         };
-
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
-    
-    // 마커를 표시할 위치와 title 객체 배열입니다 
+
+    // 마커를 표시할 위치와 title 객체 배열입니다
     var positions = [];
-    
+
     <% @address.each do |a| %>
       positions.push({title: '되라 쫌', latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
     <% end %>
-    
+
     // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-        
+    var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
     for (var i = 0; i < positions.length; i ++) {
-        
+
         // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new daum.maps.Size(24, 35); 
-        
-        // 마커 이미지를 생성합니다    
-        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-        
+        var imageSize = new daum.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
         // 마커를 생성합니다
         var marker = new daum.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: positions[i].latlng, // 마커를 표시할 위치
             title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image : markerImage // 마커 이미지 
+            image : markerImage // 마커 이미지
         });
     }
-
     var mapTypeControl = new daum.maps.MapTypeControl();
-
     // 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
     map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new daum.maps.ZoomControl();
     map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new daum.maps.services.Geocoder();
-
     var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
         infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
-
     // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
     // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
     daum.maps.event.addListener(map, 'click', function (mouseEvent) {
         searchDetailAddrFromCoords(mouseEvent.latLng, function (status, result) {
@@ -208,50 +200,38 @@
                     ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>'
                     : '';
                 detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
-
                 if (result[0].roadAddress.name == "")
                     var address_of_building = result[0].jibunAddress.name;
                 else
                     var address_of_building = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
-
                 var enc = address_of_building
                 $('input[name=find_address]').attr('value', enc);
-
                 var content = '<div class="bAddr">' + detailAddr + '</div>';
-
                 // 마커를 클릭한 위치에 표시합니다
                 marker.setPosition(mouseEvent.latLng);
                 marker.setMap(map);
-
                 // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                 infowindow.setContent(content);
                 infowindow.open(map, marker);
-
                 // 클릭한 위도, 경도 정보를 가져옵니다
                 var latlng = mouseEvent.latLng;
-
                 var marker1 = latlng.getLat();
                 var marker2 = latlng.getLng();
-
             }
         });
     });
-
     // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
     daum.maps.event.addListener(map, 'idle', function () {
         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
-
     function searchAddrFromCoords(coords, callback) {
         // 좌표로 행정동 주소 정보를 요청합니다
         geocoder.coord2addr(coords, callback);
     }
-
     function searchDetailAddrFromCoords(coords, callback) {
         // 좌표로 법정동 상세 주소 정보를 요청합니다
         geocoder.coord2detailaddr(coords, callback);
     }
-
     // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
     function displayCenterInfo(status, result) {
         if (status === daum.maps.services.Status.OK) {
