@@ -148,15 +148,18 @@ class HomeController < ApplicationController
           find_address = params[:find_detail_address]
           @find_address = find_address.strip
           @view_address = Address.where("detail_address LIKE ?", "%#{@find_address}%" )
-        end
+
         #주소 검색
-        if search_value == "2"
+        elsif search_value == "2"
           find_address = params[:find_detail_address]
           @find_address = find_address.strip
           @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+        else
+        #지도에서 찾기  
+          find_address = params[:find_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
         end
-
-
       #@one_review = Address.find()
     end
 

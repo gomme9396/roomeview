@@ -1,16 +1,255 @@
 
-    <%= render :partial => "/home/navbar" %>
+<%= render :partial => "/home/navbar" %>
+
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large teal lignten-2 tooltipped" data-position="left" data-delay="50" data-tooltip="리뷰쓰기" href = "/home/create_a">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+  </div>
+    <!--<div class="container" style="margin-top: 40px">-->
+        <div class = "container">
+        <ul class="collapsible popout" data-collapsible="expandable">
+            <li>
+
+            <div class="collapsible-header"><i class="material-icons">search</i>검색하기</div>
+
+            <div class="collapsible-body">
+
+              <div class = "container">
+                <form action="/home/find" method="POST">
+
+                    <div class="form-group">
+                      <div class = "row" style = "margin:10px">
+                        <div class = "col s12 m12 l12" style ="margin-botton:10px">
+                          <form action="#">
+                            <input name="search_type" type="radio" id="search1" value = "1"/>
+                            <label for="search1">건물명</label>
+                            <input name="search_type" type="radio" id="search2" value = "2"/>
+                            <label for="search2">주소</label>
+
+                          </form>
+                        </div>
+                      </div>
+                      <div>
+
+                      </div>
+                      <div class = "row" style ="margin:10px">
+                        <div class = "col s6 m6 l6">
+                          <input type="text" name="find_detail_address" class="form-control" placeholder="키워드를 입력해주세요." style="resize: none; margin:0px" required rows="1" >
+                        </div>
+                        <div class = "col s3 m3 l3 center">
+                          <button class="btn center" type="submit" name="action" style ="margin-top:10px; padding-right:14px; padding-left:14px">검색</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            </li>
+
+            <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>지도에서 찾기</div>
+            <div class="collapsible-body">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+
+                <!--지도에서 찍은 값을 데이터베이스에서 검색하는것 구현하기-->
+                <form action="/home/find" method="POST">
+                    <div class="row">
+                      <div class = "container">
+                        <div class="form-group">
+                          <div class="col s10 m10 l10">
+                            <input type="text" name="find_address" class="form-control" id="findaddress" placeholder="지도에서 클릭해주세요." style="resize: none;" required readonly rows="1" >
+                          </div>
+                          <div claass="col s2 m2 l2">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">
+                              검색
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+            </div>
+            </li>
+            <li>
+            <div class="collapsible-header active"><i class="material-icons">list</i>목록</div>
+            <div class="collapsible-body" style = "padding : 20px; overflow:auto;">
+                <div class = "row">
+                  <% if current_user.email == "test4@email.com" %>
+                    <% @address.each do |a| %>
+
+                        <div class = "col s12 m6 l4">
+                            <div class="card small hoverable">
+                                <div class = "card-image">
+                                    <img src="<%= image_path "intro-bg.jpg" %>">
+                                    <div class = "row">
+                                      <span class="card-title"><%= a.detail_address %></span>
+                                    </div>
+                                </div>
+
+                                <div class="card-action" style = "height:60px">
+                                    <div class="row" style = "margin:0px">
+                                        <div class = "col s12 m12 l12" style = "padding:0px">
+                                            <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
+                                                <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                            <% end %></span><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--<div class="card-reveal">-->
+                                <!--  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>-->
+                                <!--  <p>Here is some more information about this product that is only revealed once clicked on.</p>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    <% end %>
+
+                <% else %>
+                  <% @view_address.each do |a| %>
+
+                      <div class = "col s12 m6 l4">
+                        <div class="card small hoverable">
+                          <div class = "card-image">
+                            <img src="<%= image_path "intro-bg.jpg" %>">
+                              <div class = "row">
+                                <span class="card-title"><%= a.detail_address %></span>
+                              </div>
+                            </div>
+                            <div class="card-action" style = "height:60px">
+                              <div class="row" style = "margin:0px">
+                                <div class = "col s12 m12 l12" style = "padding:0px">
+                                  <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
+                                    <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                  <% end %></span><br>
+                                </div>
+                              </div>
+                            </div>
+                            <!--<div class="card-reveal">-->
+                            <!--  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>-->
+                            <!--  <p>Here is some more information about this product that is only revealed once clicked on.</p>-->
+                            <!--</div>-->
+                          </div>
+                        </div>
+                    <% end %>
+
+                <% end %>
+                </div>
+            </div>
+            </li>
+        </ul>
+        </div>
+
+    <%= render :partial => "/home/footer" %>
+
+
+
+    <!--지도 이벤트-->
+    <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
+            level: 2 // 지도의 확대 레벨
+        };
+    // 지도를 생성합니다
+    var map = new daum.maps.Map(mapContainer, mapOption);
+
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    var positions = [];
+
+    <% @address.each do |a| %>
+      positions.push({title: '되라 쫌', latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
+    <% end %>
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+    for (var i = 0; i < positions.length; i ++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new daum.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지
+        });
+    }
+    var mapTypeControl = new daum.maps.MapTypeControl();
+    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+    var zoomControl = new daum.maps.ZoomControl();
+    map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new daum.maps.services.Geocoder();
+    var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+        infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+    // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+    daum.maps.event.addListener(map, 'click', function (mouseEvent) {
+        searchDetailAddrFromCoords(mouseEvent.latLng, function (status, result) {
+            if (status === daum.maps.services.Status.OK) {
+                var detailAddr = !!result[0].roadAddress.name
+                    ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>'
+                    : '';
+                detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
+                if (result[0].roadAddress.name == "")
+                    var address_of_building = result[0].jibunAddress.name;
+                else
+                    var address_of_building = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
+                var enc = address_of_building
+                $('input[name=find_address]').attr('value', enc);
+                var content = '<div class="bAddr">' + detailAddr + '</div>';
+                // 마커를 클릭한 위치에 표시합니다
+                marker.setPosition(mouseEvent.latLng);
+                marker.setMap(map);
+                // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
+                // 클릭한 위도, 경도 정보를 가져옵니다
+                var latlng = mouseEvent.latLng;
+                var marker1 = latlng.getLat();
+                var marker2 = latlng.getLng();
+            }
+        });
+    });
+    // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+    daum.maps.event.addListener(map, 'idle', function () {
+        searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    });
+    function searchAddrFromCoords(coords, callback) {
+        // 좌표로 행정동 주소 정보를 요청합니다
+        geocoder.coord2addr(coords, callback);
+    }
+    function searchDetailAddrFromCoords(coords, callback) {
+        // 좌표로 법정동 상세 주소 정보를 요청합니다
+        geocoder.coord2detailaddr(coords, callback);
+    }
+    // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+    function displayCenterInfo(status, result) {
+        if (status === daum.maps.services.Status.OK) {
+            var infoDiv = document.getElementById('centerAddr');
+            $('#map').ready(function () {
+                infoDiv.innerHTML = result[0].fullName;
+            });
+        }
+    }
+</script>
+
+
 
     <div class="container" style="margin-top: 80px">
         <% @view_address.each do |a| %>
             <a href="/home/review/<%= a.id %>"><%= a.id%></a><br>
-
-
-                    
                      <%= a.address %><br>
                      <%= a.detail_address %><br>
-
-                 
                 <a href="/update_view_a/<%= a.id %>">[수정]</a>
                 <a href="/destroy/<%= a.id %>">[삭제]</a><br><hr>
         <% end %>
