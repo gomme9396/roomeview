@@ -2,15 +2,35 @@ class HomeController < ApplicationController
 
   before_action :require_login, except: [:index]
   require 'csv'
-    def export
+    def export_review
+      @addressreview = Addressreview.all
+      addressreview = CSV.generate do |csv|
+      csv << ["id", "address_id", "address_name","price", "month","start_date",
+              "end_date","fee","comment1","image_url1","image_url2","image_url3",
+              "image_url4","cool","warm","sun","blocking","wind","bug","iron","smell",
+              "pet","gas","micro","bed","desk","laundry","internet","fire","cctv","parking",
+              "comment2","night","light","noise","sani"
+            ]
+          @addressreview.each do |a|
+            csv << [a.id, a.address_id, a.address_name, a.price, a.month,a.start_date,
+                    a.end_date, a.fee, a.comment1, a.image_url1,a.image_url2, a.image_url3,
+                    a.image_url4,a.cool,a.warm,a.sun,a.blocking,a.wind,a.bug,a.iron,a.smell,
+                    a.pet,a.gas,a.micro,a.bed,a.desk,a.laundry,a.internet,a.fire,a.cctv,a.parking,
+                    a.comment2,a.night,a.light,a.noise,a.sani]
+              end
+          end
+          send_data(addressreview, :type => 'text/csv', :filename => 'addressreview.csv')
+    end
+
+    def export_address
       @address = Address.all
-      student_csv = CSV.generate do |csv|
-      csv << ["Marker1", "Marker2", "Current_user","Address", "Detail_address"]
+      address = CSV.generate do |csv|
+      csv << ["id","marker1", "marker2", "current_user","address", "detail_address"]
           @address.each do |a|
-            csv << [a.marker1, a.marker2,a.current_user, a.address, a.detail_address]
+            csv << [a.id,a.marker1, a.marker2,a.current_user, a.address, a.detail_address]
           end
       end
-      send_data(student_csv, :type => 'text/csv', :filename => 'all_students.csv')
+      send_data(address, :type => 'text/csv', :filename => 'address.csv')
     end
 
     def index
@@ -129,15 +149,18 @@ class HomeController < ApplicationController
           find_address = params[:find_detail_address]
           @find_address = find_address.strip
           @view_address = Address.where("detail_address LIKE ?", "%#{@find_address}%" )
-        end
+
         #주소 검색
-        if search_value == "2"
+        elsif search_value == "2"
           find_address = params[:find_detail_address]
           @find_address = find_address.strip
           @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+        else
+        #지도에서 찾기
+          find_address = params[:find_address]
+          @find_address = find_address.strip
+          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
         end
-
-
     end
 
     def review

@@ -19,34 +19,63 @@
                         <div class = "container">
                         <span class = "card-title"><h5>내가 작성한 리뷰</h5></span>
                         <div class = "row">
+                          <% if current_user.email == "test4@email.com" %>
                             <% @address.each do |a| %>
-                            <% if a.current_user == current_user.email%>
-                            <div class = "col s12 m6 l6">
-                                <div class="card small">
+                              <% unless a.addressreviews.take != nil %>  
+                                <div class = "col s12 m6 l6">
+                                  <div class="card small">
                                     <div class = "card-image">
-                                        <img src="<%= image_path "intro-bg.jpg" %>">
-                                        <span class="card-title"><%= a.detail_address %></span>
+                                      <img src="<%= image_path "intro-bg.jpg" %>">
+                                      <span class="card-title"><%= a.detail_address %></span>
                                     </div>
-                            <div class="card-action " style = "height:70px">
-                                <div class="row left" style = "margin:0px">
-                                    <div class = "col" style = "padding:0px">
-                                        <span><a href="/home/review/<%= a.id %>" style = "margin:0px; "><h6>자세한 내용</h6></a></span><br>
-                                    </div>
-                                    <div class = "col" style = "padding:0px">
-                                        <% if a.current_user == current_user.email%>
+                                    <div class="card-action " style = "height:70px">
+                                      <div class="row left" style = "margin:0px">
+                                        <div class = "col" style = "padding:0px">
+                                          <span><a href="/home/review/<%= a.id %>" style = "margin:0px; "><h6>자세한 내용</h6></a></span><br>
+                                        </div>
+                                        <div class = "col" style = "padding:0px">
+                                          <%# if a.current_user == current_user.email%>
                                             <a href="/update_view_a/<%= a.id %>" style = "margin:0px; "><i class="material-icons">mode_edit</i></a>
                                             <a href="/destroy/<%= a.id %>" style = "margin:0px"><i class="material-icons">delete</i></a>
-                                        <% end %>
+                                          <%# end %>
+                                        </div>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
-                            </div>
+                              <% end %>
+                            <% end %>
+                          <% else %>
+                            <% @address.each do |a| %>
+                              <% if a.current_user == current_user.email%>
+                                <% if a.addressreviews.take != nil %>  
+                                  <div class = "col s12 m6 l6">
+                                    <div class="card small">
+                                      <div class = "card-image">
+                                        <img src="<%= image_path "intro-bg.jpg" %>">
+                                        <span class="card-title"><%= a.detail_address %></span>
+                                      </div>
+                                      <div class="card-action " style = "height:70px">
+                                        <div class="row left" style = "margin:0px">
+                                          <div class = "col" style = "padding:0px">
+                                            <span><a href="/home/review/<%= a.id %>" style = "margin:0px; "><h6>자세한 내용</h6></a></span><br>
+                                          </div>
+                                          <div class = "col" style = "padding:0px">
+                                            <% if a.current_user == current_user.email%>
+                                              <a href="/update_view_a/<%= a.id %>" style = "margin:0px; "><i class="material-icons">mode_edit</i></a>
+                                              <a href="/destroy/<%= a.id %>" style = "margin:0px"><i class="material-icons">delete</i></a>
+                                            <% end %>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
 
                         </div>
-                    </div>
-                    <% end %>
-                    <% end %>
-
-                    </div>
                     </div>
                 </div>
 
