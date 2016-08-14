@@ -43,6 +43,8 @@ class HomeController < ApplicationController
       redirect_to "/home/create_b"
     end
 
+
+
     def list_path_b
 
       @address = Address.find(params[:address_id])
@@ -115,7 +117,6 @@ class HomeController < ApplicationController
       @address = Address.all.reverse
       @address = Address.includes(:addressreviews).all
 
-
     end
 
     def find
@@ -137,12 +138,12 @@ class HomeController < ApplicationController
         end
 
 
-      #@one_review = Address.find()
     end
 
     def review
       @address = Address.find(params[:address_id])
       @review = Address.all
+
     end
 
     def destroy

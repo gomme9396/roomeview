@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post  'home/list_path_a'
   post  'home/list_path_b'
+  
+  post  'home/json_output'
 
   get   'home/list_find'
   post  'home/list_find'
