@@ -29,6 +29,15 @@
                 <%= f.password_field :password_confirmation, placeholder: "비밀번호를 확인해주세요", autocomplete: "off" %>
               </div>
 
+
+              <p>
+                <input type="checkbox" id="agree"/>
+                <label for="agree"  href="#agreemodal">약관에 동의합니다.</label>
+              </p>
+
+
+              <br />
+
               <div class="actions">
                 <%= f.submit "Sign up",class: "btn" %>
               </div>
@@ -45,3 +54,5 @@
       </div>
     </div>
   </div>
+
+  

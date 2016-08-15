@@ -73,6 +73,16 @@
             <li>
             <div class="collapsible-header active"><i class="material-icons">list</i>목록</div>
             <div class="collapsible-body" style = "padding : 20px; overflow:auto;">
+              <div class="row">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
+                    <li class="tab col s3"><a href="#test2">Test 2</a></li>
+                    <li class="tab col s3"><a href="#test3">Test 3</a></li>
+                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                  </ul>
+                </div>
+              </div>
                 <div class = "row">
                   <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
