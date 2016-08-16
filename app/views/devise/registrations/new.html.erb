@@ -32,14 +32,14 @@
 
               <p>
                 <input type="checkbox" id="agree"/>
-                <label for="agree"  href="#agreemodal">약관에 동의합니다.</label>
+                <label for="agree"  href="#modal_agree" class = "modal-trigger">약관에 동의합니다.</label>
               </p>
 
 
               <br />
 
               <div class="actions">
-                <%= f.submit "Sign up",class: "btn" %>
+                <%= f.submit "가입하기",class: "btn" %>
               </div>
             <% end %>
             <br>
@@ -55,4 +55,22 @@
     </div>
   </div>
 
-  
+<%= render :partial => "/home/footer" %>
+  <!-- Modal Structure -->
+<div id="modal_agree" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>루미뷰(Roomeview) 이용약관</h4>
+    <pre><%= render :file => '/home/term.txt' %></pre>
+  </div>
+  <div class="modal-footer">
+    <a href="/home/index" class="modal-action modal-close btn-flat">동의하지 않습니다</a>
+    <a class="modal-action modal-close btn-flat" onclick="button1_click();">동의합니다</a>
+  </div>
+</div>
+
+<script>
+function button1_click() {
+  $('input:checkbox[id="agree"]').attr("checked", true);
+
+}
+</script>
