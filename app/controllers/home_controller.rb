@@ -277,4 +277,10 @@ class HomeController < ApplicationController
     def data_view
       @review = Addressreview.all
     end
+    
+    def sorting_data
+      @sort_value = params[:param]
+      @view_address_review = Addressreview.all
+      
+    end
 end

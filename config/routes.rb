@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get   '/home/export_address'
   get   '/home/export_review'
   get   'home/index'
+  get   'home/sorting_data'
+
+
 
   get   'home/create_a'
   get   'home/create_b'
