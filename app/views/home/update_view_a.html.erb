@@ -62,11 +62,11 @@
                           <label for="address">
                             <h6>주소</h6>
                           </label>
-                          <input type="text" name="address" class="form-control" id="address" placeholder="지도에서 클릭해주세요." required readonly>
+                          <input type="text" name="address" class="form-control" id="address" placeholder="지도에서 클릭해주세요." value="<%= @one_address.address %>" required readonly>
                           <label for="detail_address">
                             <h6>건물 이름</h6>
                           </label>
-                          <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off" required>
+                          <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." value="<%= @one_address.detail_address %>" autocomplete="off" required>
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
                           <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
                           <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
