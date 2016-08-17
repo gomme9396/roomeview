@@ -72,6 +72,7 @@ class HomeController < ApplicationController
       review = Addressreview.new
       review.address_id = params[:address_id]
       review.address_name = @address.address
+      review.detail_address_name = @address.detail_address
 
       review.price = params[:price]
       review.month = params[:month]

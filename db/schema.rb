@@ -26,16 +26,17 @@ ActiveRecord::Schema.define(version: 20160705054920) do
   create_table "addressreviews", force: :cascade do |t|
     t.integer  "address_id"
     t.string   "address_name"
+    t.string   "detail_address_name"
     t.string   "price"
     t.string   "month"
     t.string   "start_date"
     t.string   "end_date"
     t.integer  "fee"
     t.string   "comment1"
-    t.string   "image_url1",   default: ""
-    t.string   "image_url2",   default: ""
-    t.string   "image_url3",   default: ""
-    t.string   "image_url4",   default: ""
+    t.string   "image_url1",          default: ""
+    t.string   "image_url2",          default: ""
+    t.string   "image_url3",          default: ""
+    t.string   "image_url4",          default: ""
     t.integer  "cool"
     t.integer  "warm"
     t.integer  "sun"
@@ -59,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160705054920) do
     t.integer  "light"
     t.integer  "noise"
     t.integer  "sani"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "comments", force: :cascade do |t|

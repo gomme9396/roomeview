@@ -4,6 +4,7 @@ class CreateAddressreviews < ActiveRecord::Migration
       
         t.integer :address_id
         t.string  :address_name
+        t.string  :detail_address_name
         
         t.string  :price
         t.string  :month
