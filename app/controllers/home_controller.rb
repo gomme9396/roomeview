@@ -5,14 +5,14 @@ class HomeController < ApplicationController
     def export_review
       @addressreview = Addressreview.all
       addressreview = CSV.generate do |csv|
-      csv << ["id", "address_id", "address_name","price", "month","start_date",
+      csv << ["id", "address_id", "address_name","detail_address_name","price", "month","start_date",
               "end_date","fee","comment1","image_url1","image_url2","image_url3",
               "image_url4","cool","warm","sun","blocking","wind","bug","iron","smell",
               "pet","gas","micro","bed","desk","laundry","internet","fire","cctv","parking",
               "comment2","night","light","noise","sani"
             ]
           @addressreview.each do |a|
-            csv << [a.id, a.address_id, a.address_name, a.price, a.month,a.start_date,
+            csv << [a.id, a.address_id, a.address_name,a.detail_address_name, a.price, a.month,a.start_date,
                     a.end_date, a.fee, a.comment1, a.image_url1,a.image_url2, a.image_url3,
                     a.image_url4,a.cool,a.warm,a.sun,a.blocking,a.wind,a.bug,a.iron,a.smell,
                     a.pet,a.gas,a.micro,a.bed,a.desk,a.laundry,a.internet,a.fire,a.cctv,a.parking,
