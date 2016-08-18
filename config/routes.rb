@@ -29,7 +29,10 @@ Rails.application.routes.draw do
   get   'home/review/:address_id' => "home#review"
 
   get   '/destroy/:address_id' => "home#destroy"
-  get   '/destroy_image/:address_id/:image_id' => "home#destroy_image"
+  get   '/destroy_image1/:address_id' => "home#destroy_image1"
+  get   '/destroy_image2/:address_id' => "home#destroy_image2"
+  get   '/destroy_image3/:address_id' => "home#destroy_image3"
+  get   '/destroy_image4/:address_id' => "home#destroy_image4"
 
   get   '/update_view_a/:address_id' => "home#update_view_a"
   get   '/update_view_b/:address_id' => "home#update_view_b"
