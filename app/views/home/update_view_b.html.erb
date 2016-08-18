@@ -3,121 +3,131 @@
 <div class="content-section-a">
 	<div class="container" style="margin-top: 40px">
 		<form action="/update_b/<%= @one_review.id %>" method="POST" enctype="multipart/form-data">
-		  
-		  <!--이거 넣어주세요~ -->
-      <% @update_review.each do |p| %>
-        <input type="hidden" name="address_id" value="<%= p.id %>">
-      <% end %>
-      <!--끝-->
+
+			<!--이거 넣어주세요~ -->
+			<% @update_review.each do |p| %>
+				<input type="hidden" name="address_id" value="<%= p.id %>">
+			<% end %>
+			<!--끝-->
+
 			<div class="row">
 				<div class="col s12 m12 l12 ">
-				  
+
 					<div class="card">
 						<div class="card-image">
 							<nav>
-							<div class="nav-wrapper cyan darken-4">
-								<div class="col s12">
-									<a class="breadcrumb" onclick="go_to_home()">1단계</a>
-									<a href="#!" class="breadcrumb">2단계</a>
+								<div class="nav-wrapper cyan darken-4">
+									<div class="col s12">
+										<a class="breadcrumb" onclick="go_to_home()">1단계</a>
+										<a href="#!" class="breadcrumb">2단계</a>
+									</div>
 								</div>
-							</div>
 							</nav>
 						</div>
 						<div class="card-content">
 							<div class="row">
 								<div class="col s12 m12 l12">
-							
-							
+
 									<div class="card blue-grey lighten-5">
 										<div class="card-content black-text text-lighten-4">
-											<span class="card-title"><h4>기본 계약 정보</h4></span>
+											<span class="card-title">
+												<h4>기본 계약 정보</h4>
+											</span>
 											<div class="divider"></div>
-											<span class="card-title"><h5>보증금/월세</h5></span>
+											<span class="card-title">
+												<h5>한줄평</h5>
+											</span>
+											<blockquote>
+												방에 대한 한줄평을 남겨주세요.<br/>(20자 이내)
+											</blockquote>
+											<div class="container">
+												<div class="row">
+													<div class="input-field col s12 m12 l12">
+														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required><%= @one_review.comment1 %></textarea>
+														<label for="comment1">한줄평</label>
+													</div>
+												</div>
+											</div>
+											<div class="divider"></div>
+											<span class="card-title">
+												<h5>보증금/월세</h5>
+											</span>
 											<blockquote>
 												계약하고 지불하신 보증금과 월세를 입력해주세요.(단위 : 만원)
 											</blockquote>
-											<div class = "row">
-												<div class = "container">
-													<div class = "input-field col s6 m6 l6">
-														<input id= "price" name="price" type="text" value=<%= @one_review.price %>>
-														<label for ="price">보증금</label>
+											<div class="row">
+												<div class="container">
+													<div class="input-field col s6 m6 l6">
+														<input id="price" name="price" type="text" value="<%= @one_review.price %>" required>
+														<label for="price">보증금</label>
 													</div>
-													<div class = "input-field col s6 m6 l6">
-														<input id= "month" name="month" type="text" value=<%= @one_review.month %>>
-														<label for ="month">월세</label>
+													<div class="input-field col s6 m6 l6">
+														<input id="month" name="month" type="text" value="<%= @one_review.month %>" required>
+														<label for="month">월세</label>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="divider"></div>
 										<div class="card-content">
-											<span class="card-title"><h5>거주 기간</h5></span>
+											<span class="card-title">
+												<h5>거주 기간</h5>
+											</span>
 											<blockquote>
-												 해당 원룸에서 거주했던 기간을 입력해주세요.
+												해당 원룸에서 거주했던 기간을 입력해주세요.
 											</blockquote>
-											<div class = "container">
-												<div class = "row">
-													<div class = "col s6 m6 l6">
-														<label for ="start_date"><h6>입주일</h6></label>
-														<input id= "start_date" name="start_date" type="date" class="datepicker center-align" value=<%= @one_review.start_date %>>
+											<div class="container">
+												<div class="row">
+													<div class="col s6 m6 l6">
+														<label for="start_date">
+															<h6>입주일</h6>
+														</label>
+														<input id="start_date" name="start_date" type="date" class="datepicker center-align" value="<%= @one_review.start_date %>" required>
+														<p></p>
 													</div>
-													<div class = "col s6 m6 l6">
-														<label for ="end_date"><h6>퇴거일</h6></label>
-														<input id= "end_date" name="end_date" type="date" class="datepicker center-align" value=<%= @one_review.end_date %>>
+													<div class="col s6 m6 l6">
+														<label for="end_date">
+															<h6>퇴거일</h6>
+														</label>
+														<input id="end_date" name="end_date" type="date" class="datepicker center-align" value="<%= @one_review.end_date %>" required>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>공과금/관리비</h5>
+												<h5>공과금/관리비</h5>
 											</span>
 											<blockquote>
-												 공과금들이 관리비에 포함 되어있나요?
+												공과금들이 관리비에 포함 되어있나요?
 											</blockquote>
 											<!--라디오박스-->
 											<% if @one_review.fee == 0 %>
-											<div class = "container">
-											<p>
-												<input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
-												<label class="teal-text text-darken-3" for="fee1">포함</label>
-											</p>
-											<p>
-												<input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
-												<label class="teal-text text-darken-3" for="fee0">미포함</label>
-											</p>
-											</div>
+												<div class = "container">
+												<p>
+													<input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
+													<label class="teal-text text-darken-3" for="fee1">포함</label>
+												</p>
+												<p>
+													<input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
+													<label class="teal-text text-darken-3" for="fee0">미포함</label>
+												</p>
+												</div>
 											<% else %>
-											<div class = "container">
-											<p>
-												<input class="with-gap" name="fee" type="radio" id="fee1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="fee1">포함</label>
-											</p>
-											<p>
-												<input class="with-gap" name="fee" type="radio" id="fee0" value="0"/>
-												<label class="teal-text text-darken-3" for="fee0">미포함</label>
-											</p>
-											</div>
+												<div class = "container">
+												<p>
+													<input class="with-gap" name="fee" type="radio" id="fee1" checked value="1"/>
+													<label class="teal-text text-darken-3" for="fee1">포함</label>
+												</p>
+												<p>
+													<input class="with-gap" name="fee" type="radio" id="fee0" value="0"/>
+													<label class="teal-text text-darken-3" for="fee0">미포함</label>
+												</p>
+												</div>
 											<% end %>
 										</div>
+
 										<div class="card-action">
-											<span class="card-title">
-											<h5>추가 내용</h5>
-											</span>
-											<blockquote>
-												 계약관련하여 추가적으로 남기실 내용을 입력해주세요.
-											</blockquote>
-											<div class = "container">
-												<div class="row">
-										          <div class="input-field col s12 m12 l12">
-										            <textarea  name = "comment1" id="comment1" class="materialize-textarea" length="200"><%= @one_review.comment1 %></textarea>
-										            <label for="comment1">추가내용</label>
-										          </div>
-										        </div>
-									        </div>
-								        </div>
-									        
-								        <div class="card-action">
 							        		<span class="card-title">
 											<h5>사진</h5>
 											</span>
@@ -178,15 +188,19 @@
 										</div>
 									</div>
 									<br>
-									 <!----------------------카드 구분선----------------------->
-									 
+									<!----------------------카드 구분선----------------------->
+
 									<div class="card blue-grey lighten-5">
 										<div class="card-content black-text text-lighten-4">
-											<span class="card-title"><h4>시설 정보</h4></span>
+											<span class="card-title">
+												<h4>시설 정보</h4>
+											</span>
 											<div class="divider"></div>
-											<span class="card-title"><h5>냉방 시설</h5></span>
+											<span class="card-title">
+												<h5>냉방 시설</h5>
+											</span>
 											<blockquote>
-												 냉방(에어컨)이 잘되나요?
+												냉방(에어컨)이 잘되나요?
 											</blockquote>
 											<div class = "container">
 											<% if @one_review.cool == 5 %>
@@ -248,10 +262,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>난방 시설</h5>
+												<h5>난방 시설</h5>
 											</span>
 											<blockquote>
-												 난방(보일러)이 잘되나요?
+												난방(보일러)이 잘되나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -314,10 +328,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>채광 수준</h5>
+												<h5>채광 수준</h5>
 											</span>
 											<blockquote>
-												 방에 햇빛이 잘들어오나요?
+												방에 햇빛이 잘들어오나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -380,10 +394,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>방음 수준</h5>
+												<h5>방음 수준</h5>
 											</span>
 											<blockquote>
-												 방에 방음이 잘되나요?
+												방에 방음이 잘되나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -446,10 +460,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>환기 수준</h5>
+												<h5>환기 수준</h5>
 											</span>
 											<blockquote>
-												 방에 환기가 잘되나요?
+												방에 환기가 잘되나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -512,10 +526,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>방충 상태</h5>
+												<h5>방충 상태</h5>
 											</span>
 											<blockquote>
-												 방에 방충이 잘 되고 있나요?
+												방에 방충이 잘 되고 있나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -578,10 +592,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>수도 시설 상태</h5>
+												<h5>수도 시설 상태</h5>
 											</span>
 											<blockquote>
-												 수도 시설에서 녹물이 나오나요?
+												수도 시설에서 녹물이 나오나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -605,9 +619,9 @@
 											</p>
 											<% end %>
 											</div>
-											
+
 											<blockquote>
-												 화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?
+												화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -634,10 +648,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>반려동물 동거 가능 여부</h5>
+												<h5>반려동물 동거 가능 여부</h5>
 											</span>
 											<blockquote>
-												 방에서 반려동물과 함께 지낼 수 있나요?
+												방에서 반려동물과 함께 지낼 수 있나요?
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -664,10 +678,10 @@
 										</div>
 										<div class="card-action">
 											<span class="card-title">
-											<h5>구비 시설</h5>
+												<h5>구비 시설</h5>
 											</span>
 											<blockquote>
-												 아래 항목에서 건물에 구비된 시설을 체크해주세요.
+												아래 항목에서 건물에 구비된 시설을 체크해주세요.
 											</blockquote>
 											<!--라디오박스-->
 											<div class = "container">
@@ -792,29 +806,21 @@
 												</div>
 											</div>
 										</div>
-										<div class="card-action">
-											<blockquote>
-												 추가적으로 기록하실 경험이 있으시면 기록해주세요.
-											</blockquote>
-											<div class="row">
-												<div class="input-field col s12 m12 l12">
-													<textarea id="comment2" name="comment2"class="materialize-textarea"><%= @one_review.comment2 %></textarea>
-													<label for="comment2">추가내용</label>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									 <!----------------------카드 구분선----------------------->
+
+									<!----------------------카드 구분선----------------------->
 									<div class="card blue-grey lighten-5">
 										<div class="card-content black-text text-lighten-4">
-											<span class="card-title"><h4>주변 환경 정보</h4></span>
+											<span class="card-title">
+												<h4>주변 환경 정보</h4>
+											</span>
 											<div class="divider"></div>
-											<span class="card-title"><h5>주변 가로등</h5></span>
+											<span class="card-title">
+												<h5>주변 가로등</h5>
+											</span>
 											<blockquote>
 												건물 주변에 가로등이 충분하나요?
 											</blockquote>
-											<div class = "row">
+											<div class="row">
 												<div class = "container">
 												<% if @one_review.night == 5 %>
 												<p>
@@ -876,9 +882,11 @@
 										</div>
 										<div class="divider"></div>
 										<div class="card-content">
-											<span class="card-title"><h5>야간 빛공해</h5></span>
+											<span class="card-title">
+												<h5>야간 빛공해</h5>
+											</span>
 											<blockquote>
-												 야간에 방에 들어오는 외부의 빛이 많은가요?
+												야간에 방에 들어오는 외부의 빛이 많은가요?
 											</blockquote>
 											<div class = "container">
 												<% if @one_review.light == 5 %>
@@ -938,13 +946,14 @@
 												<% end %>
 											</div>
 										</div>
-										
-										
+
 										<div class="divider"></div>
 										<div class="card-content">
-											<span class="card-title"><h5>외부 소음</h5></span>
+											<span class="card-title">
+												<h5>외부 소음</h5>
+											</span>
 											<blockquote>
-												 건물 주변에 소음이 심한가요?
+												건물 주변에 소음이 심한가요?
 											</blockquote>
 											<div class = "container">
 												<% if @one_review.noise == 5 %>
@@ -1004,12 +1013,14 @@
 												<% end %>
 											</div>
 										</div>
-										
+
 										<div class="divider"></div>
 										<div class="card-content">
-											<span class="card-title"><h5>건물 위생</h5></span>
+											<span class="card-title">
+												<h5>건물 위생</h5>
+											</span>
 											<blockquote>
-												 건물 주변 위생 상태는 어떤가요?
+												건물 주변 위생 상태는 어떤가요?
 											</blockquote>
 											<div class = "container">
 												<% if @one_review.sani == 5 %>
@@ -1069,24 +1080,36 @@
 												<% end %>
 											</div>
 										</div>
-									        
-								        
+
+										<div class="card-action">
+											<span class="card-title">
+												<h5>추가 내용</h5>
+											</span>
+											<blockquote>
+												방에 대해서 자유로운 의견을 남겨주세요
+											</blockquote>
+											<div class="row">
+												<div class = "container">
+													<div class="input-field col s12 m12 l12">
+														<textarea id="comment2" name="comment2" class="materialize-textarea"><%= @one_review.comment2 %></textarea>
+														<label for="comment2">추가내용</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										</div>
 									</div>
-									 
-									
-								
-									 <!----------------------카드 구분선----------------------->
-									
+
+
 								</div>
 							</div>
-							<div class ="center-align">
-  							<a href="/home/create_a" class="btn btn-default">취소하기</a>
-  							<input class="btn btn-default" type="submit" value="완료하기">
+							<div class="center-align">
+								<a href="/update_view_a/<%= @one_review.id %>" class="btn btn-default">취소하기</a>
+								<input class="btn btn-default" type="submit" value="완료하기">
 							</div>
 						</div>
 					</div>
-					
-					
+
 				</div>
 			</div>
 		</form>

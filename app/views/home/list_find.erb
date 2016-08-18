@@ -76,17 +76,17 @@
               <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
-                    <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
-                    <li class="tab col s3"><a href="/home/create_b"  target="_self">Test 2</a></li>
-                    <li class="tab col s3"><a href="#test3">Test 3</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                    <li class="tab col s3"><a target="_self" class="active" href="/home/sorting_data?param=1">start_dateTEST</a></li>
+                    <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=2">priceTEST</a></li>
+                    <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=3">Test 3</a></li>
+                    <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=4">Test 4</a></li>
                   </ul>
                 </div>
               </div>
                 <div class = "row">
                   <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
-
+                      <% unless a.addressreviews.take != nil %>
                         <div class = "col s12 m6 l4">
                             <div class="card small hoverable">
                                 <div class = "card-image">
@@ -114,10 +114,10 @@
                             </div>
                         </div>
                     <% end %>
-
+                  <% end %>
                 <% else %>
                   <% @address.each do |a| %>
-
+                    <% if a.addressreviews.take != nil %>
                       <div class = "col s12 m6 l4">
                         <div class="card small hoverable">
                           <div class = "card-image">
@@ -144,10 +144,11 @@
                         </div>
                     <% end %>
 
+                  <% end %>
                 <% end %>
-                </div>
+              </div>
             </div>
-            </li>
+          </li>
         </ul>
         </div>
 
