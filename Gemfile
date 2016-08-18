@@ -15,6 +15,8 @@ gem 'mailgun_rails'
 
 gem 'devise'
 
+gem 'devise-i18n'
+
 gem 'materialize-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

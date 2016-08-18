@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get   '/home/export_address'
   get   '/home/export_review'
   get   'home/index'
+  get   'home/sorting_data'
+
+
 
   get   'home/create_a'
   get   'home/create_b'
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
 
   post  'home/list_path_a'
   post  'home/list_path_b'
-  
+
   post  'home/json_output'
 
   get   'home/list_find'
