@@ -68,8 +68,8 @@
                           </label>
                           <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." value="<%= @one_address.detail_address %>" autocomplete="off" required>
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
-                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
-                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
+                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker1 %></textarea>
+                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker2 %></textarea>
                         </div>
                       </div>
 
