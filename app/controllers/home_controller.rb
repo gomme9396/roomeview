@@ -315,9 +315,35 @@ class HomeController < ApplicationController
       @review = Addressreview.all
     end
     
+    
+  
     def sorting_data
       @sort_value = params[:param]
       @view_address_review = Addressreview.all
+      @address = Address.all
+      #@sort_data = Address.all
+      
+      if @sort_value == "1"
+        @sort_data = Address.all.order(:id).reverse
+      
+      elsif @sort_value == "2"
+        @sort_data = Address.all.order(:detail_address)
+      
+      elsif @sort_value == "3"
+       @address_review = Addressreview.all.order(:price).reverse
+       @sort_data = Address.address_review      
+         
+      
+      
+      end
+      
+
+      
+   
+      
+    
+      
+      
     end
     
     def destroy_image1
