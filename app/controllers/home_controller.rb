@@ -174,6 +174,31 @@ class HomeController < ApplicationController
       @address_review = @address.addressreviews
       @address.destroy
       @address_review.destroy
+      
+      if @address_review.take.image_url1 != nil
+        old_image_name1 = @address_review.take.image_url1.split('/')[5]
+        remover1 = MachineUploader.new
+        remover1.retrieve_from_store!(old_image_name1)
+        remover1.remove!
+      end
+      if @address_review.take.image_url2 != nil
+        old_image_name2 = @address_review.take.image_url2.split('/')[5]
+        remover2 = MachineUploader.new
+        remover2.retrieve_from_store!(old_image_name2)
+        remover2.remove!
+      end
+      if @address_review.take.image_url3 != nil
+        old_image_name3 = @address_review.take.image_url3.split('/')[5]
+        remover3 = MachineUploader.new
+        remover3.retrieve_from_store!(old_image_name3)
+        remover3.remove!
+      end
+      if @address_review.take.image_url4 != nil
+        old_image_name4 = @address_review.take.image_url4.split('/')[5]
+        remover4 = MachineUploader.new
+        remover4.retrieve_from_store!(old_image_name4)
+        remover4.remove!
+      end
       redirect_to "/home/mypage"
     end
 
@@ -236,23 +261,31 @@ class HomeController < ApplicationController
       @one_review.light = params[:light]
       @one_review.noise = params[:noise]
       @one_review.sani = params[:sani]
-
-      uploader1 = MachineUploader.new
-      uploader1.store!(params[:image1])
-      @one_review.image_url1 = uploader1.url
-
-      uploader2 = MachineUploader.new
-      uploader2.store!(params[:image2])
-      @one_review.image_url2 = uploader2.url
-
-      uploader3 = MachineUploader.new
-      uploader3.store!(params[:image3])
-      @one_review.image_url3 = uploader3.url
-
-      uploader4 = MachineUploader.new
-      uploader4.store!(params[:image4])
-      @one_review.image_url4 = uploader4.url
-
+      
+      if params[:image1] != nil
+        uploader1 = MachineUploader.new
+        uploader1.store!(params[:image1])
+        @one_review.image_url1 = uploader1.url
+      end
+      
+      if params[:image2] != nil
+        uploader2 = MachineUploader.new
+        uploader2.store!(params[:image2])
+        @one_review.image_url2 = uploader2.url
+      end
+      
+      if params[:image3] != nil
+        uploader3 = MachineUploader.new
+        uploader3.store!(params[:image3])
+        @one_review.image_url3 = uploader3.url
+      end
+      
+      if params[:image4] != nil
+        uploader4 = MachineUploader.new
+        uploader4.store!(params[:image4])
+        @one_review.image_url4 = uploader4.url
+      end
+      
       @one_review.save
 
       redirect_to "/home/list_find"
@@ -282,9 +315,101 @@ class HomeController < ApplicationController
       @review = Addressreview.all
     end
     
+    
+  
     def sorting_data
       @sort_value = params[:param]
-      @view_address_review = Addressreview.all
+      @address = Address.all
+      #@sort_data = Address.all
+      
+      if @sort_value == "1"
+        @sort_data = Address.all.order(:id).reverse
+      
+      elsif @sort_value == "2"
+        @sort_data = Address.all.order(:detail_address)
+      
+      elsif @sort_value == "3"
+       @address_review = Addressreview.all.order(:price).reverse
+       @sort_data = Address.joins(:addressreviews).order('addressreviews.price')
+      
+       
+
+         
+      
+      
+      end
+      
+
+      
+   
+      
+    
+      
       
     end
+    
+    def destroy_image1
+      @one_review = Addressreview.find(params[:address_id])
+      
+      if @one_review.image_url1 != nil
+        old_image_name1 = @one_review.image_url1.split('/')[5]
+        remover1 = MachineUploader.new
+        remover1.retrieve_from_store!(old_image_name1)
+        remover1.remove!
+        @one_review.image_url1 = nil
+      end
+      
+      @one_review.save
+      
+      redirect_to "/update_view_b/" + params[:address_id]
+    end
+    
+    def destroy_image2
+      @one_review = Addressreview.find(params[:address_id])
+      
+      if @one_review.image_url2 != nil
+        old_image_name2 = @one_review.image_url2.split('/')[5]
+        remover2 = MachineUploader.new
+        remover2.retrieve_from_store!(old_image_name2)
+        remover2.remove!
+        @one_review.image_url2 = nil
+      end
+      
+      @one_review.save
+      
+      redirect_to "/update_view_b/" + params[:address_id]
+    end
+    
+    def destroy_image3
+      @one_review = Addressreview.find(params[:address_id])
+      
+      if @one_review.image_url3 != nil
+        old_image_name3 = @one_review.image_url3.split('/')[5]
+        remover3 = MachineUploader.new
+        remover3.retrieve_from_store!(old_image_name3)
+        remover3.remove!
+        @one_review.image_url3 = nil
+      end
+      
+      @one_review.save
+      
+      redirect_to "/update_view_b/" + params[:address_id]
+    end
+    
+    def destroy_image4
+      @one_review = Addressreview.find(params[:address_id])
+      
+      if @one_review.image_url4 != nil
+        old_image_name4 = @one_review.image_url4.split('/')[5]
+        remover4 = MachineUploader.new
+        remover4.retrieve_from_store!(old_image_name4)
+        remover4.remove!
+        @one_review.image_url4 = nil
+      end
+      
+      @one_review.save
+      
+      redirect_to "/update_view_b/" + params[:address_id]
+    end
+    
 end

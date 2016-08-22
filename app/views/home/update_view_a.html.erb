@@ -68,8 +68,8 @@
                           </label>
                           <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." value="<%= @one_address.detail_address %>" autocomplete="off" required>
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
-                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
-                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
+                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker1 %></textarea>
+                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker2 %></textarea>
                         </div>
                       </div>
 
@@ -95,12 +95,23 @@
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
-            center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
+            center: new daum.maps.LatLng(<%= @one_address.marker1 %>, <%= @one_address.marker2 %>), // 지도의 중심좌표
             level: 2 // 지도의 확대 레벨
         };
 
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
+    
+    // 마커가 표시될 위치입니다
+    var markerPosition  = new daum.maps.LatLng(<%= @one_address.marker1 %>, <%= @one_address.marker2 %>);
+
+    // 마커를 생성합니다
+    var marker = new daum.maps.Marker({
+        position: markerPosition
+    });
+    
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
 
     var mapTypeControl = new daum.maps.MapTypeControl();
 

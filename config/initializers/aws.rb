@@ -10,7 +10,7 @@ CarrierWave.configure do |config|
      endpoint:              'http://s3-ap-northeast-2.amazonaws.com'
     }
 
- config.fog_directory = 'roomeview'
+ config.fog_directory = 'roomeview.com'
  # config.fog_public = true
  # config.fog_attributes = {} # optional, defaults to {}
 

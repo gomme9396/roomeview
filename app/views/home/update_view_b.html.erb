@@ -139,47 +139,62 @@
 											    <div class="file-field input-field">
 											    	<% if @one_review.image_url1 != nil %>
 											    		<input type="text" value=<%= @one_review.image_url1 %>>
-											    		<a href="/destroy_image/<%= @one_review.id %>">[삭제]</a>
+											    		<a href="/destroy_image1/<%= @one_review.id %>">[삭제]</a>
 											    	<% else %>
-											      <div class="btn">
-											        <span>파일</span>
-											        <input type="file" name="image1" accept="image/*">
-											      </div>
-											      <div class="file-path-wrapper">
-											        <input class="file-path validate" type="text">
-											      </div>
+												      <div class="btn">
+												        <span>파일</span>
+												        <input type="file" name="image1" accept="image/*">
+												      </div>
+												      <div class="file-path-wrapper">
+												        <input class="file-path validate" type="text">
+												      </div>
 											      <% end %>
 											    </div>
 										    
 											    <div class="file-field input-field">
-											      <div class="btn">
-											        <span>파일</span>
-											        <input type="file" name="image2" accept="image/*">
-											      </div>
-											      <div class="file-path-wrapper">
-											        <input class="file-path validate" type="text">
-											      </div>
+											    	<% if @one_review.image_url2 != nil %>
+											    		<input type="text" value=<%= @one_review.image_url2 %>>
+											    		<a href="/destroy_image2/<%= @one_review.id %>">[삭제]</a>
+											    	<% else %>
+												      <div class="btn">
+												        <span>파일</span>
+												        <input type="file" name="image2" accept="image/*">
+												      </div>
+												      <div class="file-path-wrapper">
+												        <input class="file-path validate" type="text">
+												      </div>
+														<% end %>
 											    </div>
 										    
 											    <div class="file-field input-field">
-											      <div class="btn">
-											        <span>파일</span>
-											        <input type="file" name="image3" accept="image/*">
-											      </div>
-											      <div class="file-path-wrapper">
-											        <input class="file-path validate" type="text">
-											      </div>
+											    	<% if @one_review.image_url3 != nil %>
+											    		<input type="text" value=<%= @one_review.image_url3 %>>
+											    		<a href="/destroy_image3/<%= @one_review.id %>">[삭제]</a>
+											    	<% else %>
+												      <div class="btn">
+												        <span>파일</span>
+												        <input type="file" name="image3" accept="image/*">
+												      </div>
+												      <div class="file-path-wrapper">
+												        <input class="file-path validate" type="text">
+												      </div>
+														<% end %>
 											    </div>
 										    
-												<div class="file-field input-field">
-											      <div class="btn">
-											        <span>파일</span>
-											        <input type="file" name="image4" accept="image/*">
-											      </div>
-											      <div class="file-path-wrapper">
-											        <input class="file-path validate" type="text">
-											      </div>
-											    </div>
+													<div class="file-field input-field">
+														<% if @one_review.image_url4 != nil %>
+												    	<input type="text" value=<%= @one_review.image_url4 %>>
+												    	<a href="/destroy_image4/<%= @one_review.id %>">[삭제]</a>
+												    <% else %>
+												      <div class="btn">
+												        <span>파일</span>
+												        <input type="file" name="image4" accept="image/*">
+												      </div>
+												      <div class="file-path-wrapper">
+												        <input class="file-path validate" type="text">
+												      </div>
+												    <% end %>
+													</div>
 										    </div>
 											<!--<input type="file" name="image1" accept="image/*"><br>-->
 											<!--<input type="file" name="image2" accept="image/*"><br>-->

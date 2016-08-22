@@ -4,7 +4,7 @@ class MachineUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -13,7 +13,8 @@ class MachineUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{Address.class.to_s.underscore}/#{Address.id}"
+    # "roomeview.com/#{Address.class.to_s.underscore}/#{Address.id}"
+    "roomeview.com/"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -32,9 +33,9 @@ class MachineUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fit => [50, 50]
-  end
+  # version :thumb do
+  #   process :resize_to_fit => [50, 50]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -48,9 +49,9 @@ class MachineUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  # def filename
-  #   # Time.now.to_f.to_s + "_" + original_filename if original_filename
-  #   Time.now.to_f.to_s + [*('A'...'Z')].sample(8).join + file.extension if original_filename
-  # end
+  def filename
+    # Time.now.to_f.to_s + "_" + original_filename if original_filename
+    Time.now.to_f.to_s + [*('A'...'Z')].sample(8).join + file.extension if original_filename
+  end
  
 end
