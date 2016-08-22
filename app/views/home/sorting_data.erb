@@ -78,7 +78,7 @@
                   <ul class="tabs">
                     <li class="tab col s3"><a target="_self" class="active" href="/home/sorting_data?param=1">최근등록순</a></li>
                     <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=2">건물이름순</a></li>
-                    <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=3">최고점수순</a></li>
+                    <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=3">가격순TEST</a></a></li>
                    
                   </ul>
                 </div>
@@ -266,31 +266,6 @@
 
 
 
-
-<%= @sort_value %>
-    <% if @sort_value == "1"%>
-     <% @view_address_review.order(:start_date).each do |a| %>
-     
-     
-                     <%= a.address_name %><br>
-                     
-                <a href="/update_view_a/<%= a.id %>">[수정]</a>
-                <a href="/destroy/<%= a.id %>">[삭제]</a><br><hr>
-        <% end %>
-    <% end %>    
-     
-    <% if @sort_value == "2"%>
-     <% @view_address_review.order(:price).each do |a| %>
-     
-     
-                     <%= a.address_name %><br>
-                     
-                <a href="/update_view_a/<%= a.id %>">[수정]</a>
-                <a href="/destroy/<%= a.id %>">[삭제]</a><br><hr>
-        <% end %>
-        
-    <% end %>
-    </div>
 
                     
    
