@@ -83,6 +83,7 @@
                 </div>
               </div>
                 <div class = "row">
+
                   <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
                       <% unless a.addressreviews.take != nil %>
@@ -98,9 +99,15 @@
                                 <div class="card-action" style = "height:60px">
                                     <div class="row" style = "margin:0px">
                                         <div class = "col s12 m12 l12" style = "padding:0px">
-                                            <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
-                                                <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
-                                            <% end %></span><br>
+                                          <% if Address.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
+                                            <span><a href="/home/review/<%= a.id %>" style = "margin:0px;">자세한 내용</a></span>
+                                          <% else %>
+                                            <span><a href="#modal_write" style = "margin:0px;" class = "modal-trigger">자세한 내용</a></span>
+                                          <% end %>
+
+                                          <% if a.current_user == current_user.email%>
+                                              <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                          <% end %><br>
                                         </div>
                                     </div>
                                 </div>
@@ -128,9 +135,15 @@
                             <div class="card-action" style = "height:60px">
                               <div class="row" style = "margin:0px">
                                 <div class = "col s12 m12 l12" style = "padding:0px">
-                                  <span><a href="/home/review/<%= a.id %>" style = "margin:0px; ">자세한 내용</a><% if a.current_user == current_user.email%>
+                                  <% if Address.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
+                                    <span><a href="/home/review/<%= a.id %>" style = "margin:0px;">자세한 내용</a></span>
+                                  <% else %>
+                                    <span><a href="#modal_write" style = "margin:0px;" class = "modal-trigger">자세한 내용</a></span>
+                                  <% end %>
+
+                                  <% if a.current_user == current_user.email%>
                                     <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
-                                  <% end %></span><br>
+                                  <% end %><br>
                                 </div>
                               </div>
                             </div>
@@ -150,9 +163,20 @@
           </li>
         </ul>
         </div>
+      </div>
 
     <%= render :partial => "/home/footer" %>
 
+    <div id="modal_write" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4 class = "teal-text">리뷰를 등록해주세요!</h4>
+        <img class="responsive-img" src = "<%= image_path "robot.png" %>">
+      </div>
+      <div class="modal-footer">
+      <a class="modal-action modal-close btn-flat">닫기</a>
+        <a href="/home/create_a" class="modal-action modal-close btn-flat ">리뷰 쓰기</a>
+      </div>
+    </div>
 
 
     <!--지도 이벤트-->
