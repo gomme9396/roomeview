@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160705054920) do
 
   create_table "addressreviews", force: :cascade do |t|
     t.integer  "address_id"
+    t.integer  "address_number"
     t.string   "address_name"
     t.string   "detail_address_name"
     t.string   "price"

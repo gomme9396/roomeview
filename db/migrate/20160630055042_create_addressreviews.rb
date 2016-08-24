@@ -3,6 +3,8 @@ class CreateAddressreviews < ActiveRecord::Migration
     create_table :addressreviews do |t|
       
         t.integer :address_id
+        t.integer :address_number
+        
         t.string  :address_name
         t.string  :detail_address_name
         
