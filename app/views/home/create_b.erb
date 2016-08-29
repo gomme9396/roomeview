@@ -7,7 +7,7 @@
 			<!--이거 넣어주세요~ -->
 			<% @create_review.each do |p| %>
 				<input type="hidden" name="address_id" value="<%= p.id %>">
-				<input type="hidden" name="address_number">
+				<!--<input type="hidden" name="address_number">-->
 			<% end %>
 			<!--끝-->
 
@@ -657,16 +657,16 @@
 
 <%= render :partial => "/home/footer" %>
 
-<script>
-	var address = [];
+<!--<script>-->
+<!--	var address = [];-->
 	
-	<% @create_review.each do |c| %>
-    if (address.includes("<%= c.address %>") == false) {
-      	address.push("<%= c.address %>");
-    }
-  <% end %>
+<!--	<%# @create_review.each do |c| %>-->
+<!--    if (address.includes("<%#= c.address %>") == false) {-->
+<!--      	address.push("<%#= c.address %>");-->
+<!--    }-->
+<!--  <%# end %>-->
   
-  var address_number = address.length
+<!--  var address_number = address.length-->
   
-  $('input[name=address_number]').attr('value', address_number);
-</script>
+<!--  $('input[name=address_number]').attr('value', address_number);-->
+<!--</script>-->

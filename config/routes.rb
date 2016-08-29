@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # post  ':controller(/:action(/:id))'
   get   'home/export_address'
   get   'home/export_review'
+  get   'home/export_user'
+  
   get   'home/index'
   get   'home/sorting_data'
 
