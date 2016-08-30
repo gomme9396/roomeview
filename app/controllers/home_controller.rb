@@ -315,13 +315,20 @@ class HomeController < ApplicationController
     end
 
     def review_path
-      comment = Comment.new
-      comment.address_id = params[:address_id]
-      comment.author = params[:author]
-      comment.comment = params[:comment]
-      comment.save
+      # comment = Comment.new
+      # comment.address_id = params[:address_id]
+      # comment.author = params[:author]
+      # comment.comment = params[:comment]
+      # comment.save
 
-      redirect_to "/home/review/#{params[:address_id]}"
+      @address_id = params[:address_id]
+      @comment = params[:comment]
+      @author = current_user.email
+      comment = Comment.new(address_id: @address_id, user_id: current_user.id, comment: @comment)
+      comment.save
+      
+      @comments = Comment.all.reverse
+      # redirect_to "/home/review/#{params[:address_id]}"
     end
 
     def data_view
