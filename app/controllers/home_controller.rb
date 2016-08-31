@@ -237,7 +237,7 @@ class HomeController < ApplicationController
     def update_b
       @address = Address.find(params[:address_id])
 
-      @one_review = Addressreview.find(params[:address_id])
+      @one_review = @address.addressreviews.take
       @one_review.address_id = params[:address_id]
       @one_review.address_name = @address.address
       @one_review.detail_address_name = @address.detail_address
