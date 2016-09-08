@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :addressreviews
   has_many :addresses
-
+  has_many :comments
+  
   # instead of deleting, indicate the user requested a delete & timestamp it
   def soft_delete
     update_attribute(:deleted_at, Time.current)

@@ -7,7 +7,7 @@
 			<!--이거 넣어주세요~ -->
 			<% @create_review.each do |p| %>
 				<input type="hidden" name="address_id" value="<%= p.id %>">
-				<input type="hidden" name="address_number">
+				<!--<input type="hidden" name="address_number">-->
 			<% end %>
 			<!--끝-->
 
@@ -658,7 +658,6 @@
 </div>
 
 <%= render :partial => "/home/footer" %>
-
 <script>
 	var address = [];
 

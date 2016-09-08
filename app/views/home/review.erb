@@ -407,11 +407,11 @@
 
               <div class = "row">
                 <div class="reply_comment_<%= @address.id %>">
-                  <% @address.comments.each do |c| %>
+                  <% @address.comments.reverse.each do |c| %>
                   <div class = "container">
                     <div class = "card-panel" style = "padding:10px">
                       <h5><%= c.comment %></h5>
-                      <h6><%= c.author %></h6>
+                      <h6><%= c.user.email %></h6>
                     </div>
                   </div>
                   <% end %>
@@ -427,14 +427,18 @@
                 <label for="address">댓글</label>
                   <div class="row">
                     <div class="col s12 m9">
+                      <%= form_tag home_review_path_path(address_id: @address.id), method: 'POST', remote: true do %>
+                        <%= text_field_tag "comment", nil, class: 'form-control', placeholder: '댓글을 달아주세요.' %>
+                        <%= submit_tag "댓글달기" %>
+                      <% end %>
                     <!--이거 넣어주세요~ -->
-                    <input type="hidden" name="address_id" value="<%= @address.id %>"></input>
-                    <input type="hidden" name="author" id="author_<%= @address.id %>" value="<%= current_user.email %>">
+                    <!--<input type="hidden" name="address_id" value="<%#= @address.id %>"></input>-->
+                    <!--<input type="hidden" name="author" id="author_<%#= @address.id %>" value="<%#= current_user.email %>">-->
                     <!--끝-->
-                    <input type="text" name="comment" id="comment_<%= @address.id %>" class="form-control" placeholder="댓글을 달아주세요." style="resize: none;"  rows="1" >
-                    </div>
-                    <div class="col s12 m3 center">
-                    <button type="submit" id="click_func" class="btn btn-default" value ="<%= @address.id %>">댓글달기</button>
+                    <!--<input type="text" name="comment" id="comment_<%#= @address.id %>" class="form-control" placeholder="댓글을 달아주세요." style="resize: none;"  rows="1" >-->
+                    <!--</div>-->
+                    <!--<div class="col s12 m3 center">-->
+                    <!--<button type="submit" id="click_func" class="btn btn-default" value ="<%#= @address.id %>">댓글달기</button>-->
                     </div>
                   </div>
               </div>
@@ -482,35 +486,34 @@
     </div>
 
    <script>
-    $( document ).ready(function(){
-      $("#click_func").click(function(){
+    // $( document ).ready(function(){
+    //   $("#click_func").click(function(){
 
-          address_id = this.value;
-          comment = $("#comment_"+ address_id).val();
-          author = $("#author_" + address_id).val();
+    //       address_id = this.value;
+    //       comment = $("#comment_"+ address_id).val();
+    //       author = $("#author_" + address_id).val();
 
-          $.ajax({
-            method: "POST",
-            url: "/home/review_path",
-            data: {
-              address_id: address_id,
-              comment: comment,
-              author: author},
-              success: function(){
-                $(".reply_comment_"+ address_id).append(" <div class = \"container\"><div class = \"card-panel\" style = \"padding:10px\"><h5> "+  comment+ "</h5>" + "<h6>"+author+"</h6></div></div>");
-                $("#comment_"+ address_id).val('');
-              },
-              error: function(){
-                alert("리플이 작성되지 않았습니다.");
-              }
-            })
+    //       $.ajax({
+    //         method: "POST",
+    //         url: "/home/review_path",
+    //         data: {
+    //           address_id: address_id,
+    //           comment: comment,
+    //           author: author},
+    //           success: function(){
+    //             $(".reply_comment_"+ address_id).append(" <div class = \"container\"><div class = \"card-panel\" style = \"padding:10px\"><h5> "+  comment+ "</h5>" + "<h6>"+author+"</h6></div></div>");
+    //             $("#comment_"+ address_id).val('');
+    //           },
+    //           error: function(){
+    //             alert("리플이 작성되지 않았습니다.");
+    //           }
+    //         })
 
-          });
-    });
+    //       });
+    // });
 
     </script>
 
-    <script>
     <script>
     var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
@@ -538,8 +541,8 @@
         // 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);
     });
-</script>
     </script>
+    
     <script>
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
         var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -569,7 +572,7 @@
             map.setDraggable(draggable);
         }
         map.setDraggable(true);
-      </script>
+    </script>
 
     <script>
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div
