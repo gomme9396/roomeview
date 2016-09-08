@@ -75,11 +75,11 @@
             <div class="collapsible-body" style = "padding : 20px; overflow:auto;">
               <div class="row">
                 <div class="col s12">
-                  <ul class="tabs">
+                  <!-- <ul class="tabs">
                      <li class="tab col s3"><a target="_self" class="active" href="/home/sorting_data?param=1">최근등록순</a></li>
                     <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=2">건물이름순</a></li>
                     <li class="tab col s3"><a target="_self" href="/home/sorting_data?param=3">가격순TEST</a></li>
-                  </ul>
+                  </ul> -->
                 </div>
               </div>
                 <div class = "row">
@@ -90,7 +90,7 @@
                         <div class = "col s12 m6 l4">
                             <div class="card small hoverable">
                                 <div class = "card-image">
-                                    <img src="<%= image_path "intro-bg.jpg" %>">
+                                    <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
                                     <div class = "row">
                                       <span class="card-title"><%= a.detail_address %></span>
                                     </div>
@@ -126,10 +126,13 @@
                     <% if a.addressreviews.take != nil %>
                       <div class = "col s12 m6 l4">
                         <div class="card small hoverable">
-                          <div class = "card-image">
-                            <img src="<%= image_path "intro-bg.jpg" %>">
+                          <div class = "card-content">
+                            <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
                               <div class = "row">
-                                <span class="card-title"><%= a.detail_address %></span>
+                                <span class="card-title teal-text"><%= a.detail_address %></span>
+                                <p>
+                                  <%= a.addressreviews.take.comment1 %>
+                                </p>
                               </div>
                             </div>
                             <div class="card-action" style = "height:60px">
