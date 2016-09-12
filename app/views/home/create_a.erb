@@ -68,6 +68,7 @@
                             <h6>건물 이름</h6>
                           </label>
                           <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off" required>
+                          <span class = "red-text" style = "font-size:0.8rem">[주의! 몇 호인지는 입력하지마세요!]</span>
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
                           <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
                           <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
