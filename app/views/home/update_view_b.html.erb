@@ -7,6 +7,7 @@
 			<!--이거 넣어주세요~ -->
 			<% @update_review.each do |p| %>
 				<input type="hidden" name="address_id" value="<%= p.id %>">
+				<!--<input type="hidden" name="address_number">-->
 			<% end %>
 			<!--끝-->
 
@@ -43,17 +44,35 @@
 											<div class="container">
 												<div class="row">
 													<div class="input-field col s12 m12 l12">
-														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required><%= @one_review.comment1 %></textarea>
+														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required></textarea>
 														<label for="comment1">한줄평</label>
 													</div>
 												</div>
 											</div>
 											<div class="divider"></div>
+
+											<span class="card-title">
+												<h5>추가 내용</h5>
+											</span>
+											<blockquote>
+												방에 대해서 자유로운 의견을 남겨주세요
+											</blockquote>
+											<div class="row">
+												<div class = "container">
+													<div class="input-field col s12 m12 l12">
+														<textarea id="comment2" name="comment2" class="materialize-textarea"><%= @one_review.comment1 %>s</textarea>
+														<label for="comment2">추가내용</label>
+													</div>
+												</div>
+											</div>
+
+											<div class="divider"></div>
 											<span class="card-title">
 												<h5>보증금/월세</h5>
 											</span>
 											<blockquote>
-												계약하고 지불하신 보증금과 월세를 입력해주세요.(단위 : 만원)
+												계약하고 지불하신 보증금과 월세를 입력해주세요.(단위 : 만원)<br />
+												<span class = "red-text">주의! 전세는 월세 부분에 1을 적어주세요</span>
 											</blockquote>
 											<div class="row">
 												<div class="container">
@@ -83,7 +102,6 @@
 															<h6>입주일</h6>
 														</label>
 														<input id="start_date" name="start_date" type="date" class="datepicker center-align" value="<%= @one_review.start_date %>" required>
-														<p></p>
 													</div>
 													<div class="col s6 m6 l6">
 														<label for="end_date">
@@ -127,80 +145,80 @@
 											<% end %>
 										</div>
 
-										<div class="card-action">
-							        		<span class="card-title">
-											<h5>사진</h5>
-											</span>
-											<blockquote>
-												 방의 사진을 올려주세요(선택사항)
-											</blockquote>
+										<!--<div class="card-action">-->
+							   <!--     		<span class="card-title">-->
+										<!--	<h5>사진</h5>-->
+										<!--	</span>-->
+										<!--	<blockquote>-->
+										<!--		 방의 사진을 올려주세요(선택사항)-->
+										<!--	</blockquote>-->
 											
-											<div class = "container">
-											    <div class="file-field input-field">
-											    	<% if @one_review.image_url1 != nil %>
-											    		<input type="text" value=<%= @one_review.image_url1 %>>
-											    		<a href="/destroy_image1/<%= @one_review.id %>">[삭제]</a>
-											    	<% else %>
-												      <div class="btn">
-												        <span>파일</span>
-												        <input type="file" name="image1" accept="image/*">
-												      </div>
-												      <div class="file-path-wrapper">
-												        <input class="file-path validate" type="text">
-												      </div>
-											      <% end %>
-											    </div>
+										<!--	<div class = "container">-->
+										<!--	    <div class="file-field input-field">-->
+										<!--	    	<%# if @one_review.image_url1 != nil %>-->
+										<!--	    		<input type="text" value=<%#= @one_review.image_url1 %>>-->
+										<!--	    		<a href="/destroy_image1/<%#= @one_review.id %>">[삭제]</a>-->
+										<!--	    	<%# else %>-->
+										<!--		      <div class="btn">-->
+										<!--		        <span>파일</span>-->
+										<!--		        <input type="file" name="image1" accept="image/*">-->
+										<!--		      </div>-->
+										<!--		      <div class="file-path-wrapper">-->
+										<!--		        <input class="file-path validate" type="text">-->
+										<!--		      </div>-->
+										<!--	      <%# end %>-->
+										<!--	    </div>-->
 										    
-											    <div class="file-field input-field">
-											    	<% if @one_review.image_url2 != nil %>
-											    		<input type="text" value=<%= @one_review.image_url2 %>>
-											    		<a href="/destroy_image2/<%= @one_review.id %>">[삭제]</a>
-											    	<% else %>
-												      <div class="btn">
-												        <span>파일</span>
-												        <input type="file" name="image2" accept="image/*">
-												      </div>
-												      <div class="file-path-wrapper">
-												        <input class="file-path validate" type="text">
-												      </div>
-														<% end %>
-											    </div>
+										<!--	    <div class="file-field input-field">-->
+										<!--	    	<%# if @one_review.image_url2 != nil %>-->
+										<!--	    		<input type="text" value=<%#= @one_review.image_url2 %>>-->
+										<!--	    		<a href="/destroy_image2/<%#= @one_review.id %>">[삭제]</a>-->
+										<!--	    	<%# else %>-->
+										<!--		      <div class="btn">-->
+										<!--		        <span>파일</span>-->
+										<!--		        <input type="file" name="image2" accept="image/*">-->
+										<!--		      </div>-->
+										<!--		      <div class="file-path-wrapper">-->
+										<!--		        <input class="file-path validate" type="text">-->
+										<!--		      </div>-->
+										<!--				<%# end %>-->
+										<!--	    </div>-->
 										    
-											    <div class="file-field input-field">
-											    	<% if @one_review.image_url3 != nil %>
-											    		<input type="text" value=<%= @one_review.image_url3 %>>
-											    		<a href="/destroy_image3/<%= @one_review.id %>">[삭제]</a>
-											    	<% else %>
-												      <div class="btn">
-												        <span>파일</span>
-												        <input type="file" name="image3" accept="image/*">
-												      </div>
-												      <div class="file-path-wrapper">
-												        <input class="file-path validate" type="text">
-												      </div>
-														<% end %>
-											    </div>
+										<!--	    <div class="file-field input-field">-->
+										<!--	    	<%# if @one_review.image_url3 != nil %>-->
+										<!--	    		<input type="text" value=<%#= @one_review.image_url3 %>>-->
+										<!--	    		<a href="/destroy_image3/<%#= @one_review.id %>">[삭제]</a>-->
+										<!--	    	<%# else %>-->
+										<!--		      <div class="btn">-->
+										<!--		        <span>파일</span>-->
+										<!--		        <input type="file" name="image3" accept="image/*">-->
+										<!--		      </div>-->
+										<!--		      <div class="file-path-wrapper">-->
+										<!--		        <input class="file-path validate" type="text">-->
+										<!--		      </div>-->
+										<!--				<%# end %>-->
+										<!--	    </div>-->
 										    
-													<div class="file-field input-field">
-														<% if @one_review.image_url4 != nil %>
-												    	<input type="text" value=<%= @one_review.image_url4 %>>
-												    	<a href="/destroy_image4/<%= @one_review.id %>">[삭제]</a>
-												    <% else %>
-												      <div class="btn">
-												        <span>파일</span>
-												        <input type="file" name="image4" accept="image/*">
-												      </div>
-												      <div class="file-path-wrapper">
-												        <input class="file-path validate" type="text">
-												      </div>
-												    <% end %>
-													</div>
-										    </div>
+										<!--			<div class="file-field input-field">-->
+										<!--				<%# if @one_review.image_url4 != nil %>-->
+										<!--		    	<input type="text" value=<%#= @one_review.image_url4 %>>-->
+										<!--		    	<a href="/destroy_image4/<%#= @one_review.id %>">[삭제]</a>-->
+										<!--		    <%# else %>-->
+										<!--		      <div class="btn">-->
+										<!--		        <span>파일</span>-->
+										<!--		        <input type="file" name="image4" accept="image/*">-->
+										<!--		      </div>-->
+										<!--		      <div class="file-path-wrapper">-->
+										<!--		        <input class="file-path validate" type="text">-->
+										<!--		      </div>-->
+										<!--		    <%# end %>-->
+										<!--			</div>-->
+										<!--    </div>-->
 											<!--<input type="file" name="image1" accept="image/*"><br>-->
 											<!--<input type="file" name="image2" accept="image/*"><br>-->
 											<!--<input type="file" name="image3" accept="image/*"><br>-->
 											<!--<input type="file" name="image4" accept="image/*">-->
-										</div>
+										<!--</div>-->
 									</div>
 									<br>
 									<!----------------------카드 구분선----------------------->
@@ -210,617 +228,626 @@
 											<span class="card-title">
 												<h4>시설 정보</h4>
 											</span>
+											<blockquote>
+												항목명을 클릭하면 설명이 나옵니다.
+											</blockquote>
 											<div class="divider"></div>
-											<span class="card-title">
-												<h5>냉방 시설</h5>
-											</span>
-											<blockquote>
-												냉방(에어컨)이 잘되나요?
-											</blockquote>
-											<div class = "container">
-											<% if @one_review.cool == 5 %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool5" checked value="5"/>
-												<label class="teal-text text-darken-3" for="cool5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
-												<label class="teal-text text-darken-3" for="cool5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.cool == 4 %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="cool4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
-												<label class="teal-text text-darken-3" for="cool4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.cool == 3 %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="cool3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool3" value="3"/>
-												<label class="teal-text text-darken-3" for="cool3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.cool == 2 %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="cool2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
-												<label class="teal-text text-darken-3" for="cool2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.cool == 1 %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="cool1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
-												<label class="teal-text text-darken-3" for="cool1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>난방 시설</h5>
-											</span>
-											<blockquote>
-												난방(보일러)이 잘되나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.warm == 5 %>	
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm5" checked value="5"/>
-												<label class="teal-text text-darken-3" for="warm5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
-												<label class="teal-text text-darken-3" for="warm5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.warm == 4 %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="warm4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
-												<label class="teal-text text-darken-3" for="warm4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.warm == 3 %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="warm3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm3" value="3"/>
-												<label class="teal-text text-darken-3" for="warm3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.warm == 2 %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="warm2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
-												<label class="teal-text text-darken-3" for="warm2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.warm == 1 %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="warm1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
-												<label class="teal-text text-darken-3" for="warm1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>채광 수준</h5>
-											</span>
-											<blockquote>
-												방에 햇빛이 잘들어오나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.sun == 5 %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun5" checked value="5"/>
-												<label class="teal-text text-darken-3" for="sun5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
-												<label class="teal-text text-darken-3" for="sun5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.sun == 4 %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="sun4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
-												<label class="teal-text text-darken-3" for="sun4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.sun == 3 %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="sun3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun3" value="3"/>
-												<label class="teal-text text-darken-3" for="sun3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.sun == 2 %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="sun2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
-												<label class="teal-text text-darken-3" for="sun2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.sun == 1 %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="sun1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
-												<label class="teal-text text-darken-3" for="sun1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>방음 수준</h5>
-											</span>
-											<blockquote>
-												방에 방음이 잘되나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.blocking == 5 %>	
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking5" checked value="5"/>
-												<label class="teal-text text-darken-3" for="blocking5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
-												<label class="teal-text text-darken-3" for="blocking5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.blocking == 4 %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="blocking4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
-												<label class="teal-text text-darken-3" for="blocking4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.blocking == 3 %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="blocking3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking3" value="3"/>
-												<label class="teal-text text-darken-3" for="blocking3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.blocking == 2 %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="blocking2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
-												<label class="teal-text text-darken-3" for="blocking2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.blocking == 1 %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="blocking1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
-												<label class="teal-text text-darken-3" for="blocking1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>환기 수준</h5>
-											</span>
-											<blockquote>
-												방에 환기가 잘되나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.wind == 5 %>	
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind5" checked value="5"/>
-												<label class="teal-text text-darken-3" for="wind5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
-												<label class="teal-text text-darken-3" for="wind5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.wind == 4 %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="wind4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
-												<label class="teal-text text-darken-3" for="wind4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.wind == 3 %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="wind3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind3" value="3"/>
-												<label class="teal-text text-darken-3" for="wind3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.wind == 2 %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="wind2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
-												<label class="teal-text text-darken-3" for="wind2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.wind == 1 %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="wind1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
-												<label class="teal-text text-darken-3" for="wind1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>방충 상태</h5>
-											</span>
-											<blockquote>
-												방에 방충이 잘 되고 있나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.bug == 5 %>	
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug5"  checked value="5"/>
-												<label class="teal-text text-darken-3" for="bug5">아주 좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug5"  value="5"/>
-												<label class="teal-text text-darken-3" for="bug5">아주 좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.bug == 4 %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug4" checked value="4"/>
-												<label class="teal-text text-darken-3" for="bug4">좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
-												<label class="teal-text text-darken-3" for="bug4">좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.bug == 3 %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
-												<label class="teal-text text-darken-3" for="bug3">쓸만해요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug3" value="3"/>
-												<label class="teal-text text-darken-3" for="bug3">쓸만해요</label>
-											</p>
-											<% end %>
-											<% if @one_review.bug == 2 %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug2" checked value="2"/>
-												<label class="teal-text text-darken-3" for="bug2">안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
-												<label class="teal-text text-darken-3" for="bug2">안좋아요</label>
-											</p>
-											<% end %>
-											<% if @one_review.bug == 1 %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="bug1">아주 안좋아요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
-												<label class="teal-text text-darken-3" for="bug1">아주 안좋아요</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>수도 시설 상태</h5>
-											</span>
-											<blockquote>
-												수도 시설에서 녹물이 나오나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.iron == 1 %>
-											<p>
-												<input class="with-gap" name="iron" type="radio" id="iron1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="iron1">나와요</label>
-											</p>
-											<p>
-												<input class="with-gap" name="iron" type="radio" id="iron0" value="0"/>
-												<label class="teal-text text-darken-3" for="iron0">안나와요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="iron" type="radio" id="iron1"  value="1"/>
-												<label class="teal-text text-darken-3" for="iron1">나와요</label>
-											</p>
-											<p>
-												<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
-												<label class="teal-text text-darken-3" for="iron0">안나와요</label>
-											</p>
-											<% end %>
-											</div>
+											<div class = "row">
+												<br />
+												<div class = "col s6 m6 l6">
+													<span class="card-title" onclick="Materialize.toast('냉방(에어컨)이 잘되나요?', 4000)">
+															<h5 class = "">냉방 시설</h5>
+													</span>
+													<div class="container">
+														<br />
+														<% if @one_review.cool == 5 %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="cool5">아주 좋아요</label>
+															</p>
+															<% else %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
+																<label class="teal-text text-darken-3" for="cool5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.cool == 4 %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="cool4">좋아요</label>
+															</p>
+															<% else %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
+																<label class="teal-text text-darken-3" for="cool4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.cool == 3 %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="cool3">쓸만해요</label>
+															</p>
+															<% else %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool3" value="3"/>
+																<label class="teal-text text-darken-3" for="cool3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.cool == 2 %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="cool2">안좋아요</label>
+															</p>
+															<% else %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
+																<label class="teal-text text-darken-3" for="cool2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.cool == 1 %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="cool1">아주 안좋아요</label>
+															</p>
+															<% else %>
+															<p>
+																<input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
+																<label class="teal-text text-darken-3" for="cool1">아주 안좋아요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+												<div class= "col s6 m6 l6">
+													<span class="card-title">
+														<h5 class = "" onclick="Materialize.toast('난방(보일러)이 잘되나요?', 4000)">난방 시설</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.warm == 5 %>	
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="warm5">아주 좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
+																<label class="teal-text text-darken-3" for="warm5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.warm == 4 %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="warm4">좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
+																<label class="teal-text text-darken-3" for="warm4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.warm == 3 %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="warm3">쓸만해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm3" value="3"/>
+																<label class="teal-text text-darken-3" for="warm3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.warm == 2 %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="warm2">안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
+																<label class="teal-text text-darken-3" for="warm2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.warm == 1 %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="warm1">아주 안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
+																<label class="teal-text text-darken-3" for="warm1">아주 안좋아요</label>
+															</p>
+														<% end %>
+													</div>
 
-											<blockquote>
-												화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.smell == 1 %>
-											<p>
-												<input class="with-gap" name="smell" type="radio" id="smell1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="smell1">나요</label>
-											</p>
-											<p>
-												<input class="with-gap" name="smell" type="radio" id="smell0" value="0"/>
-												<label class="teal-text text-darken-3" for="smell0">안나요</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="smell" type="radio" id="smell1"  value="1"/>
-												<label class="teal-text text-darken-3" for="smell1">나요</label>
-											</p>
-											<p>
-												<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
-												<label class="teal-text text-darken-3" for="smell0">안나요</label>
-											</p>
-											<% end %>
+												</div>
 											</div>
 										</div>
 										<div class="card-action">
-											<span class="card-title">
-												<h5>반려동물 동거 가능 여부</h5>
-											</span>
-											<blockquote>
-												방에서 반려동물과 함께 지낼 수 있나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-											<% if @one_review.pet == 1 %>
-											<p>
-												<input class="with-gap" name="pet" type="radio" id="pet1" checked value="1"/>
-												<label class="teal-text text-darken-3" for="pet1">가능</label>
-											</p>
-											<p>
-												<input class="with-gap" name="pet" type="radio" id="pet0" value="0"/>
-												<label class="teal-text text-darken-3" for="pet0">불가능</label>
-											</p>
-											<% else %>
-											<p>
-												<input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
-												<label class="teal-text text-darken-3" for="pet1">가능</label>
-											</p>
-											<p>
-												<input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
-												<label class="teal-text text-darken-3" for="pet0">불가능</label>
-											</p>
-											<% end %>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>구비 시설</h5>
-											</span>
-											<blockquote>
-												아래 항목에서 건물에 구비된 시설을 체크해주세요.
-											</blockquote>
-											<!--라디오박스-->
-											<div class = "container">
-												<div class = "row">
-													<div class = "col s6 m4 l4">
-														<% if @one_review.gas == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name = "gas" id="gas" checked="checked" value = "1"  />
-													      <label for="gas">가스레인지</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name = "gas" id="gas" value = "1"  />
-													      <label for="gas">가스레인지</label>
-													    </p>
-													    <% end %>
+											<div class = "row">
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 class = "" onclick="Materialize.toast('방에 햇빛이 잘들어오나요?', 4000)">채광 수준</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.sun == 5 %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="sun5">아주 좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
+																<label class="teal-text text-darken-3" for="sun5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sun == 4 %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="sun4">좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
+																<label class="teal-text text-darken-3" for="sun4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sun == 3 %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="sun3">쓸만해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun3" value="3"/>
+																<label class="teal-text text-darken-3" for="sun3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sun == 2 %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="sun2">안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
+																<label class="teal-text text-darken-3" for="sun2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sun == 1 %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="sun1">아주 안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
+																<label class="teal-text text-darken-3" for="sun1">아주 안좋아요</label>
+															</p>
+														<% end %>
 													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.micro == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name = "micro" id="micro" checked="checked" value = "1" />
-													      <label for="micro">전자레인지</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name = "micro" id="micro" value = "1" />
-													      <label for="micro">전자레인지</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.bed == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name = "bed" id="bed" checked="checked" value = "1" />
-													      <label for="bed">침대</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name = "bed" id="bed" value = "1" />
-													      <label for="bed">침대</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.desk == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value = "1"  />
-													      <label for="desk">책상</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="desk" id="desk" value = "1"  />
-													      <label for="desk">책상</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.laundry == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value = "1" />
-													      <label for="laundry">세탁기</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="laundry" id="laundry" value = "1" />
-													      <label for="laundry">세탁기</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.internet == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value = "1" />
-													      <label for="internet">무선인터넷</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="internet" id="internet" value = "1" />
-													      <label for="internet">무선인터넷</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.fire == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value = "1" />
-													      <label for="fire">화재장비</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="fire" id="fire" value = "1" />
-													      <label for="fire">화재장비</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.cctv == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value = "1" />
-													      <label for="cctv">CCTV</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="cctv" id="cctv" value = "1" />
-													      <label for="cctv">CCTV</label>
-													    </p>
-													    <% end %>
-													</div>
-													<div class = "col s6 m4 l4">
-														<% if @one_review.parking == 1 %>
-														<p>
-													      <input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value = "1" />
-													      <label for="parking">주차공간</label>
-													    </p>
-													    <% else %>
-													    <p>
-													      <input type="checkbox" class="filled-in" name="parking" id="parking" value = "1" />
-													      <label for="parking">주차공간</label>
-													    </p>
-													    <% end %>
+												</div>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 class = "" onclick="Materialize.toast('방에 방음이 잘되나요?', 4000)">방음 수준</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.blocking == 5 %>	
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="blocking5">아주 좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
+																<label class="teal-text text-darken-3" for="blocking5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.blocking == 4 %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="blocking4">좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
+																<label class="teal-text text-darken-3" for="blocking4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.blocking == 3 %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="blocking3">쓸만해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking3" value="3"/>
+																<label class="teal-text text-darken-3" for="blocking3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.blocking == 2 %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="blocking2">안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
+																<label class="teal-text text-darken-3" for="blocking2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.blocking == 1 %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="blocking1">아주 안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
+																<label class="teal-text text-darken-3" for="blocking1">아주 안좋아요</label>
+															</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
 										</div>
+										<div class="card-action">
+											<div class = "row">
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('방에 환기가 잘되나요?', 4000)">환기 수준</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.wind == 5 %>	
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="wind5">아주 좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
+																<label class="teal-text text-darken-3" for="wind5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.wind == 4 %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="wind4">좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
+																<label class="teal-text text-darken-3" for="wind4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.wind == 3 %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="wind3">쓸만해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind3" value="3"/>
+																<label class="teal-text text-darken-3" for="wind3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.wind == 2 %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="wind2">안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
+																<label class="teal-text text-darken-3" for="wind2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.wind == 1 %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="wind1">아주 안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
+																<label class="teal-text text-darken-3" for="wind1">아주 안좋아요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('방에 방충이 잘 되고 있나요?', 4000)">방충 상태</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.bug == 5 %>	
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug5"  checked value="5"/>
+																<label class="teal-text text-darken-3" for="bug5">아주 좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug5"  value="5"/>
+																<label class="teal-text text-darken-3" for="bug5">아주 좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.bug == 4 %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="bug4">좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
+																<label class="teal-text text-darken-3" for="bug4">좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.bug == 3 %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="bug3">쓸만해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug3" value="3"/>
+																<label class="teal-text text-darken-3" for="bug3">쓸만해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.bug == 2 %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="bug2">안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
+																<label class="teal-text text-darken-3" for="bug2">안좋아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.bug == 1 %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="bug1">아주 안좋아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
+																<label class="teal-text text-darken-3" for="bug1">아주 안좋아요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="card-action">
+											<div class = "row">
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('수도 시설에서 녹물이 나오나요?', 4000)">수도 녹물</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.iron == 1 %>
+															<p>
+																<input class="with-gap" name="iron" type="radio" id="iron1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="iron1">나와요</label>
+															</p>
+															<p>
+																<input class="with-gap" name="iron" type="radio" id="iron0" value="0"/>
+																<label class="teal-text text-darken-3" for="iron0">안나와요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="iron" type="radio" id="iron1"  value="1"/>
+																<label class="teal-text text-darken-3" for="iron1">나와요</label>
+															</p>
+															<p>
+																<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
+																<label class="teal-text text-darken-3" for="iron0">안나와요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?', 4000)">배수구 냄새</h5>
+													</span>
+													<!--라디오박스-->
+													<div class="container">
+														<br />
+														<% if @one_review.smell == 1 %>
+															<p>
+																<input class="with-gap" name="smell" type="radio" id="smell1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="smell1">나요</label>
+															</p>
+															<p>
+																<input class="with-gap" name="smell" type="radio" id="smell0" value="0"/>
+																<label class="teal-text text-darken-3" for="smell0">안나요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="smell" type="radio" id="smell1"  value="1"/>
+																<label class="teal-text text-darken-3" for="smell1">나요</label>
+															</p>
+															<p>
+																<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
+																<label class="teal-text text-darken-3" for="smell0">안나요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card-action">
+											<span class="card-title">
+												<h5 onclick="Materialize.toast('방에서 반려동물과 함께 지낼 수 있나요?', 4000)">반려동물 동거 가능 여부</h5>
+											</span>
+											<!--라디오박스-->
+											<div class="container">
+												<br />
+												<% if @one_review.pet == 1 %>
+													<p>
+														<input class="with-gap" name="pet" type="radio" id="pet1" checked value="1"/>
+														<label class="teal-text text-darken-3" for="pet1">가능</label>
+													</p>
+													<p>
+														<input class="with-gap" name="pet" type="radio" id="pet0" value="0"/>
+														<label class="teal-text text-darken-3" for="pet0">불가능</label>
+													</p>
+												<% else %>
+													<p>
+														<input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
+														<label class="teal-text text-darken-3" for="pet1">가능</label>
+													</p>
+													<p>
+														<input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
+														<label class="teal-text text-darken-3" for="pet0">불가능</label>
+													</p>
+												<% end %>
+											</div>
+										</div>
+										<div class="card-action">
+											<span class="card-title">
+												<h5 onclick="Materialize.toast('아래 항목에서 건물에 구비된 시설을 체크해주세요. (공동 사용하는 물품은 추가코멘트에 작성해주세요)', 4000)">구비 시설</h5>
+											</span>
+											<!--라디오박스-->
+											<div class="container">
+												<br />
+												<div class="row">
+													<div class="col s12 m4 l4">
+														<% if @one_review.gas == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name = "gas" id="gas" checked="checked" value = "1"  />
+														      <label for="gas">가스레인지</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name = "gas" id="gas" value = "1"  />
+														      <label for="gas">가스레인지</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.micro == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name = "micro" id="micro" checked="checked" value = "1" />
+														      <label for="micro">전자레인지</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name = "micro" id="micro" value = "1" />
+														      <label for="micro">전자레인지</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.bed == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name = "bed" id="bed" checked="checked" value = "1" />
+														      <label for="bed">침대</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name = "bed" id="bed" value = "1" />
+														      <label for="bed">침대</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.desk == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value = "1"  />
+														      <label for="desk">책상</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="desk" id="desk" value = "1"  />
+														      <label for="desk">책상</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.laundry == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value = "1" />
+														      <label for="laundry">세탁기</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="laundry" id="laundry" value = "1" />
+														      <label for="laundry">세탁기</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.internet == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value = "1" />
+														      <label for="internet">무선인터넷</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="internet" id="internet" value = "1" />
+														      <label for="internet">무선인터넷</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.fire == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value = "1" />
+														      <label for="fire">화재장비</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="fire" id="fire" value = "1" />
+														      <label for="fire">화재장비</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.cctv == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value = "1" />
+														      <label for="cctv">CCTV</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="cctv" id="cctv" value = "1" />
+														      <label for="cctv">CCTV</label>
+														    </p>
+													    <% end %>
+													</div>
+													<div class = "col s6 m4 l4">
+														<% if @one_review.parking == 1 %>
+															<p>
+														      <input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value = "1" />
+														      <label for="parking">주차공간</label>
+														    </p>
+													    <% else %>
+														    <p>
+														      <input type="checkbox" class="filled-in" name="parking" id="parking" value = "1" />
+														      <label for="parking">주차공간</label>
+														    </p>
+													    <% end %>
+													</div>
+
+												</div>
+
+											</div>
+										</div>
+									</div>
 
 									<!----------------------카드 구분선----------------------->
 									<div class="card blue-grey lighten-5">
@@ -829,289 +856,266 @@
 												<h4>주변 환경 정보</h4>
 											</span>
 											<div class="divider"></div>
-											<span class="card-title">
-												<h5>주변 가로등</h5>
-											</span>
-											<blockquote>
-												건물 주변에 가로등이 충분하나요?
-											</blockquote>
+
 											<div class="row">
-												<div class = "container">
-												<% if @one_review.night == 5 %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night5" checked value="5"/>
-													<label class="teal-text text-darken-3" for="night5">많아요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night5" value="5"/>
-													<label class="teal-text text-darken-3" for="night5">많아요</label>
-												</p>
-												<% end %>
-												<% if @one_review.night == 4 %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night4" checked value="4"/>
-													<label class="teal-text text-darken-3" for="night4">충분해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night4" value="4"/>
-													<label class="teal-text text-darken-3" for="night4">충분해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.night == 3 %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
-													<label class="teal-text text-darken-3" for="night3">적절해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night3" value="3"/>
-													<label class="teal-text text-darken-3" for="night3">적절해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.night == 2 %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night2" checked value="2"/>
-													<label class="teal-text text-darken-3" for="night2">부족해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night2" value="2"/>
-													<label class="teal-text text-darken-3" for="night2">부족해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.night == 1 %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night1" checked value="1"/>
-													<label class="teal-text text-darken-3" for="night1">매우 부족해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="night" type="radio" id="night1" value="1"/>
-													<label class="teal-text text-darken-3" for="night1">매우 부족해요</label>
-												</p>
-												<% end %>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('건물이 있는 골목에 가로등이 몇개있나요?', 4000)">주변 가로등</h5>
+													</span>
+													<div class="container">
+														<% if @one_review.night == 5 %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="night5">많아요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night5" value="5"/>
+																<label class="teal-text text-darken-3" for="night5">많아요</label>
+															</p>
+														<% end %>
+														<% if @one_review.night == 4 %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="night4">충분해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night4" value="4"/>
+																<label class="teal-text text-darken-3" for="night4">충분해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.night == 3 %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="night3">적절해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night3" value="3"/>
+																<label class="teal-text text-darken-3" for="night3">적절해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.night == 2 %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="night2">부족해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night2" value="2"/>
+																<label class="teal-text text-darken-3" for="night2">부족해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.night == 1 %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="night1">매우 부족해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="night" type="radio" id="night1" value="1"/>
+																<label class="teal-text text-darken-3" for="night1">매우 부족해요</label>
+															</p>
+														<% end %>
+													</div>
 												</div>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('야간에 방에 들어오는 외부의 빛이 많은가요?', 4000)">야간 빛공해</h5>
+													</span>
+													<div class="container">
+														<% if @one_review.light == 5 %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="light5">없어요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light5" value="5"/>
+																<label class="teal-text text-darken-3" for="light5">없어요</label>
+															</p>
+														<% end %>
+														<% if @one_review.light == 4 %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="light4">적은편이에요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light4" value="4"/>
+																<label class="teal-text text-darken-3" for="light4">적은편이에요</label>
+															</p>
+														<% end %>
+														<% if @one_review.light == 3 %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="light3">보통이에요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light3" value="3"/>
+																<label class="teal-text text-darken-3" for="light3">보통이에요</label>
+															</p>
+														<% end %>
+														<% if @one_review.light == 2 %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="light2">많은편이에요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light2" value="2"/>
+																<label class="teal-text text-darken-3" for="light2">많은편이에요</label>
+															</p>
+														<% end %>
+														<% if @one_review.light == 1 %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="light1">심해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="light" type="radio" id="light1" value="1"/>
+																<label class="teal-text text-darken-3" for="light1">심해요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+
 											</div>
 										</div>
 										<div class="divider"></div>
 										<div class="card-content">
-											<span class="card-title">
-												<h5>야간 빛공해</h5>
-											</span>
-											<blockquote>
-												야간에 방에 들어오는 외부의 빛이 많은가요?
-											</blockquote>
-											<div class = "container">
-												<% if @one_review.light == 5 %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light5" checked value="5"/>
-													<label class="teal-text text-darken-3" for="light5">없어요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light5" value="5"/>
-													<label class="teal-text text-darken-3" for="light5">없어요</label>
-												</p>
-												<% end %>
-												<% if @one_review.light == 4 %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light4" checked value="4"/>
-													<label class="teal-text text-darken-3" for="light4">적은편이에요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light4" value="4"/>
-													<label class="teal-text text-darken-3" for="light4">적은편이에요</label>
-												</p>
-												<% end %>
-												<% if @one_review.light == 3 %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
-													<label class="teal-text text-darken-3" for="light3">보통이에요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light3" value="3"/>
-													<label class="teal-text text-darken-3" for="light3">보통이에요</label>
-												</p>
-												<% end %>
-												<% if @one_review.light == 2 %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light2" checked value="2"/>
-													<label class="teal-text text-darken-3" for="light2">많은편이에요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light2" value="2"/>
-													<label class="teal-text text-darken-3" for="light2">많은편이에요</label>
-												</p>
-												<% end %>
-												<% if @one_review.light == 1 %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light1" checked value="1"/>
-													<label class="teal-text text-darken-3" for="light1">심해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="light" type="radio" id="light1" value="1"/>
-													<label class="teal-text text-darken-3" for="light1">심해요</label>
-												</p>
-												<% end %>
-											</div>
-										</div>
-
-										<div class="divider"></div>
-										<div class="card-content">
-											<span class="card-title">
-												<h5>외부 소음</h5>
-											</span>
-											<blockquote>
-												건물 주변에 소음이 심한가요?
-											</blockquote>
-											<div class = "container">
-												<% if @one_review.noise == 5 %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise5" checked value="5"/>
-													<label class="teal-text text-darken-3" for="noise5">아주 조용해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
-													<label class="teal-text text-darken-3" for="noise5">아주 조용해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.noise == 4 %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise4" checked value="4"/>
-													<label class="teal-text text-darken-3" for="noise4">조용해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
-													<label class="teal-text text-darken-3" for="noise4">조용해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.noise == 3 %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
-													<label class="teal-text text-darken-3" for="noise3">보통이에요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise3" value="3"/>
-													<label class="teal-text text-darken-3" for="noise3">보통이에요</label>
-												</p>
-												<% end %>
-												<% if @one_review.noise == 2 %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise2" checked value="2"/>
-													<label class="teal-text text-darken-3" for="noise2">시끄러워요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
-													<label class="teal-text text-darken-3" for="noise2">시끄러워요</label>
-												</p>
-												<% end %>
-												<% if @one_review.noise == 1 %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise1" checked value="1"/>
-													<label class="teal-text text-darken-3" for="noise1">매우 시끄러워요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
-													<label class="teal-text text-darken-3" for="noise1">매우 시끄러워요</label>
-												</p>
-												<% end %>
-											</div>
-										</div>
-
-										<div class="divider"></div>
-										<div class="card-content">
-											<span class="card-title">
-												<h5>건물 위생</h5>
-											</span>
-											<blockquote>
-												건물 주변 위생 상태는 어떤가요?
-											</blockquote>
-											<div class = "container">
-												<% if @one_review.sani == 5 %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani5" checked value="5"/>
-													<label class="teal-text text-darken-3" for="sani5">아주 깨끗해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
-													<label class="teal-text text-darken-3" for="sani5">아주 깨끗해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.sani == 4 %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani4" checked value="4"/>
-													<label class="teal-text text-darken-3" for="sani4">깨끗해요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
-													<label class="teal-text text-darken-3" for="sani4">깨끗해요</label>
-												</p>
-												<% end %>
-												<% if @one_review.sani == 3 %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
-													<label class="teal-text text-darken-3" for="sani3">보통이에요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani3" value="3"/>
-													<label class="teal-text text-darken-3" for="sani3">보통이에요</label>
-												</p>
-												<% end %>
-												<% if @one_review.sani == 2 %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani2" checked value="2"/>
-													<label class="teal-text text-darken-3" for="sani2">더러워요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
-													<label class="teal-text text-darken-3" for="sani2">더러워요</label>
-												</p>
-												<% end %>
-												<% if @one_review.sani == 1 %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani1" checked value="1"/>
-													<label class="teal-text text-darken-3" for="sani1">매우 더러워요</label>
-												</p>
-												<% else %>
-												<p>
-													<input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
-													<label class="teal-text text-darken-3" for="sani1">매우 더러워요</label>
-												</p>
-												<% end %>
-											</div>
-										</div>
-
-										<div class="card-action">
-											<span class="card-title">
-												<h5>추가 내용</h5>
-											</span>
-											<blockquote>
-												방에 대해서 자유로운 의견을 남겨주세요
-											</blockquote>
-											<div class="row">
-												<div class = "container">
-													<div class="input-field col s12 m12 l12">
-														<textarea id="comment2" name="comment2" class="materialize-textarea"><%= @one_review.comment2 %></textarea>
-														<label for="comment2">추가내용</label>
+											<div class = "row">
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('건물 주변에 소음이 심한가요?', 4000)">외부 소음</h5>
+													</span>
+													<div class="container">
+														<% if @one_review.noise == 5 %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="noise5">아주 조용해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
+																<label class="teal-text text-darken-3" for="noise5">아주 조용해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.noise == 4 %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="noise4">조용해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
+																<label class="teal-text text-darken-3" for="noise4">조용해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.noise == 3 %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="noise3">보통이에요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise3" value="3"/>
+																<label class="teal-text text-darken-3" for="noise3">보통이에요</label>
+															</p>
+														<% end %>
+														<% if @one_review.noise == 2 %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="noise2">시끄러워요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
+																<label class="teal-text text-darken-3" for="noise2">시끄러워요</label>
+															</p>
+														<% end %>
+														<% if @one_review.noise == 1 %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="noise1">매우 시끄러워요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
+																<label class="teal-text text-darken-3" for="noise1">매우 시끄러워요</label>
+															</p>
+														<% end %>
+													</div>
+												</div>
+												<div class = "col s6 m6 l6">
+													<span class="card-title">
+														<h5 onclick="Materialize.toast('건물 주변 위생 상태는 어떤가요?', 4000)">건물 위생</h5>
+													</span>
+													<div class="container">
+														<% if @one_review.sani == 5 %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani5" checked value="5"/>
+																<label class="teal-text text-darken-3" for="sani5">아주 깨끗해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
+																<label class="teal-text text-darken-3" for="sani5">아주 깨끗해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sani == 4 %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani4" checked value="4"/>
+																<label class="teal-text text-darken-3" for="sani4">깨끗해요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
+																<label class="teal-text text-darken-3" for="sani4">깨끗해요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sani == 3 %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
+																<label class="teal-text text-darken-3" for="sani3">보통이에요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani3" value="3"/>
+																<label class="teal-text text-darken-3" for="sani3">보통이에요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sani == 2 %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani2" checked value="2"/>
+																<label class="teal-text text-darken-3" for="sani2">더러워요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
+																<label class="teal-text text-darken-3" for="sani2">더러워요</label>
+															</p>
+														<% end %>
+														<% if @one_review.sani == 1 %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani1" checked value="1"/>
+																<label class="teal-text text-darken-3" for="sani1">매우 더러워요</label>
+															</p>
+														<% else %>
+															<p>
+																<input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
+																<label class="teal-text text-darken-3" for="sani1">매우 더러워요</label>
+															</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
+
 										</div>
+
 										</div>
 									</div>
 
@@ -1122,6 +1126,7 @@
 								<a href="/update_view_a/<%= @one_review.id %>" class="btn btn-default">취소하기</a>
 								<input class="btn btn-default" type="submit" value="완료하기">
 							</div>
+							<br />
 						</div>
 					</div>
 
@@ -1133,3 +1138,16 @@
 </div>
 
 <%= render :partial => "/home/footer" %>
+<script>
+	var parcel_address = [];
+
+	<% @update_review.each do |c| %>
+    if (parcel_address.includes("<%= c.parcel_address %>") == false) {
+      	parcel_address.push("<%= c.parcel_address %>");
+    }
+  <% end %>
+
+  var address_number = parcel_address.length
+
+  $('input[name=address_number]').attr('value', address_number);
+</script>

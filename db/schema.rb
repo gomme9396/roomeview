@@ -17,7 +17,9 @@ ActiveRecord::Schema.define(version: 20160705054920) do
     t.float    "marker1"
     t.float    "marker2"
     t.string   "current_user"
-    t.string   "address"
+    t.string   "total_address"
+    t.string   "parcel_address"
+    t.string   "road_address"
     t.string   "detail_address"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

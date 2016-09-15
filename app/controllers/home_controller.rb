@@ -9,8 +9,7 @@ class HomeController < ApplicationController
               "end_date","fee","comment1","image_url1","image_url2","image_url3",
               "image_url4","cool","warm","sun","blocking","wind","bug","iron","smell",
               "pet","gas","micro","bed","desk","laundry","internet","fire","cctv","parking",
-              "comment2","night","light","noise","sani"
-            ]
+              "comment2","night","light","noise","sani"]
           @addressreview.each do |a|
             csv << [a.id, a.address_id, a.address_name, a.detail_address_name, a.price, a.month,a.start_date,
                     a.end_date, a.fee, a.comment1, a.image_url1,a.image_url2, a.image_url3,
@@ -25,9 +24,11 @@ class HomeController < ApplicationController
     def export_address
       @address = Address.all
       address = CSV.generate do |csv|
-      csv << ["id","marker1", "marker2", "current_user","address", "detail_address"]
+      csv << ["id","marker1", "marker2", "current_user","total_address", "parcel_address", "road_address", 
+              "detail_address"]
           @address.each do |a|
-            csv << [a.id,a.marker1, a.marker2,a.current_user, a.address, a.detail_address]
+            csv << [a.id, a.marker1, a.marker2, a.current_user, a.total_address, a.parcel_address, a.road_address, 
+                    a.detail_address]
           end
       end
       send_data(address, :type => 'text/csv', :filename => 'address.csv')
@@ -44,19 +45,8 @@ class HomeController < ApplicationController
       send_data(user, :type => 'text/csv', :filename => 'user.csv')
     end
 
-    def index
-
-
-    end
-
-    def create
-    end
-
     def create_b
       @create_review = Address.all
-    end
-
-    def create_c
     end
 
     def list_path_a
@@ -65,11 +55,18 @@ class HomeController < ApplicationController
 
       # Address.get_address_save
       address = Address.new
+      
       address.marker1 = params[:marker1]
       address.marker2 = params[:marker2]
-      address.address = params[:address]
+      
+      address.total_address = params[:total_address]
+      address.parcel_address = params[:parcel_address]
+      address.road_address = params[:road_address]
+      
       address.detail_address = params[:detail_address]
+      
       address.current_user = params[:current_user]
+      
       address.save
       redirect_to "/home/create_b"
     end
@@ -83,7 +80,7 @@ class HomeController < ApplicationController
 
       review.address_id = params[:address_id]
 
-      review.address_name = @address.address
+      review.address_name = @address.total_address
       review.detail_address_name = @address.detail_address
 
       review.price = params[:price]
@@ -167,12 +164,12 @@ class HomeController < ApplicationController
         elsif search_value == "2"
           find_address = params[:find_detail_address]
           @find_address = find_address.strip
-          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+          @view_address = Address.where("total_address LIKE ?", "%#{@find_address}%" )
         else
         #지도에서 찾기
           find_address = params[:find_address]
           @find_address = find_address.strip
-          @view_address = Address.where("address LIKE ?", "%#{@find_address}%" )
+          @view_address = Address.where("total_address LIKE ?", "%#{@find_address}%" )
         end
     end
 
@@ -226,10 +223,16 @@ class HomeController < ApplicationController
 
     def update_a
       @one_address = Address.find(params[:address_id])
+      
       @one_address.marker1 = params[:marker1]
       @one_address.marker2 = params[:marker2]
-      @one_address.address = params[:address]
+      
+      @one_address.total_address = params[:total_address]
+      @one_address.parcel_address = params[:parcel_address]
+      @one_address.road_address = params[:road_address]
+      
       @one_address.detail_address = params[:detail_address]
+      
       @one_address.save
       redirect_to "/update_view_b/" + params[:address_id]
     end
@@ -238,8 +241,9 @@ class HomeController < ApplicationController
       @address = Address.find(params[:address_id])
 
       @one_review = @address.addressreviews.take
+      
       @one_review.address_id = params[:address_id]
-      @one_review.address_name = @address.address
+      @one_review.address_name = @address.total_address
       @one_review.detail_address_name = @address.detail_address
 
       @one_review.price = params[:price]
@@ -304,9 +308,6 @@ class HomeController < ApplicationController
       redirect_to "/home/list_find"
     end
 
-    def write_path
-    end
-
     def mypage
       @address = Address.all.reverse
       # @current_user = Address.current_user
@@ -335,8 +336,6 @@ class HomeController < ApplicationController
       @review = Addressreview.all
     end
 
-
-
     def sorting_data
       @sort_value = params[:param]
       @address = Address.all
@@ -349,23 +348,9 @@ class HomeController < ApplicationController
         @sort_data = Address.all.order(:detail_address)
 
       elsif @sort_value == "3"
-       @address_review = Addressreview.all.order(:price).reverse
-       @sort_data = Address.joins(:addressreviews).order('addressreviews.price')
-
-
-
-
-
-
+        @address_review = Addressreview.all.order(:price).reverse
+        @sort_data = Address.joins(:addressreviews).order('addressreviews.price')
       end
-
-
-
-
-
-
-
-
     end
 
     def destroy_image1

@@ -1,8 +1,8 @@
 <% @review.each do |r| %>
-    <%= r.address_name %><br>
-    <%= r.detail_address_name %><br>
+    <%= r.address.total_address %><br>
+    <%= r.address.parcel_address %><br>
+    <%= r.address.road_address %><br>
+    <%= r.address.detail_address %><br>
     <%= r.address_id %><br>
-    <%= r.image_url1 %><br>
-    <%= r.image_url2 %><br>
     <%= r.id %><br><br>
 <% end %>

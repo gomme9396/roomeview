@@ -29,7 +29,7 @@
                                   <br />
                                   리뷰 작성시 객관적 사실과 실제 경험을 토대로 작성해주세요.
                                   <br />
-                                  비방, 욕설, 허위 사실이 포함된 리뷰는 금지 및 삭제 됩니다.
+                                  비방, 욕설, 허위 사실이 포함된 리뷰는 금지 및 삭제 됩니다.[정보통신법 제 70조 제1항]
                                   <br />
                                 </blockquote>
                               </div>
@@ -62,11 +62,14 @@
                           <label for="address">
                             <h6>주소</h6>
                           </label>
-                          <input type="text" name="address" class="form-control" id="address" placeholder="지도에서 클릭해주세요." value="<%= @one_address.address %>" required readonly>
+                          <input type="text" name="total_address" class="form-control" id="total_address" value="<%= @one_address.total_address %>" required readonly>
+                          <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" value="<%= @one_address.parcel_address %>" required readonly>
+                          <input type="hidden" name="road_address" class="form-control" id="road_address" value="<%= @one_address.road_address %>" readonly>
                           <label for="detail_address">
                             <h6>건물 이름</h6>
                           </label>
-                          <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." value="<%= @one_address.detail_address %>" autocomplete="off" required>
+                          <input type="text" name="detail_address" class="form-control" id="detail_address" value="<%= @one_address.detail_address %>" autocomplete="off" required>
+                          <span class = "red-text" style = "font-size:0.8rem">[주의! 몇 호인지는 입력하지마세요!]</span>
                           <input type="hidden" name="current_user" value="<%= current_user.email %>">
                           <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker1 %></textarea>
                           <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"><%= @one_address.marker2 %></textarea>
@@ -101,17 +104,6 @@
 
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
-    
-    // 마커가 표시될 위치입니다
-    var markerPosition  = new daum.maps.LatLng(<%= @one_address.marker1 %>, <%= @one_address.marker2 %>);
-
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        position: markerPosition
-    });
-    
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
 
     var mapTypeControl = new daum.maps.MapTypeControl();
 
@@ -131,7 +123,16 @@
 
     // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
+    
+    // 마커를 생성합니다
+    var markerPosition  = new daum.maps.LatLng(<%= @one_address.marker1 %>, <%= @one_address.marker2 %>);
+    
+    var marker = new daum.maps.Marker({
+        position: markerPosition
+    });
+    
+    marker.setMap(map);
+    
     // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
     daum.maps.event.addListener(map, 'click', function (mouseEvent) {
         searchDetailAddrFromCoords(mouseEvent.latLng, function (status, result) {
@@ -141,14 +142,21 @@
                     : '';
                 detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
 
-                if (result[0].roadAddress.name == "")
-                    var address_of_building = result[0].jibunAddress.name;
-                else
-                    var address_of_building = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
-
-                var enc = address_of_building
-                $('input[name=address]').attr('value', enc);
-
+                if (result[0].roadAddress.name == "") {
+                    var total_address = result[0].jibunAddress.name;
+                    var parcel_address = result[0].jibunAddress.name;
+                    var road_address = "";
+                }
+                else {
+                    var total_address = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
+                    var parcel_address = result[0].jibunAddress.name;
+                    var road_address = result[0].roadAddress.name;
+                }
+                
+                $('input[name=total_address]').attr('value', total_address);
+                $('input[name=parcel_address]').attr('value', parcel_address);
+                $('input[name=road_address]').attr('value', road_address);
+                
                 var content = '<div class="bAddr">' + detailAddr + '</div>';
 
                 // 마커를 클릭한 위치에 표시합니다
@@ -195,77 +203,66 @@
             });
         }
     }
-</script>
 
-<!--detail_address textarea 엔터키 제한-->
-<script>
-    $('#detail_address').keydown(function () {
-        var rows = $('#detail_address').val().split('\n').length;
-        var maxRows = 1;
-        if (rows > maxRows) {
-            alert("한줄로 입력해주세요.");
-            modifiedText = $('#detail_address').val().split("\n").slice(0, maxRows);
-            $('#detail_address').val(modifiedText.join("\n"));
-        }
-    });
-</script>
+// <!--우편번호 검색-->
 
-<!--우편번호 검색-->
-<script>
-function sample5_execDaumPostcode() {
-       new daum.Postcode({
-           oncomplete: function(data) {
-               // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-               // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-               var fullAddr = data.jibunAddress; // 최종 주소 변수
-               var extraAddr = ''; // 조합형 주소 변수
-               autoJibunAddress = true;
-               // 기본 주소가 도로명 타입일때 조합한다.
-               if(data.addressType === 'R'){
-                   //법정동명이 있을 경우 추가한다.
-                   if(data.bname !== ''){
-                       extraAddr += data.bname;
-                   }
-                   // 건물명이 있을 경우 추가한다.
-                   if(data.buildingName !== ''){
-                       extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                   }
-                   // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                   fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+    function sample5_execDaumPostcode() {
+          new daum.Postcode({
+               oncomplete: function(data) {
+                   // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                   // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                   var fullAddr = data.jibunAddress; // 최종 주소 변수
+                   var extraAddr = ''; // 조합형 주소 변수
+                   autoJibunAddress = true;
+                   // 기본 주소가 도로명 타입일때 조합한다.
+                  // if(data.addressType === 'R'){
+                  //     //법정동명이 있을 경우 추가한다.
+                  //     if(data.bname !== ''){
+                  //         extraAddr += data.bname;
+                  //     }
+                  //     // 건물명이 있을 경우 추가한다.
+                  //     if(data.buildingName !== ''){
+                  //         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                  //     }
+                  //     // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                  //     fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                  // }
+    
+                   // 주소 정보를 해당 필드에 넣는다.
+                   var total_address = fullAddr + "(" + data.roadAddress + ")";
+                   $('input[name=total_address]').attr('value', total_address);
+                   $('input[name=parcel_address]').attr('value', data.jibunAddress);
+                   $('input[name=road_address]').attr('value', data.roadAddress);
+                   
+                   // 주소로 좌표를 검색
+                   geocoder.addr2coord(data.address, function(status, result) {
+                       // 정상적으로 검색이 완료됐으면
+                       if (status === daum.maps.services.Status.OK) {
+                           // 해당 주소에 대한 좌표를 받아서
+                           var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+    
+                           // 지도를 보여준다.
+                           map.relayout();
+                           // 지도 중심을 변경한다.
+                           map.setCenter(coords);
+                           // 마커를 결과값으로 받은 위치로 옮긴다.
+                           marker.setPosition(coords);
+                           marker.setMap(map);
+    
+                           var marker1 = result.addr[0].lat;
+                           var marker2 = result.addr[0].lng;
+    
+                           document.getElementById('marker1').innerHTML = marker1;
+                           document.getElementById('marker2').innerHTML = marker2;
+    
+    
+    
+                       }
+                   });
+    
                }
-
-               // 주소 정보를 해당 필드에 넣는다.
-               document.getElementById("address").value = fullAddr;
-               $('input[name=address]').attr('value', fullAddr);
-               // 주소로 좌표를 검색
-               geocoder.addr2coord(data.address, function(status, result) {
-                   // 정상적으로 검색이 완료됐으면
-                   if (status === daum.maps.services.Status.OK) {
-                       // 해당 주소에 대한 좌표를 받아서
-                       var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
-                       // 지도를 보여준다.
-                       map.relayout();
-                       // 지도 중심을 변경한다.
-                       map.setCenter(coords);
-                       // 마커를 결과값으로 받은 위치로 옮긴다.
-                       marker.setPosition(coords);
-                       marker.setMap(map);
-
-                       var marker1 = result.addr[0].lat;
-                       var marker2 = result.addr[0].lng;
-
-                       document.getElementById('marker1').innerHTML = marker1;
-                       document.getElementById('marker2').innerHTML = marker2;
-
-
-
-                   }
-               });
-
-           }
-       }).open();
-   }
+           }).open();
+       }
 </script>
 
 <!--취소하기 버튼-->
@@ -300,3 +297,16 @@ $('.modal-trigger').leanModal({
 }
 );
 </script>
+
+<!--detail_address textarea 엔터키 제한-->
+<!--<script>-->
+<!--    $('#detail_address').keydown(function () {-->
+<!--        var rows = $('#detail_address').val().split('\n').length;-->
+<!--        var maxRows = 1;-->
+<!--        if (rows > maxRows) {-->
+<!--            alert("한줄로 입력해주세요.");-->
+<!--            modifiedText = $('#detail_address').val().split("\n").slice(0, maxRows);-->
+<!--            $('#detail_address').val(modifiedText.join("\n"));-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
