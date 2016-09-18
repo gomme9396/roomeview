@@ -172,9 +172,9 @@
     var address = [];
 
     <% @address.each do |a| %>
-      if (address.includes("<%= a.address %>") == false) {
-        positions.push({title: "<%= a.address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
-        address.push("<%= a.address %>");
+      if (address.includes("<%= a.parcel_address %>") == false) {
+        positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
+        address.push("<%= a.parcel_address %>");
       }
     <% end %>
 

@@ -206,12 +206,14 @@
 
     // 마커를 표시할 위치와 title 객체 배열입니다
     var positions = [];
-    var address = [];
+    var parcel_address = [];
+    var road_address = [];
 
     <% @address.each do |a| %>
-      if (address.includes("<%= a.address %>") == false) {
-        positions.push({title: "<%= a.address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
-        address.push("<%= a.address %>");
+      if (parcel_address.includes("<%= a.parcel_address %>") == false) {
+        positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
+        parcel_address.push("<%= a.parcel_address %>");
+        road_address.push("<%= a.road_address %>");
       }
     <% end %>
 
@@ -244,7 +246,7 @@
         // 별도의 이벤트 메소드를 제공하지 않습니다
         var content = '<div class="wrap">' +
                     '    <div class="info">' +
-                    '        <div class="title">' + address[i] +
+                    '        <div class="title">' + parcel_address[i] +
                     '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
                     '        </div>' +
                     '        <div class="body">' +
@@ -252,8 +254,8 @@
                     '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
                     '           </div>' +
                     '            <div class="desc">' +
-                    '                <div class="ellipsis">' + address[i] +
-                    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
+                    '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
+                    '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
                     '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
                     '            </div>' +
                     '        </div>' +

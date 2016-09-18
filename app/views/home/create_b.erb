@@ -660,15 +660,15 @@
 
 <%= render :partial => "/home/footer" %>
 <script>
-	var address = [];
+	var parcel_address = [];
 
 	<% @create_review.each do |c| %>
-    if (address.includes("<%= c.address %>") == false) {
-      	address.push("<%= c.address %>");
+    if (parcel_address.includes("<%= c.parcel_address %>") == false) {
+      	parcel_address.push("<%= c.parcel_address %>");
     }
   <% end %>
 
-  var address_number = address.length
+  var address_number = parcel_address.length
 
   $('input[name=address_number]').attr('value', address_number);
 </script>
