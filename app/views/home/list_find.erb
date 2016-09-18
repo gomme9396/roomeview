@@ -2,7 +2,7 @@
 <%= render :partial => "/home/navbar" %>
 
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large teal lignten-2 tooltipped" data-position="left" data-delay="50" data-tooltip="리뷰쓰기" href = "/home/create_a">
+    <a class="btn-floating btn-large teal accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="리뷰쓰기" href = "/home/create_a">
       <i class="large material-icons">mode_edit</i>
     </a>
   </div>
@@ -125,32 +125,42 @@
                   <% @address.each do |a| %>
                     <% if a.addressreviews.take != nil %>
                       <div class = "col s12 m6 l4">
-                        <div class="card small hoverable">
-                          <div class = "card-content">
-                            <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
-                              <div class = "row">
-                                <span class="card-title teal-text"><%= a.detail_address %></span>
-                                <div class = "divider"></div>
-                                <p style = "padding:10px">
-                                  <%= a.addressreviews.take.comment1 %>
-                                </p>
-                              </div>
+                        <div class="card-panel small hoverable">
+                          <div class = "card-content" style = "padding:0px">
+                            <div class = "row" style = "margin :0px">
+                              <h4 class="teal-text"><%= a.detail_address %></h4>
                             </div>
-                            <div class="card-action" style = "height:60px">
-                              <div class="row" style = "margin:0px">
-                                <div class = "col s12 m12 l12" style = "padding:0px">
-                                  <% if Address.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
-                                    <span><a href="/home/review/<%= a.id %>" style = "margin:0px;">자세한 내용</a></span>
-                                  <% else %>
-                                    <span><a href="#modal_write" style = "margin:0px;" class = "modal-trigger">자세한 내용</a></span>
-                                  <% end %>
 
-                                  <% if a.current_user == current_user.email%>
-                                    <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
-                                  <% end %><br>
-                                </div>
+                            <label for ="oneline1">한줄평</label>
+                            <h6 name = "oneline1"><%= a.addressreviews.take.comment1 %></h6>
+
+                            <label for ="oneline2">기타의견</label>
+                            <h6 name = "oneline2"><%= a.addressreviews.take.comment2 %></h6>
+                            <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
+                          </div>
+                          <!-- <div class = "card-content">
+                            <h6>한줄평</h6>
+                            <p style = "padding:10px">
+                              <%= a.addressreviews.take.comment1 %>
+                            </p>
+                          </div> -->
+                          <div class="card-action" style = "height:60px">
+                            <div class="row" style = "margin:0px; padding:5px">
+                              <div class = "col s12 m12 l12" style = "padding:0px">
+                                <br />
+                                <div class = "divider"></div><br />
+                                <% if Address.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
+                                  <span><a href="/home/review/<%= a.id %>" style = "margin:0px;" class = " teal-text text-darken-4">자세한 내용</a></span>
+                                <% else %>
+                                  <span><a href="#modal_write" style = "margin:0px;" class = "modal-trigger  teal-text text-darken-4">자세한 내용</a></span>
+                                <% end %>
+
+                                <% if a.current_user == current_user.email%>
+                                  <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
+                                <% end %><br>
                               </div>
                             </div>
+                          </div>
                             <!--<div class="card-reveal">-->
                             <!--  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>-->
                             <!--  <p>Here is some more information about this product that is only revealed once clicked on.</p>-->

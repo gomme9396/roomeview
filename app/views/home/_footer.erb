@@ -2,9 +2,10 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h5 class="white-text">Roomeview?</h5>
-          <p class="grey-text text-lighten-4">루미뷰는 방에 거주했던 경험을 토대로 작성된 리뷰를 공유하는 플랫폼 입니다.</p>
-          <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-4">이용약관</a>
+          <h5 class="white-text">Roomeview(루미뷰)</h5>
+          <p class="grey-text text-lighten-4">문의 : gomme9396@gmail.com</p>
+          <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-4">이용약관</a> /
+          <a href = "#modal_privacy" class = "modal-trigger blue-text text-lighten-4">개인정보취급방침</a>
 
 
         </div>
@@ -40,6 +41,16 @@
   <div class="modal-content">
     <h4>루미뷰(Roomeview) 이용약관</h4>
     <pre style=:"font-size:0.7rem"><%= render :file => '/home/term.txt' %></pre>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close btn-flat">닫기</a>
+  </div>
+</div>
+
+<div id="modal_privacy" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>루미뷰(Roomeview) 개인정보취급방침</h4>
+    <pre style=:"font-size:0.7rem"><%= render :file => '/home/privacy.txt' %></pre>
   </div>
   <div class="modal-footer">
     <a class="modal-action modal-close btn-flat">닫기</a>
