@@ -3,11 +3,11 @@
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
-      <div class="container">
+      <div class="container" style = "margin-top:40px">
         <br><br>
-        <h1 class="header center white-text text-lighten-2">Roomeview</h1>
+        <h3 class="header center white-text text-lighten-2 strong">원룸 찾기의 시작,루미뷰</h3>
         <div class="row center">
-          <h5 class="header col s12 light ">당신방의 어제를 공유하세요</h5>
+          <h5 class="header col s12 light ">방의 어제를 확인해보세요</h5>
         </div>
         <div class="row center">
           <% if user_signed_in? %>
@@ -59,7 +59,6 @@
     </div>
 
     <div class = "divider"></div>
-
     <div class = "section" style = "margin-top:40px; margin-bottom:40px;">
       <div class = "row">
         <div class = "col s12 m4 l4">
@@ -75,7 +74,7 @@
   </div>
 
 
-  <div class="parallax-container valign-wrapper">
+  <!-- <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
@@ -84,20 +83,19 @@
           </div>
           <div class = "col s12 m4 l4">
             <h5 class = "center">가입자수</h5>
-            <!-- <h3 class = "center teal-text"><#%= User.last.id %></h3> -->
+
           </div>
           <div class = "col s12 m4 l4">
             <h5 class = "center">작성된 리뷰의 갯수</h5>
-            <!-- <h3 class = "center teal-text"><#%= Addressreview.last.id %></h3> -->
+
           </div>
           <div class = "col s12 m4 l4">
             <h5 class = "center">리뷰가 등록된 건물수</h5>
-            <!-- <h3 class = "center teal-text"><#%= Addressreview.last.address_number %></h3> -->
           </div>
         </div>
       </div>
     </div>
     <div class="parallax"><img src="<%= image_path "intro_bg3.jpg" %>" alt="Unsplashed background img 2"></div>
-  </div>
+  </div> -->
 
 <%= render :partial => "/home/footer" %>

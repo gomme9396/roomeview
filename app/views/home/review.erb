@@ -429,7 +429,7 @@
                     <div class="col s12 m9">
                       <%= form_tag home_review_path_path(address_id: @address.id), method: 'POST', remote: true do %>
                         <%= text_field_tag "comment", nil, class: 'form-control', placeholder: '댓글을 달아주세요.' %>
-                        <%= submit_tag "댓글달기" %>
+                        <%= submit_tag "댓글달기", class:"btn white teal-text" %>
                       <% end %>
                     <!--이거 넣어주세요~ -->
                     <!--<input type="hidden" name="address_id" value="<%#= @address.id %>"></input>-->
@@ -542,7 +542,7 @@
         clusterer.addMarkers(markers);
     });
     </script>
-    
+
     <script>
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
         var options = { //지도를 생성할 때 필요한 기본 옵션
