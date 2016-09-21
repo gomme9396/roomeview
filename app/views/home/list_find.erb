@@ -145,15 +145,21 @@
 
                             <label for ="oneline1">한줄평</label>
                             <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment1 %></h6>
-
-                            <label for ="oneline2">기타의견</label>
-                            <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
-                            <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
+                            
+                            <% if a.addressreviews.take.comment2 == "" %>
+                              <label for ="oneline2">기타의견</label>
+                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
+                            <% else %>
+                              <label for ="oneline2">기타의견</label>
+                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
+                            <% end %>
+                            
+                            <!-- <img src="<%#= image_path "intro-bg.jpg" %>"> -->
                           </div>
                           <!-- <div class = "card-content">
                             <h6>한줄평</h6>
                             <p style = "padding:10px">
-                              <%= a.addressreviews.take.comment1 %>
+                              <%#= a.addressreviews.take.comment1 %>
                             </p>
                           </div> -->
                           <div class="card-action" style = "height:60px">
