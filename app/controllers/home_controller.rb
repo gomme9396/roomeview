@@ -185,30 +185,30 @@ class HomeController < ApplicationController
       @address.destroy
       @address_review.destroy
 
-      if @address_review.take.image_url1 != nil
-        old_image_name1 = @address_review.take.image_url1.split('/')[5]
-        remover1 = MachineUploader.new
-        remover1.retrieve_from_store!(old_image_name1)
-        remover1.remove!
-      end
-      if @address_review.take.image_url2 != nil
-        old_image_name2 = @address_review.take.image_url2.split('/')[5]
-        remover2 = MachineUploader.new
-        remover2.retrieve_from_store!(old_image_name2)
-        remover2.remove!
-      end
-      if @address_review.take.image_url3 != nil
-        old_image_name3 = @address_review.take.image_url3.split('/')[5]
-        remover3 = MachineUploader.new
-        remover3.retrieve_from_store!(old_image_name3)
-        remover3.remove!
-      end
-      if @address_review.take.image_url4 != nil
-        old_image_name4 = @address_review.take.image_url4.split('/')[5]
-        remover4 = MachineUploader.new
-        remover4.retrieve_from_store!(old_image_name4)
-        remover4.remove!
-      end
+      # if @address_review.take.image_url1 != nil
+      #   old_image_name1 = @address_review.take.image_url1.split('/')[5]
+      #   remover1 = MachineUploader.new
+      #   remover1.retrieve_from_store!(old_image_name1)
+      #   remover1.remove!
+      # end
+      # if @address_review.take.image_url2 != nil
+      #   old_image_name2 = @address_review.take.image_url2.split('/')[5]
+      #   remover2 = MachineUploader.new
+      #   remover2.retrieve_from_store!(old_image_name2)
+      #   remover2.remove!
+      # end
+      # if @address_review.take.image_url3 != nil
+      #   old_image_name3 = @address_review.take.image_url3.split('/')[5]
+      #   remover3 = MachineUploader.new
+      #   remover3.retrieve_from_store!(old_image_name3)
+      #   remover3.remove!
+      # end
+      # if @address_review.take.image_url4 != nil
+      #   old_image_name4 = @address_review.take.image_url4.split('/')[5]
+      #   remover4 = MachineUploader.new
+      #   remover4.retrieve_from_store!(old_image_name4)
+      #   remover4.remove!
+      # end
       redirect_to "/home/mypage"
     end
 
