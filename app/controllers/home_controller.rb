@@ -24,10 +24,10 @@ class HomeController < ApplicationController
     def export_address
       @address = Address.all
       address = CSV.generate do |csv|
-      csv << ["id","marker1", "marker2", "current_user","total_address", "parcel_address", "road_address", 
+      csv << ["id","marker1", "marker2", "current_user","total_address", "parcel_address", "road_address",
               "detail_address"]
           @address.each do |a|
-            csv << [a.id, a.marker1, a.marker2, a.current_user, a.total_address, a.parcel_address, a.road_address, 
+            csv << [a.id, a.marker1, a.marker2, a.current_user, a.total_address, a.parcel_address, a.road_address,
                     a.detail_address]
           end
       end
@@ -55,18 +55,18 @@ class HomeController < ApplicationController
 
       # Address.get_address_save
       address = Address.new
-      
+
       address.marker1 = params[:marker1]
       address.marker2 = params[:marker2]
-      
+
       address.total_address = params[:total_address]
       address.parcel_address = params[:parcel_address]
       address.road_address = params[:road_address]
-      
+
       address.detail_address = params[:detail_address]
-      
+
       address.current_user = params[:current_user]
-      
+
       address.save
       redirect_to "/home/create_b"
     end
@@ -144,7 +144,7 @@ class HomeController < ApplicationController
     end
 
     def list_find
-      @address = Address.all.reverse
+      @address = Address.all
       @address = Address.includes(:addressreviews).all
 
     end
@@ -223,16 +223,16 @@ class HomeController < ApplicationController
 
     def update_a
       @one_address = Address.find(params[:address_id])
-      
+
       @one_address.marker1 = params[:marker1]
       @one_address.marker2 = params[:marker2]
-      
+
       @one_address.total_address = params[:total_address]
       @one_address.parcel_address = params[:parcel_address]
       @one_address.road_address = params[:road_address]
-      
+
       @one_address.detail_address = params[:detail_address]
-      
+
       @one_address.save
       redirect_to "/update_view_b/" + params[:address_id]
     end
@@ -241,7 +241,7 @@ class HomeController < ApplicationController
       @address = Address.find(params[:address_id])
 
       @one_review = @address.addressreviews.take
-      
+
       @one_review.address_id = params[:address_id]
       @one_review.address_name = @address.total_address
       @one_review.detail_address_name = @address.detail_address
@@ -327,7 +327,7 @@ class HomeController < ApplicationController
       @author = current_user.email
       comment = Comment.new(address_id: @address_id, user_id: current_user.id, comment: @comment)
       comment.save
-      
+
       @comments = Comment.all.reverse
       # redirect_to "/home/review/#{params[:address_id]}"
     end
