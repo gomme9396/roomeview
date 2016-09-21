@@ -145,7 +145,7 @@ class HomeController < ApplicationController
 
     def list_find
       @address = Address.all
-      @address = Address.includes(:addressreviews).all
+      @address = Address.includes(:addressreviews).all.reverse
 
     end
 
