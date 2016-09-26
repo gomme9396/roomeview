@@ -86,25 +86,31 @@
 
                   <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
-                      <% unless a.addressreviews.take != nil %>
+                    <% if a.addressreviews.take != nil %>
                       <div class = "col s12 m6 l4">
                         <div class="card-panel small hoverable">
                           <div class = "card-content" style = "padding:0px">
                             <div class = "row" style = "margin :0px">
-                              <h4 class="teal-text"><%= a.detail_address %></h4>
+                              <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.detail_address %></h4>
                             </div>
 
                             <label for ="oneline1">한줄평</label>
                             <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment1 %></h6>
 
-                            <label for ="oneline2">기타의견</label>
-                            <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
-                            <!-- <img src="<%= image_path "intro-bg.jpg" %>"> -->
+                            <% if a.addressreviews.take.comment2 == "" %>
+                              <label for ="oneline2">기타의견</label>
+                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
+                            <% else %>
+                              <label for ="oneline2">기타의견</label>
+                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
+                            <% end %>
+
+                            <!-- <img src="<%#= image_path "intro-bg.jpg" %>"> -->
                           </div>
                           <!-- <div class = "card-content">
                             <h6>한줄평</h6>
                             <p style = "padding:10px">
-                              <%= a.addressreviews.take.comment1 %>
+                              <%#= a.addressreviews.take.comment1 %>
                             </p>
                           </div> -->
                           <div class="card-action" style = "height:60px">
@@ -145,7 +151,7 @@
 
                             <label for ="oneline1">한줄평</label>
                             <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment1 %></h6>
-                            
+
                             <% if a.addressreviews.take.comment2 == "" %>
                               <label for ="oneline2">기타의견</label>
                               <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
@@ -153,7 +159,7 @@
                               <label for ="oneline2">기타의견</label>
                               <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
                             <% end %>
-                            
+
                             <!-- <img src="<%#= image_path "intro-bg.jpg" %>"> -->
                           </div>
                           <!-- <div class = "card-content">
