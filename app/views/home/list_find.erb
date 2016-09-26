@@ -126,7 +126,8 @@
 
                                 <% if a.current_user == current_user.email%>
                                   <a class = "yellow-text text-darken-3" style = "font-size:0.8rem; margin:0px">[작성]</a>
-                                <% end %><br>
+                                <% end %>
+                                <a href="/destroy/<%= a.id %>" style = "margin:0px"><i class="material-icons">delete</i></a><br>
                               </div>
                             </div>
                           </div>
