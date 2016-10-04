@@ -1,4 +1,3 @@
-
 <%= render :partial => "/home/navbar" %>
 
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
@@ -275,19 +274,19 @@
                     '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
                     '        </div>' +
                     '        <div class="body">' +
-                    '            <div class="img">' +
-                    '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-                    '           </div>' +
+                    // '            <div class="img">' +
+                    // '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+                    // '           </div>' +
                     '            <div class="desc">' +
                     '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
                     '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
-                    '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+                    // '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">리뷰보기</a></div>' +
+                    '                <div><button onclick="button_function(' + i + ')">검색하기</button>' +
                     '            </div>' +
                     '        </div>' +
                     '    </div>' +
                     '</div>';
-
-
+        
         // 마커 위에 커스텀오버레이를 표시합니다
         // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
         var overlay = new daum.maps.CustomOverlay({
@@ -311,6 +310,12 @@
 
       })(i);
 
+    }
+    
+    for (var i = 0; i < positions.length; i ++) {
+      function button_function(i) {
+          $('input[name=find_address]').attr('value', parcel_address[i]);
+      }
     }
 
     function closeOverlay(number) {
