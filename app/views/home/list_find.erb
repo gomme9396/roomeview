@@ -83,7 +83,7 @@
               </div>
                 <div class = "row">
 
-                  <% if current_user.email == "test4@email.com" %>
+                <% if current_user.email == "test4@email.com" %>
                     <% @address.each do |a| %>
                     <% if a.addressreviews.take == nil %>
                       <div class = "col s12 m6 l4">
@@ -94,15 +94,9 @@
                             </div>
 
                             <label for ="oneline1">한줄평</label>
-                            <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment1 %></h6>
+                            <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "></h6>
 
-                            <% if a.addressreviews.take.comment2 == "" %>
-                              <label for ="oneline2">기타의견</label>
-                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
-                            <% else %>
-                              <label for ="oneline2">기타의견</label>
-                              <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= a.addressreviews.take.comment2 %></h6>
-                            <% end %>
+                            
 
                             <!-- <img src="<%#= image_path "intro-bg.jpg" %>"> -->
                           </div>
@@ -137,8 +131,8 @@
                           </div>
 
                         </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
                 <% else %>
                   <% @address.each do |a| %>
                     <% if a.addressreviews.take != nil %>
