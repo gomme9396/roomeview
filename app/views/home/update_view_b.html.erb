@@ -44,7 +44,7 @@
 											<div class="container">
 												<div class="row">
 													<div class="input-field col s12 m12 l12">
-														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required></textarea>
+														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required><%= @one_review.comment1 %></textarea>
 														<label for="comment1">한줄평</label>
 													</div>
 												</div>
@@ -60,7 +60,7 @@
 											<div class="row">
 												<div class = "container">
 													<div class="input-field col s12 m12 l12">
-														<textarea id="comment2" name="comment2" class="materialize-textarea"><%= @one_review.comment1 %>s</textarea>
+														<textarea id="comment2" name="comment2" class="materialize-textarea"><%= @one_review.comment2 %></textarea>
 														<label for="comment2">추가내용</label>
 													</div>
 												</div>
