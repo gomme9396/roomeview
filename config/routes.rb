@@ -36,10 +36,10 @@ Rails.application.routes.draw do
   get   '/destroy_image3/:address_id' => "home#destroy_image3"
   get   '/destroy_image4/:address_id' => "home#destroy_image4"
 
-  get   '/update_view_a/:id' => "home#update_view_a"
-  get   '/update_view_b/:id' => "home#update_view_b"
+  get   '/update_view_a/:address_id' => "home#update_view_a"
+  get   '/update_view_b/:address_id' => "home#update_view_b"
 
-  post  '/update_a/:id' => "home#update_a"
+  post  '/update_a/:address_id' => "home#update_a"
   post  '/update_b/:id' => "home#update_b"
 
   post  'home/find'

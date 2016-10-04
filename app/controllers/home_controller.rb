@@ -213,17 +213,17 @@ class HomeController < ApplicationController
     end
 
     def update_view_a
-      @one_address = Address.find(params[:id])
+      @one_address = Address.find(params[:address_id])
     end
 
     def update_view_b
       @update_review = Address.all
-      @one_address = Address.find(params[:id])
+      @one_address = Address.find(params[:address_id])
       @one_review = @one_address.addressreviews.take
     end
 
     def update_a
-      @one_address = Address.find(params[:id])
+      @one_address = Address.find(params[:address_id])
 
       @one_address.marker1 = params[:marker1]
       @one_address.marker2 = params[:marker2]
@@ -235,15 +235,15 @@ class HomeController < ApplicationController
       @one_address.detail_address = params[:detail_address]
 
       @one_address.save
-      redirect_to "/update_view_b/" + params[:id]
+      redirect_to "/update_view_b/" + params[:address_id]
     end
 
     def update_b
-      @address = Address.find(params[:id])
+      @address = Address.find(params[:address_id])
 
       @one_review = @address.addressreviews.take
 
-      @one_review.address_id = params[:id]
+      @one_review.address_id = params[:address_id]
       @one_review.address_name = @address.total_address
       @one_review.detail_address_name = @address.detail_address
 
