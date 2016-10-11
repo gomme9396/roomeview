@@ -218,7 +218,8 @@ class HomeController < ApplicationController
 
     def update_view_b
       @update_review = Address.all
-      @one_review = Addressreview.find(params[:address_id])
+      @one_address = Address.find(params[:address_id])
+      @one_review = @one_address.addressreviews.take
     end
 
     def update_a

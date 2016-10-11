@@ -120,7 +120,7 @@
 
 .info .desc {
   position: relative;
-  margin: 13px 0 0 90px;
+  margin: 13px 0 0 13px;
   height: 75px;
 }
 
@@ -134,17 +134,6 @@
   font-size: 11px;
   color: #888;
   margin-top: -2px;
-}
-
-.info .img {
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  width: 73px;
-  height: 71px;
-  border: 1px solid #ddd;
-  color: #888;
-  overflow: hidden;
 }
 
 .info:after {
