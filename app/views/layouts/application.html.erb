@@ -3,10 +3,8 @@
 <head>
   <title>Roomeview</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
-
-  <script src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>
 
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
   <!-- 마테리얼 디자인 아이콘 사용 링크 -->
@@ -29,6 +27,13 @@
     ga('create', 'UA-82689511-1', 'auto');
     ga('send', 'pageview');
 
+  </script>
+
+  <script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+    });
   </script>
 
 </head>
