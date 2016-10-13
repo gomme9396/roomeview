@@ -5,10 +5,10 @@
       <ul class="right hide-on-med-and-down">
 
         <% if user_signed_in? %>
-          <li><a href="/home/mypage">내정보</a></li>
-          <li><a href="/users/sign_out">로그아웃</a></li>
+          <li><a href="/home/mypage" class="black-text">내정보</a></li>
+          <li><a href="/users/sign_out" class="black-text">로그아웃</a></li>
         <% else %>
-          <li><a href="/users/sign_in">Login</a></li>
+          <li><a href="/users/sign_in" class="black-text">Login</a></li>
         <% end %>
           <!-- <li><a href="/home/create_a">create</a></li>
           <li><a href="/home/list_find">list</a></li> -->
@@ -18,9 +18,9 @@
 
       <ul id="nav-mobile" class="side-nav">
         <% if user_signed_in? %>
-          <li><a href="/users/sign_out">Logout</a></li>
+          <li><a href="/users/sign_out" class="black-text">Logout</a></li>
         <% else %>
-          <li><a href="/users/sign_in">Login</a></li>
+          <li><a href="/users/sign_in" class="black-text">Login</a></li>
         <% end %>
           <!-- <li><a href="/home/create_a">create</a></li>
           <li><a href="/home/list_find">list</a></li> -->
