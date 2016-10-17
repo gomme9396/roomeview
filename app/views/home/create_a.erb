@@ -35,29 +35,49 @@
                               </div>
                             </div>
                             <br />
-                            <p class="card-title">
-                                <h4>위치등록</h4>
-                            </p>
-                            <div class="divider"></div>
-                            <p class="card-title">
-                                <h5>위치</h5>
-                            </p>
-                            <blockquote>
-                                기록하실 방의 위치를 지도에서 선택하거나, 검색 버튼을 눌러 검색하세요.
-                            </blockquote>
-                            <a class = "btn-flat waves-effect waves-teal teal-text" onclick="sample5_execDaumPostcode()"><i class="Tiny material-icons left">search</i>주소검색</a>
-                            <div id="map" style="width: 100%; height: 400px;">
-                              <p id="centerAddr"></p>
-                            </div>
+
+
+
                             <div class = "divider"></div>
 
                           </div>
                         </div>
 
                     </div>
-
+                    <div class = "container">
+                      <p class="card-title">
+                        <h4>위치 등록하기</h4>
+                      </p>
+                    <p class="card-title">
+                      <h5>방법 선택</h5>
+                    </p>
+                    <blockquote>
+                      기록하실 방의 위치를 지도에서 선택하거나, 검색 버튼을 눌러 검색하세요.
+                    </blockquote>
+                    <div class="row">
+                      <div class="col s12 m6 l6">
+                        <div class="card-panel pink lighten-5 black-text hoverable" onclick="sample5_execDaumPostcode()">
+                          <h6 class = "center-align">
+                            <i class="Tiny material-icons left">search</i>주소로 검색하기
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <div class="card-panel blue lighten-4 black-text hoverable modal-trigger" href="#modal1">
+                          <h6 class = "center-align">
+                            <i class="Tiny material-icons left">map</i>지도에서 선택하기
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "divider"></div>
                     <form action="/home/list_path_a" method="POST">
-                      <div class=  "container">
+                        <p class="card-title">
+                            <h5>위치 확인하기</h5>
+                        </p>
+                        <blockquote>
+                          방의 주소를 확인하시고, 방이 위치한 건물의 명칭을 입력해주세요.
+                        </blockquote>
                         <div class="form-group">
                           <label for="address">
                             <h6>주소</h6>
@@ -74,7 +94,6 @@
                           <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
                           <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
                         </div>
-                      </div>
 
 
 
@@ -86,6 +105,7 @@
                             </div>
                         </div>
                     </form>
+                  </div>
                 </div>
             </div>
         </div>
@@ -93,7 +113,27 @@
 </div>
 
 <%= render :partial => "/home/footer" %>
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>지도에서 선택하기</h4>
+    <div id="map" style="width: 100%; height: 400px;">
+      <p id="centerAddr"></p>
+    </div>
+    <blockquote>
+      방이 위치한 곳을 지도에서 선택해주세요.
+    </blockquote>
+    <label for="address">
+      <h6>주소</h6>
+    </label>
+    <input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
+    <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
+    <input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
+  </div>
+  <div class="modal-footer">
 
+    <a class="modal-action modal-close waves-effect waves-green btn-flat ">확인</a>
+  </div>
+</div>
 <!--지도 이벤트-->
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -264,15 +304,7 @@
 </script>
 
 <!-- Modal Structure -->
-<div id="agreemodal" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-  </div>
-</div>
+
 
 
 <script>
@@ -283,8 +315,7 @@ $('.modal-trigger').leanModal({
   out_duration: 200, // Transition out duration
   starting_top: '4%', // Starting top style attribute
   ending_top: '10%', // Ending top style attribute
-  ready: function() { alert('Ready'); }, // Callback for Modal open
-  complete: function() { alert('Closed'); } // Callback for Modal close
+
 }
 );
 </script>

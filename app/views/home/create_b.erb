@@ -44,7 +44,7 @@
 											<div class="container">
 												<div class="row">
 													<div class="input-field col s12 m12 l12">
-														<textarea name="comment1" id="comment1" class="materialize-textarea" length="20" required></textarea>
+														<input name="comment1" id="comment1" type="text" length="20" placeholder="ex) 살기는 좋은데 방음이 안되요"required></textarea>
 														<label for="comment1">한줄평</label>
 													</div>
 												</div>
@@ -60,7 +60,7 @@
 											<div class="row">
 												<div class = "container">
 													<div class="input-field col s12 m12 l12">
-														<textarea id="comment2" name="comment2" class="materialize-textarea"></textarea>
+														<textarea id="comment2" name="comment2" class="materialize-textarea" placeholder="ex) 전/월세 전환이 되고, 집주인 아저씨가 좋아요."></textarea>
 														<label for="comment2">추가내용</label>
 													</div>
 												</div>
@@ -93,15 +93,34 @@
 												<h5>거주 기간</h5>
 											</span>
 											<blockquote>
-												해당 원룸에서 거주했던 기간을 입력해주세요.
+												해당 원룸에서 몇개월 거주 하셨나요?
 											</blockquote>
 											<div class="container">
-												<div class="row">
-													<div class="col s6 m6 l6">
+												<div class = "row">
+													<div class="input-field col s6 m6 l6">
+														<input id="start_date" name="start_date" type="text"  placeholder="개월" required>
+														<label for="start_date">거주 기간</label>
+													</div>
+
+												</div>
+												<!-- <p>
+													<input class="with-gap" name="start_date" type="radio" id="start_date0" value="1"/>
+													<label class="teal-text text-darken-3" for="start_date0">6개월 이하</label>
+												</p>
+												<p>
+													<input class="with-gap" name="start_date" type="radio" id="start_date1" checked value="2"/>
+													<label class="teal-text text-darken-3" for="start_date1">12개월 이하</label>
+												</p>
+												<p>
+													<input class="with-gap" name="start_date" type="radio" id="start_date2" value="3"/>
+													<label class="teal-text text-darken-3" for="start_date2">12개월 이상</label>
+												</p> -->
+												<!-- <div class="row">
+													<div class="col s12 m12 l12">
 														<label for="start_date">
-															<h6>입주일</h6>
+															<h6>거주기간(개월)</h6>
 														</label>
-														<input id="start_date" name="start_date" type="date" class="datepicker center-align" required>
+														<input id="start_date" name="start_date" type="text" class="center-align" required>
 													</div>
 													<div class="col s6 m6 l6">
 														<label for="end_date">
@@ -109,7 +128,7 @@
 														</label>
 														<input id="end_date" name="end_date" type="date" class="datepicker center-align" required>
 													</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div class="card-action">

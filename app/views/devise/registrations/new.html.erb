@@ -12,12 +12,12 @@
               <%= devise_error_messages! %>
 
               <div class="field">
-                <%= f.label :email, class: "teal-text" %><br />
+                <%= f.label :이메일, class: "teal-text" %><br />
                 <%= f.email_field :email, placeholder: "이메일을 입력해주세요", autofocus: true %>
               </div>
 
               <div class="field">
-                <%= f.label :password, class: "teal-text" %>
+                <%= f.label :비밀번호, class: "teal-text" %>
                 <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %>자 이상 입력해주세요)</em>
                 <% end %><br />
@@ -25,7 +25,7 @@
               </div>
 
               <div class="field">
-                <%= f.label :password_confirmation, class: "teal-text" %><br />
+                <%= f.label :비밀번호_확인, class: "teal-text" %><br />
                 <%= f.password_field :password_confirmation, placeholder: "비밀번호를 확인해주세요", autocomplete: "off" %>
               </div>
 
