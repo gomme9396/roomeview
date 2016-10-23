@@ -89,6 +89,7 @@
 										</div>
 										<div class="divider"></div>
 										<div class="card-content">
+
 											<span class="card-title">
 												<h5>거주 기간</h5>
 											</span>
@@ -96,7 +97,14 @@
 												해당 원룸에서 거주했던 기간을 입력해주세요.
 											</blockquote>
 											<div class="container">
-												<div class="row">
+												<div class = "row">
+													<div class="input-field col s6 m6 l6">
+														<input id="start_date" name="start_date" type="text"  placeholder="개월" required>
+														<label for="start_date">거주 기간</label>
+													</div>
+
+												</div>
+												<!-- <div class="row">
 													<div class="col s6 m6 l6">
 														<label for="start_date">
 															<h6>입주일</h6>
@@ -109,7 +117,7 @@
 														</label>
 														<input id="end_date" name="end_date" type="date" class="datepicker center-align" value="<%= @one_review.end_date %>" required>
 													</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div class="card-action">
@@ -152,7 +160,7 @@
 										<!--	<blockquote>-->
 										<!--		 방의 사진을 올려주세요(선택사항)-->
 										<!--	</blockquote>-->
-											
+
 										<!--	<div class = "container">-->
 										<!--	    <div class="file-field input-field">-->
 										<!--	    	<%# if @one_review.image_url1 != nil %>-->
@@ -168,7 +176,7 @@
 										<!--		      </div>-->
 										<!--	      <%# end %>-->
 										<!--	    </div>-->
-										    
+
 										<!--	    <div class="file-field input-field">-->
 										<!--	    	<%# if @one_review.image_url2 != nil %>-->
 										<!--	    		<input type="text" value=<%#= @one_review.image_url2 %>>-->
@@ -183,7 +191,7 @@
 										<!--		      </div>-->
 										<!--				<%# end %>-->
 										<!--	    </div>-->
-										    
+
 										<!--	    <div class="file-field input-field">-->
 										<!--	    	<%# if @one_review.image_url3 != nil %>-->
 										<!--	    		<input type="text" value=<%#= @one_review.image_url3 %>>-->
@@ -198,7 +206,7 @@
 										<!--		      </div>-->
 										<!--				<%# end %>-->
 										<!--	    </div>-->
-										    
+
 										<!--			<div class="file-field input-field">-->
 										<!--				<%# if @one_review.image_url4 != nil %>-->
 										<!--		    	<input type="text" value=<%#= @one_review.image_url4 %>>-->
@@ -304,7 +312,7 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<% if @one_review.warm == 5 %>	
+														<% if @one_review.warm == 5 %>
 															<p>
 																<input class="with-gap" name="warm" type="radio" id="warm5" checked value="5"/>
 																<label class="teal-text text-darken-3" for="warm5">아주 좋아요</label>
@@ -437,7 +445,7 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<% if @one_review.blocking == 5 %>	
+														<% if @one_review.blocking == 5 %>
 															<p>
 																<input class="with-gap" name="blocking" type="radio" id="blocking5" checked value="5"/>
 																<label class="teal-text text-darken-3" for="blocking5">아주 좋아요</label>
@@ -505,7 +513,7 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<% if @one_review.wind == 5 %>	
+														<% if @one_review.wind == 5 %>
 															<p>
 																<input class="with-gap" name="wind" type="radio" id="wind5" checked value="5"/>
 																<label class="teal-text text-darken-3" for="wind5">아주 좋아요</label>
@@ -569,7 +577,7 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<% if @one_review.bug == 5 %>	
+														<% if @one_review.bug == 5 %>
 															<p>
 																<input class="with-gap" name="bug" type="radio" id="bug5"  checked value="5"/>
 																<label class="teal-text text-darken-3" for="bug5">아주 좋아요</label>
