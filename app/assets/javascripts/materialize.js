@@ -782,7 +782,6 @@ if ($) {
 
       $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
       $modal.data('associated-overlay', $overlay[0]);
-
       // Define Bottom Sheet animation
       if ($modal.hasClass('bottom-sheet')) {
         $modal.velocity({bottom: "0", opacity: 1}, {
