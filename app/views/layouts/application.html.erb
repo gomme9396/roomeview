@@ -12,9 +12,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  <!--다음 지도 API key-->
-  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services"></script>
+
 
 
   <!-- 구글 애널리 틱스 소스코드 -->
@@ -35,6 +33,10 @@
     $('.modal-trigger').leanModal();
     });
   </script>
+
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <!--다음 지도 API key-->
+  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services"></script>
 
 </head>
 <body>
