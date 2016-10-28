@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get   '/update_view_b/:address_id' => "home#update_view_b"
 
   post  '/update_a/:address_id' => "home#update_a"
-  post  '/update_b/:id' => "home#update_b"
+  post  '/update_b/:address_id' => "home#update_b"
 
   post  'home/find'
   post  'home/review_path'

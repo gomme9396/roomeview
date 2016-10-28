@@ -181,7 +181,7 @@ class HomeController < ApplicationController
 
     def destroy
       @address = Address.find(params[:address_id])
-      @address_review = @address.addressreviews
+      @address_review = @address.addressreviews.take
       @address.destroy
       @address_review.destroy
 
@@ -334,6 +334,7 @@ class HomeController < ApplicationController
     end
 
     def data_view
+      @user = User.all
       @review = Addressreview.all
     end
 
