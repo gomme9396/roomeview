@@ -783,6 +783,8 @@ if ($) {
       $overlay.velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
       $modal.data('associated-overlay', $overlay[0]);
       // Define Bottom Sheet animation
+      map.relayout();
+
       if ($modal.hasClass('bottom-sheet')) {
         $modal.velocity({bottom: "0", opacity: 1}, {
           duration: options.in_duration,
@@ -811,7 +813,7 @@ if ($) {
           }
         });
       }
-      map.relayout();
+      // map.relayout();
 
     }
   });
