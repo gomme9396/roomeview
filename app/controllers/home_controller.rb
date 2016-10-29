@@ -243,7 +243,7 @@ class HomeController < ApplicationController
 
       @one_review = @address.addressreviews.take
 
-      @one_review.address_id = params[:address_id]
+      # @one_review.address_id = params[:address_id]
       @one_review.address_name = @address.total_address
       @one_review.detail_address_name = @address.detail_address
 

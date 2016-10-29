@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   get   'home/index'
   get   'home/sorting_data'
 
-
-
   get   'home/create_a'
   get   'home/create_b'
   get   'home/create_c'
