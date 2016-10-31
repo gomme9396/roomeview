@@ -351,6 +351,7 @@ if ($) {
         else{
           object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
+        map.relayout();
 
         $panel_headers.not(object).removeClass('active').parent().removeClass('active');
         $panel_headers.not(object).parent().children('.collapsible-body').stop(true,false).slideUp(
@@ -379,6 +380,7 @@ if ($) {
         else{
           object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
+        map.relayout();
       }
 
       /**
