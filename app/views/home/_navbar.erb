@@ -5,6 +5,8 @@
       <ul class="right hide-on-med-and-down">
 
         <% if user_signed_in? %>
+          <li><a href="/home/create_a" class="black-text">리뷰쓰기</a></li>
+          <li><a href="/home/list_find" class="black-text">리뷰보기</a></li>
           <li><a href="/home/mypage" class="black-text">내정보</a></li>
           <li><a href="/users/sign_out" class="black-text">로그아웃</a></li>
         <% else %>
