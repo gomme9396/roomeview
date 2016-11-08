@@ -188,8 +188,16 @@
                         </div>
                         <div id="modal_write" class="modal modal-fixed-footer">
                           <div class="modal-content">
-                            <h4 class = "teal-text">리뷰를 등록해주세요!</h4>
-                            <img class="responsive-img" src = "<%= image_path "robot.png" %>">
+                            <h5 class = "teal-text">리뷰를 등록해주세요!</h5>
+                            <div class ="row">
+                              <img class="responsive-img" src = "<%= image_path "ad_place.png" %>">
+                            </div>
+                            <div class ="row">
+                              <img class="responsive-img" src = "<%= image_path "ad_place.png" %>">
+                            </div>
+                            <div class ="row">
+                              <img class="responsive-img" src = "<%= image_path "ad_place.png" %>">
+                            </div>
                           </div>
                           <div class="modal-footer">
                           <a class="modal-action modal-close btn-flat">닫기</a>
@@ -228,12 +236,14 @@
     var positions = [];
     var parcel_address = [];
     var road_address = [];
+    var detail_address = [];
 
     <% @address.each do |a| %>
       if (parcel_address.includes("<%= a.parcel_address %>") == false) {
         positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
         parcel_address.push("<%= a.parcel_address %>");
         road_address.push("<%= a.road_address %>");
+        detail_address.push("<%=a.detail_address %>");
       }
     <% end %>
 
@@ -266,7 +276,7 @@
         // 별도의 이벤트 메소드를 제공하지 않습니다
         var content = '<div class="wrap">' +
                     '    <div class="info">' +
-                    '        <div class="title">' + parcel_address[i] +
+                    '        <div class="title">' + detail_address[i] +
                     '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
                     '        </div>' +
                     '        <div class="body">' +
@@ -277,7 +287,7 @@
                     '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
                     '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
                     // '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">리뷰보기</a></div>' +
-                    '                <div><button onclick="button_function(' + i + ')">검색하기</button>' +
+                    '                <div><button onclick="button_function(' + i + ')">목록에서 보기</button>' +
                     '            </div>' +
                     '        </div>' +
                     '    </div>' +
