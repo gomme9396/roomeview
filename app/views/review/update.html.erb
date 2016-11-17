@@ -168,14 +168,17 @@
 											<div class="container">
 												<div class = "row">
 													<div class="input-field col s6 m6 l6">
-														<input id="start_date" name="start_date" type="text"  placeholder="2016년 2월" required>
-														<label for="start_date">거주 시작 시점</label>
+														<input id="start_year" name="start_year" type="number"  placeholder="ex) 2016" required>
+														<label for="start_year">거주 시작 년도</label>
 													</div>
 													<div class="input-field col s6 m6 l6">
-														<input id="how_long" name="how_long" type="number"  placeholder="ex) 2개월" required>
-														<label for="how_long">거주 기간</label>
+														<input id="start_month" name="start_month" type="number"  placeholder="ex) 1월일 경우 01" required>
+														<label for="start_month">거주 시작 월</label>
 													</div>
-
+													<div class="input-field col s6 m6 l6">
+														<input id="how_long" name="how_long" type="number"  placeholder="ex) 2" required>
+														<label for="how_long">거주 기간 (개월)</label>
+													</div>
 												</div>
 												<!-- <p>
 													<input class="with-gap" name="start_date" type="radio" id="start_date0" value="1"/>
