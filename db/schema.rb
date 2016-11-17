@@ -11,34 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705054920) do
+ActiveRecord::Schema.define(version: 20161116144717) do
 
-  create_table "addresses", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.float    "marker1"
     t.float    "marker2"
-    t.string   "current_user"
+    t.string   "writer"
     t.string   "total_address"
     t.string   "parcel_address"
     t.string   "road_address"
     t.string   "detail_address"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "addressreviews", force: :cascade do |t|
-    t.integer  "address_id"
-    t.string   "address_name"
-    t.string   "detail_address_name"
     t.string   "price"
     t.string   "month"
     t.string   "start_date"
-    t.string   "end_date"
+    t.string   "how_long"
     t.integer  "fee"
     t.string   "comment1"
-    t.string   "image_url1",          default: ""
-    t.string   "image_url2",          default: ""
-    t.string   "image_url3",          default: ""
-    t.string   "image_url4",          default: ""
     t.integer  "cool"
     t.integer  "warm"
     t.integer  "sun"
@@ -62,35 +50,14 @@ ActiveRecord::Schema.define(version: 20160705054920) do
     t.integer  "light"
     t.integer  "noise"
     t.integer  "sani"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.integer  "address_id"
-    t.integer  "user_id"
-    t.string   "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.datetime "deleted_at"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

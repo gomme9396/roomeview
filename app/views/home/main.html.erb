@@ -1,0 +1,127 @@
+<%= render :partial => "/home/navbar" %>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container" style = "margin-top:40px">
+        <br><br>
+        <h3 class="header center white-text text-lighten-2 strong">원룸 찾기의 시작,루미뷰</h3>
+        <div class="row center">
+          <h5 class="header col s12 light white-text">방의 어제를 확인해보세요</h5>
+        </div>
+        <div class="row center">
+          <% if session[:user_id].nil? %>
+            <a href="/user/login" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+          <% else %>
+            <% if Review.where("writer LIKE ?", "%#{session[:user_id]}%").exists? %>
+              <a href="/review/list" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+            <% else %>
+              <a href="/review/create" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">시작하기</a>
+            <% end %>
+          <% end %>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax">
+        <img class = "responsive-img" src ="<%= image_path "intro-bg.jpg" %>">
+    </div>
+  </div>
+
+
+  <div class = "container">
+
+    <div class = "section" style = "margin-top:40px; margin-bottom:40px;">
+      <div class = "row">
+        <div class = "col s12 m4 l4">
+          <img class="responsive-img" src = "<%= image_path "front_1.png" %>">
+        </div>
+        <div class = "col s12 m8 l8">
+          <h4 class = "black-text ">과거에 거주했거나, 지금 거주중인 곳의 <span class = "teal-text">리뷰</span>를 작성해주세요</h4>
+          <h5>거주하면서 발생한 좋은 경험과 나쁜 경험에 대해서 리뷰를 남겨 다른 사람들과 공유하세요!</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class = "divider"></div>
+
+    <div class = "section" style = "margin-top:40px; margin-bottom:40px;">
+      <div class = "row">
+        <div class = "col s12 m8 l8">
+          <h4 class = "black-text">계약할 원룸의 <span class = "teal-text">리뷰</span>를 확인하세요</h4>
+          <h5>원룸을 계약하기 전, 이전에 거주했던 사람들의 리뷰를 읽어보세요.</h5>
+        </div>
+        <div class = "col s12 m4 l4">
+          <img class="responsive-img" src = "<%= image_path "front_2.png" %>">
+        </div>
+      </div>
+    </div>
+
+    <div class = "divider"></div>
+    <div class = "section" style = "margin-top:40px; margin-bottom:40px;">
+      <div class = "row">
+        <div class = "col s12 m4 l4">
+          <img class="responsive-img" src = "<%= image_path "front_3.png" %>">
+        </div>
+        <div class = "col s12 m8 l8">
+          <h4 class = "black-text ">PC와 모바일에서 자유롭게 사용이 가능합니다.</h4>
+          <h5>별도의 어플리케이션 설치없이 웹브라우저만 이용하여 리뷰를 작성하고 볼 수 있습니다.</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <div class = "col s12 m12 l12">
+            <h3 class = "center ">지금까지 작성된 컨텐츠 현황</h3>
+          </div>
+          <div class = "col s12 m4 l4">
+            <h5 class = "center">가입자수</h5>
+
+          </div>
+          <div class = "col s12 m4 l4">
+            <h5 class = "center">작성된 리뷰의 갯수</h5>
+
+          </div>
+          <div class = "col s12 m4 l4">
+            <h5 class = "center">리뷰가 등록된 건물수</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="<%#= image_path "intro_bg3.jpg" %>" alt="Unsplashed background img 2"></div>
+  </div> -->
+  <div id="modal1" class="modal modal-fixed-footer">
+     <div class="modal-content">
+       <h4 class = "center">공지사항</h4><br />
+       <div class = "divider"></div>
+       <div class = "row">
+         <div class = "col s12 m12 l12">
+           <h6 class = "red-text">주의사항! 피드백 설문 참여 이메일 주소랑 로그인 이메일 주소가 다르면 기프티콘이 전달이 되지 않습니다!</h6>
+         </div>
+         <div class = "col s12 m12 l12">
+           <img class = "responsive-img" src ="<%= image_path "event.png" %>">
+
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a class="modal-action modal-close waves-effect waves-green btn-flat ">확인</a>
+       <a href = "https://goo.gl/forms/j6EqSLDDJHJvlIfF2" class = "btn">루미뷰 설문 남기러 가기!</a>
+     </div>
+   </div>
+<%= render :partial => "/home/footer" %>
+
+<script>
+  $(document).ready(function(){
+    $('.parallax').parallax();
+    // $('#modal1').openModal();
+  
+  
+   });
+</script>

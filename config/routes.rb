@@ -1,53 +1,44 @@
 Rails.application.routes.draw do
-
-  devise_for :users, :controllers => { :registrations => 'users/registrations' }
-  root  'home#index'
-
-  # get   ':controller(/:action(/:id))'
-  # post  ':controller(/:action(/:id))'
-  get   'home/export_address'
-  get   'home/export_review'
-  get   'home/export_user'
+     
+  root  'home#main'
   
-  get   'home/index'
-  get   'home/sorting_data'
+  get   'home/main'
+  
+  post  'user/join_process'
+  get   'user/join'
+  
+  post  'user/login_process'
+  get   'user/login'
+  
+  get   'user/logout'
+  
+  get   'user/mypage'
+  
+  post  'user/edit_path'
+  get   'user/edit'
 
-  get   'home/create_a'
-  get   'home/create_b'
-  get   'home/create_c'
+  get   'user/data'
 
-  post  'home/list_path_a'
-  post  'home/list_path_b'
-
-  post  'home/json_output'
-
-  get   'home/list_find'
-  post  'home/list_find'
-
-  get   'home/mypage'
-
-  get   'home/review/:address_id' => "home#review"
-
-  get   '/destroy/:address_id' => "home#destroy"
-  get   '/destroy_image1/:address_id' => "home#destroy_image1"
-  get   '/destroy_image2/:address_id' => "home#destroy_image2"
-  get   '/destroy_image3/:address_id' => "home#destroy_image3"
-  get   '/destroy_image4/:address_id' => "home#destroy_image4"
-
-  get   '/update_view_a/:address_id' => "home#update_view_a"
-  get   '/update_view_b/:address_id' => "home#update_view_b"
-
-  post  '/update_a/:address_id' => "home#update_a"
-  post  '/update_b/:address_id' => "home#update_b"
-
-  post  'home/find'
-  post  'home/review_path'
-
-  # get   'home/list/:address_id' => "home#list"
-
-  get   'home/review'
-
-  get   'home/data_view'
+  get   'review/create'
+  
+  post  'review/list_path'
+  get   'review/list'
+  
+  get   'review/review/:id' => "review#review"
+  
+  post  'review/update_path/:id' => 'review#update_path'
+  get   'review/update/:id' => 'review#update'
+  
+  get   'review/destroy/:id' => "review#destroy"
+  
+  get   'export/export_review'
+  get   'export/export_user'
+  
+  # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
+  # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
+  # get   'review/destroy_image3/:address_id' => "home#destroy_image3"
+  # get   'review/destroy_image4/:address_id' => "home#destroy_image4"
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

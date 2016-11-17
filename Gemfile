@@ -1,23 +1,22 @@
 source 'https://rubygems.org'
+
+# 콘솔창에서 db 보여주기
 gem 'hirb'
+# csv 관련
 gem 'roo', '~> 2.4.0'
+
 gem 'mini_magick'
-
+# key 보안
 gem 'figaro'
-
-gem 'pickadate-rails'
 
 gem 'fog-aws'
 
 gem 'carrierwave'
 
 gem 'mailgun_rails'
-
-gem 'devise'
-
-gem 'devise-i18n'
-
+# materialize
 gem 'materialize-sass'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database ㅡfor Active Record
