@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   post  'user/join_process'
   get   'user/join'
   
+  get   'user/error'
+  
   post  'user/login_process'
   get   'user/login'
   
   get   'user/logout'
-  
-  get   'user/mypage'
   
   post  'user/edit_path'
   get   'user/edit'
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get   'review/update/:id' => 'review#update'
   
   get   'review/destroy/:id' => "review#destroy"
+  
+  get   'review/mypage'
   
   get   'export/export_review'
   get   'export/export_user'

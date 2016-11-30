@@ -5,10 +5,15 @@ class UserController < ApplicationController
     
     # 회원가입
     def join_process
-        u = User.new
-        u.email = params[:email]
-        u.save
-        redirect_to '/'
+        a = User.where(:email => params[:email]).take
+        if a.nil?
+            u = User.new
+            u.email = params[:email]
+            u.save
+            redirect_to '/user/login'
+        else
+            redirect_to '/user/error1'
+        end
     end
     
     def login
@@ -19,8 +24,10 @@ class UserController < ApplicationController
         u = User.where(:email => params[:email]).take
         unless u.nil?
             session[:user_id] = u.email
+            redirect_to '/'
+        else
+            redirect_to '/user/error2'
         end
-        redirect_to '/'
     end
     
     # 로그아웃

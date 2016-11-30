@@ -19,7 +19,8 @@ class ReviewController < ApplicationController
 
       review.price = params[:price]
       review.month = params[:month]
-      review.start_date = params[:start_date]
+      review.start_year = params[:start_year]
+      review.start_month = params[:start_month]
       review.how_long = params[:how_long]
       review.fee = params[:fee]
       review.comment1 = params[:comment1]
@@ -101,7 +102,8 @@ class ReviewController < ApplicationController
 
       @one_review.price = params[:price]
       @one_review.month = params[:month]
-      @one_review.start_date = params[:start_date]
+      @one_review.start_year = params[:start_year]
+      @one_review.start_month = params[:start_month]
       @one_review.how_long = params[:how_long]
       @one_review.fee = params[:fee]
       @one_review.comment1 = params[:comment1]
