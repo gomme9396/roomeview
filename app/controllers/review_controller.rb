@@ -262,4 +262,10 @@ class ReviewController < ApplicationController
     #   redirect_to "/update_view_b/" + params[:address_id]
     # end
     
+    # 내 정보
+    def mypage
+        @user = User.where(:email => session[:user_id]).take
+        @review = Review.where(:writer => session[:user_id]).reverse
+    end
+    
 end

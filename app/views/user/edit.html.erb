@@ -1,5 +1,14 @@
 <%= render :partial => "/home/navbar" %>
 
-
+<form action="/user/edit_path/<%= @one_user.id %>" method="POST">
+    
+    <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
+    
+    <div class="center-align">
+        <a href="/home/main" class="btn btn-default">취소하기</a>
+        <input class="btn btn-default" type="submit" value="가입하기">
+    </div>
+    
+</form>
 
 <%= render :partial => "/home/footer" %>

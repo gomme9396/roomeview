@@ -4,18 +4,20 @@ Rails.application.routes.draw do
   
   get   'home/main'
   
-  post  'user/join_process'
+  post  'user/join_path'
   get   'user/join'
   
-  get   'user/error'
+  get   'user/join_error'
   
-  post  'user/login_process'
+  post  'user/login_path'
   get   'user/login'
+  
+  get   'user/login_error'
   
   get   'user/logout'
   
-  post  'user/edit_path'
-  get   'user/edit'
+  post  'user/edit_path/:id' => 'user#edit_path'
+  get   'user/edit/:id' => 'user#edit'
 
   get   'user/data'
 
@@ -35,6 +37,8 @@ Rails.application.routes.draw do
   
   get   'export/export_review'
   get   'export/export_user'
+  
+  get   'user/data'
   
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
