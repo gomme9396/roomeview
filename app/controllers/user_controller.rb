@@ -43,10 +43,20 @@ class UserController < ApplicationController
     
     def edit_path
         @one_user = User.find(params[:id])
+        @one_review = Review.where(:writer => @one_user.email).all
+        
         a = User.where(:email => params[:email]).take
+        
         if a.nil?
+            @one_review.each do |r|
+                r.writer = params[:email]
+                r.save
+            end
+            
             @one_user.email = params[:email]
+            
             @one_user.save
+            
             redirect_to '/user/login'
         else
             redirect_to '/user/join_error'
@@ -56,6 +66,7 @@ class UserController < ApplicationController
     
     def data
         @user = User.all
+        @review = Review.all
     end
     
 end
