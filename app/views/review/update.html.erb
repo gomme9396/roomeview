@@ -114,7 +114,7 @@
 											<div class="container">
 												<div class="row">
 													<div class="input-field col s12 m12 l12">
-														<input name="comment1" id="comment1" type="text" length="20" placeholder="ex) 살기는 좋은데 방음이 안되요"required></textarea>
+														<input name="comment1" id="comment1" type="text" length="20" placeholder="ex) 살기는 좋은데 방음이 안되요" required></textarea>
 														<label for="comment1">한줄평</label>
 													</div>
 												</div>
@@ -130,7 +130,7 @@
 											<div class="row">
 												<div class = "container">
 													<div class="input-field col s12 m12 l12">
-														<textarea id="comment2" name="comment2" class="materialize-textarea" placeholder="ex) 전/월세 전환이 되고, 집주인 아저씨가 좋아요."></textarea>
+														<textarea id="comment2" name="comment2" class="materialize-textarea" placeholder="ex) 전/월세 전환이 되고, 집주인 아저씨가 좋아요."><%= @one_review.comment2 %></textarea>
 														<label for="comment2">추가내용</label>
 													</div>
 												</div>
@@ -217,14 +217,25 @@
 											</blockquote>
 											<!--라디오박스-->
 											<div class="container">
-												<p>
-													<input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
-													<label class="teal-text text-darken-3" for="fee1">포함</label>
-												</p>
-												<p>
-													<input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
-													<label class="teal-text text-darken-3" for="fee0">미포함</label>
-												</p>
+											  <% if @one_review.fee == 1 %>
+  												<p>
+  													<input class="with-gap" name="fee" type="radio" id="fee1" checked value="1"/>
+  													<label class="teal-text text-darken-3" for="fee1">포함</label>
+  												</p>
+  												<p>
+  													<input class="with-gap" name="fee" type="radio" id="fee0" value="0"/>
+  													<label class="teal-text text-darken-3" for="fee0">미포함</label>
+  												</p>
+												<% else %>
+												  <p>
+  													<input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
+  													<label class="teal-text text-darken-3" for="fee1">포함</label>
+  												</p>
+  												<p>
+  													<input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
+  													<label class="teal-text text-darken-3" for="fee0">미포함</label>
+  												</p>
+												<% end %>
 											</div>
 										</div>
 
@@ -303,26 +314,61 @@
 													</span>
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
-															<label class="teal-text text-darken-3" for="cool5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
-															<label class="teal-text text-darken-3" for="cool4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="cool3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
-															<label class="teal-text text-darken-3" for="cool2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
-															<label class="teal-text text-darken-3" for="cool1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.cool == 5 %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="cool5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
+  															<label class="teal-text text-darken-3" for="cool5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.cool == 4 %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="cool4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
+  															<label class="teal-text text-darken-3" for="cool4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.cool == 3 %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="cool3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool3" value="3"/>
+  															<label class="teal-text text-darken-3" for="cool3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.cool == 2 %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="cool2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
+  															<label class="teal-text text-darken-3" for="cool2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.cool == 1 %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="cool1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
+  															<label class="teal-text text-darken-3" for="cool1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 												<div class= "col s6 m6 l6">
@@ -332,26 +378,61 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
-															<label class="teal-text text-darken-3" for="warm5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
-															<label class="teal-text text-darken-3" for="warm4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="warm3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
-															<label class="teal-text text-darken-3" for="warm2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
-															<label class="teal-text text-darken-3" for="warm1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.warm == 5 %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="warm5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
+  															<label class="teal-text text-darken-3" for="warm5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.warm == 4 %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="warm4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+  													<% else %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
+  															<label class="teal-text text-darken-3" for="warm4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+  													<% end %>
+														<% if @one_review.warm == 3 %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="warm3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm3" value="3"/>
+  															<label class="teal-text text-darken-3" for="warm3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.warm == 2 %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
+  															<label class="teal-text text-darken-3" for="warm2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
+  															<label class="teal-text text-darken-3" for="warm2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.warm == 1 %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="warm1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+  														<p>
+  															<input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
+  															<label class="teal-text text-darken-3" for="warm1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 
 												</div>
@@ -366,26 +447,61 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
-															<label class="teal-text text-darken-3" for="sun5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
-															<label class="teal-text text-darken-3" for="sun4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="sun3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
-															<label class="teal-text text-darken-3" for="sun2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
-															<label class="teal-text text-darken-3" for="sun1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.sun == 5 %>
+  														<p>
+  															<input class="with-gap" name="sun" type="radio" id="sun5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="sun5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
+  															<label class="teal-text text-darken-3" for="sun5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sun == 4 %>
+  														<p>
+  															<input class="with-gap" name="sun" type="radio" id="sun4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="sun4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
+  															<label class="teal-text text-darken-3" for="sun4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sun == 3 %>
+  														<p>
+  															<input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="sun3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sun" type="radio" id="sun3" value="3"/>
+  															<label class="teal-text text-darken-3" for="sun3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sun == 2 %>
+  														<p>
+  															<input class="with-gap" name="sun" type="radio" id="sun2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="sun2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
+  															<label class="teal-text text-darken-3" for="sun2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sun == 1 %>
+  														<p>
+  															<input class="with-gap" name="sun" type="radio" id="sun1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="sun1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
+  															<label class="teal-text text-darken-3" for="sun1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 												<div class = "col s6 m6 l6">
@@ -395,26 +511,61 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
-															<label class="teal-text text-darken-3" for="blocking5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
-															<label class="teal-text text-darken-3" for="blocking4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="blocking3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
-															<label class="teal-text text-darken-3" for="blocking2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
-															<label class="teal-text text-darken-3" for="blocking1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.blocking == 5 %>
+  														<p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="blocking5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
+  															<label class="teal-text text-darken-3" for="blocking5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.blocking == 4 %>
+  														<p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="blocking4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
+  															<label class="teal-text text-darken-3" for="blocking4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.blocking == 3 %>
+  														<p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="blocking3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking3" value="3"/>
+  															<label class="teal-text text-darken-3" for="blocking3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.blocking == 2 %>
+  														<p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="blocking2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
+  															<label class="teal-text text-darken-3" for="blocking2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.blocking == 1 %>
+  														<p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="blocking1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
+  															<label class="teal-text text-darken-3" for="blocking1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
@@ -428,26 +579,61 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
-															<label class="teal-text text-darken-3" for="wind5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
-															<label class="teal-text text-darken-3" for="wind4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="wind3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
-															<label class="teal-text text-darken-3" for="wind2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
-															<label class="teal-text text-darken-3" for="wind1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.wind == 5 %>
+  														<p>
+  															<input class="with-gap" name="wind" type="radio" id="wind5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="wind5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
+  															<label class="teal-text text-darken-3" for="wind5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.wind == 4 %>
+  														<p>
+  															<input class="with-gap" name="wind" type="radio" id="wind4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="wind4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
+  															<label class="teal-text text-darken-3" for="wind4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.wind == 3 %>
+  														<p>
+  															<input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="wind3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="wind" type="radio" id="wind3" value="3"/>
+  															<label class="teal-text text-darken-3" for="wind3" style ="font-size:0.8rem">양호함</label>
+														  </p>
+														<% end %>
+														<% if @one_review.wind == 2 %>
+  														<p>
+  															<input class="with-gap" name="wind" type="radio" id="wind2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="wind2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
+  															<label class="teal-text text-darken-3" for="wind2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.wind == 1 %>
+  														<p>
+  															<input class="with-gap" name="wind" type="radio" id="wind1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="wind1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
+  															<label class="teal-text text-darken-3" for="wind1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 												<div class = "col s6 m6 l6">
@@ -457,26 +643,61 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug5" value="5"/>
-															<label class="teal-text text-darken-3" for="bug5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
-															<label class="teal-text text-darken-3" for="bug4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="bug3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
-															<label class="teal-text text-darken-3" for="bug2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
-															<label class="teal-text text-darken-3" for="bug1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
+														<% if @one_review.bug == 5 %>
+  														<p>
+  															<input class="with-gap" name="bug" type="radio" id="bug5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="bug5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="bug" type="radio" id="bug5" value="5"/>
+  															<label class="teal-text text-darken-3" for="bug5" style ="font-size:0.8rem">매우좋음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.bug == 4 %>
+  														<p>
+  															<input class="with-gap" name="bug" type="radio" id="bug4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="bug4" style ="font-size:0.8rem">좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
+  															<label class="teal-text text-darken-3" for="bug4" style ="font-size:0.8rem">좋음</label>
+														  </p>
+														<% end %>
+														<% if @one_review.bug == 3 %>
+  														<p>
+  															<input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="bug3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="bug" type="radio" id="bug3" value="3"/>
+  															<label class="teal-text text-darken-3" for="bug3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.bug == 2 %>
+  														<p>
+  															<input class="with-gap" name="bug" type="radio" id="bug2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="bug2" style ="font-size:0.8rem">안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
+  															<label class="teal-text text-darken-3" for="bug2" style ="font-size:0.8rem">안좋음</label>
+														  </p>
+														<% end %>
+														<% if @one_review.bug == 1 %>
+  														<p>
+  															<input class="with-gap" name="bug" type="radio" id="bug1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="bug1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
+  															<label class="teal-text text-darken-3" for="bug1" style ="font-size:0.8rem">매우안좋음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
@@ -491,14 +712,25 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="iron" type="radio" id="iron1" value="1"/>
-															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
-														</p>
-														<p>
-															<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
-															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
-														</p>
+														<% if @one_review.iron == 0 %>
+  														<p>
+  															<input class="with-gap" name="iron" type="radio" id="iron1" value="1"/>
+  															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
+  														</p>
+  														<p>
+  															<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
+  															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
+  														</p>
+  												  <% else %>
+  												    <p>
+  															<input class="with-gap" name="iron" type="radio" id="iron1" value="1" checked/>
+  															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
+  														</p>
+  														<p>
+  															<input class="with-gap" name="iron" type="radio" id="iron0" value="0"/>
+  															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
+  														</p>
+  												  <% end %>
 													</div>
 												</div>
 												<div class = "col s6 m6 l6">
@@ -508,14 +740,25 @@
 													<!--라디오박스-->
 													<div class="container">
 														<br />
-														<p>
-															<input class="with-gap" name="smell" type="radio" id="smell1" value="1"/>
-															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
-															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
-														</p>
+														<% if @one_review.smell == 0 %>
+  														<p>
+  															<input class="with-gap" name="smell" type="radio" id="smell1" value="1"/>
+  															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
+  														</p>
+  														<p>
+  															<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
+  															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="smell" type="radio" id="smell1" value="1" checked/>
+  															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
+  														</p>
+  														<p>
+  															<input class="with-gap" name="smell" type="radio" id="smell0" value="0"/>
+  															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
@@ -527,14 +770,25 @@
 											<!--라디오박스-->
 											<div class="container">
 												<br />
-												<p>
-													<input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
-													<label class="teal-text text-darken-3" for="pet1">가능</label>
-												</p>
-												<p>
-													<input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
-													<label class="teal-text text-darken-3" for="pet0">불가능</label>
-												</p>
+												<% if @one_review.pet == 0 %>
+  												<p>
+  													<input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
+  													<label class="teal-text text-darken-3" for="pet1">가능</label>
+  												</p>
+  												<p>
+  													<input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
+  													<label class="teal-text text-darken-3" for="pet0">불가능</label>
+  												</p>
+  											<% else %>
+  											  <p>
+  													<input class="with-gap" name="pet" type="radio" id="pet1" checked value="1"/>
+  													<label class="teal-text text-darken-3" for="pet1">가능</label>
+  												</p>
+  												<p>
+  													<input class="with-gap" name="pet" type="radio" id="pet0" value="0"/>
+  													<label class="teal-text text-darken-3" for="pet0">불가능</label>
+  												</p>
+  											<% end %>
 											</div>
 										</div>
 										<div class="card-action">
@@ -546,58 +800,121 @@
 												<br />
 												<div class="row">
 													<div class="col s12 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="gas" id="gas" checked="checked" value="1"/>
-															<label for="gas" style ="font-size:0.8rem">가스레인지/인덕션</label>
-														</p>
+													  <% if @one_review.gas == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="gas" id="gas" checked="checked" value="1"/>
+  															<label for="gas" style ="font-size:0.8rem">가스레인지/인덕션</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="gas" id="gas" value="1"/>
+  															<label for="gas" style ="font-size:0.8rem">가스레인지/인덕션</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="micro" id="micro" checked="checked" value="1"/>
-															<label for="micro" style ="font-size:0.8rem">전자레인지</label>
-														</p>
+													  <% if @one_review.micro == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="micro" id="micro" checked="checked" value="1"/>
+  															<label for="micro" style ="font-size:0.8rem">전자레인지</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="micro" id="micro" value="1"/>
+  															<label for="micro" style ="font-size:0.8rem">전자레인지</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="bed" id="bed" checked="checked" value="1"/>
-															<label for="bed" style ="font-size:0.8rem">침대</label>
-														</p>
+													  <% if @one_review.bed == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="bed" id="bed" checked="checked" value="1"/>
+  															<label for="bed" style ="font-size:0.8rem">침대</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="bed" id="bed" value="1"/>
+  															<label for="bed" style ="font-size:0.8rem">침대</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value="1"/>
-															<label for="desk" style ="font-size:0.8rem">책상</label>
-														</p>
+													  <% if @one_review.desk == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value="1"/>
+  															<label for="desk" style ="font-size:0.8rem">책상</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="desk" id="desk" value="1"/>
+  															<label for="desk" style ="font-size:0.8rem">책상</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value="1"/>
-															<label for="laundry" style ="font-size:0.8rem">세탁기</label>
-														</p>
+													  <% if @one_review.laundry == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value="1"/>
+  															<label for="laundry" style ="font-size:0.8rem">세탁기</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="laundry" id="laundry" value="1"/>
+  															<label for="laundry" style ="font-size:0.8rem">세탁기</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value="1"/>
-															<label for="internet" style ="font-size:0.8rem">무선인터넷</label>
-														</p>
+													  <% if @one_review.internet == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value="1"/>
+  															<label for="internet" style ="font-size:0.8rem">무선인터넷</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input type="checkbox" class="filled-in" name="internet" id="internet" value="1"/>
+  															<label for="internet" style ="font-size:0.8rem">무선인터넷</label>
+  														</p>
+  													<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value="1"/>
-															<label for="fire" style ="font-size:0.8rem">화재장비</label>
-														</p>
+													  <% if @one_review.fire == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value="1"/>
+  															<label for="fire" style ="font-size:0.8rem">화재장비</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input type="checkbox" class="filled-in" name="fire" id="fire" value="1"/>
+  															<label for="fire" style ="font-size:0.8rem">화재장비</label>
+  														</p>
+														<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value="1"/>
-															<label for="cctv" style ="font-size:0.8rem">CCTV</label>
-														</p>
+													  <% if @one_review.cctv == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value="1"/>
+  															<label for="cctv" style ="font-size:0.8rem">CCTV</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input type="checkbox" class="filled-in" name="cctv" id="cctv" value="1"/>
+  															<label for="cctv" style ="font-size:0.8rem">CCTV</label>
+														  </p>
+														<% end %>
 													</div>
 													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value="1"/>
-															<label for="parking" style ="font-size:0.8rem">주차공간</label>
-														</p>
+													  <% if @one_review.parking == 1 %>
+  														<p>
+  															<input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value="1"/>
+  															<label for="parking" style ="font-size:0.8rem">주차공간</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input type="checkbox" class="filled-in" name="parking" id="parking" value="1"/>
+  															<label for="parking" style ="font-size:0.8rem">주차공간</label>
+  														</p>
+														<% end %>
 													</div>
 
 												</div>
@@ -620,26 +937,61 @@
 														<h5 onclick="Materialize.toast('건물이 있는 골목에 가로등이 몇개있나요?', 4000)">주변 가로등</h5>
 													</span>
 													<div class="container">
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night5" value="5"/>
-															<label class="teal-text text-darken-3" for="night5" style ="font-size:0.8rem">5개이상</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night4" value="4"/>
-															<label class="teal-text text-darken-3" for="night4" style ="font-size:0.8rem">4개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="night3" style ="font-size:0.8rem">3개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night2" value="2"/>
-															<label class="teal-text text-darken-3" for="night2" style ="font-size:0.8rem">2개~1개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night1" value="1"/>
-															<label class="teal-text text-darken-3" for="night1" style ="font-size:0.8rem">없음</label>
-														</p>
+													  <% if @one_review.night == 5 %>
+  														<p>
+  															<input class="with-gap" name="night" type="radio" id="night5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="night5" style ="font-size:0.8rem">5개이상</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="night" type="radio" id="night5" value="5"/>
+  															<label class="teal-text text-darken-3" for="night5" style ="font-size:0.8rem">5개이상</label>
+  														</p>
+														<% end %>
+														<% if @one_review.night == 4 %>
+  														<p>
+  															<input class="with-gap" name="night" type="radio" id="night4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="night4" style ="font-size:0.8rem">4개</label>
+  														</p>
+  													<% else %>
+  													  <p>
+  															<input class="with-gap" name="night" type="radio" id="night4" value="4"/>
+  															<label class="teal-text text-darken-3" for="night4" style ="font-size:0.8rem">4개</label>
+  														</p>
+  													<% end %>
+  													<% if @one_review.night == 3 %>
+  														<p>
+  															<input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="night3" style ="font-size:0.8rem">3개</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="night" type="radio" id="night3" value="3"/>
+  															<label class="teal-text text-darken-3" for="night3" style ="font-size:0.8rem">3개</label>
+  														</p>
+  													<% end %>
+  													<% if @one_review.night == 2 %>
+  														<p>
+  															<input class="with-gap" name="night" type="radio" id="night2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="night2" style ="font-size:0.8rem">2개~1개</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="night" type="radio" id="night2" value="2"/>
+  															<label class="teal-text text-darken-3" for="night2" style ="font-size:0.8rem">2개~1개</label>
+  														</p>
+  													<% end %>
+  													<% if @one_review.night == 1 %>
+  														<p>
+  															<input class="with-gap" name="night" type="radio" id="night1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="night1" style ="font-size:0.8rem">없음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="night" type="radio" id="night1" value="1"/>
+  															<label class="teal-text text-darken-3" for="night1" style ="font-size:0.8rem">없음</label>
+  														</p>
+  													<% end %>
 													</div>
 												</div>
 												<div class = "col s6 m6 l6">
@@ -647,26 +999,61 @@
 														<h5 onclick="Materialize.toast('야간에 방에 들어오는 외부의 빛이 많은가요?', 4000)">야간 빛공해</h5>
 													</span>
 													<div class="container">
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light5" value="5"/>
-															<label class="teal-text text-darken-3" for="light5" style ="font-size:0.8rem">없음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light4" value="4"/>
-															<label class="teal-text text-darken-3" for="light4" style ="font-size:0.8rem">적은편</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="light3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light2" value="2"/>
-															<label class="teal-text text-darken-3" for="light2" style ="font-size:0.8rem">많은편</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light1" value="1"/>
-															<label class="teal-text text-darken-3" for="light1" style ="font-size:0.8rem">심함</label>
-														</p>
+													  <% if @one_review.light == 5 %>
+  														<p>
+  															<input class="with-gap" name="light" type="radio" id="light5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="light5" style ="font-size:0.8rem">없음</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="light" type="radio" id="light5" value="5"/>
+  															<label class="teal-text text-darken-3" for="light5" style ="font-size:0.8rem">없음</label>
+  														</p>
+														<% end %>
+														<% if @one_review.light == 4 %>
+  														<p>
+  															<input class="with-gap" name="light" type="radio" id="light4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="light4" style ="font-size:0.8rem">적은편</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="light" type="radio" id="light4" value="4"/>
+  															<label class="teal-text text-darken-3" for="light4" style ="font-size:0.8rem">적은편</label>
+  														</p>
+														<% end %>
+														<% if @one_review.light == 3 %>
+  														<p>
+  															<input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="light3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="light" type="radio" id="light3" value="3"/>
+  															<label class="teal-text text-darken-3" for="light3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.light == 2 %>
+  														<p>
+  															<input class="with-gap" name="light" type="radio" id="light2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="light2" style ="font-size:0.8rem">많은편</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="light" type="radio" id="light2" value="2"/>
+  															<label class="teal-text text-darken-3" for="light2" style ="font-size:0.8rem">많은편</label>
+  														</p>
+														<% end %>
+														<% if @one_review.light == 1 %>
+  														<p>
+  															<input class="with-gap" name="light" type="radio" id="light1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="light1" style ="font-size:0.8rem">심함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="light" type="radio" id="light1" value="1"/>
+  															<label class="teal-text text-darken-3" for="light1" style ="font-size:0.8rem">심함</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 
@@ -680,26 +1067,61 @@
 														<h5 onclick="Materialize.toast('건물 주변에 소음이 심한가요?', 4000)">외부 소음</h5>
 													</span>
 													<div class="container">
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
-															<label class="teal-text text-darken-3" for="noise5" style ="font-size:0.8rem">매우조용함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
-															<label class="teal-text text-darken-3" for="noise4" style ="font-size:0.8rem">조용함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="noise3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
-															<label class="teal-text text-darken-3" for="noise2" style ="font-size:0.8rem">심함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
-															<label class="teal-text text-darken-3" for="noise1" style ="font-size:0.8rem">매우심함</label>
-														</p>
+													  <% if @one_review.noise == 5 %>
+  														<p>
+  															<input class="with-gap" name="noise" type="radio" id="noise5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="noise5" style ="font-size:0.8rem">매우조용함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
+  															<label class="teal-text text-darken-3" for="noise5" style ="font-size:0.8rem">매우조용함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.noise == 4 %>
+  														<p>
+  															<input class="with-gap" name="noise" type="radio" id="noise4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="noise4" style ="font-size:0.8rem">조용함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
+  															<label class="teal-text text-darken-3" for="noise4" style ="font-size:0.8rem">조용함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.noise == 3 %>
+  														<p>
+  															<input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="noise3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="noise" type="radio" id="noise3" value="3"/>
+  															<label class="teal-text text-darken-3" for="noise3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.noise == 2 %>
+  														<p>
+  															<input class="with-gap" name="noise" type="radio" id="noise2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="noise2" style ="font-size:0.8rem">심함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
+  															<label class="teal-text text-darken-3" for="noise2" style ="font-size:0.8rem">심함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.noise == 1 %>
+  														<p>
+  															<input class="with-gap" name="noise" type="radio" id="noise1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="noise1" style ="font-size:0.8rem">매우심함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
+  															<label class="teal-text text-darken-3" for="noise1" style ="font-size:0.8rem">매우심함</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 												<div class = "col s6 m6 l6">
@@ -707,26 +1129,61 @@
 														<h5 onclick="Materialize.toast('건물 주변 위생 상태는 어떤가요?', 4000)">건물 위생</h5>
 													</span>
 													<div class="container">
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
-															<label class="teal-text text-darken-3" for="sani5" style ="font-size:0.8rem">매우깨끗함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
-															<label class="teal-text text-darken-3" for="sani4" style ="font-size:0.8rem">깨끗함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="sani3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
-															<label class="teal-text text-darken-3" for="sani2" style ="font-size:0.8rem">더러움</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
-															<label class="teal-text text-darken-3" for="sani1" style ="font-size:0.8rem">매우더러움</label>
-														</p>
+													  <% if @one_review.sani == 5 %>
+  														<p>
+  															<input class="with-gap" name="sani" type="radio" id="sani5" checked value="5"/>
+  															<label class="teal-text text-darken-3" for="sani5" style ="font-size:0.8rem">매우깨끗함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
+  															<label class="teal-text text-darken-3" for="sani5" style ="font-size:0.8rem">매우깨끗함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sani == 4 %>
+  														<p>
+  															<input class="with-gap" name="sani" type="radio" id="sani4" checked value="4"/>
+  															<label class="teal-text text-darken-3" for="sani4" style ="font-size:0.8rem">깨끗함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
+  															<label class="teal-text text-darken-3" for="sani4" style ="font-size:0.8rem">깨끗함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sani == 3 %>
+  														<p>
+  															<input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
+  															<label class="teal-text text-darken-3" for="sani3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sani" type="radio" id="sani3" value="3"/>
+  															<label class="teal-text text-darken-3" for="sani3" style ="font-size:0.8rem">양호함</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sani == 2 %>
+  														<p>
+  															<input class="with-gap" name="sani" type="radio" id="sani2" checked value="2"/>
+  															<label class="teal-text text-darken-3" for="sani2" style ="font-size:0.8rem">더러움</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
+  															<label class="teal-text text-darken-3" for="sani2" style ="font-size:0.8rem">더러움</label>
+  														</p>
+														<% end %>
+														<% if @one_review.sani == 1 %>
+  														<p>
+  															<input class="with-gap" name="sani" type="radio" id="sani1" checked value="1"/>
+  															<label class="teal-text text-darken-3" for="sani1" style ="font-size:0.8rem">매우더러움</label>
+  														</p>
+														<% else %>
+														  <p>
+  															<input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
+  															<label class="teal-text text-darken-3" for="sani1" style ="font-size:0.8rem">매우더러움</label>
+  														</p>
+														<% end %>
 													</div>
 												</div>
 											</div>
@@ -785,6 +1242,27 @@
     <a class="modal-action modal-close waves-effect waves-green btn-flat ">확인</a>
   </div>
 </div>
+
+<script>
+    $('input[name=marker1]').attr('value', <%= @one_review.marker1 %>);
+    $('input[name=marker2]').attr('value', <%= @one_review.marker2 %>);
+    
+    $('input[name=total_address]').attr('value', "<%= @one_review.total_address %>");
+    $('input[name=parcel_address]').attr('value', "<%= @one_review.parcel_address %>");
+    $('input[name=road_address]').attr('value', "<%= @one_review.road_address %>");
+      
+    $('input[name=detail_address]').attr('value', "<%= @one_review.detail_address %>");
+      
+    $('input[name=price]').attr('value', "<%= @one_review.price %>");
+    $('input[name=month]').attr('value', "<%= @one_review.month %>");
+    $('input[name=start_year]').attr('value', "<%= @one_review.start_year %>");
+    $('input[name=start_month]').attr('value', "<%= @one_review.start_month %>");
+    $('input[name=how_long]').attr('value', "<%= @one_review.how_long %>");
+    $('input[name=fee]').attr('value', <%= @one_review.fee %>);
+    $('input[name=comment1]').attr('value', "<%= @one_review.comment1 %>");
+</script>
+
+
 <!--지도 이벤트-->
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -872,7 +1350,7 @@
     }
 
     function searchDetailAddrFromCoords(coords, callback) {
-        // 좌표로 법정동 상세 주소 정보를 요청합니다
+        // 좌표로 법정동 상세 주소 정보를 ���청합니다
         geocoder.coord2detailaddr(coords, callback);
     }
 
@@ -967,33 +1445,5 @@ $('.modal-trigger').leanModal({
   starting_top: '4%', // Starting top style attribute
   ending_top: '10%', // Ending top style attribute
 
-}
-);
+});
 </script>
-
-<!--detail_address textarea 엔터키 제한-->
-<!--<script>-->
-<!--    $('#detail_address').keydown(function () {-->
-<!--        var rows = $('#detail_address').val().split('\n').length;-->
-<!--        var maxRows = 1;-->
-<!--        if (rows > maxRows) {-->
-<!--            alert("한줄로 입력해주세요.");-->
-<!--            modifiedText = $('#detail_address').val().split("\n").slice(0, maxRows);-->
-<!--            $('#detail_address').val(modifiedText.join("\n"));-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script>-->
-<!--	var parcel_address = [];-->
-
-<!--	<%# @create_review.each do |c| %>-->
-<!--    if (parcel_address.includes("<%#= c.parcel_address %>") == false) {-->
-<!--      	parcel_address.push("<%#= c.parcel_address %>");-->
-<!--    }-->
-<!--  <%# end %>-->
-
-<!--  var address_number = parcel_address.length-->
-
-<!--  $('input[name=address_number]').attr('value', address_number);-->
-<!--</script>-->

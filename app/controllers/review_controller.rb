@@ -160,7 +160,7 @@ class ReviewController < ApplicationController
       
       @one_review.save
       
-      redirect_to "/user/mypage"
+      redirect_to "/review/mypage"
     end
     
     def update
@@ -195,7 +195,7 @@ class ReviewController < ApplicationController
       #   remover4.retrieve_from_store!(old_image_name4)
       #   remover4.remove!
       # end
-      redirect_to "/user/mypage"
+      redirect_to "/review/mypage"
     end
     
     # def destroy_image1
