@@ -45,7 +45,6 @@ Rails.application.routes.draw do
   get   'export/export_review'
   get   'export/export_user'
 
->>>>>>> d2c1e2234f09d57c459ca7ba4d18b74fc87f3fa2
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
   # get   'review/destroy_image3/:address_id' => "home#destroy_image3"
