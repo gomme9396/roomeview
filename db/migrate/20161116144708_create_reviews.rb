@@ -20,9 +20,9 @@ class CreateReviews < ActiveRecord::Migration
       t.string :detail_address
       
       # 보증금
-      t.string  :price
+      t.integer  :price
       # 월세
-      t.string  :month
+      t.integer  :month
       # 입주일 (년도)
       t.integer :start_year
       # 입주일 (월)
