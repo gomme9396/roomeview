@@ -7,15 +7,15 @@
       <div class = "section">
         <div class="row">
           <div class = "col s12 m12 l12">
-            <span class = "card-title"><h2 class = "teal-text text-darken-4" >너그집</h2></span>
+            <span class = "card-title"><h2 class = "teal-text text-darken-4" ><%= @one_review.detail_address %></h2></span>
           </div>
           <div class = "divider"></div>
           <div class="col s12 m12 l12">
             <ul class="tabs">
               <li class="tab col s3"><a class="active" href="#test1">기본 계약 정보</a></li>
               <li class="tab col s3"><a target = "_self" href="/review/create">리뷰 쓰기</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/test_review_list">리뷰 목록</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/test_review_board">커뮤니티</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/review_list">리뷰 목록</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/review_board">커뮤니티</a></li>
             </ul>
           </div>
         </div>
@@ -25,15 +25,15 @@
           </div>
           <div class = "col s12 m12 l12 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
             <label for ="address" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">주소</label>
-            <h6 id = "address" >대전광역시 유성구 장대동</h6>
+            <h6 id = "address" ><%= @one_review.total_address %></h6>
           </div>
           <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
             <label for ="price" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">보증금</label>
-            <h6 id = "price" >평균 : 000 만원</h6>
+            <h6 id = "price" >평균 : <%= @price %> 만원</h6>
           </div>
           <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
             <label for ="month" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">월세</label>
-            <h6 id = "month" >평균 : 00 만원</h6>
+            <h6 id = "month" >평균 : <%= @month %> 만원</h6>
           </div>
           <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
             <label for ="start_date" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">거주 기간</label>
@@ -76,7 +76,7 @@
 
 <script>
   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-      mapCenter = new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심 좌표
+      mapCenter = new daum.maps.LatLng("<%= @one_review.marker1 %>", "<%= @one_review.marker2 %>"), // 지도의 중심 좌표
       mapOption = {
           center: mapCenter, // 지도의 중심 좌표
           level: 4 // 지도의 확대 레벨
@@ -104,7 +104,7 @@
     // 지도에 올릴 장소명 인포윈도우 입니다.
     var mLabel = new daum.maps.InfoWindow({
       position: mapCenter, // 지도의 중심좌표에 올립니다.
-      content: '건물명' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+      content: '<%= @one_review.detail_address %>' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
     });
     mLabel.open(map, mMarker); // 지도에 올리면서, 두번째 인자로 들어간 마커 위에 올라가도록 설정합니다.
 
@@ -130,7 +130,7 @@
       // 로드뷰에 올릴 장소명 인포윈도우를 생성합니다.
       var rLabel = new daum.maps.InfoWindow({
           position: mapCenter,
-          content: '건물명'
+          content: '<%= @one_review.detail_address %>'
       });
       rLabel.open(rv, rMarker);
 
@@ -180,3 +180,5 @@
     }
 
 </script>
+
+

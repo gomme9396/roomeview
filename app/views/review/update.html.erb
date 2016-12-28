@@ -81,15 +81,15 @@
                           </label>
                           <input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
                           <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
-                          <input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
+                          <input type="hidden" name="road_address" class="form-control" id="road_address" required readonly>
                           <label for="detail_address">
                             <h6>건물 이름</h6>
                           </label>
                           <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off" required>
                           <span class = "red-text" style = "font-size:0.8rem">[주의! 몇 호인지는 입력하지마세요!]</span>
                           <input type="hidden" name="writer" value="<%= session[:user_id] %>">
-                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
-                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
+                          <input type="hidden" name="marker1" class="form-control" id="marker1" required readonly rows="1">
+                          <input type="hidden" name="marker2" class="form-control" id="marker2" required readonly rows="1">
                         </div>
                         
 
@@ -413,7 +413,7 @@
 														<% end %>
 														<% if @one_review.warm == 2 %>
   														<p>
-  															<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
+  															<input class="with-gap" name="warm" type="radio" id="warm2" checked value="2"/>
   															<label class="teal-text text-darken-3" for="warm2" style ="font-size:0.8rem">안좋음</label>
   														</p>
 														<% else %>
