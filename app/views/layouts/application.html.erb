@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Roomeview</title>
+  <title>Roomeview 원룸 거주후기 공유 서비스</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -36,7 +36,8 @@
 
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <!--다음 지도 API key-->
-  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services"></script>
+  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services,clusterer"></script>
+
 
 </head>
 <body>

@@ -1,7 +1,7 @@
 <%= render :partial => "/home/navbar" %>
 
 <div class="container" style="margin-top: 40px">
-    
+
       <% if @review.writer == session[:user_id] %>
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
           <a class="btn-floating btn-large teal">
@@ -23,7 +23,7 @@
           <div class = "section">
         	  <div class = "row">
   		  	    <div class = "col s8 m8 l8">
-          	    <span class = "card-title"><h2 class = "teal-text text-accent-4" style = "font-weight: bold"><%= @review.detail_address %></h2></span>
+          	    <span class = "card-title"><h2 class = "teal-text text-accent-4" ><%= @review.detail_address %></h2></span>
                 <span class = "card-title"><h5 class = "black-text" ><%= @review.comment1 %></h5></span>
           	    <span class = "card-title"><h6 class = "black-text" ><%= @review.writer %></h6></span>
     	    		</div>
@@ -100,15 +100,15 @@
     	        </div>
     	      </div>
     	    </div>
-  
+
   	  	  <div class = "divider"></div>
-  
+
     	    <div class = "section">
     	      <div class = "row">
     	        <div class = "col s12 m12 l12">
     	          <h5 style = "font-weight: bold">시설정보</h5>
     	        </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.cool == 5 %>
                   <img class="responsive-img" src="<%= image_path "cool5.png" %>">
@@ -126,7 +126,7 @@
                   <img class="responsive-img" src="<%= image_path "cool1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.warm == 5 %>
                   <img class="responsive-img" src="<%= image_path "warm5.png" %>">
@@ -144,7 +144,7 @@
                   <img class="responsive-img" src="<%= image_path "warm1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.sun == 5 %>
                   <img class="responsive-img" src="<%= image_path "sun5.png" %>">
@@ -162,7 +162,7 @@
                   <img class="responsive-img" src="<%= image_path "sun1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.wind == 5 %>
                   <img class="responsive-img" src="<%= image_path "wind5.png" %>">
@@ -180,7 +180,7 @@
                   <img class="responsive-img" src="<%= image_path "wind1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.blocking == 5 %>
                   <img class="responsive-img" src="<%= image_path "blocking5.png" %>">
@@ -198,7 +198,7 @@
                   <img class="responsive-img" src="<%= image_path "blocking1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.bug == 5 %>
                   <img class="responsive-img" src="<%= image_path "bug5.png" %>">
@@ -216,7 +216,7 @@
                   <img class="responsive-img" src="<%= image_path "bug1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.iron == 1 %>
                   <img class="responsive-img" src="<%= image_path "iron1.png" %>">
@@ -225,7 +225,7 @@
                   <img class="responsive-img" src="<%= image_path "iron0.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.smell == 1 %>
                   <img class="responsive-img" src="<%= image_path "smell1.png" %>">
@@ -234,7 +234,7 @@
                   <img class="responsive-img" src="<%= image_path "smell0.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.pet == 1 %>
                   <img class="responsive-img" src="<%= image_path "pet1.png" %>">
@@ -245,65 +245,65 @@
               </div>
     	      </div>
     	    </div>
-  
+
           <div class = "divider"></div>
-  
+
           <div class = "section">
     	      <div class = "row">
-  
+
               <div class = "col s12 m12 l12">
                 <h5 style = "font-weight: bold">구비시설</h5>
               </div>
-  
-  
+
+
                 <% if @review.gas == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "gas1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.micro == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "micro1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.bed == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "bed1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.desk == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "desk1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.laundry == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "laundry1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.internet == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "internet1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.fire == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "fire1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.cctv == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "cctv1.png" %>">
                   </div>
                 <% end  %>
-  
+
                 <% if @review.parking == 1 %>
                   <div class = "col s6 m3 l3" style = "padding:1px;height:75px">
                     <img class="responsive-img" src="<%= image_path "parking1.png" %>">
@@ -311,16 +311,16 @@
                 <% end  %>
             </div>
           </div>
-  
-  
+
+
   	  	  <div class = "divider"></div>
-  
+
     	    <div class = "section">
     	      <div class = "row">
     	        <div class = "col s12 m12 l12">
     	          <h5 style = "font-weight: bold">환경정보</h5>
     	        </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.night == 5 %>
                   <img class="responsive-img" src="<%= image_path "night5.png" %>">
@@ -338,7 +338,7 @@
                   <img class="responsive-img" src="<%= image_path "night1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.light == 5 %>
                   <img class="responsive-img" src="<%= image_path "light5.png" %>">
@@ -356,7 +356,7 @@
                   <img class="responsive-img" src="<%= image_path "light1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.noise == 5 %>
                   <img class="responsive-img" src="<%= image_path "noise5.png" %>">
@@ -374,7 +374,7 @@
                   <img class="responsive-img" src="<%= image_path "noise1.png" %>">
                 <%end%>
               </div>
-  
+
               <div class = "col s6 m3 l3" style = "padding:1px;height:100px;">
                 <% if @review.sani == 5 %>
                   <img class="responsive-img" src="<%= image_path "sani5.png" %>">
@@ -392,7 +392,7 @@
                   <img class="responsive-img" src="<%= image_path "sani1.png" %>">
                 <%end%>
               </div>
-  
+
   	        </div>
 	          <div class = "divider"></div>
 	          <!--# 댓글-->
@@ -467,37 +467,11 @@
           <a class=" modal-action modal-close btn-flat ">닫기</a>
         </div>
       </div>
- 
+
     </div>
+  </div>
+    <%= render :partial => "/home/footer" %>
 
-    <script>
-    var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-        center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
-        level : 14 // 지도의 확대 레벨
-    });
-
-    // 마커 클러스터러를 생성합니다
-    var clusterer = new daum.maps.MarkerClusterer({
-        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-        minLevel: 10 // 클러스터 할 최소 지도 레벨
-    });
-
-    // 데이터를 가져오기 위해 jQuery를 사용합니다
-    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-    $.get(markers1, function(data) {
-        // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-        var markers = $(data.positions).map(function(i, position) {
-            return new daum.maps.Marker({
-                position : new daum.maps.LatLng(position.marker1, position.marker2)
-            });
-        });
-
-        // 클러스터러에 마커들을 추가합니다
-        clusterer.addMarkers(markers);
-    });
-    </script>
 
     <script>
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -615,7 +589,7 @@
           var viewpoint = rv.getViewpoint(); //현 로드뷰의 viewpoint(pan,tilt,zoom)값을 가져옵니다.
           self.href = 'http://map.daum.net/?panoid='+panoId+'&pan='+viewpoint.pan+'&tilt='+viewpoint.tilt+'&zoom='+viewpoint.zoom; //Daum 지도 로드뷰로 보내는 링크        }
         }
-        
+
         //로드뷰 초기화 이벤트 핸들러
         function resetRoadview(){
           //초기화를 위해 저장해둔 변수를 통해 로드뷰를 초기상태로 돌립니다.
@@ -624,5 +598,5 @@
           });
           rv.setPanoId(rvResetValue.panoId);
         }
-        
+
     </script>

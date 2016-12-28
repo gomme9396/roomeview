@@ -1,14 +1,14 @@
 class ReviewController < ApplicationController
-    
+
     before_action :require_login, except: [:index]
-    
+
     def list_path
-        
+
       review = Review.new
 
       review.marker1 = params[:marker1]
       review.marker2 = params[:marker2]
-      
+
       review.writer = session[:user_id]
 
       review.total_address = params[:total_address]
@@ -76,21 +76,25 @@ class ReviewController < ApplicationController
 
       redirect_to "/review/list"
     end
-    
+
     def list
       @review = Review.all.reverse
     end
-    
+
+    def test_review_front
+      # @review = Review.find(params[:id])
+    end
+
     def review
       @review = Review.find(params[:id])
     end
-    
+
     def update_path
       @one_review = Review.find(params[:id])
 
       @one_review.marker1 = params[:marker1]
       @one_review.marker2 = params[:marker2]
-      
+
       @one_review.writer = session[:user_id]
 
       @one_review.total_address = params[:total_address]
@@ -131,7 +135,7 @@ class ReviewController < ApplicationController
       @one_review.light = params[:light]
       @one_review.noise = params[:noise]
       @one_review.sani = params[:sani]
-      
+
       # if params[:image1] != nil
       #   uploader1 = MachineUploader.new
       #   uploader1.store!(params[:image1])
@@ -155,20 +159,20 @@ class ReviewController < ApplicationController
       #   uploader4.store!(params[:image4])
       #   @one_review.image_url4 = uploader4.url
       # end
-      
+
       @one_review.save
-      
+
       redirect_to "/user/mypage"
     end
-    
+
     def update
       @one_review = Review.find(params[:id])
     end
-    
+
     def destroy
       @review = Review.find(params[:id])
       @review.destroy
-      
+
       # if @address_review.take.image_url1 != nil
       #   old_image_name1 = @address_review.take.image_url1.split('/')[5]
       #   remover1 = MachineUploader.new
@@ -195,7 +199,7 @@ class ReviewController < ApplicationController
       # end
       redirect_to "/user/mypage"
     end
-    
+
     # def destroy_image1
     #   @one_review = Addressreview.find(params[:address_id])
 
@@ -259,5 +263,5 @@ class ReviewController < ApplicationController
 
     #   redirect_to "/update_view_b/" + params[:address_id]
     # end
-    
+
 end

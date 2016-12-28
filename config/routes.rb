@@ -1,44 +1,51 @@
 Rails.application.routes.draw do
-     
+
   root  'home#main'
-  
+
   get   'home/main'
-  
+  get   'home/index_test'
+
   post  'user/join_process'
   get   'user/join'
-  
+
   post  'user/login_process'
   get   'user/login'
-  
+
   get   'user/logout'
-  
+
   get   'user/mypage'
-  
+
   post  'user/edit_path'
   get   'user/edit'
 
   get   'user/data'
 
   get   'review/create'
-  
+
   post  'review/list_path'
   get   'review/list'
-  
+  get   'review/test_review_front'
+  get   'review/test_review_list'
+  get   'review/test_review_board'
+
+
   get   'review/review/:id' => "review#review"
-  
+  # get   'review/review/:id' => "review#test_review_front"
+  # get   'review/review/:id' =< "review#test_review_list"
+
   post  'review/update_path/:id' => 'review#update_path'
   get   'review/update/:id' => 'review#update'
-  
+
   get   'review/destroy/:id' => "review#destroy"
-  
+
   get   'export/export_review'
   get   'export/export_user'
-  
+
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
   # get   'review/destroy_image3/:address_id' => "home#destroy_image3"
   # get   'review/destroy_image4/:address_id' => "home#destroy_image4"
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

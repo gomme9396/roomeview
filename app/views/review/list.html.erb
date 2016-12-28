@@ -42,6 +42,7 @@
           <li>
             <div class="collapsible-header"><i class="material-icons">place</i>지도에서 찾기</div>
             <div class="collapsible-body">
+              
               <div id="map" style="width: 100%; height: 400px;"></div>
               <!--지도에서 찍은 값을 데이터베이스에서 검색하는것 구현하기-->
               <form action="/home/find" method="POST">
@@ -139,6 +140,27 @@
     </div>
 
 
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+
+    <ul id='dropdown2' class='dropdown-content'>
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+
+    <ul id='dropdown3' class='dropdown-content'>
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+
     <%= render :partial => "/home/footer" %>
 
 
@@ -146,12 +168,12 @@
 
 
   <!--지도 이벤트-->
-  
+
   <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
-            level: 2 // 지도의 확대 레벨
+            level: 5 // 지도의 확대 레벨
         };
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
@@ -161,20 +183,28 @@
     var positions = [];
     var parcel_address = [];
     var road_address = [];
+    var detail_address = [];
+    var review_id = [];
 
-    <% @review.each do |r| %>
-      if (parcel_address.includes("<%= r.parcel_address %>") == false) {
-        positions.push({title: "<%= r.parcel_address %>", latlng: new daum.maps.LatLng(<%= r.marker1 %>, <%= r.marker2 %>)})
-        parcel_address.push("<%= r.parcel_address %>");
-        road_address.push("<%= r.road_address %>");
+
+
+
+    <% @review.each do |a| %>
+      if (parcel_address.includes("<%= a.parcel_address %>") == false) {
+        positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
+        parcel_address.push("<%= a.parcel_address %>");
+        road_address.push("<%= a.road_address %>");
+        detail_address.push("<%=a.detail_address %>");
+        review_id.push("<%=a.id %>");
       }
     <% end %>
 
     var overlay_arr = new Array();
     var marker_arr = new Array();
 
+
     // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    var imageSrc = "<%= image_path "map_marker.png" %>";
 
     for (var i = 0; i < positions.length; i ++) {
       (function(i) {
@@ -199,7 +229,7 @@
         // 별도의 이벤트 메소드를 제공하지 않습니다
         var content = '<div class="wrap">' +
                     '    <div class="info">' +
-                    '        <div class="title">' + parcel_address[i] +
+                    '        <div class="title">' + detail_address[i] +
                     '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
                     '        </div>' +
                     '        <div class="body">' +
@@ -209,8 +239,7 @@
                     '            <div class="desc">' +
                     '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
                     '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
-                    // '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">리뷰보기</a></div>' +
-                    '                <div><button onclick="button_function(' + i + ')">검색하기</button>' +
+                    '                <div class = "teal-text" onclick="button_function(' + i + ')">리뷰보기' +
                     '            </div>' +
                     '        </div>' +
                     '    </div>' +
@@ -244,6 +273,7 @@
     for (var i = 0; i < positions.length; i ++) {
       function button_function(i) {
           $('input[name=find_address]').attr('value', parcel_address[i]);
+          location.replace("/review/review/" + review_id[i]);
       }
     }
 
@@ -315,4 +345,5 @@
             });
         }
     }
+
 </script>

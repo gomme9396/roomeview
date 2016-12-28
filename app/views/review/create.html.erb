@@ -14,958 +14,858 @@
                             </div>
                         </nav>
                         <div class="col s12 m12 l12">
-                          <div class="card-content">
-                            <div class = "card blue-grey lighten-5">
-                              <div class = "card-content">
-                                <p class="card-title">
-                                  <h4>이용안내</h4>
-                                </p>
-                                <div class = "divider"></div>
-                                <blockquote>
-                                  루미뷰는 해당 장소에 거주했던 후기를 남기고 공유하는 서비스입니다.
-                                  <br />
-                                  리뷰 작성시 객관적 사실과 실제 경험을 토대로 작성해주세요.
-                                  <br />
-                                  비방, 욕설, 허위 사실이 포함된 리뷰는 금지 및 삭제 됩니다.[정보통신법 제 70조 제1항]
-                                  <br />
-                                </blockquote>
-                              </div>
+                            <div class="card-content">
+                                <div class="card grey lighten-5">
+                                    <div class="card-content">
+                                        <p class="card-title">
+                                            <h4>이용안내</h4>
+                                        </p>
+                                        <div class="divider"></div>
+                                        <blockquote>
+                                            루미뷰는 해당 장소에 거주했던 후기를 남기고 공유하는 서비스입니다.
+                                            <br/>
+                                            리뷰 작성시 객관적 사실과 실제 경험을 토대로 작성해주세요.
+                                            <br/>
+                                            비방, 욕설, 허위 사실이 포함된 리뷰는 금지 및 삭제 됩니다.[정보통신법 제 70조 제1항]
+                                            <br/>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <br/>
+
+                                <div class="divider"></div>
+
                             </div>
-                            <br />
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div class="card-content">
+                        <div class="container">
+                            <form action="/review/list_path" method="POST">
+
+                                <div class="section">
+                                    <p class="card-title">
+                                        <h4>위치 등록하기</h4>
+                                        <h5>방법 선택</h5>
+                                    </p>
+                                    <blockquote>
+                                        기록하실 방의 위치를 지도에서 선택하거나, 검색 버튼을 눌러 검색하세요.
+                                    </blockquote>
+                                    <div class="row">
+                                        <div class="container">
+                                            <div class="col s12 m6 l6">
+                                                <div class="card-panel pink lighten-5 black-text hoverable" onclick="sample5_execDaumPostcode()">
+                                                    <i class="Tiny material-icons left">search</i>
+                                                    <h6 class="center-align">
+                                                        주소로 검색하기
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m6 l6">
+                                                <div class="card-panel blue lighten-4 black-text hoverable modal-trigger" href="#modal1">
+                                                    <i class="Tiny material-icons left">map</i>
+                                                    <h6 class="center-align">
+                                                        지도에서 선택하기
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section">
+                                    <p class="card-title">
+                                        <h5>위치 확인하기</h5>
+                                    </p>
+                                    <blockquote>
+                                        방의 주소를 확인하시고, 방이 위치한 건물의 명칭을 입력해주세요.
+                                    </blockquote>
+                                    <div class="container">
+                                        <div class="form-group">
+                                            <label for="address">
+                                                <h6>주소</h6>
+                                            </label>
+                                            <input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
+                                            <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
+                                            <input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
+                                            <label for="detail_address">
+                                                <h6>건물 이름</h6>
+                                            </label>
+                                            <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off" required>
+                                            <span class="red-text" style="font-size:0.8rem">[주의! 몇 호인지는 입력하지마세요!]</span>
+                                            <input type="hidden" name="writer" value="<%= session[:user_id] %>">
+                                            <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
+                                            <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="divider"></div>
+
+                                <div class="section">
+                                    <p class="card-title">
+                                        <h4>기본 계약 정보</h4>
+                                    </p>
+
+                                    <p class="card-title">
+                                        <h5>한줄평</h5>
+                                    </p>
+                                    <blockquote>
+                                        방에 대한 한줄평을 남겨주세요.<br/>(20자 이내)
+                                    </blockquote>
+                                    <div class="row">
+                                        <div class="container">
+                                            <div class="input-field col s12 m12 l12">
+                                                <input name="comment1" id="comment1" type="text" length="20" placeholder="ex) 살기는 좋은데 방음이 안되요" required></textarea>
+                                            <label for="comment1">한줄평</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h5>추가 내용</h5>
+                                </span>
+                                <blockquote>
+                                    방에 대해서 자유로운 의견을 남겨주세요
+                                </blockquote>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="input-field col s12 m12 l12">
+                                            <textarea id="comment2" name="comment2" class="materialize-textarea" placeholder="ex) 전/월세 전환이 되고, 집주인 아저씨가 좋아요."></textarea>
+                                            <label for="comment2">추가내용</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h5>거주 기간</h5>
+                                </span>
+                                <blockquote>
+                                    해당 원룸에서 언제부터 몇개월 거주 하셨나요?
+                                </blockquote>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="input-field col s6 m6 l6">
+                                            <input id="start_date" name="start_date" type="text" placeholder="2016년 2월" required>
+                                            <label for="start_date">거주 시작 시점</label>
+                                        </div>
+                                        <div class="input-field col s6 m6 l6">
+                                            <input id="how_long" name="how_long" type="number" placeholder="ex)2" required>
+                                            <label for="how_long">거주 기간</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h5>보증금/월세</h5>
+                                </span>
+                                <blockquote>
+                                    계약하고 지불하신 보증금과 월세를 입력해주세요.(단위 : 만원)<br/>
+                                    <span class="red-text">주의! 전세는 월세 부분에 1을 적어주세요</span>
+                                </blockquote>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="input-field col s6 m6 l6">
+                                            <input id="price" name="price" type="number" required>
+                                            <label for="price">보증금</label>
+                                        </div>
+                                        <div class="input-field col s6 m6 l6">
+                                            <input id="month" name="month" type="number" required>
+                                            <label for="month">월세</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h5>공과금/관리비</h5>
+                                </span>
+                                <blockquote>
+                                    공과금들이 관리비에 포함 되어있나요?
+                                </blockquote>
+                                <!--라디오박스-->
+                                <div class="container">
+                                    <p>
+                                        <input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
+                                        <label class="teal-text text-darken-3" for="fee1">포함</label>
+                                    </p>
+                                    <p>
+                                        <input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
+                                        <label class="teal-text text-darken-3" for="fee0">미포함</label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <div class="divider"></div>
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h4>시설 정보</h4>
+                                </span>
+                                <blockquote>
+                                    건물 시설에 대해서 설명해주세요.
+                                </blockquote>
+                                <div class="row">
+                                    <br/>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title" onclick="Materialize.toast('냉방(에어컨)이 잘되나요?', 4000)">
+                                            <h5 class="">냉방 시설</h5>
+                                        </span>
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="cool5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="cool4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="cool3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="cool2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="cool1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 class="" onclick="Materialize.toast('난방(보일러)이 잘되나요?', 4000)">난방 시설</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="warm5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="warm4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="warm3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="warm2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="warm1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 class="" onclick="Materialize.toast('방에 햇빛이 잘들어오나요?', 4000)">채광 수준</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="sun5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="sun4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="sun3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="sun2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="sun1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 class="" onclick="Materialize.toast('방에 방음이 잘되나요?', 4000)">방음 수준</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="blocking5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="blocking4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="blocking3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="blocking2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="blocking1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 onclick="Materialize.toast('방에 환기가 잘되나요?', 4000)">환기 수준</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="wind5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="wind4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="wind3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="wind2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="wind1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 onclick="Materialize.toast('방에 방충이 잘 되고 있나요?', 4000)">방충 상태</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="bug" type="radio" id="bug5" value="5"/>
+                                                <label class="teal-text text-darken-3" for="bug5" style="font-size:0.8rem">매우좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
+                                                <label class="teal-text text-darken-3" for="bug4" style="font-size:0.8rem">좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
+                                                <label class="teal-text text-darken-3" for="bug3" style="font-size:0.8rem">양호함</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
+                                                <label class="teal-text text-darken-3" for="bug2" style="font-size:0.8rem">안좋음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="bug1" style="font-size:0.8rem">매우안좋음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 onclick="Materialize.toast('수도 시설에서 녹물이 나오나요?', 4000)">수도 녹물</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="iron" type="radio" id="iron1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="iron1" style="font-size:0.8rem">나옴</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
+                                                <label class="teal-text text-darken-3" for="iron0" style="font-size:0.8rem">안나옴</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 onclick="Materialize.toast('화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?', 4000)">배수구 냄새</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="smell" type="radio" id="smell1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="smell1" style="font-size:0.8rem">있음</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
+                                                <label class="teal-text text-darken-3" for="smell0" style="font-size:0.8rem">없음</label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s6 m6 l4" style="margin-top:10px; margin-bottom:10px">
+                                        <span class="card-title">
+                                            <h5 onclick="Materialize.toast('방에서 반려동물과 함께 지낼 수 있나요?', 4000)">반려동물 동거</h5>
+                                        </span>
+                                        <!--라디오박스-->
+                                        <div class="container">
+                                            <br/>
+                                            <p>
+                                                <input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
+                                                <label class="teal-text text-darken-3" for="pet1">가능</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
+                                                <label class="teal-text text-darken-3" for="pet0">불가능</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--컨테이너 -->
+                            </div>
+                            <!-- 섹션구분 -->
+
+                            <div class="section">
+                                <span class="card-title">
+                                    <h5 onclick="Materialize.toast('아래 항목에서 건물에 구비된 시설을 체크해주세요. (공동 사용하는 물품은 추가코멘트에 작성해주세요)', 4000)">구비 시설</h5>
+                                </span>
+                                <!--라디오박스-->
+                                <div class="container">
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col s12 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="gas" id="gas" checked="checked" value="1"/>
+                                                <label for="gas" style="font-size:0.8rem">가스레인지/인덕션</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="micro" id="micro" checked="checked" value="1"/>
+                                                <label for="micro" style="font-size:0.8rem">전자레인지</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="bed" id="bed" checked="checked" value="1"/>
+                                                <label for="bed" style="font-size:0.8rem">침대</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value="1"/>
+                                                <label for="desk" style="font-size:0.8rem">책상</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value="1"/>
+                                                <label for="laundry" style="font-size:0.8rem">세탁기</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value="1"/>
+                                                <label for="internet" style="font-size:0.8rem">무선인터넷</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value="1"/>
+                                                <label for="fire" style="font-size:0.8rem">화재장비</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value="1"/>
+                                                <label for="cctv" style="font-size:0.8rem">CCTV</label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6 m4 l4">
+                                            <p>
+                                                <input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value="1"/>
+                                                <label for="parking" style="font-size:0.8rem">주차공간</label>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> <!-- 섹션구분 -->
 
                             <div class = "divider"></div>
 
+                            <div class = "section">
+                              <span class="card-title">
+                                  <h4>주변 환경 정보</h4>
+                              </span>
+                              <blockquote>
+                                  원룸 주변 환경에 대해서 말씀해주세요.
+                              </blockquote>
+                              <div class = "row">
+
+                                <div class="col s6 m6 l6" style="margin-top:10px; margin-bottom:10px">
+                                    <span class="card-title">
+                                        <h5 onclick="Materialize.toast('건물이 있는 골목에 가로등이 몇개있나요?', 4000)">주변 가로등</h5>
+                                    </span>
+                                    <div class="container">
+                                        <p>
+                                            <input class="with-gap" name="night" type="radio" id="night5" value="5"/>
+                                            <label class="teal-text text-darken-3" for="night5" style="font-size:0.8rem">5개이상</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="night" type="radio" id="night4" value="4"/>
+                                            <label class="teal-text text-darken-3" for="night4" style="font-size:0.8rem">4개</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
+                                            <label class="teal-text text-darken-3" for="night3" style="font-size:0.8rem">3개</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="night" type="radio" id="night2" value="2"/>
+                                            <label class="teal-text text-darken-3" for="night2" style="font-size:0.8rem">2개~1개</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="night" type="radio" id="night1" value="1"/>
+                                            <label class="teal-text text-darken-3" for="night1" style="font-size:0.8rem">없음</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col s6 m6 l6" style="margin-top:10px; margin-bottom:10px">
+                                    <span class="card-title">
+                                        <h5 onclick="Materialize.toast('야간에 방에 들어오는 외부의 빛이 많은가요?', 4000)">야간 빛공해</h5>
+                                    </span>
+                                    <div class="container">
+                                        <p>
+                                            <input class="with-gap" name="light" type="radio" id="light5" value="5"/>
+                                            <label class="teal-text text-darken-3" for="light5" style="font-size:0.8rem">없음</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="light" type="radio" id="light4" value="4"/>
+                                            <label class="teal-text text-darken-3" for="light4" style="font-size:0.8rem">적은편</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
+                                            <label class="teal-text text-darken-3" for="light3" style="font-size:0.8rem">양호함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="light" type="radio" id="light2" value="2"/>
+                                            <label class="teal-text text-darken-3" for="light2" style="font-size:0.8rem">많은편</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="light" type="radio" id="light1" value="1"/>
+                                            <label class="teal-text text-darken-3" for="light1" style="font-size:0.8rem">심함</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col s6 m6 l6" style="margin-top:10px; margin-bottom:10px">
+                                    <span class="card-title">
+                                        <h5 onclick="Materialize.toast('건물 주변에 소음이 심한가요?', 4000)">외부 소음</h5>
+                                    </span>
+                                    <div class="container">
+                                        <p>
+                                            <input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
+                                            <label class="teal-text text-darken-3" for="noise5" style="font-size:0.8rem">매우조용함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
+                                            <label class="teal-text text-darken-3" for="noise4" style="font-size:0.8rem">조용함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
+                                            <label class="teal-text text-darken-3" for="noise3" style="font-size:0.8rem">양호함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
+                                            <label class="teal-text text-darken-3" for="noise2" style="font-size:0.8rem">심함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
+                                            <label class="teal-text text-darken-3" for="noise1" style="font-size:0.8rem">매우심함</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col s6 m6 l6" style="margin-top:10px; margin-bottom:10px">
+                                    <span class="card-title">
+                                        <h5 onclick="Materialize.toast('건물 주변 위생 상태는 어떤가요?', 4000)">건물 위생</h5>
+                                    </span>
+                                    <div class="container">
+                                        <p>
+                                            <input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
+                                            <label class="teal-text text-darken-3" for="sani5" style="font-size:0.8rem">매우깨끗함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
+                                            <label class="teal-text text-darken-3" for="sani4" style="font-size:0.8rem">깨끗함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
+                                            <label class="teal-text text-darken-3" for="sani3" style="font-size:0.8rem">양호함</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
+                                            <label class="teal-text text-darken-3" for="sani2" style="font-size:0.8rem">더러움</label>
+                                        </p>
+                                        <p>
+                                            <input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
+                                            <label class="teal-text text-darken-3" for="sani1" style="font-size:0.8rem">매우더러움</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                              </div>
+                            </div>
+
+
+                        </div>
+                        <!--컨테이너 구분-->
+                        <br>
+
+                        <!----------------------카드 구분선----------------------->
+                        <div class ="row">
+                          <div class="center-align">
+                            <a href="/home/main" class="btn btn-default">취소하기</a>
+                            <input class="btn btn-default" type="submit" value="완료하기">
                           </div>
                         </div>
 
                     </div>
-                    <div class = "container">
-                      <p class="card-title">
-                        <h4>위치 등록하기</h4>
-                      </p>
-                    <p class="card-title">
-                      <h5>방법 선택</h5>
-                    </p>
-                    <blockquote>
-                      기록하실 방의 위치를 지도에서 선택하거나, 검색 버튼을 눌러 검색하세요.
-                    </blockquote>
-                    <div class="row">
-                      <div class="col s12 m6 l6">
-                        <div class="card-panel pink lighten-5 black-text hoverable" onclick="sample5_execDaumPostcode()">
-                          <i class="Tiny material-icons left">search</i>
-                          <h6 class = "center-align">
-                            주소로 검색하기
-                          </h6>
-                        </div>
-                      </div>
-                      <div class="col s12 m6 l6">
-                        <div class="card-panel blue lighten-4 black-text hoverable modal-trigger" href="#modal1">
-                          <i class="Tiny material-icons left">map</i>
-                          <h6 class = "center-align">
-                            지도에서 선택하기
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div class = "divider"></div>
-                    <form action="/review/list_path" method="POST">
-                        <p class="card-title">
-                            <h5>위치 확인하기</h5>
-                        </p>
-                        <blockquote>
-                          방의 주소를 확인하시고, 방이 위치한 건물의 명칭을 입력해주세요.
-                        </blockquote>
-                        <div class="form-group">
-                          <label for="address">
-                            <h6>주소</h6>
-                          </label>
-                          <input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
-                          <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
-                          <input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
-                          <label for="detail_address">
-                            <h6>건물 이름</h6>
-                          </label>
-                          <input type="text" name="detail_address" class="form-control" id="detail_address" placeholder="세부 주소를 입력해주세요." autocomplete="off" required>
-                          <span class = "red-text" style = "font-size:0.8rem">[주의! 몇 호인지는 입력하지마세요!]</span>
-                          <input type="hidden" name="writer" value="<%= session[:user_id] %>">
-                          <textarea type="text" name="marker1" class="form-control" id="marker1" style="resize: none; display: none;" required readonly rows="1"></textarea>
-                          <textarea type="text" name="marker2" class="form-control" id="marker2" style="resize: none; display: none;" required readonly rows="1"></textarea>
-                        </div>
-                        
-
-          							
-
-						<div class="card-content">
-							<div class="row">
-								<div class="col s12 m12 l12">
-
-									<div class="card blue-grey lighten-5">
-										<div class="card-content black-text text-lighten-4">
-											<span class="card-title">
-												<h4>기본 계약 정보</h4>
-											</span>
-											<div class="divider"></div>
-											<span class="card-title">
-												<h5>한줄평</h5>
-											</span>
-											<blockquote>
-												방에 대한 한줄평을 남겨주세요.<br/>(20자 이내)
-											</blockquote>
-											<div class="container">
-												<div class="row">
-													<div class="input-field col s12 m12 l12">
-														<input name="comment1" id="comment1" type="text" length="20" placeholder="ex) 살기는 좋은데 방음이 안되요"required></textarea>
-														<label for="comment1">한줄평</label>
-													</div>
-												</div>
-											</div>
-											<div class="divider"></div>
-
-											<span class="card-title">
-												<h5>추가 내용</h5>
-											</span>
-											<blockquote>
-												방에 대해서 자유로운 의견을 남겨주세요
-											</blockquote>
-											<div class="row">
-												<div class = "container">
-													<div class="input-field col s12 m12 l12">
-														<textarea id="comment2" name="comment2" class="materialize-textarea" placeholder="ex) 전/월세 전환이 되고, 집주인 아저씨가 좋아요."></textarea>
-														<label for="comment2">추가내용</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="divider"></div>
-											<span class="card-title">
-												<h5>보증금/월세</h5>
-											</span>
-											<blockquote>
-												계약하고 지불하신 보증금과 월세를 입력해주세요.(단위 : 만원)<br />
-												<span class = "red-text">주의! 전세는 월세 부분에 1을 적어주세요</span>
-											</blockquote>
-											<div class="row">
-												<div class="container">
-													<div class="input-field col s6 m6 l6">
-														<input id="price" name="price" type="number" required>
-														<label for="price">보증금</label>
-													</div>
-													<div class="input-field col s6 m6 l6">
-														<input id="month" name="month" type="number" required>
-														<label for="month">월세</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="divider"></div>
-										<div class="card-content">
-											<span class="card-title">
-												<h5>거주 기간</h5>
-											</span>
-											<blockquote>
-												해당 원룸에서 언제부터 몇개월 거주 하셨나요?
-											</blockquote>
-											<div class="container">
-												<div class = "row">
-													<div class="input-field col s6 m6 l6">
-														<input id="start_date" name="start_date" type="text"  placeholder="2016년 2월" required>
-														<label for="start_date">거주 시작 시점</label>
-													</div>
-													<div class="input-field col s6 m6 l6">
-														<input id="how_long" name="how_long" type="number"  placeholder="ex) 2개월" required>
-														<label for="how_long">거주 기간</label>
-													</div>
-
-												</div>
-												<!-- <p>
-													<input class="with-gap" name="start_date" type="radio" id="start_date0" value="1"/>
-													<label class="teal-text text-darken-3" for="start_date0">6개월 이하</label>
-												</p>
-												<p>
-													<input class="with-gap" name="start_date" type="radio" id="start_date1" checked value="2"/>
-													<label class="teal-text text-darken-3" for="start_date1">12개월 이하</label>
-												</p>
-												<p>
-													<input class="with-gap" name="start_date" type="radio" id="start_date2" value="3"/>
-													<label class="teal-text text-darken-3" for="start_date2">12개월 이상</label>
-												</p> -->
-												<!-- <div class="row">
-													<div class="col s12 m12 l12">
-														<label for="start_date">
-															<h6>거주기간(개월)</h6>
-														</label>
-														<input id="start_date" name="start_date" type="text" class="center-align" required>
-													</div>
-													<div class="col s6 m6 l6">
-														<label for="end_date">
-															<h6>퇴거일</h6>
-														</label>
-														<input id="end_date" name="end_date" type="date" class="datepicker center-align" required>
-													</div>
-												</div> -->
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5>공과금/관리비</h5>
-											</span>
-											<blockquote>
-												공과금들이 관리비에 포함 되어있나요?
-											</blockquote>
-											<!--라디오박스-->
-											<div class="container">
-												<p>
-													<input class="with-gap" name="fee" type="radio" id="fee1" value="1"/>
-													<label class="teal-text text-darken-3" for="fee1">포함</label>
-												</p>
-												<p>
-													<input class="with-gap" name="fee" type="radio" id="fee0" checked value="0"/>
-													<label class="teal-text text-darken-3" for="fee0">미포함</label>
-												</p>
-											</div>
-										</div>
-
-										<div class="card-action">
-											<!-- <span class="card-title">
-												<h5>사진</h5>
-											</span>
-											<blockquote>
-												방의 사진을 올려주세요(선택사항)
-											</blockquote>
-
-											<div class="container">
-												<div class="file-field input-field">
-													<div class="btn">
-														<span>파일</span>
-														<input type="file" name="image1" accept="image/*">
-													</div>
-													<div class="file-path-wrapper">
-														<input class="file-path validate" type="text">
-													</div>
-												</div>
-
-												<div class="file-field input-field">
-													<div class="btn">
-														<span>파일</span>
-														<input type="file" name="image2" accept="image/*">
-													</div>
-													<div class="file-path-wrapper">
-														<input class="file-path validate" type="text">
-													</div>
-												</div>
-
-												<div class="file-field input-field">
-													<div class="btn">
-														<span>파일</span>
-														<input type="file" name="image3" accept="image/*">
-													</div>
-													<div class="file-path-wrapper">
-														<input class="file-path validate" type="text">
-													</div>
-												</div>
-
-												<div class="file-field input-field">
-													<div class="btn">
-														<span>파일</span>
-														<input type="file" name="image4" accept="image/*">
-													</div>
-													<div class="file-path-wrapper">
-														<input class="file-path validate" type="text">
-													</div>
-												</div>
-											</div> -->
-											<!--<input type="file" name="image1" accept="image/*"><br>-->
-											<!--<input type="file" name="image2" accept="image/*"><br>-->
-											<!--<input type="file" name="image3" accept="image/*"><br>-->
-											<!--<input type="file" name="image4" accept="image/*">-->
-										</div>
-									</div>
-									<br>
-									<!----------------------카드 구분선----------------------->
-
-									<div class="card blue-grey lighten-5">
-										<div class="card-content black-text text-lighten-4">
-											<span class="card-title">
-												<h4>시설 정보</h4>
-											</span>
-											<blockquote>
-												항목명을 클릭하면 설명이 나옵니다.
-											</blockquote>
-											<div class="divider"></div>
-											<div class = "row">
-												<br />
-												<div class = "col s6 m6 l6">
-													<span class="card-title" onclick="Materialize.toast('냉방(에어컨)이 잘되나요?', 4000)">
-															<h5 class = "">냉방 시설</h5>
-													</span>
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool5" value="5"/>
-															<label class="teal-text text-darken-3" for="cool5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool4" value="4"/>
-															<label class="teal-text text-darken-3" for="cool4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="cool3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool2" value="2"/>
-															<label class="teal-text text-darken-3" for="cool2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="cool" type="radio" id="cool1" value="1"/>
-															<label class="teal-text text-darken-3" for="cool1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-												</div>
-												<div class= "col s6 m6 l6">
-													<span class="card-title">
-														<h5 class = "" onclick="Materialize.toast('난방(보일러)이 잘되나요?', 4000)">난방 시설</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm5" value="5"/>
-															<label class="teal-text text-darken-3" for="warm5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm4" value="4"/>
-															<label class="teal-text text-darken-3" for="warm4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="warm3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm2" value="2"/>
-															<label class="teal-text text-darken-3" for="warm2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="warm" type="radio" id="warm1" value="1"/>
-															<label class="teal-text text-darken-3" for="warm1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-
-												</div>
-											</div>
-										</div>
-										<div class="card-action">
-											<div class = "row">
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 class = "" onclick="Materialize.toast('방에 햇빛이 잘들어오나요?', 4000)">채광 수준</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun5" value="5"/>
-															<label class="teal-text text-darken-3" for="sun5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun4" value="4"/>
-															<label class="teal-text text-darken-3" for="sun4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="sun3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun2" value="2"/>
-															<label class="teal-text text-darken-3" for="sun2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sun" type="radio" id="sun1" value="1"/>
-															<label class="teal-text text-darken-3" for="sun1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-												</div>
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 class = "" onclick="Materialize.toast('방에 방음이 잘되나요?', 4000)">방음 수준</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking5" value="5"/>
-															<label class="teal-text text-darken-3" for="blocking5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking4" value="4"/>
-															<label class="teal-text text-darken-3" for="blocking4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="blocking3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking2" value="2"/>
-															<label class="teal-text text-darken-3" for="blocking2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="blocking" type="radio" id="blocking1" value="1"/>
-															<label class="teal-text text-darken-3" for="blocking1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card-action">
-											<div class = "row">
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('방에 환기가 잘되나요?', 4000)">환기 수준</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind5" value="5"/>
-															<label class="teal-text text-darken-3" for="wind5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind4" value="4"/>
-															<label class="teal-text text-darken-3" for="wind4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="wind3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind2" value="2"/>
-															<label class="teal-text text-darken-3" for="wind2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="wind" type="radio" id="wind1" value="1"/>
-															<label class="teal-text text-darken-3" for="wind1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-												</div>
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('방에 방충이 잘 되고 있나요?', 4000)">방충 상태</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug5" value="5"/>
-															<label class="teal-text text-darken-3" for="bug5" style ="font-size:0.8rem">매우좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug4" value="4"/>
-															<label class="teal-text text-darken-3" for="bug4" style ="font-size:0.8rem">좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="bug3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug2" value="2"/>
-															<label class="teal-text text-darken-3" for="bug2" style ="font-size:0.8rem">안좋음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="bug" type="radio" id="bug1" value="1"/>
-															<label class="teal-text text-darken-3" for="bug1" style ="font-size:0.8rem">매우안좋음</label>
-														</p>
-													</div>
-												</div>
-											</div>
-
-										</div>
-										<div class="card-action">
-											<div class = "row">
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('수도 시설에서 녹물이 나오나요?', 4000)">수도 녹물</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="iron" type="radio" id="iron1" value="1"/>
-															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
-														</p>
-														<p>
-															<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
-															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
-														</p>
-													</div>
-												</div>
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('화장실 / 배수구 / 싱크대에서 냄새가 올라오나요?', 4000)">배수구 냄새</h5>
-													</span>
-													<!--라디오박스-->
-													<div class="container">
-														<br />
-														<p>
-															<input class="with-gap" name="smell" type="radio" id="smell1" value="1"/>
-															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
-															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5 onclick="Materialize.toast('방에서 반려동물과 함께 지낼 수 있나요?', 4000)">반려동물 동거 가능 여부</h5>
-											</span>
-											<!--라디오박스-->
-											<div class="container">
-												<br />
-												<p>
-													<input class="with-gap" name="pet" type="radio" id="pet1" value="1"/>
-													<label class="teal-text text-darken-3" for="pet1">가능</label>
-												</p>
-												<p>
-													<input class="with-gap" name="pet" type="radio" id="pet0" checked value="0"/>
-													<label class="teal-text text-darken-3" for="pet0">불가능</label>
-												</p>
-											</div>
-										</div>
-										<div class="card-action">
-											<span class="card-title">
-												<h5 onclick="Materialize.toast('아래 항목에서 건물에 구비된 시설을 체크해주세요. (공동 사용하는 물품은 추가코멘트에 작성해주세요)', 4000)">구비 시설</h5>
-											</span>
-											<!--라디오박스-->
-											<div class="container">
-												<br />
-												<div class="row">
-													<div class="col s12 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="gas" id="gas" checked="checked" value="1"/>
-															<label for="gas" style ="font-size:0.8rem">가스레인지/인덕션</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="micro" id="micro" checked="checked" value="1"/>
-															<label for="micro" style ="font-size:0.8rem">전자레인지</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="bed" id="bed" checked="checked" value="1"/>
-															<label for="bed" style ="font-size:0.8rem">침대</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="desk" id="desk" checked="checked" value="1"/>
-															<label for="desk" style ="font-size:0.8rem">책상</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="laundry" id="laundry" checked="checked" value="1"/>
-															<label for="laundry" style ="font-size:0.8rem">세탁기</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="internet" id="internet" checked="checked" value="1"/>
-															<label for="internet" style ="font-size:0.8rem">무선인터넷</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="fire" id="fire" checked="checked" value="1"/>
-															<label for="fire" style ="font-size:0.8rem">화재장비</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="cctv" id="cctv" checked="checked" value="1"/>
-															<label for="cctv" style ="font-size:0.8rem">CCTV</label>
-														</p>
-													</div>
-													<div class="col s6 m4 l4">
-														<p>
-															<input type="checkbox" class="filled-in" name="parking" id="parking" checked="checked" value="1"/>
-															<label for="parking" style ="font-size:0.8rem">주차공간</label>
-														</p>
-													</div>
-
-												</div>
-
-											</div>
-										</div>
-									</div>
-
-									<!----------------------카드 구분선----------------------->
-									<div class="card blue-grey lighten-5">
-										<div class="card-content black-text text-lighten-4">
-											<span class="card-title">
-												<h4>주변 환경 정보</h4>
-											</span>
-											<div class="divider"></div>
-
-											<div class="row">
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('건물이 있는 골목에 가로등이 몇개있나요?', 4000)">주변 가로등</h5>
-													</span>
-													<div class="container">
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night5" value="5"/>
-															<label class="teal-text text-darken-3" for="night5" style ="font-size:0.8rem">5개이상</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night4" value="4"/>
-															<label class="teal-text text-darken-3" for="night4" style ="font-size:0.8rem">4개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="night3" style ="font-size:0.8rem">3개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night2" value="2"/>
-															<label class="teal-text text-darken-3" for="night2" style ="font-size:0.8rem">2개~1개</label>
-														</p>
-														<p>
-															<input class="with-gap" name="night" type="radio" id="night1" value="1"/>
-															<label class="teal-text text-darken-3" for="night1" style ="font-size:0.8rem">없음</label>
-														</p>
-													</div>
-												</div>
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('야간에 방에 들어오는 외부의 빛이 많은가요?', 4000)">야간 빛공해</h5>
-													</span>
-													<div class="container">
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light5" value="5"/>
-															<label class="teal-text text-darken-3" for="light5" style ="font-size:0.8rem">없음</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light4" value="4"/>
-															<label class="teal-text text-darken-3" for="light4" style ="font-size:0.8rem">적은편</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="light3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light2" value="2"/>
-															<label class="teal-text text-darken-3" for="light2" style ="font-size:0.8rem">많은편</label>
-														</p>
-														<p>
-															<input class="with-gap" name="light" type="radio" id="light1" value="1"/>
-															<label class="teal-text text-darken-3" for="light1" style ="font-size:0.8rem">심함</label>
-														</p>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<div class="divider"></div>
-										<div class="card-content">
-											<div class = "row">
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('건물 주변에 소음이 심한가요?', 4000)">외부 소음</h5>
-													</span>
-													<div class="container">
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise5" value="5"/>
-															<label class="teal-text text-darken-3" for="noise5" style ="font-size:0.8rem">매우조용함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise4" value="4"/>
-															<label class="teal-text text-darken-3" for="noise4" style ="font-size:0.8rem">조용함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="noise3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise2" value="2"/>
-															<label class="teal-text text-darken-3" for="noise2" style ="font-size:0.8rem">심함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="noise" type="radio" id="noise1" value="1"/>
-															<label class="teal-text text-darken-3" for="noise1" style ="font-size:0.8rem">매우심함</label>
-														</p>
-													</div>
-												</div>
-												<div class = "col s6 m6 l6">
-													<span class="card-title">
-														<h5 onclick="Materialize.toast('건물 주변 위생 상태는 어떤가요?', 4000)">건물 위생</h5>
-													</span>
-													<div class="container">
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani5" value="5"/>
-															<label class="teal-text text-darken-3" for="sani5" style ="font-size:0.8rem">매우깨끗함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani4" value="4"/>
-															<label class="teal-text text-darken-3" for="sani4" style ="font-size:0.8rem">깨끗함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani3" checked value="3"/>
-															<label class="teal-text text-darken-3" for="sani3" style ="font-size:0.8rem">양호함</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani2" value="2"/>
-															<label class="teal-text text-darken-3" for="sani2" style ="font-size:0.8rem">더러움</label>
-														</p>
-														<p>
-															<input class="with-gap" name="sani" type="radio" id="sani1" value="1"/>
-															<label class="teal-text text-darken-3" for="sani1" style ="font-size:0.8rem">매우더러움</label>
-														</p>
-													</div>
-												</div>
-											</div>
-
-										</div>
-
-										</div>
-									</div>
 
 
-								</div>
-							</div>
-							<div class="center-align">
-								<a href="/home/main" class="btn btn-default">취소하기</a>
-								<input class="btn btn-default" type="submit" value="완료하기">
-							</div>
-							<br />
-						</div>
-					</div>
 
-				</div>
-			</div>
-		</form>
-	</div>
+                </div> <!-- 카드 -->
+            </div>
+
+
+            <br/>
+        </div>
+
+    </div>
 
 </div>
+</form>
 
 <%= render :partial => "/home/footer" %>
 <div id="modal1" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>지도에서 선택하기</h4>
-    <div id="map" style="width: 100%; height: 400px;">
-      <p id="centerAddr"></p>
-    </div>
-    <script>
-      function relayout() {
+<div class="modal-content">
+<h4>지도에서 선택하기</h4>
+<div id="map" style="width: 100%; height: 400px;">
+<p id="centerAddr"></p>
+</div>
+<script>
+function relayout() {
 
-      // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-      // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
-      // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-      map.relayout();
-      }
-    </script>
-    <blockquote>
-      방이 위치한 곳을 지도에서 선택해주세요.
-    </blockquote>
-    <label for="address">
-      <h6>주소</h6>
-    </label>
-    <input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
-    <input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
-    <input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
-  </div>
-  <div class="modal-footer">
+    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+    map.relayout();
+}
+</script>
+<blockquote>
+방이 위치한 곳을 지도에서 선택해주세요.
+</blockquote>
+<label for="address">
+<h6>주소</h6>
+</label>
+<input type="text" name="total_address" class="form-control" id="total_address" placeholder="지도에서 클릭해주세요." required readonly>
+<input type="hidden" name="parcel_address" class="form-control" id="parcel_address" required readonly>
+<input type="hidden" name="road_address" class="form-control" id="road_address" readonly>
+</div>
+<div class="modal-footer">
 
-    <a class="modal-action modal-close waves-effect waves-green btn-flat ">확인</a>
-  </div>
+<a class="modal-action modal-close waves-effect waves-green btn-flat ">확인</a>
+</div>
 </div>
 <!--지도 이벤트-->
 <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
-            level: 2 // 지도의 확대 레벨
-        };
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
 
-    // 지도를 생성합니다
-    var map = new daum.maps.Map(mapContainer, mapOption);
+// 지도를 생성합니다
+var map = new daum.maps.Map(mapContainer, mapOption);
 
-    var mapTypeControl = new daum.maps.MapTypeControl();
+var mapTypeControl = new daum.maps.MapTypeControl();
 
-    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+// 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 
-    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-    var zoomControl = new daum.maps.ZoomControl();
-    map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new daum.maps.ZoomControl();
+map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
-    // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new daum.maps.services.Geocoder();
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
 
-    var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-        infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
+// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
-    // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
-    // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-    daum.maps.event.addListener(map, 'click', function (mouseEvent) {
-        searchDetailAddrFromCoords(mouseEvent.latLng, function (status, result) {
-            if (status === daum.maps.services.Status.OK) {
-                var detailAddr = !!result[0].roadAddress.name
-                    ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>'
-                    : '';
-                detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
-
-                if (result[0].roadAddress.name == "") {
-                    var total_address = result[0].jibunAddress.name;
-                    var parcel_address = result[0].jibunAddress.name;
-                    var road_address = "";
-                }
-                else {
-                    var total_address = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
-                    var parcel_address = result[0].jibunAddress.name;
-                    var road_address = result[0].roadAddress.name;
-                }
-
-                $('input[name=total_address]').attr('value', total_address);
-                $('input[name=parcel_address]').attr('value', parcel_address);
-                $('input[name=road_address]').attr('value', road_address);
-
-                var content = '<div class="bAddr">' + detailAddr + '</div>';
-
-                // 마커를 클릭한 위치에 표시합니다
-                marker.setPosition(mouseEvent.latLng);
-                marker.setMap(map);
-
-                // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-                infowindow.setContent(content);
-                infowindow.open(map, marker);
-
-                // 클릭한 위도, 경도 정보를 가져옵니다
-                var latlng = mouseEvent.latLng;
-
-                var marker1 = latlng.getLat();
-                var marker2 = latlng.getLng();
-
-                document.getElementById('marker1').innerHTML = marker1;
-                document.getElementById('marker2').innerHTML = marker2;
-            }
-        });
-    });
-
-    // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-    daum.maps.event.addListener(map, 'idle', function () {
-        searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-    });
-
-    function searchAddrFromCoords(coords, callback) {
-        // 좌표로 행정동 주소 정보를 요청합니다
-        geocoder.coord2addr(coords, callback);
-    }
-
-    function searchDetailAddrFromCoords(coords, callback) {
-        // 좌표로 법정동 상세 주소 정보를 요청합니다
-        geocoder.coord2detailaddr(coords, callback);
-    }
-
-    // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-    function displayCenterInfo(status, result) {
+// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+daum.maps.event.addListener(map, 'click', function (mouseEvent) {
+    searchDetailAddrFromCoords(mouseEvent.latLng, function (status, result) {
         if (status === daum.maps.services.Status.OK) {
-            var infoDiv = document.getElementById('centerAddr');
-            $('#map').ready(function () {
-                infoDiv.innerHTML = result[0].fullName;
-            });
+            var detailAddr = !!result[0].roadAddress.name
+                ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>'
+                : '';
+            detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
+
+            if (result[0].roadAddress.name == "") {
+                var total_address = result[0].jibunAddress.name;
+                var parcel_address = result[0].jibunAddress.name;
+                var road_address = "";
+            } else {
+                var total_address = result[0].jibunAddress.name + " (" + result[0].roadAddress.name + ")";
+                var parcel_address = result[0].jibunAddress.name;
+                var road_address = result[0].roadAddress.name;
+            }
+
+            $('input[name=total_address]').attr('value', total_address);
+            $('input[name=parcel_address]').attr('value', parcel_address);
+            $('input[name=road_address]').attr('value', road_address);
+
+            var content = '<div class="bAddr">' + detailAddr + '</div>';
+
+            // 마커를 클릭한 위치에 표시합니다
+            marker.setPosition(mouseEvent.latLng);
+            marker.setMap(map);
+
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+
+            // 클릭한 위도, 경도 정보를 가져옵니다
+            var latlng = mouseEvent.latLng;
+
+            var marker1 = latlng.getLat();
+            var marker2 = latlng.getLng();
+
+            document.getElementById('marker1').innerHTML = marker1;
+            document.getElementById('marker2').innerHTML = marker2;
         }
+    });
+});
+
+// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+daum.maps.event.addListener(map, 'idle', function () {
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+});
+
+function searchAddrFromCoords(coords, callback) {
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2addr(coords, callback);
+}
+
+function searchDetailAddrFromCoords(coords, callback) {
+    // 좌표로 법정동 상세 주소 정보를 요청합니다
+    geocoder.coord2detailaddr(coords, callback);
+}
+
+// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+function displayCenterInfo(status, result) {
+    if (status === daum.maps.services.Status.OK) {
+        var infoDiv = document.getElementById('centerAddr');
+        $('#map').ready(function () {
+            infoDiv.innerHTML = result[0].fullName;
+        });
     }
+}
 
 // <!--우편번호 검색-->
 
-    function sample5_execDaumPostcode() {
-          new daum.Postcode({
-               oncomplete: function(data) {
-                   // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                   // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                   var fullAddr = data.jibunAddress; // 최종 주소 변수
-                   var extraAddr = ''; // 조합형 주소 변수
-                   autoJibunAddress = true;
-                   // 기본 주소가 도로명 타입일때 조합한다.
-                  // if(data.addressType === 'R'){
-                  //     //법정동명이 있을 경우 추가한다.
-                  //     if(data.bname !== ''){
-                  //         extraAddr += data.bname;
-                  //     }
-                  //     // 건물명이 있을 경우 추가한다.
-                  //     if(data.buildingName !== ''){
-                  //         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                  //     }
-                  //     // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                  //     fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-                  // }
+function sample5_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function (data) {
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다. 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var fullAddr = data.jibunAddress; // 최종 주소 변수
+            var extraAddr = ''; // 조합형 주소 변수
+            autoJibunAddress = true;
+            // 기본 주소가 도로명 타입일때 조합한다. if(data.addressType === 'R'){     //법정동명이 있을 경우 추가한다.     if(data.bname !== ''){         extraAddr += data.bname;     }     // 건물명이 있을 경우 추가한다.     if(data.buildingName !== ''){         extraAddr += (extraAddr !== '' ? ', ' +
+            // data.buildingName : data.buildingName);     }     // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.     fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : ''); } 주소 정보를 해당 필드에 넣는다.
+            var total_address = fullAddr + "(" + data.roadAddress + ")";
+            $('input[name=total_address]').attr('value', total_address);
+            $('input[name=parcel_address]').attr('value', data.jibunAddress);
+            $('input[name=road_address]').attr('value', data.roadAddress);
 
-                   // 주소 정보를 해당 필드에 넣는다.
-                   var total_address = fullAddr + "(" + data.roadAddress + ")";
-                   $('input[name=total_address]').attr('value', total_address);
-                   $('input[name=parcel_address]').attr('value', data.jibunAddress);
-                   $('input[name=road_address]').attr('value', data.roadAddress);
+            // 주소로 좌표를 검색
+            geocoder.addr2coord(data.address, function (status, result) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+                    // 해당 주소에 대한 좌표를 받아서
+                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 
-                   // 주소로 좌표를 검색
-                   geocoder.addr2coord(data.address, function(status, result) {
-                       // 정상적으로 검색이 완료됐으면
-                       if (status === daum.maps.services.Status.OK) {
-                           // 해당 주소에 대한 좌표를 받아서
-                           var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+                    // 지도를 보여준다.
+                    map.relayout();
+                    // 지도 중심을 변경한다.
+                    map.setCenter(coords);
+                    // 마커를 결과값으로 받은 위치로 옮긴다.
+                    marker.setPosition(coords);
+                    marker.setMap(map);
 
-                           // 지도를 보여준다.
-                           map.relayout();
-                           // 지도 중심을 변경한다.
-                           map.setCenter(coords);
-                           // 마커를 결과값으로 받은 위치로 옮긴다.
-                           marker.setPosition(coords);
-                           marker.setMap(map);
+                    var marker1 = result.addr[0].lat;
+                    var marker2 = result.addr[0].lng;
 
-                           var marker1 = result.addr[0].lat;
-                           var marker2 = result.addr[0].lng;
+                    document.getElementById('marker1').innerHTML = marker1;
+                    document.getElementById('marker2').innerHTML = marker2;
 
-                           document.getElementById('marker1').innerHTML = marker1;
-                           document.getElementById('marker2').innerHTML = marker2;
+                }
+            });
 
-
-
-                       }
-                   });
-
-               }
-           }).open();
-       }
+        }
+    }).open();
+}
 </script>
 
 <!--취소하기 버튼-->
 <script>
-    function go_to_home() {
-        history.back();
-    }
+function go_to_home() {
+    history.back();
+}
 </script>
 
 <!-- Modal Structure -->
 
-
-
 <script>
 $('.modal-trigger').leanModal({
-  dismissible: false, // Modal can be dismissed by clicking outside of the modal
-  opacity: .5, // Opacity of modal background
-  in_duration: 300, // Transition in duration
-  out_duration: 200, // Transition out duration
-  starting_top: '4%', // Starting top style attribute
-  ending_top: '10%', // Ending top style attribute
+    dismissible: false, // Modal can be dismissed by clicking outside of the modal
+    opacity: .5, // Opacity of modal background
+    in_duration: 300, // Transition in duration
+    out_duration: 200, // Transition out duration
+    starting_top: '4%', // Starting top style attribute
+    ending_top: '10%', // Ending top style attribute
 
-}
-);
+});
 </script>
 
 <!--detail_address textarea 엔터키 제한-->

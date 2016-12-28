@@ -1,0 +1,154 @@
+<%= render :partial => "/home/navbar" %>
+<div class = "container">
+  <div class = "card">
+
+    <div class = "container">
+
+      <div class = "section">
+        <div class="row">
+          <div class = "col s12 m12 l12">
+            <span class = "card-title"><h2 class = "teal-text text-darken-4" >너그집</h2></span>
+          </div>
+          <div class = "divider"></div>
+          <div class="col s12 m12 l12">
+            <ul class="tabs">
+              <li class="tab col s3"><a target = "_self" href="/review/test_review_front">기본 계약 정보</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/create">리뷰 쓰기</a></li>
+              <li class="tab col s3"><a class="active" >리뷰 목록</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/test_review_board">커뮤니티</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "col s12 m12 l12">
+            <h5 style = "font-weight: bold">리뷰 목록</h5>
+          </div>
+
+        </div>
+
+        <div class = "row">
+          <div class = "col s12 m4 l4">
+            <div class = "card-panel small hoverable">
+
+              <div class = "card-content" style = "padding:0px">
+                <div class = "row" style = "margin :0px">
+                  <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">건물 이름 1</h4>
+                </div>
+                <div class= "row">
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">시설점수 (5점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "5point.png" %>" >
+                  </div>
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">환경점수 (3점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "3point.png" %>" >
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col s12 m12 l12">
+                    <label for ="oneline1">한줄평</label>
+                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">한줄평</h6>
+                  </div>
+                </div>
+                <div class= "row">
+                  <div class= "col s12 m12 l12">
+                    <label for ="oneline2">기타의견</label>
+                    <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
+                <a href="#" >자세한 리뷰 보기</a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class = "col s12 m4 l4">
+            <div class = "card-panel small hoverable">
+
+              <div class = "card-content" style = "padding:0px">
+                <div class = "row" style = "margin :0px">
+                  <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">건물 이름 2</h4>
+                </div>
+                <div class= "row">
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">시설점수 (4점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "4point.png" %>" >
+                  </div>
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">환경점수 (2점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "2point.png" %>" >
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col s12 m12 l12">
+                    <label for ="oneline1">한줄평</label>
+                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">한줄평</h6>
+                  </div>
+                </div>
+                <div class= "row">
+                  <div class= "col s12 m12 l12">
+                    <label for ="oneline2">기타의견</label>
+                    <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
+                <a href="#" >자세한 리뷰 보기</a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class = "col s12 m4 l4">
+            <div class = "card-panel small hoverable">
+
+              <div class = "card-content" style = "padding:0px">
+                <div class = "row" style = "margin :0px">
+                  <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">건물 이름 1</h4>
+                </div>
+                <div class= "row">
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">시설점수 (5점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "5point.png" %>" >
+                  </div>
+                  <div class= "col s6 m6 l6">
+                    <label for ="sisul">환경점수 (1점)</label>
+                    <img name ="sisul" class="responsive-img " src="<%= image_path "1point.png" %>" >
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col s12 m12 l12">
+                    <label for ="oneline1">한줄평</label>
+                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">한줄평</h6>
+                  </div>
+                </div>
+                <div class= "row">
+                  <div class= "col s12 m12 l12">
+                    <label for ="oneline2">기타의견</label>
+                    <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">입력된 내용이 없습니다.</h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
+                <a href="#" >자세한 리뷰 보기</a>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<%= render :partial => "/home/footer" %>

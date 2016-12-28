@@ -1,7 +1,8 @@
 
- <nav class="white" role="navigation">
+ <nav class="transparent z-depth-0" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="/home/main" class="brand-logo"><span class = "teal-text text-lighten-1">Room</span><span class = "black-text">eview</span></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
 
         <% if session[:user_id].nil? %>
@@ -20,13 +21,18 @@
 
       <ul id="nav-mobile" class="side-nav">
         <% if session[:user_id].nil? %>
-          <li><a href="/user/login" class="black-text">Login</a></li>
+        <li><a href="/user/login" class="black-text">Login</a></li>
         <% else %>
-          <li><a href="/user/logout" class="black-text">Logout</a></li>
+        <li><a href="/user/logout" class="black-text">Logout</a></li>
         <% end %>
           <!-- <li><a href="/home/create_a">create</a></li>
           <li><a href="/home/list_find">list</a></li> -->
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
     </div>
   </nav>
+
+
+<script>
+$(".button-collapse").sideNav();
+</script>

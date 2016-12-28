@@ -1,12 +1,69 @@
-<form action="/user/login_process" method="POST">
-    
-    <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
-    
-    <div class="center-align">
-        <a href="/home/main" class="btn btn-default">취소하기</a>
-        <input class="btn btn-default" type="submit" value="로그인하기">
-    </div>
-    
-</form>
+<%= render :partial => "/home/navbar" %>
 
-<span class="center"><a href="/user/join" class="btn amber black-text" style="font-size:1.3rem">회원가입</a></span>
+<div class = "container">
+  <div class = "row">
+
+  </div>
+  <div class = "row">
+    <div class=  "col s12 m6 l6 offset-m3 offset-l3">
+      <div class = "card white z-depth-5">
+        <div class = "container">
+          <div class= "card-content">
+
+            <div class = "section">
+              <span class = "card-title" style="font-weight:bold">로그인</span><br />
+              <blockquote>
+                이메일로 간편하게 로그인 하세요!
+              </blockquote><br />
+
+              <form action="/user/login_process" method="POST">
+                <lable class = "teal-text" for = "email"><h6 style="font-weight:bold">이메일</h6></lable>
+                <input type="email" name="email" class="form-control" id="total_address" placeholder="roomeview@roomeview.net" required>
+                <p>
+                  <input type="checkbox" id="memory" />
+                  <label for="memory">이메일 기억하기</label>
+                </p><br />
+                <div class="center-align">
+                  <input class="btn btn-large teal lighten-1 z-depth-2" type="submit" value="로그인하기">
+                </div>
+              </form>
+            </div>
+            <br />
+            <div class = "row">
+              <a class = "black-text" href="/user/join">계정이 없다면 가입하세요! <span class=" amber-text text-accent-3" style="font-weight:bold;text-decoration: underline">이메일로 가입하기</span></a><br />
+              <a class = "black-text" href="">계정을 잊어버리셨나요? <span class="blue-grey-text" style="font-weight:bold;text-decoration: underline">계정 찾기</span></a>
+            </div>
+
+          </div>
+
+
+          <div class = "card-action">
+            <span class = "card-title" style="font-weight:bold">소셜 로그인</span>
+            <br />
+            <blockquote>
+              다른 소셜 계정으로 로그인 하세요!
+            </blockquote>
+            <br />
+            <div class = "row">
+              <div class = "btn blue lighten-2 white-text col s12 m6 l6 " style = "padding:0px;">
+                Facebook
+              </div>
+              <div class = "btn red lighten-2 white-text col s12 m6 l6 " style = "padding:0px;">
+                Google+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<%= render :partial => "/home/footer" %>

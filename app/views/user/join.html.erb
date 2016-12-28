@@ -1,10 +1,35 @@
-<form action="/user/join_process" method="POST">
-    
-    <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
-    
-    <div class="center-align">
-        <a href="/home/main" class="btn btn-default">취소하기</a>
-        <input class="btn btn-default" type="submit" value="가입하기">
+<%= render :partial => "/home/navbar" %>
+
+<div class = "container">
+  <div class = "row">
+
+  </div>
+  <div class = "row">
+    <div class = "col s12 m6 l6 offset-m3 offset-l3">
+      <div class = "card white">
+        <div class = "container">
+          <div class = "cart-content">
+            <div class = "section">
+              <span class = "card-title" style="font-weight:bold">회원가입</span><br />
+              <form action="/user/join_process" method="POST">
+
+                <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
+                <h6> 회원가입시 루미뷰 <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-1">이용 약관</a>에 동의하게 됩니다. </h6><br />
+
+                <div class="center-align">
+                  <a href="/home/main" class="btn btn-default">취소하기</a>
+                  <input class="btn btn-default" type="submit" value="가입하기">
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</form>
+  </div>
+
+</div>
+
+<%= render :partial => "/home/footer" %>
