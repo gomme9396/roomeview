@@ -26,12 +26,12 @@ Rails.application.routes.draw do
 
   post  'review/list_path'
   get   'review/list'
-  get   'review/review_front'
+  # get   'review/review_front'
   get   'review/review_list'
   get   'review/review_board'
 
   get   'review/review/:id' => "review#review"
-  # get   'review/test_review_front/:id' => "review#test_review_front"
+  get   'review/review_front/:parcel_address' => "review#review_front"
   # get   'review/test_review_list/:id' =< "review#test_review_list"
 
   post  'review/update_path/:id' => 'review#update_path'

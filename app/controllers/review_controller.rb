@@ -270,5 +270,24 @@ class ReviewController < ApplicationController
         @user = User.where(:email => session[:user_id]).take
         @review = Review.where(:writer => session[:user_id]).reverse
     end
-
+    
+    def review_front
+      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
+      @reviews = Review.where(:parcel_address => params[:parcel_address])
+      
+      @price = 0
+      @month = 0
+      @num = 0
+      
+      @reviews.each do |r|
+        @price = @price + r.price
+        @month = @month + r.month
+        @num = @num + 1
+      end
+      
+      @price = @price / @num
+      @month = @month / @num
+      
+    end
+    
 end
