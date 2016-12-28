@@ -290,4 +290,9 @@ class ReviewController < ApplicationController
       
     end
     
+    def review_list
+      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
+      @review = Review.where(:parcel_address => params[:parcel_address])
+    end
+    
 end
