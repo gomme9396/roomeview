@@ -6,11 +6,11 @@
       <ul class="right hide-on-med-and-down">
 
         <% if session[:user_id].nil? %>
-          <li><a href="/user/login" class="black-text">Login</a></li>
+          <li><a href="/user/login" class="black-text">로그인</a></li>
         <% else %>
           <li><a href="/review/create" class="black-text">리뷰쓰기</a></li>
           <li><a href="/review/list" class="black-text">리뷰보기</a></li>
-          <li><a href="/user/mypage" class="black-text">내정보</a></li>
+          <li><a href="/review/mypage" class="black-text">내정보</a></li>
           <li><a href="/user/logout" class="black-text">로그아웃</a></li>
         <% end %>
           <!-- <li><a href="/home/create_a">create</a></li>
@@ -21,14 +21,14 @@
 
       <ul id="nav-mobile" class="side-nav">
         <% if session[:user_id].nil? %>
-        <li><a href="/user/login" class="black-text">Login</a></li>
+          <li><a href="/user/login" class="black-text">로그인</a></li>
         <% else %>
-        <li><a href="/user/logout" class="black-text">Logout</a></li>
+          <li><a href="/user/logout" class="black-text">로그아웃</a></li>
         <% end %>
           <!-- <li><a href="/home/create_a">create</a></li>
           <li><a href="/home/list_find">list</a></li> -->
       </ul>
-
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">메뉴</i></a>
     </div>
   </nav>
 

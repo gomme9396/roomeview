@@ -23,10 +23,12 @@ class CreateReviews < ActiveRecord::Migration
       t.string  :price
       # 월세
       t.string  :month
-      # 입주일
-      t.string  :start_date
+      # 입주일 (년도)
+      t.integer :start_year
+      # 입주일 (월)
+      t.integer :start_month
       # 거주기간
-      t.string  :how_long
+      t.integer :how_long
       # 공과금
       t.integer :fee
       # 한줄 평

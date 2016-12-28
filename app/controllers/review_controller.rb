@@ -19,7 +19,8 @@ class ReviewController < ApplicationController
 
       review.price = params[:price]
       review.month = params[:month]
-      review.start_date = params[:start_date]
+      review.start_year = params[:start_year]
+      review.start_month = params[:start_month]
       review.how_long = params[:how_long]
       review.fee = params[:fee]
       review.comment1 = params[:comment1]
@@ -105,7 +106,8 @@ class ReviewController < ApplicationController
 
       @one_review.price = params[:price]
       @one_review.month = params[:month]
-      @one_review.start_date = params[:start_date]
+      @one_review.start_year = params[:start_year]
+      @one_review.start_month = params[:start_month]
       @one_review.how_long = params[:how_long]
       @one_review.fee = params[:fee]
       @one_review.comment1 = params[:comment1]
@@ -162,7 +164,7 @@ class ReviewController < ApplicationController
 
       @one_review.save
 
-      redirect_to "/user/mypage"
+      redirect_to "/review/mypage"
     end
 
     def update
@@ -197,7 +199,7 @@ class ReviewController < ApplicationController
       #   remover4.retrieve_from_store!(old_image_name4)
       #   remover4.remove!
       # end
-      redirect_to "/user/mypage"
+      redirect_to "/review/mypage"
     end
 
     # def destroy_image1
@@ -263,5 +265,10 @@ class ReviewController < ApplicationController
 
     #   redirect_to "/update_view_b/" + params[:address_id]
     # end
+    # 내 정보
+    def mypage
+        @user = User.where(:email => session[:user_id]).take
+        @review = Review.where(:writer => session[:user_id]).reverse
+    end
 
 end
