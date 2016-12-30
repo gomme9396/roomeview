@@ -17,6 +17,9 @@ gem 'mailgun_rails'
 # materialize
 gem 'materialize-sass'
 
+gem 'rake', '11.3.0'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database ㅡfor Active Record

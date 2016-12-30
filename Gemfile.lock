@@ -199,6 +199,7 @@ DEPENDENCIES
   materialize-sass
   mini_magick
   rails (= 4.2.5)
+  rake (= 11.3.0)
   roo (~> 2.4.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

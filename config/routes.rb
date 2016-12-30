@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # get   'review/review_front'
   get   'review/review_list'
   get   'review/review_board'
+  get   'review/review_board_content'
 
   get   'review/review/:id' => "review#review"
   get   'review/review_front/:parcel_address' => "review#review_front"
