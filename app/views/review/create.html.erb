@@ -186,9 +186,8 @@
                                           </select>
                                           <label>거주 형태</label>
                                       </div>
-
                                         <div class="input-field col s6 m6 l6">
-                                            <select name = "contract_type" id = "contract_type">
+                                            <select name = "contract_type" id = "contract_type" >
                                                 <option value="1">월세</option>
                                                 <option value="2">전세</option>
                                                 <option value="3">단기</option>
@@ -877,20 +876,15 @@ function sample5_execDaumPostcode() {
 }
 </script>
 
-<!--취소하기 버튼-->
+<!--월세 disabled / 취소하기 버튼-->
 <script>
-function disableField() {
-  if( document.getElementById("contract_type").value  == 2)
-    document.getElementById("month").disabled = true;
-  }
-}​
 
 function go_to_home() {
     history.back();
 }
 </script>
 
-<!-- Modal Structure -->
+<!-- select initailize / Modal Structure -->
 
 <script>
 $(document).ready(function () {
@@ -907,6 +901,18 @@ $('.modal-trigger').leanModal({
     ending_top: '10%', // Ending top style attribute
 
 });
+
+$('#contract_type').change(function() {
+    if($(this).val() == '2')
+    {
+      document.getElementById('month').disabled = true;
+    }
+    else {
+      document.getElementById('month').disabled = false;
+
+    }
+
+})
 </script>
 
 <!--detail_address textarea 엔터키 제한-->
