@@ -19,20 +19,29 @@ class CreateReviews < ActiveRecord::Migration
       # 상세 주소
       t.string :detail_address
       
-      # 보증금
-      t.integer  :price
-      # 월세
-      t.integer  :month
+      # 한줄 평
+      t.string  :comment1
+      # 추가 코멘트
+      t.string  :comment2
+      
       # 입주일 (년도)
       t.integer :start_year
       # 입주일 (월)
       t.integer :start_month
       # 거주기간
       t.integer :how_long
-      # 공과금
-      t.integer :fee
-      # 한줄 평
-      t.string  :comment1
+      
+      # 거주 형태
+      t.integer :place_type
+      # 계약 형태
+      t.integer :contract_type
+      # 보증금
+      t.integer :price
+      # 월세
+      t.integer :month
+      
+      # 관리비 포함 항목
+      t.string :fee
       
       # 사진
       # t.string :image_url1, default:""
@@ -77,9 +86,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :cctv
       # 주차 공간
       t.integer :parking
-      # 추가 코멘트
-      t.string  :comment2
-
+      
       # 가로등
       t.integer :night
       # 빛공해
