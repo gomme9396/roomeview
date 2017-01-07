@@ -1,66 +1,75 @@
 <%= render :partial => "/home/navbar" %>
-<div class = "container">
-  <div class = "card">
+<div class="container">
+    <div class="card">
 
-    <div class = "container">
+        <div class="container">
 
-      <div class = "section">
-        <div class="row">
-          <div class = "col s12 m12 l12">
-            <span class = "card-title"><h2 class = "teal-text text-darken-4" >너그집</h2></span>
-          </div>
-          <div class = "divider"></div>
-          <div class="col s12 m12 l12">
-            <ul class="tabs">
-              <li class="tab col s3"><a target = "_self" href="/review/review_front">기본 계약 정보</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/create">리뷰 쓰기</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/review_list">리뷰 목록</a></li>
-              <li class="tab col s3"><a class="active" target = "_self" href="">커뮤니티</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class = "row">
-          <div class = "col s12 m12 l12">
-            <div class = "card-panel small hoverable yellow lighten-5" >
-
-              <div class = "card-content" >
-                <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <span class="card-title">
+                            <h2 class="teal-text text-darken-4">너그집</h2>
+                        </span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="col s12 m12 l12">
+                        <ul class="tabs">
+                            <li class="tab col s3">
+                                <a target="_self" href="/review/review_front">기본 계약 정보</a>
+                            </li>
+                            <li class="tab col s3">
+                                <a target="_self" href="/review/create">리뷰 쓰기</a>
+                            </li>
+                            <li class="tab col s3">
+                                <a target="_self" href="/review/review_list">리뷰 목록</a>
+                            </li>
+                            <li class="tab col s3">
+                                <a class="active" target="_self" href="">커뮤니티</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-              <div class="card-action" style = "padding-top:10px; padding-bottom:10px;">
-                <div class = "row" style = "margin:0px">
-                  <div class = "col s12 m6 l6" style = "padding:0px">
-                    <a class=  "black-text">작성자 : test@email.com</a>
-                  </div>
-                  <div class = "col s12 m6 l6" style = "padding:0px">
-                    <a class=  "black-text">작성일시 : 2016/12/15 20:00</a>
-                  </div>
-                </div>
-              </div>
-              <div class = "card-action" style = "padding">
-                <div class = "row">
-                  <div class = "col s12 m12 l12">
-                    <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
-                  </div>
-                </div>
-                <div class = "row " style = "margin:0px">
-                  <a>목록</a><a>수정</a><a>삭제</a>
-                </div>
-              </div>
 
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="card-panel small hoverable yellow lighten-5">
+
+                            <div class="card-content">
+                                <div class="row" style="margin :0px">
+                                    <h5 class="black-text" style="overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
+                                </div>
+                            </div>
+                            <div class="card-action" style="padding-top:10px; padding-bottom:10px;">
+                                <div class="row" style="margin:0px">
+                                    <div class="col s12 m6 l6" style="padding:0px">
+                                        <a class="black-text">작성자 : test@email.com</a>
+                                    </div>
+                                    <div class="col s12 m6 l6" style="padding:0px">
+                                        <a class="black-text">작성일시 : 2016/12/15 20:00</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action" style="padding">
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <label for="oneline1">내용</label>
+                                        <h6 name="oneline1" style="overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
+                                    </div>
+                                </div>
+                                <div class="row " style="margin:0px">
+                                    <a>목록</a>
+                                    <a>수정</a>
+                                    <a>삭제</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
-          </div>
+
         </div>
-
-
-      </div>
-
-
     </div>
-  </div>
 </div>
 <%= render :partial => "/home/footer" %>

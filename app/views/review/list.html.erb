@@ -47,12 +47,7 @@
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
 
-    // 클러스터 생성
-    var clusterer = new daum.maps.MarkerClusterer({
-        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-        minLevel: 10 // 클러스터 할 최소 지도 레벨
-    });
+
 
 
     // 마커를 표시할 위치와 title 객체 배열입니다
@@ -61,6 +56,7 @@
     var road_address = [];
     var detail_address = [];
     var review_id = [];
+    var data = {};
 
 
 
@@ -128,6 +124,13 @@
             content: content,
             map: map,
             position: positions[i].latlng
+        });
+
+        // 클러스터 생성
+        var clusterer = new daum.maps.MarkerClusterer({
+            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+            minLevel: 10 // 클러스터 할 최소 지도 레벨
         });
 
         overlay_arr.push(overlay);
