@@ -546,10 +546,19 @@
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         var map = new daum.maps.Map(mapContainer, mapOption);
 
+        var imageSrc = "<%= image_path "map_marker_large.png" %>";
+
+        var imageSize = new daum.maps.Size(25, 40);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
         // 지도에 올릴 마커를 생성합니다.
         var mMarker = new daum.maps.Marker({
           position: mapCenter, // 지도의 중심좌표에 올립니다.
-          map: map // 생성하면서 지도에 올립니다.
+          map: map, // 생성하면서 지도에 올립니다.
+          image : markerImage // 마커 이미지
+
         });
 
         // 지도에 올릴 장소명 인포윈도우 입니다.
@@ -575,7 +584,9 @@
           // 로드뷰에 올릴 마커를 생성합니다.
           var rMarker = new daum.maps.Marker({
               position: mapCenter,
-              map: rv //map 대신 rv(로드뷰 객체)로 설정하면 로드뷰에 올라갑니다.
+              map: rv, //map 대신 rv(로드뷰 객체)로 설정하면 로드뷰에 올라갑니다.
+              image : markerImage // 마커 이미지
+
           });
 
           // 로드뷰에 올릴 장소명 인포윈도우를 생성합니다.

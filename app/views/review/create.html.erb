@@ -759,8 +759,22 @@ map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new daum.maps.services.Geocoder();
 
-var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+var imageSrc = "<%= image_path "map_marker_large.png" %>";
+
+var imageSize = new daum.maps.Size(20, 30);
+
+// 마커 이미지를 생성합니다
+var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+
+var marker = new daum.maps.Marker(
+  {
+    image : markerImage // 마커 이미지
+  }
+), // 클릭한 위치를 표시할 마커입니다
     infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+
 
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 searchAddrFromCoords(map.getCenter(), displayCenterInfo);
