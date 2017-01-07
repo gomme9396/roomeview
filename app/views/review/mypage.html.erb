@@ -1,48 +1,116 @@
 <%= render :partial => "/home/navbar" %>
-    <div class="container" style="margin-top: 40px">
-        <div class="row">
-            <div class="col s12 m12 l12 ">
-                <div class="card ">
-                    <div class = "card-content">
-                        <div class = "container">
-                            <div class = "row">
-                                <div class = "col s12 m6 l6">
-                                   <span class = "card-title"><h3>내정보</h3></span>
-                                   <span><h5>이메일 : <%= session[:user_id] %></h5></span>
+<div class="container" style="margin-top: 40px">
+    <div class="row">
+        <div class="col s12 m12 l12 ">
+            <div class="card ">
+                <div class="card-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                <span class="card-title">
+                                    <h3>내정보</h3>
+                                </span>
+                                <span>
+                                    <h5>이메일 :
+                                        <%= session[:user_id] %></h5>
+                                </span>
+                            </div>
+                        </div>
+
+                        <a class="waves-effect waves-light white teal-text btn" href="/user/edit/<%= @user.id %>">탈퇴하기</a>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="container">
+                        <span class="card-title">
+                            <h5>내가 작성한 리뷰</h5>
+                        </span>
+                        <div class="row">
+                            <% @review.each do |r| %>
+
+                            <div class="col s12 m6 l6">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <a class="card-title" href="/review/review/<%= r.id %>"><%= r.detail_address %></a>
+                                    </div>
+                                    <div class="card-action " style="height:70px">
+                                        <div class="row left" style="margin:0px">
+                                            <div class="col" style="padding:0px">
+                                                <% if r.writer == session[:user_id] %>
+                                                <a href="/review/update/<%= r.id %>" style="margin:0px;" class="blue-text">수정하기</a>
+                                                <a href="/review/destroy/<%= r.id %>" style="margin:0px" class="amber-text">삭제하기</a>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <a class="waves-effect waves-light white teal-text btn" href="/user/edit/<%= @user.id %>">이메일 바꾸기</a>
+                            <% end %>
                         </div>
                     </div>
-                    <div class = "card-action">
-                        <div class = "container">
-                        <span class = "card-title"><h5>내가 작성한 리뷰</h5></span>
-                        <div class = "row">
-                              <% @review.each do |r| %>
-                
-                                  <div class = "col s12 m6 l6">
-                                    <div class="card small">
-                                      <div class = "card-image">
-                                        <img src="<%= image_path "intro-bg.jpg" %>">
-                                        <span class="card-title"><%= r.detail_address %></span>
-                                      </div>
-                                      <div class="card-action " style = "height:70px">
-                                        <div class="row left" style = "margin:0px">
-                                          <div class = "col" style = "padding:0px">
-                                            <span><a href="/review/review/<%= r.id %>" style = "margin:0px; "><h6>자세한 내용</h6></a></span><br>
-                                          </div>
-                                          <div class = "col" style = "padding:0px">
-                                            <% if r.writer == session[:user_id] %>
-                                              <a href="/review/update/<%= r.id %>" style = "margin:0px; "><i class="material-icons">mode_edit</i></a>
-                                              <a href="/review/destroy/<%= r.id %>" style = "margin:0px"><i class="material-icons">delete</i></a>
-                                            <% end %>
-                                          </div>
-                                        </div>
-                                      </div>
+                </div>
+
+                <div class="card-action">
+                    <div class="container">
+                        <span class="card-title">
+                            <h5>내가 작성한 글</h5>
+                        </span>
+                        <div class="row">
+                            <% @review.each do |r| %>
+
+                            <div class = "col s12 m4 l4">
+                              <div class = "card-panel small hoverable yellow lighten-5" >
+
+                                <div class = "card-content" style = "padding:0px">
+                                  <div class = "row" style = "margin :0px">
+                                    <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
+                                  </div>
+                                  <div class = "row">
+                                    <div class = "col s12 m12 l12">
+                                      <label for ="oneline1">내용</label>
+                                      <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
                                     </div>
                                   </div>
-                              <% end %>
+
+                                </div>
+
+                                <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
+                                  <a class=  "black-text">작성일시:2016/12/15 14:00</a>
+                                </div>
+                              </div>
+                            </div>
+
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-action">
+                    <div class="container">
+                        <span class="card-title">
+                            <h5>내가 작성한 댓글</h5>
+                        </span>
+                        <div class="row">
+                            <% @review.each do |r| %>
+
+                            <div class="col s12 m6 l6">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <a class="card-title" href="/review/review/<%= r.id %>"><%= r.detail_address %></a>
+                                    </div>
+                                    <div class="card-action " style="height:70px">
+                                        <div class="row left" style="margin:0px">
+                                            <div class="col" style="padding:0px">
+                                                <% if r.writer == session[:user_id] %>
+                                                <a href="/review/update/<%= r.id %>" style="margin:0px;" class="blue-text">수정하기</a>
+                                                <a href="/review/destroy/<%= r.id %>" style="margin:0px" class="amber-text">삭제하기</a>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -50,6 +118,6 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 
 <%= render :partial => "/home/footer" %>

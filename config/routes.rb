@@ -44,6 +44,13 @@ Rails.application.routes.draw do
 
   get   'review/mypage'
 
+  get   'admin/admin_main'
+  get   'admin/admin_review'
+  get   'admin/admin_board'
+  get   'admin/admin_reply'
+
+
+
   get   'export/export_review'
   get   'export/export_user'
 
