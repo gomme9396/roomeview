@@ -16,15 +16,20 @@ class ReviewController < ApplicationController
       review.road_address = params[:road_address]
 
       review.detail_address = params[:detail_address]
-
-      review.price = params[:price]
-      review.month = params[:month]
+      
+      review.comment1 = params[:comment1]
+      review.comment2 = params[:comment2]
+      
       review.start_year = params[:start_year]
       review.start_month = params[:start_month]
       review.how_long = params[:how_long]
+      
+      review.place_type = params[:place_type]
+      review.contract_type = params[:contract_type]
+      review.price = params[:price]
+      review.month = params[:month]
       review.fee = params[:fee]
-      review.comment1 = params[:comment1]
-
+      
       review.cool = params[:cool]
       review.warm = params[:warm]
       review.sun = params[:sun]
@@ -44,8 +49,7 @@ class ReviewController < ApplicationController
       review.fire = params[:fire]
       review.cctv = params[:cctv]
       review.parking = params[:parking]
-      review.comment2 = params[:comment2]
-
+      
       review.night = params[:night]
       review.light = params[:light]
       review.noise = params[:noise]
@@ -82,10 +86,6 @@ class ReviewController < ApplicationController
       @review = Review.all.reverse
     end
 
-    def test_review_front
-      # @review = Review.find(params[:id])
-    end
-
     def review
       @review = Review.find(params[:id])
     end
@@ -103,15 +103,20 @@ class ReviewController < ApplicationController
       @one_review.road_address = params[:road_address]
 
       @one_review.detail_address = params[:detail_address]
-
-      @one_review.price = params[:price]
-      @one_review.month = params[:month]
+      
+      @one_review.comment1 = params[:comment1]
+      @one_review.comment2 = params[:comment2]
+      
       @one_review.start_year = params[:start_year]
       @one_review.start_month = params[:start_month]
       @one_review.how_long = params[:how_long]
+      
+      @one_review.place_type = params[:place_type]
+      @one_review.contract_type = params[:contract_type]
+      @one_review.price = params[:price]
+      @one_review.month = params[:month]
       @one_review.fee = params[:fee]
-      @one_review.comment1 = params[:comment1]
-
+      
       @one_review.cool = params[:cool]
       @one_review.warm = params[:warm]
       @one_review.sun = params[:sun]
@@ -131,8 +136,7 @@ class ReviewController < ApplicationController
       @one_review.fire = params[:fire]
       @one_review.cctv = params[:cctv]
       @one_review.parking = params[:parking]
-      @one_review.comment2 = params[:comment2]
-
+      
       @one_review.night = params[:night]
       @one_review.light = params[:light]
       @one_review.noise = params[:noise]

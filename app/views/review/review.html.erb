@@ -37,7 +37,7 @@
                 <!--<%# unless @review.image_url1.nil? %>-->
                 <!--  <img class="responsive-img materialboxed z-depth-2" src="<%#= @review.image_url1 %>" >-->
                 <!--<%# else %>-->
-                  <!-- <img class="responsive-img materialboxed z-depth-2" src="<%= image_path "intro-bg.jpg" %>" > -->
+                  <!-- <img class="responsive-img materialboxed z-depth-2" src="<%#= image_path "intro-bg.jpg" %>" > -->
                 <%# end %>
               <!--</div>-->
               <!--<div class = "col s6 m3 l3" style ="padding : 5px">-->
@@ -84,11 +84,34 @@
     	        </div>
               <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="place_type" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">거주형태</label>
-    	          <h6 id = "place_type" > <%= @review.month %> </h6>
+    	          <h6 id = "place_type" >
+    	            <% if @review.place_type == 1 %>
+    	              원룸
+    	            <% end %>
+    	            <% if @review.place_type == 2 %>
+    	              투룸
+    	            <% end %>
+    	            <% if @review.place_type == 3 %>
+    	              하숙
+    	            <% end %>
+    	            <% if @review.place_type == 4 %>
+    	              기타
+    	            <% end %>
+    	          </h6>
     	        </div>
               <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="contract_type" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">계약형태</label>
-    	          <h6 id = "contract_type" ><%= @review.month %></h6>
+    	          <h6 id = "contract_type" >
+    	            <% if @review.contract_type == 1 %>
+    	              월세
+    	            <% end %>
+    	            <% if @review.contract_type == 2 %>
+    	              전세
+    	            <% end %>
+    	            <% if @review.contract_type == 3 %>
+    	              단기
+    	            <% end %>
+    	          </h6>
     	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="end_date" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">거주 시작 시점</label>
@@ -100,7 +123,7 @@
     	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="fee" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">관리비 포함 항목</label>
-    	          <h6 id = "fee"><% if @review.fee == 1 %>포함<%else%>미포함<%end%></h6>
+    	          <h6 id = "fee"><%= @review.fee %></h6>
     	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="comment1" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">추가코멘트</label>
