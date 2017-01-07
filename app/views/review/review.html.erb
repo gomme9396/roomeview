@@ -82,6 +82,14 @@
                 <label for ="month" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">월세</label>
     	          <h6 id = "month" ><%= @review.month %>만원</h6>
     	        </div>
+              <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+                <label for ="place_type" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">거주형태</label>
+    	          <h6 id = "place_type" > <%= @review.month %> </h6>
+    	        </div>
+              <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
+                <label for ="contract_type" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">계약형태</label>
+    	          <h6 id = "contract_type" ><%= @review.month %></h6>
+    	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
                 <label for ="end_date" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">거주 시작 시점</label>
                 <h6 id = "end_date" ><%= @review.start_year %>년 <%= @review.start_month %>월</h6>
@@ -91,7 +99,7 @@
     	          <h6 id = "start_date" ><%= @review.how_long %>개월</h6>
     	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
-                <label for ="fee" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">관리비에 세금포함</label>
+                <label for ="fee" class = "teal-text text-darken-3" style = "font-size: 1.1rem;">관리비 포함 항목</label>
     	          <h6 id = "fee"><% if @review.fee == 1 %>포함<%else%>미포함<%end%></h6>
     	        </div>
     	        <div class = "col s12 m12 l6 card-panel z-depth-0" style ="margin:0px; padding-top:2px; padding-bottom:2px">
