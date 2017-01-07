@@ -281,16 +281,25 @@ class ReviewController < ApplicationController
       
       @price = 0
       @month = 0
-      @num = 0
+      @price_num = 0
+      @month_num = 0
       
       @reviews.each do |r|
-        @price = @price + r.price
-        @month = @month + r.month
-        @num = @num + 1
+        if r.month == nil
+          @price = @price + r.price
+          @price_num = @price_num + 1
+        else
+          @price = @price + r.price
+          @month = @month + r.month
+          @month_num = @month_num + 1
+          @price_num = @price_num + 1
+        end
       end
       
-      @price = @price / @num
-      @month = @month / @num
+      if @month_num == 0
+      else
+        @month = @month / @month_num
+      end
       
     end
     
