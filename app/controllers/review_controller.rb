@@ -55,8 +55,8 @@ class ReviewController < ApplicationController
       review.noise = params[:noise]
       review.sani = params[:sani]
 
-      # review.avg1 = (review.cool.to_f + review.warm.to_f + review.sun.to_f + review.blocking.to_f + review.wind.to_f + review.bug.to_f + review.iron.to_f+ review.smell.to_f)/8
-      # review.avg2 = (review.night.to_f + review.light.to_f + review.noise.to_f + review.sani.to_f )/4
+      review.avg1 = (review.cool.to_f + review.warm.to_f + review.sun.to_f + review.blocking.to_f + review.wind.to_f + review.bug.to_f + review.iron.to_f+ review.smell.to_f)/8
+      review.avg2 = (review.night.to_f + review.light.to_f + review.noise.to_f + review.sani.to_f )/4
       # review.avg3 = (review.price.to_f + review.fee.to_f + review.owner.to_f)/3
       # review.tavg = (review.avg1 + review.avg2 + review.avg3)/3
 
@@ -306,6 +306,10 @@ class ReviewController < ApplicationController
     def review_list
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       @review = Review.where(:parcel_address => params[:parcel_address])
+      # @avg1 = (@one_review.cool.to_f + @one_review.warm.to_f + @one_review.sun.to_f + @one_review.blocking.to_f + @one_review.wind.to_f + @one_review.bug.to_f + @one_review.iron.to_f + @one_review.smell.to_f)/8
+      # @avg2 = (@one_review.light.to_f + @one_review.night.to_f + @one_review.noise.to_f + @one_review.sani.to_f)/4
+
+      # review.avg2 = (review.night.to_f + review.light.to_f + review.noise.to_f + review.sani.to_f )/4
 
     end
 

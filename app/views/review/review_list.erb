@@ -36,15 +36,73 @@
                     <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= r.detail_address %></h4>
                   </div>
                   <div class= "row">
+
+                    <% if r.avg1 == 5 %>
                     <div class= "col s6 m6 l6">
                       <label for ="sisul">시설점수 (5점)</label>
                       <img name ="sisul" class="responsive-img " src="<%= image_path "5point.png" %>" >
                     </div>
-                    <%= r.avg1 %>
+                    <% else %>
+                      <%if r.avg1 >= 4%>
+                      <div class= "col s6 m6 l6">
+                        <label for ="sisul">시설점수 (4점)</label>
+                        <img name ="sisul" class="responsive-img " src="<%= image_path "4point.png" %>" >
+                      </div>
+                      <% else %>
+                        <% if r.avg1 >= 3%>
+                        <div class= "col s6 m6 l6">
+                          <label for ="sisul">시설점수 (3점)</label>
+                          <img name ="sisul" class="responsive-img " src="<%= image_path "3point.png" %>" >
+                        </div>
+                        <% else %>
+                          <% if r.avg1 >= 2%>
+                          <div class= "col s6 m6 l6">
+                            <label for ="sisul">시설점수 (2점)</label>
+                            <img name ="sisul" class="responsive-img " src="<%= image_path "2point.png" %>" >
+                          </div>
+                          <% else %>
+                          <div class= "col s6 m6 l6">
+                            <label for ="sisul">시설점수 (1점)</label>
+                            <img name ="sisul" class="responsive-img " src="<%= image_path "1point.png" %>" >
+                          </div>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+
+                    <% if r.avg2 == 5 %>
                     <div class= "col s6 m6 l6">
-                      <label for ="sisul">환경점수 (3점)</label>
-                      <img name ="sisul" class="responsive-img " src="<%= image_path "3point.png" %>" >
+                      <label for ="environ">환경점수 (5점)</label>
+                      <img name ="environ" class="responsive-img " src="<%= image_path "5point.png" %>" >
                     </div>
+                    <% else %>
+                      <%if r.avg2 >= 4%>
+                      <div class= "col s6 m6 l6">
+                        <label for ="environ">환경점수 (4점)</label>
+                        <img name ="environ" class="responsive-img " src="<%= image_path "4point.png" %>" >
+                      </div>
+                      <% else %>
+                        <% if r.avg2 >= 3%>
+                        <div class= "col s6 m6 l6">
+                          <label for ="environ">환경점수 (3점)</label>
+                          <img name ="environ" class="responsive-img " src="<%= image_path "3point.png" %>" >
+                        </div>
+                        <% else %>
+                          <% if r.avg2 >= 2%>
+                          <div class= "col s6 m6 l6">
+                            <label for ="environ">환경점수 (2점)</label>
+                            <img name ="environ" class="responsive-img " src="<%= image_path "2point.png" %>" >
+                          </div>
+                          <% else %>
+                          <div class= "col s6 m6 l6">
+                            <label for ="environ">환경점수 (1점)</label>
+                            <img name ="environ" class="responsive-img " src="<%= image_path "1point.png" %>" >
+                          </div>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+
                   </div>
                   <div class = "row">
                     <div class = "col s12 m12 l12">

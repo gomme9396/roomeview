@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20161116144717) do
     t.integer  "light"
     t.integer  "noise"
     t.integer  "sani"
+    t.float    "avg1"
+    t.float    "avg2"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
