@@ -308,9 +308,6 @@ class ReviewController < ApplicationController
       @review = Review.where(:parcel_address => params[:parcel_address])
     end
 
-    def review_board
-      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
-      @review = Review.where(:parcel_address => params[:parcel_address])
-    end
+
 
 end
