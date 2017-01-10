@@ -49,10 +49,9 @@ Rails.application.routes.draw do
   get   'admin/admin_board'
   get   'admin/admin_reply'
 
-
-
   get   'export/export_review'
   get   'export/export_user'
+  
 
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
