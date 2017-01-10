@@ -30,7 +30,7 @@
           <% @review.each do |r| %>
             <div class = "col s12 m4 l4">
               <div class = "card-panel small hoverable">
-  
+
                 <div class = "card-content" style = "padding:0px">
                   <div class = "row" style = "margin :0px">
                     <h4 class="teal-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= r.detail_address %></h4>
@@ -40,6 +40,7 @@
                       <label for ="sisul">시설점수 (5점)</label>
                       <img name ="sisul" class="responsive-img " src="<%= image_path "5point.png" %>" >
                     </div>
+                    <%= r.avg1 %>
                     <div class= "col s6 m6 l6">
                       <label for ="sisul">환경점수 (3점)</label>
                       <img name ="sisul" class="responsive-img " src="<%= image_path "3point.png" %>" >
@@ -58,10 +59,10 @@
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
                   <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
-  
+
                 </div>
               </div>
             </div>
