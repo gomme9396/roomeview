@@ -12,9 +12,9 @@
           <div class = "divider"></div>
           <div class="col s12 m12 l12">
             <ul class="tabs">
-              <li class="tab col s3"><a target = "_self" href="/review/review_front">기본 계약 정보</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/review_front/<%= @one_review.parcel_address %>">기본 계약 정보</a></li>
               <li class="tab col s3"><a target = "_self" href="/review/create">리뷰 쓰기</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/review_list">리뷰 목록</a></li>
+              <li class="tab col s3"><a target = "_self" href="/review/review_list/<%= @one_review.parcel_address %>">리뷰 목록</a></li>
               <li class="tab col s3"><a class="active" target = "_self" href="">커뮤니티</a></li>
             </ul>
           </div>
