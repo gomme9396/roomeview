@@ -300,7 +300,9 @@ class ReviewController < ApplicationController
       end
 
       if @month_num == 0
+        @price = @price / @price_num
       else
+        @price = @price / @price_num
         @month = @month / @month_num
       end
 
