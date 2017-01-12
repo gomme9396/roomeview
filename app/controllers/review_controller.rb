@@ -141,6 +141,9 @@ class ReviewController < ApplicationController
       @one_review.light = params[:light]
       @one_review.noise = params[:noise]
       @one_review.sani = params[:sani]
+      
+      @one_review.avg1 = (@one_review.cool.to_f + @one_review.warm.to_f + @one_review.sun.to_f + @one_review.blocking.to_f + @one_review.wind.to_f + @one_review.bug.to_f + @one_review.iron.to_f + @one_review.smell.to_f)/8
+      @one_review.avg2 = (@one_review.night.to_f + @one_review.light.to_f + @one_review.noise.to_f + @one_review.sani.to_f )/4
 
       # if params[:image1] != nil
       #   uploader1 = MachineUploader.new
@@ -317,7 +320,5 @@ class ReviewController < ApplicationController
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       @review = Review.where(:parcel_address => params[:parcel_address])
     end
-
-
 
 end

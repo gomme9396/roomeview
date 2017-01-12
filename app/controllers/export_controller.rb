@@ -11,14 +11,14 @@ class ExportController < ApplicationController
               "comment1", "comment2", "start_year", "start_month", "how_long", "place_type", "contract_type", "price", "month", "fee",  
               "cool", "warm", "sun", "blocking", "wind", "bug", "iron", "smell", "pet", 
               "gas", "micro", "bed", "desk", "laundry", "internet", "fire", "cctv", "parking",
-              "night", "light", "noise", "sani"]
+              "night", "light", "noise", "sani", "avg1", "avg2"]
               # "image_url1", "image_url2", "image_url3", "image_url4",
           @review.each do |r|
             csv << [r.id, r.marker1, r.marker2, r.writer, r.total_address, r.parcel_address, r.road_address, r.detail_address,
                     r.comment1, r.comment2, r.start_year, r.start_month, r.how_long, r.place_type, r.contract_type, r.price, r.month, r.fee, 
                     r.cool, r.warm, r.sun, r.blocking, r.wind, r.bug, r.iron, r.smell, r.pet,
                     r.gas, r.micro, r.bed, r.desk, r.laundry, r.internet, r.fire, r.cctv, r.parking, 
-                    r.night, r.light, r.noise, r.sani]
+                    r.night, r.light, r.noise, r.sani, r.avg1, r.avg2]
                     # r.image_url1, r.image_url2, r.image_url3, r.image_url4, 
               end
           end
