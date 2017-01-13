@@ -27,18 +27,13 @@
 
 
 
-  <!--지도 이벤트-->
 
-  <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(36.363626, 127.347757), // 지도의 중심좌표
-            level: 7 // 지도의 확대 레벨
-        };
-    // 지도를 생성합니다
-    var map = new daum.maps.Map(mapContainer, mapOption);
+<script>
 
-
+    var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+        center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
+        level : 14 // 지도의 확대 레벨
+    });
 
 
     // 마커를 표시할 위치와 title 객체 배열입니다
@@ -51,7 +46,7 @@
 
     <% @review.each do |a| %>
       if (parcel_address.includes("<%= a.parcel_address %>") == false) {
-        positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)})
+        positions.push({title: "<%= a.parcel_address %>", latlng: new daum.maps.LatLng(<%= a.marker1 %>, <%= a.marker2 %>)});
         parcel_address.push("<%= a.parcel_address %>");
         road_address.push("<%= a.road_address %>");
         detail_address.push("<%=a.detail_address %>");
@@ -59,9 +54,15 @@
       }
     <% end %>
 
+    // 마커 클러스터러를 생성합니다
+    var clusterer = new daum.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+        minLevel: 10 // 클러스터 할 최소 지도 레벨
+    });
+
     var overlay_arr = new Array();
     var marker_arr = new Array();
-
 
     // 마커 이미지의 이미지 주소입니다
     var imageSrc = "<%= image_path "map_marker.png" %>";
@@ -74,15 +75,15 @@
         // 마커 이미지를 생성합니다
         var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
-        // 마커를 생성합니다
-        var marker = new daum.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng, // 마커를 표시할 위치
-            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image : markerImage // 마커 이미지
-        });
+          // 마커를 생성합니다
+          var marker = new daum.maps.Marker({
+              map: map, // 마커를 표시할 지도
+              position: positions[i].latlng, // 마커를 표시할 위치
+              title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+              image : markerImage // 마커 이미지
+          });
 
-        marker_arr.push(marker);
+          marker_arr.push(marker);
 
 
         // 커스텀 오버레이에 표시할 컨텐츠 입니다
@@ -114,13 +115,6 @@
             position: positions[i].latlng
         });
 
-        // 클러스터 생성
-        var clusterer = new daum.maps.MarkerClusterer({
-            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-            minLevel: 10 // 클러스터 할 최소 지도 레벨
-        });
-
         overlay_arr.push(overlay);
 
         // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
@@ -138,7 +132,7 @@
 
     }
 
-
+    clusterer.addMarkers(marker_arr);
 
     for (var i = 0; i < positions.length; i ++) {
       function button_function(i) {
@@ -188,7 +182,7 @@
     }
 
     $(document).ready(function() {
-       $('select').material_select();
-     });
+      $('select').material_select();
+    });
 
 </script>
