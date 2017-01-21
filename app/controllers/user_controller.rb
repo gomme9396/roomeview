@@ -11,6 +11,7 @@ class UserController < ApplicationController
         if a.nil?
             u = User.new
             u.email = params[:email]
+            u.confirmation = 'false'
             u.save
             
             ConfirmationMailer.confirmation_email(@receiver).deliver_later
@@ -22,7 +23,19 @@ class UserController < ApplicationController
     end
     
     def confirmation_path
-        @one_user = User.where(:email => params[:email]).take
+        @users = User.all
+        
+        @users.each do |u|
+            if u.email.split('.')[0] == params[:email]
+                u.confirmation = 'true'
+                u.save
+            
+                redirect_to '/user/login'
+            else
+            end
+        end
+        
+        # redirect_to '/user/login_error'
     end
 
     def login
