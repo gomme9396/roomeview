@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   get   'home/main'
   get   'home/index_test'
-
+  
   post  'user/join_path'
+  post  'user/confirmation_path/:email' => 'user#confirmation_path'
   get   'user/join'
 
   get   'user/join_error'
+  get   'user/welcome'
 
   post  'user/login_path'
   get   'user/login'
