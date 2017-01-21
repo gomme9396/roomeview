@@ -31,8 +31,8 @@
 <script>
 
     var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-        center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
-        level : 14 // 지도의 확대 레벨
+        center : new daum.maps.LatLng(36.350254, 127.383975), // 지도의 중심좌표
+        level : 7 // 지도의 확대 레벨
     });
 
 
@@ -58,7 +58,7 @@
     var clusterer = new daum.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-        minLevel: 10 // 클러스터 할 최소 지도 레벨
+        minLevel: 4 // 클러스터 할 최소 지도 레벨
     });
 
     var overlay_arr = new Array();
@@ -91,7 +91,7 @@
         // 별도의 이벤트 메소드를 제공하지 않습니다
         var content = '<div class="wrap">' +
                     '    <div class="info">' +
-                    '        <div class="title">' + detail_address[i] +
+                    '        <div class="title white">' + detail_address[i] +
                     '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
                     '        </div>' +
                     '        <div class="body">' +
@@ -99,6 +99,7 @@
                     // '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
                     // '           </div>' +
                     '            <div class="desc">' +
+
                     '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
                     '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
                     '                <div class = "teal-text" onclick="button_function(' + i + ')">리뷰보기' +
@@ -107,12 +108,15 @@
                     '    </div>' +
                     '</div>';
 
+
         // 마커 위에 커스텀오버레이를 표시합니다
         // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
         var overlay = new daum.maps.CustomOverlay({
             content: content,
             map: map,
-            position: positions[i].latlng
+            position: positions[i].latlng,
+            xAnchor: 0.3,
+            yAnchor: 0.91
         });
 
         overlay_arr.push(overlay);

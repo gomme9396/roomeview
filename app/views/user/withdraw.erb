@@ -7,18 +7,17 @@
                 <div class="container">
                   <div class = "cart-content">
                     <div class = "section">
-                    <span class = "card-title" style="font-weight:bold">이메일 바꾸기</span><br />
+                    <span class = "card-title" style="font-weight:bold">탈퇴하기</span><br />
                     <blockquote>
-                      바꾸실 이메일을 입력해주세요!</br>
-                      입력하신 이메일로 인증메일이 발송 될 것입니다.
+                      루미뷰를 탈퇴하시려는 이유에 대해서 피드백 해주실 수 있으신가요?
                     </blockquote>
-                    <form action="/user/edit_path/<%= @one_user.id %>" method="POST">
+                    <form action="/user/withdraw" method="POST">
 
-                        <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
+                        <input type="text" name="text" class="form-control materialize-textarea" id="" placeholder="내용" required>
 
                         <div class="center-align">
                             <a href="/home/main" class="btn btn-default">취소하기</a>
-                            <input class="amber accent-3 btn btn-default" type="submit" value="변경하기">
+                            <input class="amber accent-3 btn btn-default" type="submit" value="제출하기">
                         </div>
 
                     </form>

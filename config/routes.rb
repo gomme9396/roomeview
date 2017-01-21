@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post  'user/edit_path/:id' => 'user#edit_path'
   get   'user/edit/:id' => 'user#edit'
+  get   'user/withdraw'
 
   get   'user/data'
 
@@ -51,7 +52,7 @@ Rails.application.routes.draw do
 
   get   'export/export_review'
   get   'export/export_user'
-  
+
 
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
