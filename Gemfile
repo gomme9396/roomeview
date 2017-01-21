@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+# 메일건
+gem 'mailgun_rails'
 # 콘솔창에서 db 보여주기
 gem 'hirb'
 # csv 관련
 gem 'roo', '~> 2.4.0'
-
+# aws 이미지 관련
 gem 'mini_magick'
 # key 보안
 gem 'figaro'

@@ -6,14 +6,23 @@ class UserController < ApplicationController
     # 회원가입
     def join_path
         a = User.where(:email => params[:email]).take
+        @receiver = params[:email]
+        
         if a.nil?
             u = User.new
             u.email = params[:email]
             u.save
-            redirect_to '/user/login'
+            
+            ConfirmationMailer.confirmation_email(@receiver).deliver_later
+            
+            redirect_to '/user/welcome'
         else
             redirect_to '/user/join_error'
         end
+    end
+    
+    def confirmation_path
+        @one_user = User.where(:email => params[:email]).take
     end
 
     def login
