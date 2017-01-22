@@ -14,12 +14,12 @@
       </div>
       <div class = "row">
         <% if session[:user_id].nil? %>
-          <a href="/user/login" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <!-- <a href="/user/login" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a> -->
         <% else %>
           <% if Review.where("writer LIKE ?", "%#{session[:user_id]}%").exists? %>
-          <a href="/review/list" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <!-- <a href="/review/list" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a> -->
           <% else %>
-          <a href="/review/create" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <!-- <a href="/review/create" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a> -->
           <% end  %>
         <% end %>
       </div>
