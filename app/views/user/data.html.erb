@@ -1,9 +1,6 @@
 <% @user.each do |u| %>
-    <%= u.email %>
-<% end %>
-
-</br>
-
-<% @review.each do |r| %>
-    <%= r.writer %>
+    이메일 : <%= u.email %>   
+    </br>
+    인증 여부 : <%= u.confirmation %>
+    </br></br>
 <% end %>
