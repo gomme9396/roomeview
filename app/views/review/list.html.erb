@@ -66,7 +66,7 @@
     for (var i = 0; i < positions.length; i ++) {
       (function(i) {
         // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new daum.maps.Size(20, 30);
+        var imageSize = new daum.maps.Size(22, 40);
 
         // 마커 이미지를 생성합니다
         var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
@@ -85,24 +85,30 @@
         // 커스텀 오버레이에 표시할 컨텐츠 입니다
         // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
         // 별도의 이벤트 메소드를 제공하지 않습니다
-        var content = '<div class="wrap">' +
-                    '    <div class="info">' +
-                    '        <div class="title white">' + detail_address[i] +
-                    '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
-                    '        </div>' +
-                    '        <div class="body">' +
-                    // '            <div class="img">' +
-                    // '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-                    // '           </div>' +
-                    '            <div class="desc">' +
+        // var content = '<div class="wrap">' +
+        //             '    <div class="info">' +
+        //             '        <div class="title white" style = "margin-bottom:8px">' + '<h6>' + detail_address[i] + '</h6>' +
+        //             '            <div class="close" onclick="closeOverlay(' + i + ')" title="닫기"></div>' +
+        //             '        </div>' +
+        //
+        //             '        <div class="body">' +
+        //             // '            <div class="img">' +
+        //             // '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+        //             // '           </div>' +
+        //             '            <div class="desc">' +
+        //
+        //             '                <div class="ellipsis">주소 : ' + parcel_address[i] + '</div>' +
+        //             '                <div class = "teal-text" onclick="button_function(' + i + ')"><h5>리뷰보기</h5>' +
+        //             '            </div>' +
+        //             '        </div>' +
+        //             '    </div>' +
+        //             '</div>';
 
-                    '                <div class="ellipsis">지번 : ' + parcel_address[i] + '</div>' +
-                    '                <div class="jibun ellipsis">도로명 : ' + road_address[i] + '</div>' +
-                    '                <div class = "teal-text" onclick="button_function(' + i + ')">리뷰보기' +
-                    '            </div>' +
-                    '        </div>' +
-                    '    </div>' +
-                    '</div>';
+        var content = '<div class="customoverlay">' +
+        '  <a onclick="button_function(' + i + ')" target="_blank">' +
+        '    <span class="title">' + detail_address[i] +'</span>' +
+        '  </a>' +
+        '</div>';
 
 
         // 마커 위에 커스텀오버레이를 표시합니다
@@ -111,15 +117,22 @@
             content: content,
             map: map,
             position: positions[i].latlng,
-            xAnchor: 0.3,
-            yAnchor: 0.91
+            xAnchor: 0.5,
+            yAnchor: 0.2
         });
 
         overlay_arr.push(overlay);
 
         // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
         daum.maps.event.addListener(marker_arr[i], 'click', function() {
+            overlay_arr[i].setMap(null);
+
             overlay_arr[i].setMap(map);
+        });
+
+        daum.maps.event.addListener(map, 'dragend', function() {
+          overlay_arr[i].setMap(null);
+
         });
 
         overlay_arr[i].setMap(null);

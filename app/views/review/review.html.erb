@@ -544,9 +544,9 @@
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         var map = new daum.maps.Map(mapContainer, mapOption);
 
-        var imageSrc = "<%= image_path "map_marker_large.png" %>";
+        var imageSrc = "<%= image_path "map_marker.png" %>";
 
-        var imageSize = new daum.maps.Size(25, 40);
+        var imageSize = new daum.maps.Size(22, 40);
 
         // 마커 이미지를 생성합니다
         var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);

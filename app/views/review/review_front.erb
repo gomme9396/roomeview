@@ -77,9 +77,9 @@
     // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
 
-    var imageSrc = "<%= image_path "map_marker_large.png" %>";
+    var imageSrc = "<%= image_path "map_marker.png" %>";
 
-    var imageSize = new daum.maps.Size(25, 40);
+    var imageSize = new daum.maps.Size(22, 40);
 
     // 마커 이미지를 생성합니다
     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
@@ -91,6 +91,8 @@
       image : markerImage // 마커 이미지
 
     });
+
+
 
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new daum.maps.ZoomControl();
@@ -105,7 +107,7 @@
     // 지도에 올릴 장소명 인포윈도우 입니다.
     var mLabel = new daum.maps.InfoWindow({
       position: mapCenter, // 지도의 중심좌표에 올립니다.
-      content: '<%= @one_review.detail_address %>' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+      content: '<div class="center"><%= @one_review.detail_address %></div>' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
     });
     mLabel.open(map, mMarker); // 지도에 올리면서, 두번째 인자로 들어간 마커 위에 올라가도록 설정합니다.
 
