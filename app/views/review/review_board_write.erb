@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <span class="card-title">
-                            <h2 class="teal-text text-darken-4">너그집</h2>
+                            <h2 class="teal-text text-darken-4"><%=  %></h2>
                         </span>
                     </div>
 
@@ -30,62 +30,67 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col s12 m12 l12">
-                        <div class="card-panel small hoverable white">
-
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col 12 m12 l12">
-                                        <span class="card-title">글남기기</span>
-                                    </div>
-                                </div>
-                                <blockquote>
-                                  글을 남기실 때 아래의 원칙을 위반 시 삭제합니다.<br />
-                                  1) 게시판의 성격과 맞지 않는 광고성, 음란성 게시물<br />
-                                  2) 명예회손의 소지가 있는 글
-                                </blockquote>
-                                <div class="row">
-                                    <div class="input-field col s12 m12 l12">
-                                        <input id="last_name" type="text" class="validate">
-                                        <label for="last_name">제목</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-action" style="">
-                                <div class="row" >
-                                    <div class="input-field col s12 m12 l12">
-                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                        <label for="textarea1">내용</label>
-                                    </div>
-                                </div>
-                                <div class="row " style="margin:0px">
-                                    <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>파일</span>
-                                            <input type="file" name="image1" accept="image/*" multiple>
+                
+                <form action="/review/review_board_write_path" method="POST">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-panel small hoverable white">
+    
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col 12 m12 l12">
+                                            <span class="card-title">글남기기</span>
                                         </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text">
+                                    </div>
+                                    <blockquote>
+                                      글을 남기실 때 아래의 원칙을 위반 시 삭제합니다.<br />
+                                      1) 게시판의 성격과 맞지 않는 광고성, 음란성 게시물<br />
+                                      2) 명예회손의 소지가 있는 글
+                                    </blockquote>
+                                    
+                                    <textarea type="text" name="parcel_address" class="form-control" id="parcel_address" style="resize: none; display: none;" required readonly rows="1"><%= @one_review.parcel_address %></textarea>
+                                    
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12">
+                                            <input id="title" name="title" type="text" class="validate">
+                                            <label for="title">제목</label>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class = "card-action">
-                              <div class = "row" style = "margin:0px">
-                                <div class="center-align">
-                                  <a href="/review/review_board" class="btn btn-default">취소</a>
-                                  <input class="btn btn-default" type="submit" value="저장">
+    
+                                <div class="card-action" style="">
+                                    <div class="row" >
+                                        <div class="input-field col s12 m12 l12">
+                                            <textarea id="content" name="content" class="materialize-textarea"></textarea>
+                                            <label for="content">내용</label>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row " style="margin:0px">-->
+                                    <!--    <div class="file-field input-field">-->
+                                    <!--        <div class="btn">-->
+                                    <!--            <span>파일</span>-->
+                                    <!--            <input type="file" name="image1" accept="image/*" multiple>-->
+                                    <!--        </div>-->
+                                    <!--        <div class="file-path-wrapper">-->
+                                    <!--            <input class="file-path validate" type="text">-->
+                                    <!--        </div>-->
+                                    <!--    </div>-->
+                                    <!--</div>-->
+    
                                 </div>
-                              </div>
+                                <div class = "card-action">
+                                  <div class = "row" style = "margin:0px">
+                                    <div class="center-align">
+                                      <a href="/review/review_board" class="btn btn-default">취소</a>
+                                      <input class="btn btn-default" type="submit" value="저장">
+                                    </div>
+                                  </div>
+                                </div>
+    
                             </div>
-
                         </div>
                     </div>
-                </div>
+                </form>
 
             </div>
 

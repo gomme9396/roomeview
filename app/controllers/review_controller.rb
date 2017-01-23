@@ -322,5 +322,30 @@ class ReviewController < ApplicationController
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       @review = Review.where(:parcel_address => params[:parcel_address])
     end
+    
+    def review_board_write
+      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
+    end
+    
+    def review_board_write_path
+      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
+      
+      board = Board.new
+      
+      board.parcel_address = params[:parcel_address]
+      
+      board.writer = session[:user_id]
+      
+      board.title = params[:title]
+      board.content = params[:content]
+      
+      board.save
+      
+      redirect_to "/review/mypage"
+    end
+    
+    def data
+      @board = Board.all
+    end
 
 end

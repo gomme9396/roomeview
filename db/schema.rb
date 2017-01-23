@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116144717) do
+ActiveRecord::Schema.define(version: 20170123064057) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "parcel_address"
+    t.string   "writer"
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.float    "marker1"

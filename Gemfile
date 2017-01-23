@@ -15,7 +15,6 @@ gem 'fog-aws'
 
 gem 'carrierwave'
 
-gem 'mailgun_rails'
 # materialize
 gem 'materialize-sass'
 

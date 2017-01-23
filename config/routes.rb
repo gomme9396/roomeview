@@ -26,14 +26,17 @@ Rails.application.routes.draw do
   get   'user/data'
 
   get   'review/create'
+  get   'review/data'
 
   post  'review/list_path'
   get   'review/list'
   # get   'review/review_front'
   get   'review/review_list'
-  get   'review/review_board'
+  # get   'review/review_board'
+  
+  post  'review/review_board_write_path'
+  get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
   get   'review/review_board_content'
-  get   'review/review_board_write'
 
   get   'review/review/:id' => "review#review"
   get   'review/review_front/:parcel_address' => "review#review_front"
