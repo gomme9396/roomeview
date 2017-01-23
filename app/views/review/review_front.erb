@@ -107,11 +107,9 @@
     // 지도에 올릴 장소명 인포윈도우 입니다.
     var mLabel = new daum.maps.InfoWindow({
       position: mapCenter, // 지도의 중심좌표에 올립니다.
-      content: '<div class="center"><%= @one_review.detail_address %></div>' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+      content: '<div class="center" style="width:150px;text-align:center;padding:6px 0;"><%= @one_review.detail_address %></div>' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
     });
     mLabel.open(map, mMarker); // 지도에 올리면서, 두번째 인자로 들어간 마커 위에 올라가도록 설정합니다.
-
-
     var rvContainer = document.getElementById('roadview'); // 로드뷰를 표시할 div
     var rv = new daum.maps.Roadview(rvContainer); // 로드뷰 객체 생성
     var rc = new daum.maps.RoadviewClient(); // 좌표를 통한 로드뷰의 panoid를 추출하기 위한 로드뷰 help객체 생성
@@ -135,7 +133,7 @@
       // 로드뷰에 올릴 장소명 인포윈도우를 생성합니다.
       var rLabel = new daum.maps.InfoWindow({
           position: mapCenter,
-          content: '<%= @one_review.detail_address %>'
+          content: '<div class="center" style="width:150px;text-align:center;padding:6px 0;"><%= @one_review.detail_address %></div>'
       });
       rLabel.open(rv, rMarker);
 
