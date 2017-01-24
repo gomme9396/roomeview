@@ -38,6 +38,13 @@
   <!--다음 지도 API key-->
   <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services,clusterer"></script>
 
+  <script>
+    try{
+        window.addEventListener('load', function(){
+            setTimeout(scrollTo, 0, 0, 1);
+        }, false);
+    } catch(e){}
+  </script>
 
 </head>
 <body>
