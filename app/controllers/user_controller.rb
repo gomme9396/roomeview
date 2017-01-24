@@ -7,34 +7,34 @@ class UserController < ApplicationController
     def join_path
         a = User.where(:email => params[:email]).take
         @receiver = params[:email]
-        
+
         if a.nil?
             u = User.new
             u.email = params[:email]
             u.confirmation = 'false'
             u.save
-            
+
             ConfirmationMailer.confirmation_email(@receiver).deliver_later
-            
+
             redirect_to '/user/welcome'
         else
             redirect_to '/user/join_error'
         end
     end
-    
+
     def confirmation_path
         @users = User.all
-        
+
         @users.each do |u|
             if u.email.split('.')[0] == params[:email]
                 u.confirmation = 'true'
                 u.save
-            
+
                 redirect_to '/user/login'
             else
             end
         end
-        
+
         # redirect_to '/user/login_error'
     end
 

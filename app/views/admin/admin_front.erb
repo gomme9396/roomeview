@@ -1,0 +1,26 @@
+<%= render :partial => "/home/navbar" %>
+<div class = "container">
+  <div class="input-field col s6">
+    <input id="melong" type="password" class="validate">
+    <label for="melong">관계자 외 접근금지</label>
+  </div>
+  <button id ="ipjang"class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+
+
+<script>
+
+$( "#ipjang" ).click(function() {
+  var bibun = $('#melong').val();
+  if(bibun == 'eognsl'){
+    location.replace("/admin/admin_main")
+  }
+  else {
+    alert("꺼져");
+  }
+
+
+});
+</script>

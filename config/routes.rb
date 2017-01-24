@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get   'home/main'
   get   'home/index_test'
-  
+
   post  'user/join_path'
   get   'user/confirmation_path/:email' => 'user#confirmation_path'
   get   'user/join'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # get   'review/review_front'
   get   'review/review_list'
   # get   'review/review_board'
-  
+
   post  'review/review_board_write_path'
   get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
   get   'review/review_board_content'
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   get   'review/mypage'
 
+  get   'admin/admin_front'
   get   'admin/admin_main'
   get   'admin/admin_review'
   get   'admin/admin_board'
