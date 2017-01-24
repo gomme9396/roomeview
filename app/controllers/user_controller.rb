@@ -58,7 +58,7 @@ class UserController < ApplicationController
     def login_path
         u = User.where(:email => params[:email]).take
         unless u.nil?
-            if u.confirmation=='true' || u.confirmation=='TRUE'
+            if u.confirmation=='true' || u.confirmation=='TRUE' || u.confirmation==TRUE
                 session[:user_id] = u.email
                 redirect_to '/review/list'
             else
