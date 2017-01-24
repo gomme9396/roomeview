@@ -1,5 +1,10 @@
 <%= render :partial => "/home/navbar" %>
 <div class = "container">
+  <div class="fixed-action-btn" style="bottom: 20%; right: 10%;">
+    <a class="btn-floating btn-large red accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="게시물 쓰기" href="/review/review_board_write/<%= @one_review.parcel_address %>">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+  </div>
   <div class = "card">
 
     <div class = "container">
@@ -19,17 +24,20 @@
         </div>
 
         <div class = "row">
+          <% @boards.each do |r| %>
           <div class = "col s12 m4 l3">
             <div class = "card-panel small hoverable yellow lighten-5" >
 
               <div class = "card-content" style = "padding:0px">
                 <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
+                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">
+                    <%= r.title %>
+                  </h5>
                 </div>
                 <div class = "row">
                   <div class = "col s12 m12 l12">
                     <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
+                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%=r.content %></h6>
                   </div>
                 </div>
 
@@ -40,79 +48,7 @@
               </div>
             </div>
           </div>
-
-          <div class = "col s12 m4 l3">
-            <div class = "card-panel small hoverable yellow lighten-5" >
-
-              <div class = "card-content" style = "padding:0px">
-                <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
-                </div>
-                <div class = "row">
-                  <div class = "col s12 m12 l12">
-                    <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                <a class=  "black-text">작성일시:2016/12/15 19:00</a>
-
-              </div>
-            </div>
-          </div>
-
-          <div class = "col s12 m4 l3">
-            <div class = "card-panel small hoverable yellow lighten-5" >
-
-              <div class = "card-content" style = "padding:0px">
-                <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
-                </div>
-                <div class = "row">
-                  <div class = "col s12 m12 l12">
-                    <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                <a class=  "black-text">작성일시:2016/12/15 18:00</a>
-
-              </div>
-            </div>
-          </div>
-
-          <div class = "col s12 m4 l3">
-            <div class = "card-panel small hoverable yellow lighten-5" >
-
-              <div class = "card-content" style = "padding:0px">
-                <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">게시물 제목</h5>
-                </div>
-                <div class = "row">
-                  <div class = "col s12 m12 l12">
-                    <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; ">글내용이다 메롱메롱</h6>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                <a class=  "black-text">작성일시:2016/12/15 14:00</a>
-
-              </div>
-            </div>
-          </div>
-
-
-
-
+          <% end %>
         </div>
 
 
@@ -127,6 +63,5 @@
   </div>
 </div>
 
-<a href="/review/review_board_write/<%= @one_review.parcel_address %>">작성하기</a>
 
 <%= render :partial => "/home/footer" %>
