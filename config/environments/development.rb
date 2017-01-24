@@ -1,11 +1,11 @@
 Rails.application.configure do
   
-  # # Send email in development mode?
-  # config.action_mailer.delivery_method = :mailgun
-  # config.action_mailer.mailgun_settings = {
-  #       api_key: ENV['MAILGUN_API_KEY'],
-  #       domain: ENV['DOMAIN']
-  # }
+  # Send email in development mode?
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+        api_key: ENV['MAILGUN_API_KEY'],
+        domain: ENV['DOMAIN']
+  }
   
   # Settings specified here will take precedence over those in config/application.rb.
 

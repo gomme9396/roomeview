@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root  'home#main'
+  
+  get   'confirmation_mailer/confirmation_email'
 
   get   'home/main'
   get   'home/index_test'
