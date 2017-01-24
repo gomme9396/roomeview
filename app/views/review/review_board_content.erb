@@ -60,7 +60,7 @@
                                     <a href="/review/review_board/<%= @one_board.parcel_address %>">목록</a>
                                     <% if @one_board.writer == session[:user_id] %>
                                         <a href="/review/review_board_update/<%= @one_board.id %>">수정</a>
-                                        <a href="/review/review_board_destroy/<%= @one_board.id %>">삭제</a>
+                                        <a href="/review/review_board_destroy_path/<%= @one_board.id %>">삭제</a>
                                     <% else %>
                                     <% end %>
                                 </div>

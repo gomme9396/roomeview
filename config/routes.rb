@@ -1,66 +1,82 @@
 Rails.application.routes.draw do
-
-  root  'home#main'
   
-  get   'confirmation_mailer/confirmation_email'
+  # 메인 화면
+  root  'home#main'
 
   get   'home/main'
   get   'home/index_test'
-
+  
+  # 인증메일 다시 보내기
   post  'user/resend_confirmation_path'
   get   'user/resend_confirmation'
+  # 인증되지 않은 메일로 로그인시 에러
   get   'user/confirmation_error'
-
+  
+  # 회원가입
   post  'user/join_path'
-  get   'user/confirmation_path/:email' => 'user#confirmation_path'
   get   'user/join'
-
+  # 인증메일로 보내지는 인증 링크
+  get   'user/confirmation_path/:email' => 'user#confirmation_path'
+  
+  # 이미 가입된 회원이 회원가입시 에러
   get   'user/join_error'
+  # 인증메일이 보내졌음을 알리는 창
   get   'user/welcome'
-
+  
+  # 로그인
   post  'user/login_path'
   get   'user/login'
-
+  # 가입되지 않은 메일로 로그인시 에러
   get   'user/login_error'
-
+  # 로그아웃
   get   'user/logout'
-
+  
+  # 개인정보 변경
   post  'user/edit_path/:id' => 'user#edit_path'
   get   'user/edit/:id' => 'user#edit'
+  # 개인정보 삭제
   get   'user/withdraw'
-
+  # UserController에 해당하는 데이타 확인
   get   'user/data'
-
+  
+  # 리뷰 생성
   get   'review/create'
-  get   'review/data'
-
   post  'review/list_path'
-  get   'review/list'
-  # get   'review/review_front'
-  get   'review/review_list'
-  # get   'review/review_board'
-
-  post  'review/review_board_write_path'
-  get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
-  
-  get   'review/review_board_content'
-  get   'review/review_board_content/:id' => 'review#review_board_content'
-  
-  post  'review/review_board_update_path/:id' => 'review#review_board_update_path'
-  get   'review/review_board_update/:id' => 'review#review_board_update'
-  
-  get   'review/review_board_destroy_path/:id' => 'review#review_board_destroy_path'
-
-  get   'review/review/:id' => "review#review"
-  get   'review/review_front/:parcel_address' => "review#review_front"
-  get   'review/review_list/:parcel_address' => "review#review_list"
-  get   'review/review_board/:parcel_address' => "review#review_board"
-
+  # 리뷰 업데이트
   post  'review/update_path/:id' => 'review#update_path'
   get   'review/update/:id' => 'review#update'
-
+  #리뷰 삭제
   get   'review/destroy/:id' => "review#destroy"
+  # 리뷰 확인
+  get   'review/review/:id' => "review#review"
+  
+  # ReviewController에 해당하는 데이타 확인
+  get   'review/data'
 
+  # 리뷰가 등록된 곳 지도로 보여주기
+  get   'review/list'
+  
+  #지역 커뮤니티 확인
+  get   'review/review_board/:parcel_address' => "review#review_board"
+  # 지역 커뮤니티 보드 작성
+  post  'review/review_board_write_path'
+  get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
+  # 지역 커뮤니티 보드 확인
+  get   'review/review_board_content'
+  get   'review/review_board_content/:id' => 'review#review_board_content'
+  # 지역 커뮤니티 보드 수정
+  post  'review/review_board_update_path/:id' => 'review#review_board_update_path'
+  get   'review/review_board_update/:id' => 'review#review_board_update'
+  # 지역 커뮤니티 보드 삭제
+  get   'review/review_board_destroy_path/:id' => 'review#review_board_destroy_path'
+  
+  # 지역 기본 계약 정보 확인
+  get   'review/review_front/:parcel_address' => "review#review_front"
+  
+  # 지역 리뷰 목록 확인
+  get   'review/review_list/:parcel_address' => "review#review_list"
+  
+  # 마이페이지
   get   'review/mypage'
 
   get   'admin/admin_front'
@@ -68,7 +84,8 @@ Rails.application.routes.draw do
   get   'admin/admin_review'
   get   'admin/admin_board'
   get   'admin/admin_reply'
-
+  
+  # 정보 엑셀파일로 보기
   get   'export/export_review'
   get   'export/export_user'
 
