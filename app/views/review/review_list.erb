@@ -118,12 +118,8 @@
                     </div>
                   </div>
                 </div>
-                <% if Review.where("current_user LIKE ?", "%#{current_user.email}%").exists? %>
                     <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
                     <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
-                <% else %>
-                    <span><a href="#modal_write" style = "margin:0px;" class = "modal-trigger  teal-text text-darken-4">자세한 내용</a></span>
-                <% end %>
                 </div>
               </div>
             </div>
