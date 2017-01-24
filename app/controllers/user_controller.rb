@@ -22,6 +22,19 @@ class UserController < ApplicationController
         end
     end
     
+    def resend_confirmation_path
+        a = User.where(:email => params[:email]).take
+        @receiver = params[:email]
+        
+        if a.nil?
+            redirect_to '/user/join'
+        else
+            ConfirmationMailer.confirmation_email(@receiver).deliver_later
+            
+            redirect_to '/user/welcome'
+        end
+    end
+    
     def confirmation_path
         @users = User.all
         
@@ -45,8 +58,12 @@ class UserController < ApplicationController
     def login_path
         u = User.where(:email => params[:email]).take
         unless u.nil?
-            session[:user_id] = u.email
-            redirect_to '/review/list'
+            if u.confirmation == 'true'
+                session[:user_id] = u.email
+                redirect_to '/review/list'
+            else
+                redirect_to '/user/confirmation_error'
+            end
         else
             redirect_to '/user/login_error'
         end

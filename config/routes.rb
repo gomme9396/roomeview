@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get   'home/main'
   get   'home/index_test'
   
+  post  'user/resend_confirmation_path'
+  get   'user/resend_confirmation'
+  get   'user/confirmation_error'
+  
   post  'user/join_path'
   get   'user/confirmation_path/:email' => 'user#confirmation_path'
   get   'user/join'

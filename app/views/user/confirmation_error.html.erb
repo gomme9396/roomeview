@@ -1,0 +1,27 @@
+<%= render :partial => "/home/navbar" %>
+
+<div class = "container">
+  <div class = "row">
+
+  </div>
+  <div class = "row">
+    <div class = "col s12 m6 l6 offset-m3 offset-l3">
+      <div class = "card white" style = "margin-top:150px; margin-bottom:150px">
+        <div class = "container">
+          <div class = "cart-content">
+            <div class = "section">
+                <div class="center-align">
+                  <span class = "card-title" style="font-weight:bold">인증이 완료되지 않은 계정입니다.</span><br />
+                  <h6>인증 이후에 서비스를 이용할 수 있습니다.</h6>
+                  <br /><a href="/user/resend_confirmation" class="btn btn-default">인증 이메일 다시 보내기</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= render :partial => "/home/footer" %>
