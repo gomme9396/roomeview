@@ -1,5 +1,7 @@
 Rails.application.configure do
   
+  config.action_mailer.default_url_options = {host: 'https://roomeview.net'}
+  
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
         api_key: ENV['MAILGUN_API_KEY'],
@@ -87,5 +89,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  config.action_mailer.default_url_options = {host:'https://roomeview.net'}
 end
