@@ -10,14 +10,11 @@
             <span class = "card-title"><h2 class = "teal-text text-darken-4" ><%= @one_review.detail_address %></h2></span>
           </div>
           <div class = "divider"></div>
-          <div class="col s12 m12 l12">
-            <ul class="tabs">
-              <li class="tab col s3"><a target = "_self" href="/review/review_front/<%= @one_review.parcel_address %>">기본 계약 정보</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/create">리뷰 쓰기</a></li>
-              <li class="tab col s3"><a class="active" >리뷰 목록</a></li>
-              <li class="tab col s3"><a target = "_self" href="/review/review_board/<%= @one_review.parcel_address %>">커뮤니티</a></li>
-            </ul>
-          </div>
+          <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/review_front/<%= @one_review.parcel_address %>">기본 계약 정보</a>
+          <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/create">리뷰 쓰기</a>
+          <a class="col s6 m3 l3 black-text center waves-effect waves-teal btn-flat">리뷰 목록</a>
+          <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/review_board/<%= @one_review.parcel_address %>">커뮤니티</a>
+
         </div>
 
         <div class = "row">
@@ -28,7 +25,7 @@
 
         <div class = "row">
           <% @review.each do |r| %>
-            <div class = "col s12 m4 l4">
+            <div class = "col s12 m6 l4">
               <div class = "card-panel small hoverable">
 
                 <div class = "card-content" style = "padding:0px">
@@ -113,7 +110,11 @@
                   <div class= "row">
                     <div class= "col s12 m12 l12">
                       <label for ="oneline2">기타의견</label>
+                      <% if r.comment2.blank?%>
+                      <h6>없음</h6>
+                      <% else %>
                       <h6 name = "oneline2" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= r.comment2 %></h6>
+                      <% end %>
                     </div>
                   </div>
                 </div>
