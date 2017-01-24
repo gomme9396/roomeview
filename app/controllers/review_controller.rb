@@ -275,7 +275,8 @@ class ReviewController < ApplicationController
     # 내 정보
     def mypage
         @user = User.where(:email => session[:user_id]).take
-        @review = Review.where(:writer => session[:user_id]).reverse
+        @reviews = Review.where(:writer => session[:user_id]).reverse
+        @boards = Board.where(:writer => session[:user_id]).reverse
     end
 
     def review_front
@@ -320,10 +321,9 @@ class ReviewController < ApplicationController
 
     def review_board
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
-      @review = Review.where(:parcel_address => params[:parcel_address])
-      @boards = Board.all
+      # @reviews = Review.where(:parcel_address => params[:parcel_address])
+      @boards = Board.all.reverse
     end
-
 
     def review_board_write
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
@@ -343,6 +343,34 @@ class ReviewController < ApplicationController
 
       board.save
 
+      redirect_to "/review/mypage"
+    end
+    
+    def review_board_content
+      @one_board = Board.find(params[:id])
+      @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
+    end
+    
+    def review_board_update
+      @one_board = Board.find(params[:id])
+      @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
+    end
+    
+    def review_board_update_path
+      @one_board = Board.find(params[:id])
+
+      @one_board.title = params[:title]
+      @one_board.content = params[:content]
+
+      @one_board.save
+
+      redirect_to "/review/mypage"
+    end
+    
+    def review_board_destroy_path
+      @one_board = Board.find(params[:id])
+      @one_board.destroy
+      
       redirect_to "/review/mypage"
     end
 

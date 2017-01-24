@@ -42,7 +42,14 @@ Rails.application.routes.draw do
 
   post  'review/review_board_write_path'
   get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
+  
   get   'review/review_board_content'
+  get   'review/review_board_content/:id' => 'review#review_board_content'
+  
+  post  'review/review_board_update_path/:id' => 'review#review_board_update_path'
+  get   'review/review_board_update/:id' => 'review#review_board_update'
+  
+  get   'review/review_board_destroy_path/:id' => 'review#review_board_destroy_path'
 
   get   'review/review/:id' => "review#review"
   get   'review/review_front/:parcel_address' => "review#review_front"
