@@ -1,0 +1,39 @@
+<%= render :partial => "/home/navbar" %>
+
+<div class = "container">
+  <div class = "row">
+
+  </div>
+  <div class = "row">
+    <div class = "col s12 m6 l6 offset-m3 offset-l3">
+      <div class = "card white" style = "margin-top:150px; margin-bottom:150px">
+        <div class = "container">
+          <div class = "cart-content">
+            <div class = "section">
+              <span class = "card-title" style="font-weight:bold">인증메일 다시 보내기</span><br />
+              <blockquote>
+                작성해주신 이메일로 가입 인증 메일을 전송합니다. </br>
+                메일을 통해서 인증을 하신 이후에 서비스를 이용할 수 있습니다.
+              </blockquote>
+              <form action="/user/resend_confirmation_path" method="POST">
+
+                <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
+                <h6> 회원가입시 루미뷰 <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-1">이용 약관</a>에 동의하게 됩니다. </h6><br />
+
+                <div class="center-align">
+                  <a href="/user/login" class="btn btn-default">취소하기</a>
+                  <input class="amber accent-3 btn btn-default" type="submit" value="인증 메일 보내기">
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= render :partial => "/home/footer" %>
