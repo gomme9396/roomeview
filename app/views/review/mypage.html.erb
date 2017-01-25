@@ -93,19 +93,19 @@
                             <h5>내가 작성한 댓글</h5>
                         </span>
                         <div class="row">
-                            <% @reviews.each do |r| %>
+                            <% @comments.each do |c| %>
 
                             <div class="col s12 m6 l6">
                                 <div class="card">
                                     <div class="card-content">
-                                        <a class="card-title" href="/review/review/<%= r.id %>"><%= r.detail_address %></a>
+                                        <a class="card-title" href="/review/review_board_content/<%= c.board_id %>"><%= c.board.title %></a>
                                     </div>
                                     <div class="card-action " style="height:70px">
                                         <div class="row left" style="margin:0px">
                                             <div class="col" style="padding:0px">
-                                                <% if r.writer == session[:user_id] %>
-                                                <a href="/review/update/<%= r.id %>" style="margin:0px;" class="blue-text">수정하기</a>
-                                                <a href="/review/destroy/<%= r.id %>" style="margin:0px" class="amber-text">삭제하기</a>
+                                                <% if c.writer == session[:user_id] %>
+                                                    <a href="/review/update/<%= c.id %>" style="margin:0px;" class="blue-text">수정하기</a>
+                                                    <a href="/review/destroy/<%= c.id %>" style="margin:0px" class="amber-text">삭제하기</a>
                                                 <% end %>
                                             </div>
                                         </div>

@@ -277,6 +277,7 @@ class ReviewController < ApplicationController
         @user = User.where(:email => session[:user_id]).take
         @reviews = Review.where(:writer => session[:user_id]).reverse
         @boards = Board.where(:writer => session[:user_id]).reverse
+        @comments = Comment.where(:writer => session[:user_id]).reverse
     end
 
     def review_front
