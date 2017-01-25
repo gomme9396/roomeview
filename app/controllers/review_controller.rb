@@ -310,6 +310,7 @@ class ReviewController < ApplicationController
     end
 
     def review_list
+      @user_review = Review.where(:writer => session[:user_id]).take
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       @review = Review.where(:parcel_address => params[:parcel_address])
       # @avg1 = (@one_review.cool.to_f + @one_review.warm.to_f + @one_review.sun.to_f + @one_review.blocking.to_f + @one_review.wind.to_f + @one_review.bug.to_f + @one_review.iron.to_f + @one_review.smell.to_f)/8
