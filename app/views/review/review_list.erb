@@ -29,9 +29,15 @@
               <div class = "card-panel small hoverable">
 
                 <div class = "card-content" style = "padding:0px">
-                  <div class = "row" style = "margin :0px">
-                    <h4 style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis;" ><a class="teal-text" href="/review/review/<%= r.id %>"><%= r.detail_address %></a></h4>
-                  </div>
+                  <% if @user_review.nil? %>
+                    <div class = "row" style = "margin :0px">
+                      <h4 style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis;" ><a class="teal-text" href="/review/review_error"><%= r.detail_address %></a></h4>
+                    </div>
+                  <% else %>
+                    <div class = "row" style = "margin :0px">
+                      <h4 style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis;" ><a class="teal-text" href="/review/review/<%= r.id %>"><%= r.detail_address %></a></h4>
+                    </div>
+                  <% end %>
                   <div class= "row">
 
                     <% if r.avg1 == 5 %>
@@ -119,7 +125,11 @@
                   </div>
                 </div>
                     <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                    <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
+                      <% if @user_review.nil? %>
+                        <a href="/review/review_error" >자세한 리뷰 보기</a>
+                      <% else %>
+                        <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
+                      <% end %>
                 </div>
               </div>
             </div>

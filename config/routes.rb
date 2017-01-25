@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   # UserController에 해당하는 데이타 확인
   get   'user/data'
   
+  # 리뷰 작성 안할시 이동
+  get   'review/review_error'
   # 리뷰 생성
   get   'review/create'
   post  'review/list_path'
