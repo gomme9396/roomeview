@@ -6,30 +6,34 @@
   </div>
   <div class = "row">
     <div class = "col s12 m6 l6 offset-m3 offset-l3">
-      <div class = "card white" style = "margin-top:150px; margin-bottom:150px">
+      <div class = "card white medium" style = "margin-top:50px; margin-bottom:50px">
         <div class = "container">
+          <form action="/user/join_path" method="POST">
+
           <div class = "cart-content">
-            <div class = "section">
+            <div class = "section" style ="padding-top:50px;">
               <span class = "card-title" style="font-weight:bold">회원가입</span><br />
               <blockquote>
                 이메일만으로 간편하게 가입하세요!<br />
                 작성해주신 이메일로 가입 인증 메일을 전송합니다. </br>
                 메일을 통해서 인증을 하신 이후에 서비스를 이용할 수 있습니다.
               </blockquote>
-              <form action="/user/join_path" method="POST">
 
                 <input type="email" name="email" class="form-control" id="total_address" placeholder="이메일을 입력해주세요." required>
-                <h6> 회원가입시 루미뷰 <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-1">이용 약관</a>에 동의하게 됩니다. </h6><br />
-
-                <div class="center-align">
-                  <a href="/user/login" class="btn btn-default">취소하기</a>
-                  <input class="amber accent-3 btn btn-default" type="submit" value="가입하기">
+                  <h6> 회원가입시 루미뷰 <a href = "#modal_term" class = "modal-trigger blue-text text-lighten-1">이용 약관</a>에 동의하게 됩니다. </h6><br />
+              </div>
+          </div>
+          <div class="card-action row" style="margin-bottom:0px">
+            <div class="center-align">
+                <div class = "col s6 m6 l6">
+                  <a href="/user/login" class="teal-text btn-flat">돌아가기</a>
                 </div>
-
-              </form>
-
+                <div class = "col s6 m6 l6">
+                  <input type="submit" class="btn-flat amber-text text-accent-3" value="가입하기"></input>
+                </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
     </div>

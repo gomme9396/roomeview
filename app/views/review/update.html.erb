@@ -7,11 +7,11 @@
                 <div class="card">
                     <div class="card-image">
                         <nav>
-                            <div class="nav-wrapper cyan darken-4">
-                                <div class="col s12">
-                                    <a class="breadcrumb">1단계</a>
-                                </div>
-                            </div>
+                          <div class="nav-wrapper teal">
+                              <div class="col s12">
+                                  <a class="breadcrumb" >리뷰수정</a>
+                              </div>
+                          </div>
                         </nav>
                         <div class="col s12 m12 l12">
                             <div class="card-content">
@@ -680,7 +680,7 @@
 							  															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
 							  														</p>
 							  														<p>
-							  															<input class="with-gap" name="iron" type="radio" id="iron0" value="0" checked/>
+							  															<input class="with-gap" name="iron" type="radio" id="iron0" value="5" checked/>
 							  															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
 							  														</p>
 							  												  <% else %>
@@ -689,7 +689,7 @@
 							  															<label class="teal-text text-darken-3" for="iron1" style ="font-size:0.8rem">나옴</label>
 							  														</p>
 							  														<p>
-							  															<input class="with-gap" name="iron" type="radio" id="iron0" value="0"/>
+							  															<input class="with-gap" name="iron" type="radio" id="iron0" value="5"/>
 							  															<label class="teal-text text-darken-3" for="iron0" style ="font-size:0.8rem">안나옴</label>
 							  														</p>
 							  												  <% end %>
@@ -709,7 +709,7 @@
 							  															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
 							  														</p>
 							  														<p>
-							  															<input class="with-gap" name="smell" type="radio" id="smell0" value="0" checked/>
+							  															<input class="with-gap" name="smell" type="radio" id="smell0" value="5" checked/>
 							  															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
 							  														</p>
 																					<% else %>
@@ -718,7 +718,7 @@
 							  															<label class="teal-text text-darken-3" for="smell1" style ="font-size:0.8rem">있음</label>
 							  														</p>
 							  														<p>
-							  															<input class="with-gap" name="smell" type="radio" id="smell0" value="0"/>
+							  															<input class="with-gap" name="smell" type="radio" id="smell0" value="5"/>
 							  															<label class="teal-text text-darken-3" for="smell0" style ="font-size:0.8rem">없음</label>
 							  														</p>
 																					<% end %>
@@ -1184,9 +1184,20 @@
 </form>
 
 <%= render :partial => "/home/footer" %>
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal modal-fixed-footer" style="width:100%; height:80%;">
 <div class="modal-content">
+
     <h4>지도에서 선택하기</h4>
+    <div class = "row">
+      <div class="input-field col s12 m10 l10" >
+        <input id="select_address" type="text" placeholder="ex : 서울시 서초구">
+        <label for="select_address">지역 검색</label>
+      </div>
+      <div class = "col s12 m2 l2 btn" id="find_local" style = "margin-top:20px">
+        <a class = "white-text">찾기</a>
+      </div>
+    </div>
+
     <div id="map" style="width: 100%; height: 400px;">
         <p id="centerAddr"></p>
     </div>
@@ -1217,19 +1228,19 @@
     $('input[name=total_address]').attr('value', "<%= @one_review.total_address %>");
     $('input[name=parcel_address]').attr('value', "<%= @one_review.parcel_address %>");
     $('input[name=road_address]').attr('value', "<%= @one_review.road_address %>");
-      
+
     $('input[name=detail_address]').attr('value', "<%= @one_review.detail_address %>");
-    
+
     $('input[name=comment1]').attr('value', "<%= @one_review.comment1 %>");
-    
+
     $('input[name=start_year]').attr('value', "<%= @one_review.start_year %>");
     $('input[name=start_month]').attr('value', "<%= @one_review.start_month %>");
     $('input[name=how_long]').attr('value', "<%= @one_review.how_long %>");
-    
+
     $('input[name=price]').attr('value', "<%= @one_review.price %>");
     $('input[name=month]').attr('value', "<%= @one_review.month %>");
     $('input[name=fee]').attr('value', "<%= @one_review.fee %>");
-    
+
 </script>
 
 
@@ -1246,9 +1257,6 @@
 
     var mapTypeControl = new daum.maps.MapTypeControl();
 
-    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new daum.maps.ZoomControl();
     map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
@@ -1256,8 +1264,35 @@
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new daum.maps.services.Geocoder();
 
-    var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    var imageSrc = "<%= image_path "map_marker.png" %>";
+
+    var imageSize = new daum.maps.Size(22, 40);
+
+    // 마커 이미지를 생성합니다
+    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+    var marker = new daum.maps.Marker({
+            image: markerImage // 마커 이미지
+        }), // 클릭한 위치를 표시할 마커입니다
         infowindow = new daum.maps.InfoWindow({zindex: 1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+    var find_address;
+
+    $( "#find_local" ).click(function() {
+      find_address = $('#select_address').val();
+
+      geocoder.addr2coord(find_address, function(status, result) {
+
+          // 정상적으로 검색이 완료됐으면
+           if (status === daum.maps.services.Status.OK) {
+
+              var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+              map.setCenter(coords);
+              map.setLevel(4);
+          }
+      });
+
+    });
 
 
     // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다

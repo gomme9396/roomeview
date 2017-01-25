@@ -433,7 +433,7 @@
                                         <div class="container">
                                             <br/>
                                             <p>
-                                                <input class="with-gap" name="iron" type="radio" id="iron1" value="0"/>
+                                                <input class="with-gap" name="iron" type="radio" id="iron1" value="1"/>
                                                 <label class="teal-text text-darken-3" for="iron1" style="font-size:0.8rem">나옴</label>
                                             </p>
                                             <p>
@@ -451,7 +451,7 @@
                                         <div class="container">
                                             <br/>
                                             <p>
-                                                <input class="with-gap" name="smell" type="radio" id="smell1" value="0"/>
+                                                <input class="with-gap" name="smell" type="radio" id="smell1" value="1"/>
                                                 <label class="teal-text text-darken-3" for="smell1" style="font-size:0.8rem">있음</label>
                                             </p>
                                             <p>
@@ -708,10 +708,10 @@
 </form>
 
 <%= render :partial => "/home/footer" %>
-<div id="modal1" class="modal modal-fixed-footer" style="width:100%; height:70%; max-height: 1000px">
+<div id="modal1" class="modal modal-fixed-footer" style="width:100%; height:80%;">
 <div class="modal-content">
 
-    <h4>지도에서 선택하기</h4>
+    <h5 class = "teal-text ">지도에서 선택하기</h5>
     <div class = "row">
       <div class="input-field col s12 m10 l10" >
         <input id="select_address" type="text" placeholder="ex : 서울시 서초구">
@@ -761,9 +761,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new daum.maps.Map(mapContainer, mapOption);
 
 var mapTypeControl = new daum.maps.MapTypeControl();
-
-// 지도에 컨트롤을 추가해야 지도위에 표시됩니다 daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 
 // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 var zoomControl = new daum.maps.ZoomControl();

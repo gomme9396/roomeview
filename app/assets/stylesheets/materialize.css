@@ -2736,7 +2736,7 @@ ul li {
 blockquote {
   margin: 30px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #26c6da;
+  border-left: 5px solid #00bfa5;
   word-break:keep-all;
 }
 
@@ -5238,7 +5238,7 @@ a.waves-effect .waves-ripple {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 600px;
+  /*max-height: 600px;*/
   width: 700px;
   margin: auto;
   overflow-y: auto;
