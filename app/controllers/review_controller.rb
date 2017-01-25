@@ -374,6 +374,18 @@ class ReviewController < ApplicationController
       
       redirect_to "/review/mypage"
     end
+    
+    def comment_path
+      @comment = Comment.new
+      
+      @comment.board_id = params[:board_id]
+      @comment.writer = session[:user_id]
+      @comment.content = params[:comment]
+      
+      @comment.save
+      
+      redirect_to "/review/review_board_content/" + params[:board_id]
+    end
 
     def data
       @board = Board.all

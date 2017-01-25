@@ -72,6 +72,9 @@ Rails.application.routes.draw do
   # 지역 커뮤니티 보드 삭제
   get   'review/review_board_destroy_path/:id' => 'review#review_board_destroy_path'
   
+  # 지역 커뮤니티 보드 댓글달기
+  post  'review/comment_path/:board_id' => 'review#comment_path'
+  
   # 지역 기본 계약 정보 확인
   get   'review/review_front/:parcel_address' => "review#review_front"
   

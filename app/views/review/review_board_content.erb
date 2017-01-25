@@ -69,10 +69,25 @@
                         </div>
                     </div>
                 </div>
+                <form action="/review/comment_path/<%= @one_board.id %>" method="POST">
+                    <div class="input-field col s12 m12 l12">
+                        <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+                        <label for="comment">댓글 쓰기</label>
+                    </div>
+                    <input class="btn btn-default" type="submit" value="저장">
+                </form>
                 
-                <div class="input-field col s12 m12 l12">
-                    <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
-                    <label for="comment">댓글 쓰기</label>
+                <div class = "row">
+                    <div class="comment_list">
+                      <% @one_board.comments.reverse.each do |c| %>
+                          <div class = "container">
+                            <div class = "card-panel" style = "padding:10px">
+                              <h5><%= c.content %></h5>
+                              <h6><%= c.writer %></h6>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
                 </div>
 
             </div>
