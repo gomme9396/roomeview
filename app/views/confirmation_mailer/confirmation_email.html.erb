@@ -2,6 +2,28 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    .myButton {
+    	background-color:#00bfa6;
+    	display:inline-block;
+    	cursor:pointer;
+    	color:#ffffff;
+    	font-family:Arial;
+    	font-size:17px;
+    	font-weight:bold;
+    	padding:16px 50px;
+    	text-decoration:none;
+    	text-shadow:0px 1px 0px #2f6627;
+    }
+    .myButton:hover {
+    	background-color:#5cbf2a;
+    }
+    .myButton:active {
+    	position:relative;
+    	top:1px;
+    }
+
+    </style>
   </head>
   <body>
     <table>
@@ -25,7 +47,8 @@
       </tr>
       <tr>
         <td>
-          <a href="<%= @url %>">인증하러가기</a>
+          <a >인증하기</a>
+          <a href="<%= @url %>" class="myButton">인증하기</a>
         </td>
       </tr>
     </table>
