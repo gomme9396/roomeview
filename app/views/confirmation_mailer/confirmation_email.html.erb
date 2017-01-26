@@ -2,19 +2,32 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </head>
   <body>
-    <h1><%= @receiver %>님, Roomeview.net에 어서오세요.</h1>
-      <p>
-      Roomeview.net에 가입하셨습니다.
-    </p>
-    <p>
-      이 사이트에 로그인하기 위해서는 아래 링크를 클릭해주세요.
-    </p>
-    <a href="<%= @url %>">인증하러가기</a>
-    <p>가입해주셔서 감사합니다.</p>
-    <a class="waves-effect waves-light btn">button</a>
+    <table>
+      <tr>
+        <td>
+          <%= @receiver %>님, Roomeview.net에 어서오세요.
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>
+          Roomeview.net를 이용해주셔서 감사합니다.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          서비스를 이용하기 위해서 아래 링크를 클릭해주세요.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="<%= @url %>">인증하러가기</a>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
