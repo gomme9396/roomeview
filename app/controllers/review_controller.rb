@@ -277,6 +277,7 @@ class ReviewController < ApplicationController
         @user = User.where(:email => session[:user_id]).take
         @reviews = Review.where(:writer => session[:user_id]).reverse
         @boards = Board.where(:writer => session[:user_id]).reverse
+        @comments = Comment.where(:writer => session[:user_id]).reverse
     end
 
     def review_front
@@ -373,6 +374,18 @@ class ReviewController < ApplicationController
       @one_board.destroy
       
       redirect_to "/review/mypage"
+    end
+    
+    def comment_path
+      @comment = Comment.new
+      
+      @comment.board_id = params[:board_id]
+      @comment.writer = session[:user_id]
+      @comment.content = params[:comment]
+      
+      @comment.save
+      
+      redirect_to "/review/review_board_content/" + params[:board_id]
     end
 
     def data

@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20170125081035) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "parcel_address"
+    t.integer  "board_id"
     t.string   "writer"
     t.string   "content"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
