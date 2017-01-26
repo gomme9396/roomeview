@@ -1,6 +1,10 @@
-<% @user.each do |u| %>
-    이메일 : <%= u.email %>   
+<% @address.each do |a| %>
+    parcel_address : <%= a.parcel_address %>
     </br>
-    인증 여부 : <%= u.confirmation %>
-    </br></br>
+<% end %>
+</br></br>
+
+<% @review.each do |r| %>
+    id : <%= r.address_id %>
+    </br>
 <% end %>

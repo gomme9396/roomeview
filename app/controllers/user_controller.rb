@@ -104,32 +104,13 @@ class UserController < ApplicationController
     end
     
     def please
-        review = Review.all
-        
-        review.each do |r|
-            if r.iron == 0
-                r.iron = 5
-            else
-                r.iron = 1
-            end
-            if r.smell == 0
-                r.smell = 5
-            else
-                r.smell = 1
-            end
-            r.save
-        end
-        
-        review.each do |r|
-            r.avg1 = (r.cool.to_f + r.warm.to_f + r.sun.to_f + r.blocking.to_f + r.wind.to_f + r.bug.to_f + r.iron.to_f + r.smell.to_f)/8
-            r.avg2 = (r.night.to_f + r.light.to_f + r.noise.to_f + r.sani.to_f )/4
-            r.save
-        end
+    
     end
 
     def data
         @user = User.all
         @review = Review.all
+        @address = Address.all
     end
 
 end
