@@ -3,9 +3,31 @@ class ReviewController < ApplicationController
     before_action :require_login, except: [:index]
 
     def list_path
-
+      
+      address = Address.new
       review = Review.new
-
+      
+      have_address = Address.where(:parcel_address => params[:parcel_address])
+      
+      review.user_id = User.where(:email => session[:user_id]).take.id
+      
+      if have_address.take.nil?
+        address.marker1 = params[:marker1]
+        address.marker2 = params[:marker2]
+        
+        address.total_address = params[:total_address]
+        address.parcel_address = params[:parcel_address]
+        address.road_address = params[:road_address]
+        
+        address.save
+        
+      #   review.address_id = Address.last.id + 1
+      # else
+      #   review.address_id = have_address.take.id
+      end
+      
+      review.address_id = have_address.take.id
+      
       review.marker1 = params[:marker1]
       review.marker2 = params[:marker2]
 

@@ -21,17 +21,18 @@ csv_text = File.read('xlsx/address.csv')
     Address.create!(row.to_hash)
   end
   
-csv_text = File.read('xlsx/board.csv')
-  csv = CSV.parse(csv_text, :headers => true)
-  csv.each do |row|
-    Board.create!(row.to_hash)
-  end
+# csv_text = File.read('xlsx/board.csv')
+#   csv = CSV.parse(csv_text, :headers => true)
+#   csv.each do |row|
+#     Board.create!(row.to_hash)
+#   end
   
-csv_text = File.read('xlsx/comment.csv')
-  csv = CSV.parse(csv_text, :headers => true)
-  csv.each do |row|
-    Comment.create!(row.to_hash)
-  end  
+# csv_text = File.read('xlsx/comment.csv')
+#   csv = CSV.parse(csv_text, :headers => true)
+#   csv.each do |row|
+#     Comment.create!(row.to_hash)
+#   end
+
 # csv_text = File.read('xlsx/addressreview.csv')
 #   csv = CSV.parse(csv_text, :headers => true)
 #   csv.each do |row|

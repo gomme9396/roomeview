@@ -1,10 +1,10 @@
 <% @address.each do |a| %>
-    parcel_address : <%= a.parcel_address %>
+    id : <%= a.id %> parcel_address : <%= a.parcel_address %>
     </br>
 <% end %>
 </br></br>
 
 <% @review.each do |r| %>
-    id : <%= r.address_id %>
+    id : <%= r.address_id %> parcel_address : <%= r.parcel_address %>
     </br>
 <% end %>

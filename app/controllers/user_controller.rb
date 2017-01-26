@@ -102,10 +102,6 @@ class UserController < ApplicationController
         end
 
     end
-    
-    def please
-    
-    end
 
     def data
         @user = User.all
