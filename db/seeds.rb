@@ -9,11 +9,11 @@ input.each_with_index do |item, index|
   User.create(item)
 end
 
-# csv_text = File.read('xlsx/address.csv')
-#   csv = CSV.parse(csv_text, :headers => true)
-#   csv.each do |row|
-#     Address.create!(row.to_hash)
-#   end
+csv_text = File.read('xlsx/review.csv')
+  csv = CSV.parse(csv_text, :headers => true)
+  csv.each do |row|
+    Review.create!(row.to_hash)
+  end
   
 # csv_text = File.read('xlsx/addressreview.csv')
 #   csv = CSV.parse(csv_text, :headers => true)

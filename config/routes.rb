@@ -94,7 +94,7 @@ Rails.application.routes.draw do
   get   'export/export_review'
   get   'export/export_user'
 
-
+  get   'user/please'
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"
   # get   'review/destroy_image2/:address_id' => "home#destroy_image2"
   # get   'review/destroy_image3/:address_id' => "home#destroy_image3"
