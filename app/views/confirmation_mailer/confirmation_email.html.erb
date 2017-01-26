@@ -8,12 +8,7 @@
     <table>
       <tr>
         <td>
-          <h1 style = "color:#00bfa5">Roomeview</h1>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= @receiver %>님, Roomeview.net에 어서오세요.
+          <h1 style = "color:#00bfa5">Room<span style = "color:black">eview</span></h1>
         </td>
       </tr>
     </table>
@@ -21,18 +16,25 @@
     <table>
       <tr>
         <td>
-          Roomeview.net를 이용해주셔서 감사합니다.
+          <h6><%= @receiver %>님, Roomeview.net에 어서오세요.</h6>
         </td>
       </tr>
       <tr>
         <td>
-          서비스를 이용하기 위해서 아래 링크를 클릭해주세요.
+          <h6>Roomeview.net를 이용해주셔서 감사합니다.</h6>
         </td>
       </tr>
       <tr>
         <td>
-          <a >인증하기</a>
-          <a href="<%= @url %>" style ="background-color:#00bfa6;border:1px solid #e6e6e6;display:inline-block;cursor:pointer;color:#ffffff;font-size:17px;padding:16px 31px;text-decoration:none;text-shadow:0px 1px 0px #00bfa6;">인증하기</a>
+          <h6>서비스를 이용하기 위해서 아래 링크를 클릭해주세요.</h6>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>
+          <a href="<%= @url %>" style ="background-color:#00bfa6;border:1px solid #e6e6e6;display:inline-block;cursor:pointer;color:#ffffff;font-size:15px;padding:16px 31px;text-decoration:none;text-shadow:0px 1px 0px #00bfa6;">인증하기</a>
         </td>
       </tr>
     </table>
