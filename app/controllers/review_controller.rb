@@ -4,7 +4,29 @@ class ReviewController < ApplicationController
 
     def list_path
 
+      address = Address.new
       review = Review.new
+
+      have_address = Address.where(:parcel_address => params[:parcel_address])
+
+      review.user_id = User.where(:email => session[:user_id]).take.id
+
+      if have_address.take.nil?
+        address.marker1 = params[:marker1]
+        address.marker2 = params[:marker2]
+
+        address.total_address = params[:total_address]
+        address.parcel_address = params[:parcel_address]
+        address.road_address = params[:road_address]
+
+        address.save
+
+      #   review.address_id = Address.last.id + 1
+      # else
+      #   review.address_id = have_address.take.id
+      end
+
+      review.address_id = have_address.take.id
 
       review.marker1 = params[:marker1]
       review.marker2 = params[:marker2]
@@ -91,7 +113,32 @@ class ReviewController < ApplicationController
     end
 
     def update_path
+
+      address = Address.new
+      all_address = Address.all
+
       @one_review = Review.find(params[:id])
+
+      have_address = Address.where(:parcel_address => params[:parcel_address])
+
+      @one_review.user_id = User.where(:email => session[:user_id]).take.id
+
+      if have_address.take.nil?
+        address.marker1 = params[:marker1]
+        address.marker2 = params[:marker2]
+
+        address.total_address = params[:total_address]
+        address.parcel_address = params[:parcel_address]
+        address.road_address = params[:road_address]
+
+        address.save
+
+      #   review.address_id = Address.last.id + 1
+      # else
+      #   review.address_id = have_address.take.id
+      end
+
+      @one_review.address_id = have_address.take.id
 
       @one_review.marker1 = params[:marker1]
       @one_review.marker2 = params[:marker2]
@@ -171,6 +218,12 @@ class ReviewController < ApplicationController
 
       @one_review.save
 
+      all_address.each do |a|
+        if a.reviews.take.nil? && a.boards.take.nil?
+          a.destroy
+        end
+      end
+
       redirect_to "/review/mypage"
     end
 
@@ -181,6 +234,14 @@ class ReviewController < ApplicationController
     def destroy
       @review = Review.find(params[:id])
       @review.destroy
+
+      all_address = Address.all
+
+      all_address.each do |a|
+        if a.reviews.take.nil? && a.boards.take.nil?
+          a.destroy
+        end
+      end
 
       # if @address_review.take.image_url1 != nil
       #   old_image_name1 = @address_review.take.image_url1.split('/')[5]
@@ -275,9 +336,9 @@ class ReviewController < ApplicationController
     # 내 정보
     def mypage
         @user = User.where(:email => session[:user_id]).take
-        @reviews = Review.where(:writer => session[:user_id]).reverse
-        @boards = Board.where(:writer => session[:user_id]).reverse
-        @comments = Comment.where(:writer => session[:user_id]).reverse
+        @reviews = @user.reviews.reverse
+        @boards = @user.boards.reverse
+        @comments = @user.comments.reverse
     end
 
     def review_front
@@ -324,7 +385,7 @@ class ReviewController < ApplicationController
     def review_board
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       # @reviews = Review.where(:parcel_address => params[:parcel_address])
-      @boards = Board.all.reverse
+      @boards = Board.where(:parcel_address => params[:parcel_address])
     end
 
     def review_board_write
@@ -335,6 +396,9 @@ class ReviewController < ApplicationController
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
 
       board = Board.new
+
+      board.user_id = User.where(:email => session[:user_id]).take.id
+      board.address_id = Address.where(:parcel_address => params[:parcel_address]).take.id
 
       board.parcel_address = params[:parcel_address]
 
@@ -361,6 +425,8 @@ class ReviewController < ApplicationController
     def review_board_update_path
       @one_board = Board.find(params[:id])
 
+      @one_board.writer = session[:user_id]
+
       @one_board.title = params[:title]
       @one_board.content = params[:content]
 
@@ -372,16 +438,27 @@ class ReviewController < ApplicationController
     def review_board_destroy_path
       @one_board = Board.find(params[:id])
       @one_board.destroy
+      @one_board.comments.destroy
 
+      all_address = Address.all
+
+      all_address.each do |a|
+        if a.reviews.take.nil? && a.boards.take.nil?
+          a.destroy
+        end
+      end
       redirect_to "/review/mypage"
     end
 
     def comment_path
       @comment = Comment.new
 
+      @comment.user_id = User.where(:email => session[:user_id]).take.id
       @comment.board_id = params[:board_id]
+
       @comment.writer = session[:user_id]
       @comment.content = params[:comment]
+
 
       @comment.save
 

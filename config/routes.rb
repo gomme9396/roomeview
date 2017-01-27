@@ -91,8 +91,11 @@ Rails.application.routes.draw do
   get   'admin/admin_reply'
   
   # 정보 엑셀파일로 보기
-  get   'export/export_review'
   get   'export/export_user'
+  get   'export/export_address'
+  get   'export/export_review'
+  get   'export/export_board'
+  get   'export/export_comment'
 
   get   'user/please'
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"

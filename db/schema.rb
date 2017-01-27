@@ -11,9 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125081035) do
+ActiveRecord::Schema.define(version: 20170126124145) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.float    "marker1"
+    t.float    "marker2"
+    t.string   "total_address"
+    t.string   "parcel_address"
+    t.string   "road_address"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "boards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
     t.string   "parcel_address"
     t.string   "writer"
     t.string   "title"
@@ -23,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170125081035) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "board_id"
     t.string   "writer"
     t.string   "content"
@@ -31,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170125081035) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
     t.float    "marker1"
     t.float    "marker2"
     t.string   "writer"
