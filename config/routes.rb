@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   # 회원가입
   post  'user/join_path'
   get   'user/join'
+  
+  # 회원 탈퇴
+  get   'review/withdraw/:id' => 'review#withdraw'
+  post  'review/user_destroy_path/:id' => 'review#user_destroy_path'
+  post  'review/user_all_destroy_path/:id' => 'review#user_all_destroy_path'
+  
   # 인증메일로 보내지는 인증 링크
   get   'user/confirmation_path/:email' => 'user#confirmation_path'
   
@@ -101,6 +107,7 @@ Rails.application.routes.draw do
   get   'export/export_review'
   get   'export/export_board'
   get   'export/export_comment'
+  get   'export/export_withdraw'
 
   get   'user/please'
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"

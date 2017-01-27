@@ -1,6 +1,27 @@
 class ReviewController < ApplicationController
 
     before_action :require_login, except: [:index]
+    
+    def withdraw
+      @one_user = User.find(params[:id])
+    end
+    
+    def user_destroy_path
+      withdraw = Withdraw.new
+      
+      withdraw.email = session[:user_id]
+      withdraw.reason = params[:reason]
+      
+      withdraw.save
+      
+      user = User.find(params[:id])
+      
+      user.destroy
+      
+      reset_session
+      
+      redirect_to '/'
+    end
 
     def list_path
 
