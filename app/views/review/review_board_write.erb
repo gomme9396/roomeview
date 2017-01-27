@@ -1,45 +1,18 @@
 <%= render :partial => "/home/navbar" %>
 <div class="container">
-    <div class="card">
 
         <div class="container">
 
             <div class="section">
-                <div class="row">
-                    <div class="col s12 m12 l12">
-                        <span class="card-title">
-                            <h2 class="teal-text text-darken-4"><%= @one_review.detail_address %></h2>
-                        </span>
-                    </div>
-
-                    <div class="divider"></div>
-                    <div class="col s12 m12 l12">
-                        <ul class="tabs">
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/review_front/<%= @one_review.parcel_address %>">기본 계약 정보</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/create">리뷰 쓰기</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/review_list/<%= @one_review.parcel_address %>">리뷰 목록</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a class="active" target="_self" href="/review/review_board/<%= @one_review.parcel_address %>">커뮤니티</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
                 <form action="/review/review_board_write_path" method="POST">
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="card-panel small hoverable white">
-    
+
                                 <div class="card-content">
                                     <div class="row">
                                         <div class="col 12 m12 l12">
-                                            <span class="card-title">글남기기</span>
+                                            <h4 class="card-title"><%= @one_review.detail_address %>에 글남기기</h4>
                                         </div>
                                     </div>
                                     <blockquote>
@@ -47,9 +20,9 @@
                                       1) 게시판의 성격과 맞지 않는 광고성, 음란성 게시물<br />
                                       2) 명예회손의 소지가 있는 글
                                     </blockquote>
-                                    
+
                                     <textarea type="text" name="parcel_address" class="form-control" id="parcel_address" style="resize: none; display: none;" required readonly rows="1"><%= @one_review.parcel_address %></textarea>
-                                    
+
                                     <div class="row">
                                         <div class="input-field col s12 m12 l12">
                                             <input id="title" name="title" type="text" class="validate">
@@ -57,7 +30,7 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="card-action" style="">
                                     <div class="row" >
                                         <div class="input-field col s12 m12 l12">
@@ -76,17 +49,17 @@
                                     <!--        </div>-->
                                     <!--    </div>-->
                                     <!--</div>-->
-    
+
                                 </div>
                                 <div class = "card-action">
                                   <div class = "row" style = "margin:0px">
                                     <div class="center-align">
                                       <a href="/review/review_board/<%= @one_review.parcel_address %>" class="btn btn-default">취소</a>
-                                      <input class="btn btn-default" type="submit" value="저장">
+                                      <input class="btn btn-default" href = href="/review/review_list/<%= @one_review.parcel_address %>" type="submit" value="저장">
                                     </div>
                                   </div>
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
@@ -95,6 +68,5 @@
             </div>
 
         </div>
-    </div>
 </div>
 <%= render :partial => "/home/footer" %>

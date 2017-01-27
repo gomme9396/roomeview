@@ -1,6 +1,6 @@
 <%= render :partial => "/home/navbar" %>
 
-  <div class="fixed-action-btn " style="bottom: 45px; right: 24px;">
+  <div class="fixed-action-btn " style="bottom: 10%; right: 10%;">
     <a class="btn-floating btn-large red accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="리뷰쓰기" href = "/review/create">
       <i class="large material-icons">mode_edit</i>
     </a>
@@ -38,6 +38,9 @@
     var road_address = [];
     var detail_address = [];
     var review_id = [];
+    var avg1 = [];
+    var avg2 = [];
+    var tavg = [];
 
 
     <% @review.each do |a| %>
@@ -47,6 +50,8 @@
         road_address.push("<%= a.road_address %>");
         detail_address.push("<%=a.detail_address %>");
         review_id.push("<%=a.id %>");
+        avg1.push("<%=a.avg1 %>");
+        avg2.push("<%=a.avg2 %>");
       }
     <% end %>
 
@@ -116,7 +121,8 @@
               title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
               image : markerImage // 마커 이미지
           });
-
+          var tavg = parseInt(avg1[i]) + parseInt(avg2[i]);
+          tavg = tavg/2
           marker_arr.push(marker);
 
 
@@ -144,7 +150,7 @@
 
         var content = '<div class="customoverlay">' +
         '  <a onclick="button_function(' + i + ')" target="_blank">' +
-        '    <span class="title">' + detail_address[i] +'</span>' +
+        '    <span class="title">' + detail_address[i] + '</br>' +'<span>' +'평점:'+ tavg +'</span>' +'</span>' +
         '  </a>' +
         '</div>';
 
@@ -156,7 +162,7 @@
             map: map,
             position: positions[i].latlng,
             xAnchor: 0.5,
-            yAnchor: 0.2
+            yAnchor: 0.3
         });
 
         overlay_arr.push(overlay);

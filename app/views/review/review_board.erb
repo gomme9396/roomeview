@@ -1,6 +1,6 @@
 <%= render :partial => "/home/navbar" %>
 <div class = "container">
-  <div class="fixed-action-btn" style="bottom: 20%; right: 10%;">
+  <div class="fixed-action-btn" style="bottom: 10%; right: 10%;">
     <a class="btn-floating btn-large red accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="게시물 쓰기" href="/review/review_board_write/<%= @one_review.parcel_address %>">
       <i class="large material-icons">mode_edit</i>
     </a>
@@ -25,8 +25,8 @@
 
         <div class = "row">
           <% @boards.each do |b| %>
-          <div class = "col s12 m4 l3">
-            <div class = "card-panel small hoverable yellow lighten-5">
+          <div class = "col s12 m6 l6">
+            <div class = "card-panel small hoverable teal lighten-5">
               <div class = "card-content" style = "padding:0px">
                 <div class = "row" style = "margin :0px">
                   <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis;" href="/review/review_board_write/<%= b.parcel_address %>">
@@ -43,9 +43,9 @@
               </div>
 
               <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                  <a class=  "black-text">작성일시:2016/12/15 20:00</a>
+                <a href="/review/review_board_content/<%= b.id %>">자세히 보기</a>
+
               </div>
-              <a href="/review/review_board_content/<%= b.id %>">자세히 보기</a>
             </div>
           </div>
           <% end %>

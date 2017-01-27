@@ -1,4 +1,6 @@
 <%= render :partial => "/home/navbar" %>
+
+
 <div class="container">
     <div class="card">
 
@@ -12,83 +14,88 @@
                         </span>
                     </div>
                     <div class="divider"></div>
-                    <div class="col s12 m12 l12">
-                        <ul class="tabs">
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/review_front/<%= @one_board.parcel_address %>">기본 계약 정보</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/create">리뷰 쓰기</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a target="_self" href="/review/review_list/<%= @one_board.parcel_address %>">리뷰 목록</a>
-                            </li>
-                            <li class="tab col s3">
-                                <a class="active" target="_self" href="/review/review_board/<%= @one_board.parcel_address %>">커뮤니티</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/review_front/<%= @one_review.parcel_address %>">기본 계약 정보</a>
+                    <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/create">리뷰 쓰기</a>
+                    <a class="col s6 m3 l3 teal-text center waves-effect waves-teal btn-flat" href="/review/review_list/<%= @one_review.parcel_address %>">리뷰 목록</a>
+                    <a class="col s6 m3 l3 black-text center waves-effect waves-teal btn-flat">커뮤니티</a>
                 </div>
 
                 <div class="row">
                     <div class="col s12 m12 l12">
-                        <div class="card-panel small hoverable yellow lighten-5">
+                        <div class="card-panel small hoverable ">
 
                             <div class="card-content">
                                 <div class="row" style="margin :0px">
-                                    <h5 class="black-text" style="overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= @one_board.title %></h5>
-                                </div>
-                            </div>
-                            <div class="card-action" style="padding-top:10px; padding-bottom:10px;">
-                                <div class="row" style="margin:0px">
-                                    <div class="col s12 m6 l6" style="padding:0px">
-                                        <a class="black-text">작성자 : <%= @one_board.writer %></a>
-                                    </div>
-                                    <div class="col s12 m6 l6" style="padding:0px">
-                                        <a class="black-text">작성일시 : 2016/12/15 20:00</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-action" style="padding">
-                                <div class="row">
-                                    <div class="col s12 m12 l12">
-                                        <label for="oneline1">내용</label>
-                                        <h6 name="oneline1" style="overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= @one_board.content %></h6>
-                                    </div>
-                                </div>
-                                <div class="row " style="margin:0px">
-                                    <a href="/review/review_board/<%= @one_board.parcel_address %>">목록</a>
-                                    <% if @one_board.writer == session[:user_id] %>
-                                        <a href="/review/review_board_update/<%= @one_board.id %>">수정</a>
-                                        <a href="/review/review_board_destroy_path/<%= @one_board.id %>">삭제</a>
-                                    <% else %>
-                                    <% end %>
+                                  <div class = "col s12 m12 l12">
+                                    <h5 class="black-text" ><%= @one_board.title %></h5>
+                                  </div>
+                                  <div class="col s12 m6 l6" >
+                                      <a class="teal-text"><%= @one_board.writer %></a>
+                                  </div>
                                 </div>
                             </div>
 
+                            <div class="card-action" >
+                                <div class="row" style="margin : 0px">
+                                    <div class="col s12 m12 l12">
+                                        <p>
+                                          <%= @one_board.content %>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin : 0px">
+                                    <div class="comment_list">
+                                      <% @one_board.comments.each do |c| %>
+                                        <div class="card col s12 m12 l12 z-depth-0" style = "margin:5px">
+                                          <div class = "row" style = "margin:0px">
+                                            <h6 class = "col s12 m3 l3 teal-text text-accent-4"><%= c.writer %></h6>
+                                            <h6 name ="coment" class = "col s12 m9 l9" ><%= c.content %></h6>
+                                          </div>
+                                        </div>
+                                      <% end %>
+                                    </div>
+                                </div>
+
+                                <div class = "row" style="margin : 0px">
+                                  <div class = "card z-depth-0 col s12 m12 l12">
+                                    <form action="/review/comment_path/<%= @one_board.id %>" method="POST">
+                                      <div class="input-field">
+                                        <input class = "col s12 m10 l10"type = "text" id="comment" name="comment" style = "margin:0px"></input>
+                                        <label for="comment">댓글 쓰기</label>
+                                        <input class="col s12 m2 l2 btn btn-default" type="submit" value="저장">
+
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class = "card-action">
+                              <div class="row " style="margin:0px">
+                                <div class= "col s12 m12 l12">
+                                  <a href="/review/review_board/<%= @one_board.parcel_address %>">목록</a>
+                                  <% if @one_board.writer == session[:user_id] %>
+                                      <a href="/review/review_board_update/<%= @one_board.id %>">수정</a>
+                                      <a href="/review/review_board_destroy_path/<%= @one_board.id %>">삭제</a>
+                                  <% else %>
+                                  <% end %>
+                                </div>
+                              </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <form action="/review/comment_path/<%= @one_board.id %>" method="POST">
-                    <div class="input-field col s12 m12 l12">
-                        <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
-                        <label for="comment">댓글 쓰기</label>
-                    </div>
-                    <input class="btn btn-default" type="submit" value="저장">
-                </form>
-                
-                <div class = "row">
-                    <div class="comment_list">
-                      <% @one_board.comments.reverse.each do |c| %>
-                          <div class = "container">
-                            <div class = "card-panel" style = "padding:10px">
-                              <h5><%= c.content %></h5>
-                              <h6><%= c.writer %></h6>
-                            </div>
-                          </div>
-                      <% end %>
-                    </div>
-                </div>
+
+
+
 
             </div>
 
@@ -96,4 +103,3 @@
     </div>
 </div>
 <%= render :partial => "/home/footer" %>
-
