@@ -219,7 +219,13 @@ class ReviewController < ApplicationController
       @one_review.save
 
       all_address.each do |a|
-        if a.reviews.take.nil? && a.boards.take.nil?
+        if a.reviews.take.nil?
+          a.boards.each do |b|
+            b.comments.each do |c|
+              c.destroy
+            end
+            b.destroy
+          end
           a.destroy
         end
       end
@@ -238,7 +244,13 @@ class ReviewController < ApplicationController
       all_address = Address.all
 
       all_address.each do |a|
-        if a.reviews.take.nil? && a.boards.take.nil?
+        if a.reviews.take.nil?
+          a.boards.each do |b|
+            b.comments.each do |c|
+              c.destroy
+            end
+            b.destroy
+          end
           a.destroy
         end
       end
@@ -438,15 +450,13 @@ class ReviewController < ApplicationController
     def review_board_destroy_path
       @one_board = Board.find(params[:id])
       @one_board.destroy
-      @one_board.comments.destroy
-
-      all_address = Address.all
-
-      all_address.each do |a|
-        if a.reviews.take.nil? && a.boards.take.nil?
-          a.destroy
-        end
+      
+      comment = @one_board.comments
+      
+      comment.each do |c|
+        c.destroy
       end
+      
       redirect_to "/review/mypage"
     end
 
@@ -464,9 +474,31 @@ class ReviewController < ApplicationController
 
       redirect_to "/review/review_board_content/" + params[:board_id]
     end
+    
+    def comment_update
+      @one_comment = Comment.find(params[:id])
+    end
+    
+    def comment_update_path
+      @one_comment = Comment.find(params[:id])
+      
+      @one_comment.content = params[:content]
+      
+      @one_comment.save
+      
+      redirect_to "/review/mypage"
+    end
+    
+    def comment_destroy
+      @one_comment = Comment.find(params[:id])
+      @one_comment.destroy
+      
+      redirect_to "/review/mypage"
+    end
 
     def data
       @board = Board.all
+      @comment = Comment.all
     end
 
 end

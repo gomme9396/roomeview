@@ -1,6 +1,10 @@
 <% @board.each do |b| %>
-    <%= b.parcel_address %>
-    <%= b.title %>
-    <%= b.content %>
+    id : <%= b.id %> address id : <%= b.address_id %> parcel_address : <%= b.parcel_address %>
+    </br>
+<% end %>
+</br></br>
+
+<% @comment.each do |c| %>
+    board id : <%= c.board_id %>
     </br>
 <% end %>

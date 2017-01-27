@@ -104,8 +104,8 @@
                                         <div class="row left" style="margin:0px">
                                             <div class="col" style="padding:0px">
                                                 <% if c.writer == session[:user_id] %>
-                                                    <a href="/review/update/<%= c.id %>" style="margin:0px;" class="blue-text">수정하기</a>
-                                                    <a href="/review/destroy/<%= c.id %>" style="margin:0px" class="amber-text">삭제하기</a>
+                                                    <a href="/review/comment_update/<%= c.id %>" style="margin:0px;" class="blue-text">수정하기</a>
+                                                    <a href="/review/comment_destroy/<%= c.id %>" style="margin:0px" class="amber-text">삭제하기</a>
                                                 <% end %>
                                             </div>
                                         </div>
