@@ -16,7 +16,7 @@ gem 'fog-aws'
 gem 'carrierwave'
 
 # materialize
-gem 'materialize-sass'
+gem 'materialize-sass', '0.97.8'
 
 gem 'rake', '11.3.0'
 

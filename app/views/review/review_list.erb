@@ -26,6 +26,7 @@
         <div class = "row">
           <% @review.each do |r| %>
             <div class = "col s12 m6 l4">
+
               <div class = "card-panel small hoverable">
 
                 <div class = "card-content" style = "padding:0px">
@@ -124,14 +125,30 @@
                     </div>
                   </div>
                 </div>
-                    <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                      <% if @user_review.nil? %>
-                        <a href="/review/review_error" >자세한 리뷰 보기</a>
-                      <% else %>
-                        <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
-                      <% end %>
+                <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
+                  <% if @user_review.nil? %>
+                    <a class="modal-trigger" href="#modal1" id ="modal_ad">자세한 리뷰 보기</a>
+                    <!-- <a href="/review/review_error" >자세한 리뷰 보기</a> -->
+
+                  <% else %>
+                    <a href="/review/review/<%= r.id %>" >자세한 리뷰 보기</a>
+                  <% end %>
+
+
+
                 </div>
               </div>
+            </div>
+            <div id="modal1" class="modal">
+               <div class="modal-content">
+                 <h4>광고들어가는 곳 데헷>_<</h4>
+                 <p>리뷰 보고 싶으면 리뷰 쓰거나 5초 기다려!</p>
+               </div>
+               <div class="modal-footer">
+                 <a id = "ad_close" href="/review/review/<%= r.id %>" class=" modal-action modal-close waves-effect waves-green btn-flat">리뷰보기</a>
+                 <h5 id = "countdown" class="btn-flat black-text disabled"></h5>
+
+               </div>
             </div>
           <% end %>
 
@@ -143,4 +160,66 @@
     </div>
   </div>
 </div>
+
+<!-- modal  -->
+
+
+<script>
+jQuery('#ad_close').hide();
+
+$('.modal-trigger').leanModal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      ready: function() {
+        var time = 0;
+        // setTimeout(function(){
+        //   jQuery('#ad_close').show();
+        //   jQuery('#countdown').hide();
+        // }, 5000);
+
+
+        setInterval(function(){
+
+          document.getElementById( 'countdown' ).innerHTML =  5-time;
+          time += 1;
+          if(time == 6)
+          {
+            jQuery('#ad_close').show();
+            jQuery('#countdown').hide();
+            time=0;
+          }
+        },1000);
+      }, // Callback for Modal open
+    }
+  );
+
+jQuery('#modal_ad').click(function () {
+        // var time = 0;
+        // jQuery('#ad_close').hide();
+        // // setTimeout(function(){
+        // //   jQuery('#ad_close').show();
+        // //   jQuery('#countdown').hide();
+        // // }, 5000);
+        //
+        //
+        // setInterval(function(){
+        //
+        //   document.getElementById( 'countdown' ).innerHTML =  5-time;
+        //   time += 1;
+        //   if(time == 6)
+        //   {
+        //     jQuery('#ad_close').show();
+        //     jQuery('#countdown').hide();
+        //     time=0;
+        //   }
+        // },1000);
+
+
+
+});
+
+</script>
+
 <%= render :partial => "/home/footer" %>
