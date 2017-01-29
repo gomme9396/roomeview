@@ -11,12 +11,12 @@
                     <blockquote>
                       루미뷰를 탈퇴하시려는 이유에 대해서 피드백 해주실 수 있으신가요?
                     </blockquote>
-                    <form action="/user/withdraw" method="POST">
+                    <form action="/review/user_destroy_path/<%= @one_user.id %>" method="POST">
 
-                        <input type="text" name="text" class="form-control materialize-textarea" id="" placeholder="내용" required>
+                        <input type="text" name="reason" class="form-control materialize-textarea" id="reason" placeholder="내용" required>
 
                         <div class="center-align">
-                            <a href="/home/main" class="btn btn-default">취소하기</a>
+                            <a href="/review/mypage" class="btn btn-default">취소하기</a>
                             <input class="amber accent-3 btn btn-default" type="submit" value="제출하기">
                         </div>
 

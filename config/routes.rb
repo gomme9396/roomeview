@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   # 회원가입
   post  'user/join_path'
   get   'user/join'
+  
+  # 회원 탈퇴
+  get   'review/withdraw/:id' => 'review#withdraw'
+  post  'review/user_destroy_path/:id' => 'review#user_destroy_path'
+  post  'review/user_all_destroy_path/:id' => 'review#user_all_destroy_path'
+  
   # 인증메일로 보내지는 인증 링크
   get   'user/confirmation_path/:email' => 'user#confirmation_path'
   
@@ -74,6 +80,11 @@ Rails.application.routes.draw do
   
   # 지역 커뮤니티 보드 댓글달기
   post  'review/comment_path/:board_id' => 'review#comment_path'
+  # 댓글 수정
+  get   'review/comment_update/:id' => 'review#comment_update'
+  post  'review/comment_update_path/:id' => 'review#comment_update_path'
+  # 댓글 삭제
+  get   'review/comment_destroy/:id' => 'review#comment_destroy'
   
   # 지역 기본 계약 정보 확인
   get   'review/review_front/:parcel_address' => "review#review_front"
@@ -96,6 +107,7 @@ Rails.application.routes.draw do
   get   'export/export_review'
   get   'export/export_board'
   get   'export/export_comment'
+  get   'export/export_withdraw'
 
   get   'user/please'
   # get   'review/destroy_image1/:address_id' => "home#destroy_image1"

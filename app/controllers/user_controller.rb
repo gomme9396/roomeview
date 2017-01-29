@@ -82,17 +82,31 @@ class UserController < ApplicationController
 
     def edit_path
         @one_user = User.find(params[:id])
-        @one_review = Review.where(:writer => @one_user.email).all
+        
+        @reviews = @one_user.reviews
+        @boards = @one_user.boards
+        @comments = @one_user.comments
 
         a = User.where(:email => params[:email]).take
 
         if a.nil?
-            @one_review.each do |r|
+            @reviews.each do |r|
                 r.writer = params[:email]
                 r.save
             end
+            
+            @boards.each do |b|
+                b.writer = params[:email]
+                b.save
+            end
+            
+            @comments.each do |c|
+                c.writer = params[:email]
+                c.save
+            end
 
             @one_user.email = params[:email]
+            @one_user.confirmation = "false"
 
             @one_user.save
 

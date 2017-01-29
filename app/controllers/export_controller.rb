@@ -68,4 +68,15 @@ class ExportController < ApplicationController
           end
           send_data(comment, :type => 'text/csv', :filename => 'comment.csv')
     end
+    
+    def export_withdraw
+      @withdraw = Withdraw.all
+      withdraw = CSV.generate do |csv|
+      csv << ["id", "email", "reason"]
+          @withdraw.each do |w|
+            csv << [w.id, w.email, w.reason]
+              end
+          end
+          send_data(withdraw, :type => 'text/csv', :filename => 'withdraw.csv')
+    end
 end
