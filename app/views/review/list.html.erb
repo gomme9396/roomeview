@@ -10,7 +10,14 @@
 
     <br /><br />
     <div class = "row">
-
+      <div class = "col s12 m12 l12">
+        <ul class="collapsible" data-collapsible="accordion">
+         <li>
+           <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+         </li>
+       </ul>
+      </div>
       <div class = "col s12 m12 l12">
         <div class = "card">
             <div id="map" style="width: 100%; height: 500px;"></div>
@@ -105,6 +112,7 @@
 
     // 마커 이미지의 이미지 주소입니다
     var imageSrc = "<%= image_path "map_marker.png" %>";
+    var k = 0;
 
     for (var i = 0; i < positions.length; i ++) {
       (function(i) {
@@ -169,9 +177,12 @@
 
         // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
         daum.maps.event.addListener(marker_arr[i], 'click', function() {
+            overlay_arr[k].setMap(null);
+            k = i;
             overlay_arr[i].setMap(map);
             map.setLevel(2);
             map.setCenter(positions[i].latlng);
+
 
         });
 
@@ -240,6 +251,20 @@
 
     $(document).ready(function() {
       $('select').material_select();
+    });
+
+    $(this).mousedown(function(event) {
+    switch (event.which) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+        var level = map.getLevel();
+        map.setLevel(level + 1);
+        break;
+        default:
+    }
     });
 
 </script>
