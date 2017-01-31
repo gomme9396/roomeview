@@ -21,7 +21,7 @@
         }, false);
     } catch(e){}
   </script>
-  
+
   <!-- 구글 애널리 틱스 소스코드 -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -45,7 +45,14 @@
   <!--다음 지도 API key-->
   <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=<%= ENV['MAP_API_KEY'] %>&libraries=services,clusterer"></script>
 
-
+  <!--구글 애드센스-->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5330099142296182",
+      enable_page_level_ads: true
+    });
+  </script>
 
 </head>
 <body>
