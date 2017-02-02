@@ -8,18 +8,18 @@
           <h1 id = "title" class="white-text " style = "vertical-align:center"><span class = "teal-text text-lighten-2">Room</span>eview</h1>
         </div>
         <div class = "col s12 m12 l12">
-          <h6 class = "grey-text text-lighten-2" style = "margin-bottom:2rem">루미뷰는 원룸 리뷰/거주후기 공유 서비스 입니다.</h6>
+          <h6 class = "grey-text text-lighten-2" style = "margin-bottom:2rem">루미뷰는 원룸 리뷰/거주후기h 공유 서비스 입니다.</h6>
           <h6 class = "grey-text text-lighten-2" style = "margin-bottom:2rem">살아봐야 안다! 루미뷰 지금 바로 시작 해보세요!</h6>
         </div>
       </div>
       <div class = "row">
         <% if session[:user_id].nil? %>
-          <a href="/user/login" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <a href="/user/login" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px">시작하기</a>
         <% else %>
           <% if Review.where("writer LIKE ?", "%#{session[:user_id]}%").exists? %>
-          <a href="/review/list" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <a href="/review/list" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px">시작하기</a>
           <% else %>
-          <a href="/review/create" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px"><i class="material-icons right">fast_forward</i>시작하기</a>
+          <a href="/review/create" class="col s11 m2 l2 waves-effect waves-light btn-large teal lighten-2" style = "margin-left:10.5px">시작하기</a>
           <% end  %>
         <% end %>
       </div>
