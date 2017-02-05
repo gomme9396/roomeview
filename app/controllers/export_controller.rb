@@ -39,12 +39,12 @@ class ExportController < ApplicationController
     def export_user
       @user = User.all
       user = CSV.generate do |csv|
-      csv << ["id", "email", "confirmation"]
+      csv << ["id", "email", "confirmation", "password", "confirmation_password"]
           @user.each do |u|
-            csv << [u.id, u.email, u.confirmation]
+            csv << [u.id, u.email, u.confirmation, u.password, u.confirmation_password]
           end
       end
-      send_data(user, :type => 'text/csv', :filename => 'user.csv')
+      send_data(user, :type => 'text/xlsx', :filename => 'user.xlsx')
     end
     
     def export_board

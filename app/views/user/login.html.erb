@@ -15,10 +15,14 @@
               <blockquote>
                 이메일로 간편하게 로그인 하세요!
               </blockquote><br />
-
+              
+              <p class = "black-text">2017년 02월 11일 이전 가입자의 비밀번호는 이메일과 같습니다. 로그인 후에 비밀번호를 변경해주세요 ^^</p><br />
+              
               <form action="/user/login_path" method="POST">
                 <lable class = "teal-text" for = "email" ><h6 style="font-weight:bold">이메일</h6></lable>
-                <input type="email" name="email" class="validate form-control" id="total_address" placeholder="roomeview@roomeview.net" required>
+                <input type="email" name="email" class="validate form-control" id="email" placeholder="roomeview@roomeview.net" required>
+                <lable class = "teal-text" for = "password" ><h6 style="font-weight:bold">비밀번호</h6></lable>
+                <input type="password" name="password" class="validate form-control" id="password" placeholder="비밀번호를 입력해주세요." required>
 
 
                 <p>

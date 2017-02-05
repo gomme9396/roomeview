@@ -24,39 +24,36 @@
         </div>
 
         <div class = "row">
-          <% @boards.each do |b| %>
-          <div class = "col s12 m6 l6">
-            <div class = "card-panel small hoverable teal lighten-5">
-              <div class = "card-content" style = "padding:0px">
-                <div class = "row" style = "margin :0px">
-                  <h5 class="black-text" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis;" href="/review/review_board_write/<%= b.parcel_address %>">
-                    <%= b.title %>
-                  </h5>
-                </div>
-                <div class = "row">
-                  <div class = "col s12 m12 l12">
-                    <label for ="oneline1">내용</label>
-                    <h6 name = "oneline1" style = "overflow:hidden;white-space:nowrap; text-overflow:ellipsis; "><%= b.content %></h6>
+          
+          <div class="row" style="margin : 0px">
+            <div class="comment_list">
+              <% @boards.each do |b| %>
+                <div class="card col s12 m12 l12 z-depth-0" style = "margin:5px">
+                  <div class = "row" style = "margin:0px">
+                    <h6 class = "col s12 m3 l3 teal-text text-accent-4"><%= b.writer %></h6>
+                    <h6 name ="coment" class = "col s12 m9 l9" ><%= b.content %></h6>
                   </div>
                 </div>
-
-              </div>
-
-              <div class="card-action" style = "padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:0px;">
-                <a href="/review/review_board_content/<%= b.id %>">자세히 보기</a>
-
-              </div>
+              <% end %>
             </div>
           </div>
-          <% end %>
+
+          <div class = "row" style="margin : 0px">
+            <div class = "card z-depth-0 col s12 m12 l12">
+              <form action="/review/review_board_write_path/<%= @one_address.id %>" method="POST">
+                <div class="input-field">
+                  <input class = "col s12 m10 l10"type = "text" id="content" name="content" style = "margin:0px"></input>
+                  <label for="comment">댓글 쓰기</label>
+                  <input class="col s12 m2 l2 btn btn-default" type="submit" value="저장">
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
       <div class = "divider"></div>
       <div class = "section">
-
       </div>
 
     </div>

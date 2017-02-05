@@ -9,14 +9,22 @@ class UserController < ApplicationController
         @receiver = params[:email]
 
         if a.nil?
+          if params[:password]==params[:confirmation_password]
             u = User.new
+            
             u.email = params[:email]
-            u.confirmation = 'false'
+            u.password = params[:password]
+            u.confirmation_password = params[:confirmation_password]
+            u.confirmation = 'f'
+            
             u.save
 
             ConfirmationMailer.confirmation_email(@receiver).deliver_later
 
             redirect_to '/user/welcome'
+          else
+            redirect_to '/user/join_error2'
+          end
         else
             redirect_to '/user/join_error'
         end
@@ -40,7 +48,7 @@ class UserController < ApplicationController
 
         @users.each do |u|
             if u.email.split('.')[0] == params[:email]
-                u.confirmation = 'true'
+                u.confirmation = 't'
                 u.save
 
                 redirect_to '/user/login'
@@ -58,9 +66,13 @@ class UserController < ApplicationController
     def login_path
         u = User.where(:email => params[:email]).take
         unless u.nil?
-            if u.confirmation=='true' || u.confirmation=='TRUE' || u.confirmation=='t'
+            if u.confirmation=='t'
+              if u.password == params[:password]
                 session[:user_id] = u.email
                 redirect_to '/review/list'
+              else
+                redirect_to '/user/login_error2'
+              end
             else
                 redirect_to '/user/confirmation_error'
             end
@@ -73,48 +85,6 @@ class UserController < ApplicationController
     def logout
         reset_session
         redirect_to '/'
-    end
-
-    # 회원 정보 수정
-    def edit
-        @one_user = User.find(params[:id])
-    end
-
-    def edit_path
-        @one_user = User.find(params[:id])
-        
-        @reviews = @one_user.reviews
-        @boards = @one_user.boards
-        @comments = @one_user.comments
-
-        a = User.where(:email => params[:email]).take
-
-        if a.nil?
-            @reviews.each do |r|
-                r.writer = params[:email]
-                r.save
-            end
-            
-            @boards.each do |b|
-                b.writer = params[:email]
-                b.save
-            end
-            
-            @comments.each do |c|
-                c.writer = params[:email]
-                c.save
-            end
-
-            @one_user.email = params[:email]
-            @one_user.confirmation = "false"
-
-            @one_user.save
-
-            redirect_to '/user/login'
-        else
-            redirect_to '/user/join_error'
-        end
-
     end
 
     def data

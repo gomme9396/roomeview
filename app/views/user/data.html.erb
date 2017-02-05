@@ -4,7 +4,13 @@
 <% end %>
 </br></br>
 
+<% @user.each do |u| %>
+    이메일 : <%= u.email %> 인증 : <%= u.confirmation %> 비밀번호 : <%= u.password %> 비밀번호 확인 : <%= u.confirmation_password %>
+    </br>
+<% end %>
+
 <% @review.each do |r| %>
     id : <%= r.address_id %> parcel_address : <%= r.parcel_address %>
     </br>
 <% end %>
+

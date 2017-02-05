@@ -373,8 +373,43 @@ class ReviewController < ApplicationController
         @boards = @user.boards.reverse
         @comments = @user.comments.reverse
     end
+    
+    # 회원 정보 수정 (비밀번호)
+    def edit_password
+        @one_user = User.find(params[:id])
+    end
+
+    def edit_password_path
+        
+        u = User.find(params[:id])
+        
+        if u.password == params[:password]
+          if params[:edit_password] == params[:confirmation_edit_password]
+            
+            u.password = params[:edit_password]
+            u.confirmation_password = params[:confirmation_edit_password]
+
+            u.save
+            
+            reset_session
+            
+            redirect_to '/user/login'
+          else
+            redirect_to '/review/edit_error2'
+          end
+        else
+            reset_session
+            
+            redirect_to '/user/edit_error'
+        end
+    end
+    
+    def edit_error2
+      @user = User.where(:email => session[:user_id]).take
+    end
 
     def review_front
+      
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       @reviews = Review.where(:parcel_address => params[:parcel_address])
 
@@ -416,28 +451,29 @@ class ReviewController < ApplicationController
     end
 
     def review_board
+      @one_address = Address.where(:parcel_address => params[:parcel_address]).take
+      @boards = @one_address.boards
       @one_review = Review.where(:parcel_address => params[:parcel_address]).take
       # @reviews = Review.where(:parcel_address => params[:parcel_address])
-      @boards = Board.where(:parcel_address => params[:parcel_address])
+      # @boards = Board.where(:parcel_address => params[:parcel_address])
     end
 
-    def review_board_write
-      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
-    end
+    # def review_board_write
+    #   @one_review = Review.where(:parcel_address => params[:parcel_address]).take
+    # end
 
     def review_board_write_path
-      @one_review = Review.where(:parcel_address => params[:parcel_address]).take
-
+      @one_address = Address.find(params[:id])
+      
       board = Board.new
 
       board.user_id = User.where(:email => session[:user_id]).take.id
-      board.address_id = Address.where(:parcel_address => params[:parcel_address]).take.id
+      board.address_id = params[:id]
 
-      board.parcel_address = params[:parcel_address]
+      board.parcel_address = Address.where(:parcel_address => @one_address)
 
       board.writer = session[:user_id]
 
-      board.title = params[:title]
       board.content = params[:content]
 
       board.save

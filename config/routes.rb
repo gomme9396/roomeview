@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # 인증메일 다시 보내기
   post  'user/resend_confirmation_path'
   get   'user/resend_confirmation'
+  
   # 인증되지 않은 메일로 로그인시 에러
   get   'user/confirmation_error'
   
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   
   # 이미 가입된 회원이 회원가입시 에러
   get   'user/join_error'
+  # 비밀번호 2개가 같지 않을 경우 에러
+  get   'user/join_error2'
   # 인증메일이 보내졌음을 알리는 창
   get   'user/welcome'
   
@@ -34,12 +37,19 @@ Rails.application.routes.draw do
   get   'user/login'
   # 가입되지 않은 메일로 로그인시 에러
   get   'user/login_error'
+  # 비밀번호가 틀렸을 시 에러
+  get   'user/login_error2'
   # 로그아웃
   get   'user/logout'
   
   # 개인정보 변경
-  post  'user/edit_path/:id' => 'user#edit_path'
-  get   'user/edit/:id' => 'user#edit'
+  post  'review/edit_password_path/:id' => 'review#edit_password_path'
+  get   'review/edit_password/:id' => 'review#edit_password'
+  # 개인정보 변경시 현재 비밀번호가 틀렸을 경우 에러 (자동 로그아웃)
+  get   'user/edit_error'
+  # 개인정보 변경시 새로운 비밀번호가 새로운 비밀번호 인증과 다를 경우 에러
+  get   'review/edit_error2'
+  
   # 개인정보 삭제
   get   'user/withdraw'
   # UserController에 해당하는 데이타 확인
@@ -67,8 +77,8 @@ Rails.application.routes.draw do
   #지역 커뮤니티 확인
   get   'review/review_board/:parcel_address' => "review#review_board"
   # 지역 커뮤니티 보드 작성
-  post  'review/review_board_write_path'
-  get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
+  post  'review/review_board_write_path/:id' => 'review#review_board_write_path'
+  # get   'review/review_board_write/:parcel_address' => 'review#review_board_write'
   # 지역 커뮤니티 보드 확인
   get   'review/review_board_content'
   get   'review/review_board_content/:id' => 'review#review_board_content'

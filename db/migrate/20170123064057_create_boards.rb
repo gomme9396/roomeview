@@ -9,7 +9,6 @@ class CreateBoards < ActiveRecord::Migration
       
       t.string :writer
       
-      t.string :title
       t.string :content
 
       t.timestamps null: false
