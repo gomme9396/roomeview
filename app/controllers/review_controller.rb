@@ -458,9 +458,6 @@ class ReviewController < ApplicationController
       # @boards = Board.where(:parcel_address => params[:parcel_address])
     end
 
-    # def review_board_write
-    #   @one_review = Review.where(:parcel_address => params[:parcel_address]).take
-    # end
 
     def review_board_write_path
       @one_address = Address.find(params[:id])
@@ -469,6 +466,8 @@ class ReviewController < ApplicationController
 
       board.user_id = User.where(:email => session[:user_id]).take.id
       board.address_id = params[:id]
+      
+      board.time = Time.now
 
       board.parcel_address = Address.where(:parcel_address => @one_address)
 
@@ -481,40 +480,31 @@ class ReviewController < ApplicationController
       redirect_to(:back)
     end
 
-    def review_board_content
-      @one_board = Board.find(params[:id])
-      @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
-    end
+    # def review_board_content
+    #   @one_board = Board.find(params[:id])
+    #   @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
+    # end
 
-    def review_board_update
-      @one_board = Board.find(params[:id])
-      @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
-    end
+    # def review_board_update
+    #   @one_board = Board.find(params[:id])
+    #   @one_review = Review.where(:parcel_address => @one_board.parcel_address).take
+    # end
 
-    def review_board_update_path
-      @one_board = Board.find(params[:id])
+    # def review_board_update_path
+    #   @one_board = Board.find(params[:id])
 
-      @one_board.writer = session[:user_id]
+    #   @one_board.writer = session[:user_id]
 
-      @one_board.title = params[:title]
-      @one_board.content = params[:content]
+    #   @one_board.title = params[:title]
+    #   @one_board.content = params[:content]
 
-      @one_board.save
+    #   @one_board.save
 
-      redirect_to "/review/mypage"
-    end
+    #   redirect_to "/review/mypage"
+    # end
 
     def review_board_destroy_path
-      @one_board = Board.find(params[:id])
-      @one_board.destroy
       
-      comment = @one_board.comments
-      
-      comment.each do |c|
-        c.destroy
-      end
-      
-      redirect_to "/review/mypage"
     end
 
     def comment_path

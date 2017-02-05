@@ -5,6 +5,8 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id
       t.integer :board_id
       
+      t.string  :time
+      
       t.string  :writer
       
       t.string  :content

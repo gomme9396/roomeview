@@ -5,6 +5,8 @@ class CreateBoards < ActiveRecord::Migration
       t.integer :user_id
       t.integer :address_id
       
+      t.string :time
+      
       t.string :parcel_address
       
       t.string :writer

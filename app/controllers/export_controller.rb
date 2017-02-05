@@ -50,9 +50,9 @@ class ExportController < ApplicationController
     def export_board
       @board = Board.all
       board = CSV.generate do |csv|
-      csv << ["id", "user_id", "address_id", "parcel_address", "writer", "title", "content"]
+      csv << ["id", "user_id", "address_id", "time", "parcel_address", "writer", "content"]
           @board.each do |b|
-            csv << [b.id, b.user_id, b.address_id, b.parcel_address, b.writer, b.title, b.content]
+            csv << [b.id, b.user_id, b.address_id, b.time, b.parcel_address, b.writer, b.content]
               end
           end
           send_data(board, :type => 'text/csv', :filename => 'board.csv')
@@ -61,9 +61,9 @@ class ExportController < ApplicationController
     def export_comment
       @comment = Comment.all
       comment = CSV.generate do |csv|
-      csv << ["id", "user_id", "board_id", "writer", "content"]
+      csv << ["id", "user_id", "board_id", "time", "writer", "content"]
           @comment.each do |c|
-            csv << [c.id, c.user_id, c.board_id, c.writer, c.content]
+            csv << [c.id, c.user_id, c.board_id, c.time, c.writer, c.content]
               end
           end
           send_data(comment, :type => 'text/csv', :filename => 'comment.csv')

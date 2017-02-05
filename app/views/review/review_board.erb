@@ -30,7 +30,8 @@
               <% @boards.each do |b| %>
                 <div class="card col s12 m12 l12 z-depth-0" style = "margin:5px">
                   <div class = "row" style = "margin:0px">
-                    <h6 class = "col s12 m3 l3 teal-text text-accent-4"><%= b.writer %></h6>
+                    <p><%= b.time.split('+')[0] %></p>
+                    <h6 class = "col s12 m3 l3 teal-text text-accent-4"><%= b.writer.split('')[0] + b.writer.split('')[1] + "*****" %></h6>
                     <h6 name ="coment" class = "col s12 m9 l9" ><%= b.content %></h6>
                   </div>
                 </div>
@@ -42,8 +43,8 @@
             <div class = "card z-depth-0 col s12 m12 l12">
               <form action="/review/review_board_write_path/<%= @one_address.id %>" method="POST">
                 <div class="input-field">
-                  <input class = "col s12 m10 l10"type = "text" id="content" name="content" style = "margin:0px"></input>
-                  <label for="comment">댓글 쓰기</label>
+                  <input class = "col s12 m10 l10" type = "text" id="content" name="content" style = "margin:0px"></input>
+                  <label for="comment">타임라인 쓰기</label>
                   <input class="col s12 m2 l2 btn btn-default" type="submit" value="저장">
                 </div>
               </form>
